@@ -1,4 +1,4 @@
-import torch, time, pickle, os, sys
+import torch, time, pickle, os, sys, argparse
 import torch_geometric as tg
 from torch_geometric.data import Data
 import numpy as np
@@ -218,17 +218,32 @@ def create_graphs(tcols=[0,2,4,5,6,7,8,10,28], target=8, lim=10.5, save=True, ca
             pickle.dump(dat, handle)
     return dat
 
-case=sys.argv[1]
-ma=sys.argv[2]
+parser = argparse.ArgumentParser()
+parser.add_argument("-case", "--case", type=str, required=True)
+parser.add_argument("-transform", "--transform", required=False)
+parser.add_argument("-vols", "--vols", type=str, required=True)
+parser.add_argument("-cols", "--cols", required=False)
+args = parser.parse_args()
+
+##required args
+case=args.case
+vols=args.vols
 maxs=[]
-for m in ma:
+for m in vols:
     maxs.append(int(m))
+
 loadcols=None
-if len(sys.argv)>3:
-    loadcols=sys.argv[3]
+
+if args.cols:
+    loadcols=args.cols
 if loadcols=='mass':
     all_cols=np.array([0,2,4,10])
 else:
     all_cols=np.array([0,2,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,35]+list(range(37,60)))
 
-dat=create_graphs(tcols=all_cols, maxs=maxs, lim=10, save=1, case=case)
+if args.transform:
+    transform=args.transform
+else:
+    transform='quantile'
+print(args)
+dat=create_graphs(tcols=all_cols, maxs=maxs, lim=10, save=1, case=case, transform=transform)
