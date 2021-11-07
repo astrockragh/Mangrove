@@ -1,0 +1,65 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.12.5
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.9.7
+    start_time: 1636251852
+    t:
+      1:
+      - 1
+      3:
+      - 16
+      4: 3.9.7
+      5: 0.12.5
+      8:
+      - 6
+data_params:
+  desc: null
+  value:
+    case: test_all_smass
+    split: 0.8
+experiment:
+  desc: null
+  value: GraphMerge
+experiment_name:
+  desc: null
+  value: test
+group:
+  desc: null
+  value: test
+hyper_params:
+  desc: null
+  value:
+    conv_activation: relu
+    conv_layers: 4
+    decode_layers: 1
+    hidden_channels: 32
+    layernorm: true
+model:
+  desc: null
+  value: Sage
+move:
+  desc: null
+  value: false
+run_params:
+  desc: null
+  value:
+    batch_size: 128
+    learning_rate: 0.003
+    loss_func: L2
+    metrics: scatter
+    n_epochs: 100
+    n_trials: 3
+    performance_plot: SAM_base
+    save: true
+    seed: true
+    shuffle: true
+    val_epoch: 2
+wandblog:
+  desc: null
+  value: true

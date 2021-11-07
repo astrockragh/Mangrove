@@ -1,0 +1,96 @@
+2021-11-06 22:27:28,301 INFO    MainThread:31600 [wandb_setup.py:_flush():71] setting env: {}
+2021-11-06 22:27:28,301 INFO    MainThread:31600 [wandb_setup.py:_flush():71] setting login settings: {}
+2021-11-06 22:27:28,301 INFO    MainThread:31600 [wandb_init.py:_log_setup():357] Logging user logs to /home/cj1223/work/GraphMerge/wandb/run-20211106_222728-1yapfjc8/logs/debug.log
+2021-11-06 22:27:28,302 INFO    MainThread:31600 [wandb_init.py:_log_setup():358] Logging internal logs to /home/cj1223/work/GraphMerge/wandb/run-20211106_222728-1yapfjc8/logs/debug-internal.log
+2021-11-06 22:27:28,302 INFO    MainThread:31600 [wandb_init.py:init():390] calling init triggers
+2021-11-06 22:27:28,302 INFO    MainThread:31600 [wandb_init.py:init():395] wandb.init called with sweep_config: {}
+config: {'experiment': 'GraphMerge', 'group': 'test', 'move': False, 'model': 'Sage', 'wandblog': True, 'run_params': {'n_epochs': 100, 'n_trials': 3, 'batch_size': 128, 'learning_rate': 0.003, 'val_epoch': 2, 'loss_func': 'L2', 'metrics': 'scatter', 'performance_plot': 'SAM_base', 'shuffle': True, 'save': True, 'seed': True}, 'hyper_params': {'hidden_channels': 32, 'conv_layers': 4, 'conv_activation': 'relu', 'decode_layers': 1, 'layernorm': True}, 'data_params': {'case': 'test_all_smass', 'split': 0.8}, 'experiment_name': 'test'}
+2021-11-06 22:27:28,302 INFO    MainThread:31600 [wandb_init.py:init():435] starting backend
+2021-11-06 22:27:28,302 INFO    MainThread:31600 [backend.py:_multiprocessing_setup():94] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2021-11-06 22:27:28,330 INFO    MainThread:31600 [backend.py:ensure_launched():198] starting backend process...
+2021-11-06 22:27:28,351 INFO    MainThread:31600 [backend.py:ensure_launched():203] started backend process with pid: 31743
+2021-11-06 22:27:28,361 INFO    MainThread:31600 [wandb_init.py:init():444] backend started and connected
+2021-11-06 22:27:28,363 INFO    MainThread:31600 [wandb_init.py:init():503] updated telemetry
+2021-11-06 22:27:28,435 INFO    MainThread:31600 [wandb_init.py:init():533] communicating current version
+2021-11-06 22:27:33,436 INFO    MainThread:31600 [wandb_init.py:init():548] communicating run to backend with 30 second timeout
+2021-11-06 22:27:41,788 ERROR   Thread-1  :31600 [retry.py:__call__():126] Retry attempt failed:
+Traceback (most recent call last):
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connection.py", line 169, in _new_conn
+    conn = connection.create_connection(
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/socket.py", line 954, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connectionpool.py", line 382, in _make_request
+    self._validate_conn(conn)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connectionpool.py", line 1010, in _validate_conn
+    conn.connect()
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connection.py", line 353, in connect
+    conn = self._new_conn()
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connection.py", line 181, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x2b79bc16f3a0>: Failed to establish a new connection: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/util/retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.wandb.ai', port=443): Max retries exceeded with url: /graphql (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x2b79bc16f3a0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/sdk/lib/retry.py", line 102, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/sdk/internal/internal_api.py", line 141, in execute
+    return self.client.execute(*args, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/transport/requests.py", line 38, in execute
+    request = requests.post(self.url, **post_args)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/sessions.py", line 655, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.wandb.ai', port=443): Max retries exceeded with url: /graphql (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x2b79bc16f3a0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2021-11-06 22:28:03,437 INFO    MainThread:31600 [interface.py:_communicate_run():903] couldn't get run from backend
+2021-11-06 22:28:03,438 ERROR   MainThread:31600 [wandb_init.py:init():553] backend process timed out
+2021-11-06 22:28:03,438 ERROR   MainThread:31600 [wandb_init.py:init():562] encountered error: Error communicating with wandb process
+try: wandb.init(settings=wandb.Settings(start_method='fork'))
+or:  wandb.init(settings=wandb.Settings(start_method='thread'))
+For more info see: https://docs.wandb.ai/library/init#init-start-error
+2021-11-06 22:28:16,624 WARNING MainThread:31600 [wandb_init.py:init():891] interrupted
+Traceback (most recent call last):
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 870, in init
+    run = wi.init()
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 566, in init
+    backend.cleanup()
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/sdk/backend/backend.py", line 229, in cleanup
+    self.wandb_process.join()
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/multiprocessing/popen_fork.py", line 43, in wait
+    return self.poll(os.WNOHANG if timeout == 0.0 else 0)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/multiprocessing/popen_fork.py", line 27, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt

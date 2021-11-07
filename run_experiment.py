@@ -1,4 +1,4 @@
-import os, sys, tqdm, json, shutil, glob, argparse
+import os, sys, json, shutil, argparse
 
 import os.path as osp
 
@@ -16,6 +16,8 @@ parser.add_argument("-gpu", "--gpu", type=str, required=False)
 
 ## slurm  ------------------------------------------------------------------
 
+os.chdir(osp.expanduser("~/work/GraphMerge"))
+
 args = parser.parse_args()
 
 exp0_folder = str(args.f)
@@ -26,7 +28,7 @@ exp0_folder = str(args.f)
 
 # Generate list over experiments to run
 from dev.utils import list_experiments
-if args.gpu='True':
+if args.gpu=='1':
     from dev.train_script_gpu import train_model
 else:
     from dev.train_script_cpu import train_model
@@ -38,12 +40,13 @@ else:
 #### --------------------------------- ####
 
 exp_folder, exp_list = list_experiments(exp0_folder)
+print('whoops')
 
-print(f"Starting process with {len(exp_list)} experiments")
+print(f"Starting process with {len(exp_list)} experiments" )
 print(exp_list)
 # Loop over the experiments
 for i, experiment in enumerate(exp_list):
-
+    print('Running ' + experiment[:-5])
     # Load construction dictionary from json file
     with open(osp.join(exp_folder, experiment)) as file:
         construct_dict = json.load(file)
@@ -52,12 +55,9 @@ for i, experiment in enumerate(exp_list):
 
     print(f"Starting experiment from {experiment[:-5]}")
 
-    epochexit=train_model(construct_dict)
-    print(f'Exited training after {epochexit} epochs')
-    shutil.move(osp.join(exp_folder, experiment), osp.join(exp0_folder+"/done", experiment))
+    train_model(construct_dict)
+
+    # print(f'Exited training after {epochexit} epochs')
+    if construct_dict['move']:
+        shutil.move(osp.join(exp_folder, experiment), osp.join(exp0_folder+"/done", experiment))
     print(f"Experiment {experiment[:-5]} done \t {experiment}: {i + 1} / {len(exp_list)}")
-
-
-
-
-    clear_session()

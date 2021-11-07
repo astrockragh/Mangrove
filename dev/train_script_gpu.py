@@ -52,48 +52,43 @@ def train_model(construct_dict):
     wandblog=construct_dict["wandblog"]
     if wandblog:
         import wandb
-        # run = wandb.init(project = construct_dict["experiment"], entity = "chri862z", group=construct_dict["group"], config = construct_dict, reinit=True, settings=wandb.Settings(start_method="fork"))
-        run = wandb.init(project = construct_dict["experiment"], entity = "chri862z", group=construct_dict["group"], config = construct_dict, reinit=True)
-
+        run = wandb.init(project = construct_dict["experiment"], entity = "chri862z", group=construct_dict["group"], config = construct_dict, reinit=True, settings=wandb.Settings(start_method="fork"))
         wandb.run.name = construct_dict['model']+'_'+construct_dict['experiment']+'_'+str(wandb.run.id)
 
     run_params=construct_dict['run_params']
     data_params=construct_dict['data_params']
-    print(construct_dict)
-    if run_params['seed']==True:
+
+    if run_params.seed==True:
         torch.manual_seed(42)
         random.seed(42)
 
-    ### train
-    n_trials=run_params['n_trials']
-    n_epochs=run_params['n_epochs']
-    val_epoch=run_params['val_epoch']
-    batch_size=run_params['batch_size']
-    shuffle=run_params['shuffle']
-    lr=run_params['learning_rate']
-    save=run_params['save']
-
     ## load data
     train_data, test_data = load_data(**data_params)
-    test_loader=DataLoader(test_data, batch_size=batch_size, shuffle=0)    ##never shuffle test
-    construct_dict['hyper_params']['in_channels']=train_data[0].num_node_features
-    construct_dict['hyper_params']['out_channels']=len(np.array([train_data[0].y]))
+    test_loader=DataLoader(test_data, batch_size=run_params.batch_size, shuffle=0)    ##never shuffke
 
-    # lr_schedule           = get_lr_schedule(construct_dict)       ##still needs implementation
+
+    ### train
+    n_trials=run_params.n_trials
+    n_epochs=run_params.n_epoch
+    val_epoch=run_params.val_epoch
+    batch_size=run_params.batch_size
+    shuffle=run_params.shuffle
+    lr=run_params.learning_rate
+    save=run_params.save
+
+
+    # lr_schedule           = get_lr_schedule(construct_dict) 
     loss_func            = get_loss_func(construct_dict['run_params']['loss_func'])
     metric            = get_metrics(construct_dict['run_params']['metrics'])
     performance_plot      = get_performance(construct_dict['run_params']['performance_plot'])
 
     train_accs, test_accs, scatter, Mhs = [], [], [], []
     yss, preds, xss, lowest = [], [], [], []
-    for trial in range(n_trials):
+    for _ in range(n_trials):
         lowest_metric=np.inf
-        model = setup_model(construct_dict['model'], construct_dict['hyper_params'])
+        model = setup_model(**construct_dict)
         if save:  # Make folder for saved states
-            if wandblog:
-                model_path    = osp.join(pointer, wandb.run.name, "trained_model") ##!!!!!!! needs to point to the right spot
-            else:
-                model_path    = osp.join(pointer, "trained_model") ##!!!!!!! needs to point to the right spot
+            model_path    = osp.join(pointer, wandb.run.name, "trained_model") ##!!!!!!! needs to point to the right spot
             if not osp.isdir(model_path):
                 os.makedirs(model_path)
                 print('Made folder for saving model')
@@ -133,7 +128,6 @@ def train_model(construct_dict):
                             "Training scatter": trainloss, 
                             "Training scatter": train_metric, 
                             "Test scatter":   test_metric,
-                            "Best":   lowest_metric,
                             "Learning rate":   lr})
                 print(f'Epoch: {int(epoch+1)}, Train: {train_metric:.4f}, Test scatter: {test_metric:.4f}, Lowest was {lowest_metric:.4f}')
                 if (epoch+1)%(int(val_epoch*5))==0 and wandblog:
@@ -149,17 +143,11 @@ def train_model(construct_dict):
         
         ys, pred, xs, Mh = test(test_loader, model)
         fig=performance_plot(ys,pred, xs, Mh)
-        if save:
-            fig.savefig(f'{pointer}/performance_ne{n_epochs}_nt{trial}.png')
-        print(1)
+        
         scatter.append(np.std(ys-pred))
-        print(2)
         yss.append(ys)
-        print(3)
         preds.append(pred)
-        print(4)
         xss.append(xs)
-        print(5)
         lowest.append(lowest_metric)
         Mhs.append(Mh)
     result_dict={'sigma':scatter,
@@ -168,12 +156,13 @@ def train_model(construct_dict):
     'ys': yss,
     'pred': pred,
     'xs': xss,
-    'Mh': Mhs,
-    'low':lowest}
+    'Mh': Mhs}
     with open(f'{pointer}/result_dict.pkl', 'wb') as handle:
         pickle.dump(result_dict, handle)
-    with open(f'{pointer}/construct_dict.pkl', 'wb') as handle:
-        pickle.dump(construct_dict, handle)
+
+
+
+
 ################################
 #      Load dependencies       #
 ################################
@@ -192,7 +181,7 @@ def get_loss_func(name):
     # Return loss func from the loss functions file given a function name
     import dev.loss_funcs as loss_func_module
     loss_func = getattr(loss_func_module, name)
-    return loss_func()
+    return loss_func
 
 
 def get_performance(name):
@@ -201,10 +190,13 @@ def get_performance(name):
     performance_plot = getattr(evals, name)
     return performance_plot 
 
-def setup_model(model_name, hyper_params):
+def setup_model(construct_dict, train_data):
     # Retrieve name and params for construction
-    # model_name    = construct_dict['model']
-    # hyper_params  = construct_dict['hyper_params']
+    model_name    = construct_dict['model']
+    hyper_params  = construct_dict['hyper_params']
+
+    hyper_params['in_channels']=train_data[0].num_node_features
+    hyper_params['out_channels']=len(np.array([train_data[0].y]))
 
     # Load model from model folder
     import dev.models as models

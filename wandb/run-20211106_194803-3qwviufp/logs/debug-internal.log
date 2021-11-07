@@ -1,0 +1,69 @@
+2021-11-06 19:48:03,919 INFO    MainThread:24096 [internal.py:wandb_internal():88] W&B internal server running at pid: 24096, started at: 2021-11-06 19:48:03.917414
+2021-11-06 19:48:03,929 DEBUG   SenderThread:24096 [sender.py:send():185] send: header
+2021-11-06 19:48:03,929 INFO    WriterThread:24096 [datastore.py:open_for_write():77] open: /home/cj1223/work/GraphMerge/wandb/run-20211106_194803-3qwviufp/run-3qwviufp.wandb
+2021-11-06 19:48:03,983 DEBUG   HandlerThread:24096 [handler.py:handle_request():130] handle_request: check_version
+2021-11-06 19:48:03,983 DEBUG   SenderThread:24096 [sender.py:send_request():199] send_request: check_version
+2021-11-06 19:48:08,984 DEBUG   SenderThread:24096 [sender.py:send():185] send: run
+2021-11-06 19:48:20,233 ERROR   SenderThread:24096 [retry.py:__call__():126] Retry attempt failed:
+Traceback (most recent call last):
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connection.py", line 169, in _new_conn
+    conn = connection.create_connection(
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/socket.py", line 954, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connectionpool.py", line 382, in _make_request
+    self._validate_conn(conn)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connectionpool.py", line 1010, in _validate_conn
+    conn.connect()
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connection.py", line 353, in connect
+    conn = self._new_conn()
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connection.py", line 181, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x2adee61c9040>: Failed to establish a new connection: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/urllib3/util/retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.wandb.ai', port=443): Max retries exceeded with url: /graphql (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x2adee61c9040>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/sdk/lib/retry.py", line 102, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/sdk/internal/internal_api.py", line 141, in execute
+    return self.client.execute(*args, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/transport/requests.py", line 38, in execute
+    request = requests.post(self.url, **post_args)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/sessions.py", line 655, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/cj1223/.conda/envs/juptorch/lib/python3.9/site-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.wandb.ai', port=443): Max retries exceeded with url: /graphql (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x2adee61c9040>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2021-11-06 19:48:38,985 DEBUG   HandlerThread:24096 [handler.py:handle_request():130] handle_request: shutdown
+2021-11-06 19:48:38,986 INFO    HandlerThread:24096 [handler.py:finish():731] shutting down handler
+2021-11-06 19:48:38,992 INFO    WriterThread:24096 [datastore.py:close():281] close: /home/cj1223/work/GraphMerge/wandb/run-20211106_194803-3qwviufp/run-3qwviufp.wandb

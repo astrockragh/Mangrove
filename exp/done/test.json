@@ -1,0 +1,34 @@
+{
+    "experiment": "GraphMerge",
+    "group":  "test", 
+    "move":false,
+    "model":  "Sage",
+    "wandblog": true,
+
+    "run_params":{
+    "n_epochs":     100,
+    "n_trials": 3,
+    "batch_size": 128,
+    "learning_rate":   3e-3,
+    "val_epoch":   2,
+    "loss_func": "L2",
+    "metrics": "scatter",
+    "performance_plot": "SAM_base",
+    "shuffle":true,
+    "save":true,
+    "seed":true
+},
+
+    "hyper_params": {
+        "hidden_channels":   32,  
+        "conv_layers":   4,
+        "conv_activation": "relu",
+        "decode_layers":   1,
+        "layernorm":      true
+    },
+
+   "data_params":{ 
+    "case": "test_all_smass",
+    "split": 0.8
+}
+}

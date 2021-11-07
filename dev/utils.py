@@ -11,7 +11,7 @@ def list_experiments(folder):
     experiment_folder = osp.join(cwd, folder, "todo") 
     experiment_files  = os.listdir(experiment_folder)
     return experiment_folder, experiment_files
-
+### rewrite clean_done
 def clean_done(folder):
     experiment_folder = osp.join(cwd, folder, "done") 
     legacy_path=osp.join(cwd, folder, 'legacy')
