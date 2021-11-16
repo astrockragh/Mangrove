@@ -3,13 +3,12 @@
     "group":  "percentile", 
     "move":false,
     "model":  "Sage",
-    "wandblog": false,
+    "log": true,
 
     "run_params":{
-    "n_epochs":     500,
-    "n_trials": 20,
+    "n_epochs":    20,
+    "n_trials": 2,
     "batch_size": 128,
-    "learning_rate":   3e-3,
     "val_epoch":   2,
     "loss_func": "L2",
     "metrics": "scatter",
@@ -17,6 +16,14 @@
     "shuffle":true,
     "save":true,
     "seed":true
+},
+"learn_params":{
+    "learning_rate":   3e-3,
+    "schedule":   "warmup_expcos",
+    "g_up":   2,
+    "g_down":   0.95,
+    "warmup": 3
+
 },
 
     "hyper_params": {
@@ -28,7 +35,7 @@
     },
 
    "data_params":{ 
-    "case": "vlarge_redshift_75_all",
+    "case": "test_all_smass",
     "split": 0.8
 }
 }

@@ -1,13 +1,13 @@
 {
     "experiment": "GraphMerge",
-    "group":  "test", 
+    "group":  "percentile", 
     "move":false,
     "model":  "Sage",
-    "wandblog": true,
+    "log": true,
 
     "run_params":{
-    "n_epochs":     100,
-    "n_trials": 3,
+    "n_epochs":     200,
+    "n_trials": 10,
     "batch_size": 128,
     "learning_rate":   3e-3,
     "val_epoch":   2,
@@ -21,14 +21,14 @@
 
     "hyper_params": {
         "hidden_channels":   32,  
-        "conv_layers":   4,
+        "conv_layers":   3,
         "conv_activation": "relu",
         "decode_layers":   1,
         "layernorm":      true
     },
 
    "data_params":{ 
-    "case": "test_all_smass",
+    "case": "vlarge_redshift_95_all",
     "split": 0.8
 }
 }

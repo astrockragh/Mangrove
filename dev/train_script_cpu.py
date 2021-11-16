@@ -1,19 +1,32 @@
-import torch, pickle, time, os, random, wandb
+import torch, pickle, time, os, random
 import numpy as np
 import os.path as osp
 import matplotlib.pyplot as plt
 import torch_geometric as tg
 from torch_geometric.loader import DataLoader
 from importlib import __import__
+
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
 from datetime import date
 today = date.today()
 
 today = today.strftime("%d%m%y")
 def load_data(case, split=0.8):
-    data=pickle.load(open(f'../../../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl', 'rb'))
+    data=pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl'), 'rb'))
     test_data=data[int(len(data)*split):]
     train_data=data[:int(len(data)*split)]
     return train_data, test_data
+
+
+def make_id(length=6):
+    import random
+    import string
+    # choose from all lowercase letters
+    letters = string.ascii_lowercase
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
 
 ### test function
 def test(loader, model):
@@ -23,19 +36,19 @@ def test(loader, model):
     for dat in loader: 
         out = model(dat.x, dat.edge_index, dat.batch) 
         pred.append(out.view(1,-1).cpu().detach().numpy())
-        ys.append(np.array(dat.y.cpu())) 
-        u, counts = np.unique(dat.batch, return_counts=1)
-        xs.append(list(torch.tensor_split(dat.x, torch.cumsum(torch.tensor(counts[:-1]),0))))
+        ys.append(np.array(dat.y.cpu().numpy())) 
+        u, counts = np.unique(dat.batch.cpu().numpy(), return_counts=1)
+        xs.append(np.array(torch.tensor_split(dat.x.cpu(), torch.cumsum(torch.tensor(counts[:-1]),0)), dtype=object))
         ## compile lists
-        ys=np.hstack(ys)
-        pred=np.hstack(pred)[0]
-        xs=np.hstack(xs)
-        xn=[]
-        for x in xs:
-            x0=x.cpu().detach().numpy()
-            xn.append(x0)
-            Mh.append(x0[0][3])
-        return ys,pred,xn, Mh
+    ys=np.hstack(ys)
+    pred=np.hstack(pred)[0]
+    xs=np.hstack(xs)
+    xn=[]
+    for x in xs:
+        x0=x.cpu().detach().numpy()
+        xn.append(x0)
+        Mh.append(x0[0][3])
+    return ys,pred,xn, Mh
 
 
 # train loop
@@ -44,25 +57,22 @@ def train_model(construct_dict):
     """
     Train a model given a construction dictionairy
     """
-    case=construct_dict['data_params']['case']
-    pointer=f'../../../../../scratch/gpfs/cj1223/GraphStorage/{case}/results_{today}'
-    if not osp.exists(pointer):
-            os.mkdir(pointer)
-    # Setup Log 
-    wandblog=construct_dict["wandblog"]
-    if wandblog:
-        import wandb
-        # run = wandb.init(project = construct_dict["experiment"], entity = "chri862z", group=construct_dict["group"], config = construct_dict, reinit=True, settings=wandb.Settings(start_method="fork"))
-        run = wandb.init(project = construct_dict["experiment"], entity = "chri862z", group=construct_dict["group"], config = construct_dict, reinit=True)
-
-        wandb.run.name = construct_dict['model']+'_'+construct_dict['experiment']+'_'+str(wandb.run.id)
-
     run_params=construct_dict['run_params']
     data_params=construct_dict['data_params']
+    learn_params=construct_dict['learn_params']
+    case=data_params['case']
+    group=construct_dict['group']
+    pointer=osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphResults/results_{group}_{today}')
+    if not osp.exists(pointer):
+            os.makedirs(pointer)
+    # Setup Log 
+    log=construct_dict["log"]
+
+
     print(construct_dict)
+
     if run_params['seed']==True:
         torch.manual_seed(42)
-        random.seed(42)
 
     ### train
     n_trials=run_params['n_trials']
@@ -70,8 +80,8 @@ def train_model(construct_dict):
     val_epoch=run_params['val_epoch']
     batch_size=run_params['batch_size']
     shuffle=run_params['shuffle']
-    lr=run_params['learning_rate']
     save=run_params['save']
+    lr=learn_params['learning_rate']
 
     ## load data
     train_data, test_data = load_data(**data_params)
@@ -79,21 +89,28 @@ def train_model(construct_dict):
     construct_dict['hyper_params']['in_channels']=train_data[0].num_node_features
     construct_dict['hyper_params']['out_channels']=len(np.array([train_data[0].y]))
 
-    # lr_schedule           = get_lr_schedule(construct_dict)       ##still needs implementation
+    lr_scheduler          = get_lr_schedule(construct_dict)       ##still needs implementation
     loss_func            = get_loss_func(construct_dict['run_params']['loss_func'])
     metric            = get_metrics(construct_dict['run_params']['metrics'])
     performance_plot      = get_performance(construct_dict['run_params']['performance_plot'])
 
     train_accs, test_accs, scatter, Mhs = [], [], [], []
     yss, preds, xss, lowest = [], [], [], []
+    run_name = construct_dict['model']+f'_{case}'+f'_{make_id()}'
+    log_dir_glob=osp.join(pointer, run_name)
     for trial in range(n_trials):
+        if n_trials>1:
+            run_name_n=run_name+f'_{trial+1}_{n_trials}'
+        else:
+            run_name_n=run_name
+        log_dir=osp.join(pointer, run_name_n)
+        if log:
+            from torch.utils.tensorboard import SummaryWriter
+            writer=SummaryWriter(log_dir=log_dir)
         lowest_metric=np.inf
         model = setup_model(construct_dict['model'], construct_dict['hyper_params'])
         if save:  # Make folder for saved states
-            if wandblog:
-                model_path    = osp.join(pointer, wandb.run.name, "trained_model") ##!!!!!!! needs to point to the right spot
-            else:
-                model_path    = osp.join(pointer, "trained_model") ##!!!!!!! needs to point to the right spot
+            model_path    = osp.join(log_dir, "trained_model") ##!!!!!!! needs to point to the right spot
             if not osp.isdir(model_path):
                 os.makedirs(model_path)
                 print('Made folder for saving model')
@@ -101,6 +118,7 @@ def train_model(construct_dict):
         train_loader=DataLoader(train_data, batch_size=batch_size, shuffle=shuffle) ## control shuffle
 
         optimizer = torch.optim.Adam(model.parameters(), lr=lr) ## need a lr schedule
+        scheduler=lr_scheduler(optimizer, learn_params)
 
         # Initialize our train function
         def train():
@@ -114,33 +132,34 @@ def train_model(construct_dict):
                 optimizer.step() 
                 optimizer.zero_grad() 
             return return_loss/len(train_loader.dataset)
+
         tr_acc, te_acc=[],[]
         start=time.time()
         ## do a tqdm wrapper
         for epoch in range(n_epochs):
             trainloss=train()
-
+            scheduler.step(epoch)
             if (epoch+1)%val_epoch==0:
                 train_metric = metric(train_loader, model)
                 test_metric = metric(test_loader, model)
                 if test_metric<lowest_metric:
                     lowest_metric=test_metric
+                    if save:
+                        torch.save(model.state_dict(), osp.join(model_path,'model.pt'))
                 tr_acc.append(train_metric)
                 te_acc.append(test_metric)
 
-                if wandblog:
-                    wandb.log({"Epoch":  epoch ,
-                            "Training scatter": trainloss, 
-                            "Training scatter": train_metric, 
-                            "Test scatter":   test_metric,
-                            "Best":   lowest_metric,
-                            "Learning rate":   lr})
+                if log:
+                    writer.add_scalar('train_loss', trainloss,global_step=epoch+1)
+                    writer.add_scalar('train_scatter', train_metric,global_step=epoch+1)
+                    writer.add_scalar('test_scatter', test_metric, global_step=epoch+1)
+                    writer.add_scalar('best_scatter', lowest_metric, global_step=epoch+1)
+                    writer.add_scalar('learning_rate', lr, global_step=epoch+1)
                 print(f'Epoch: {int(epoch+1)}, Train: {train_metric:.4f}, Test scatter: {test_metric:.4f}, Lowest was {lowest_metric:.4f}')
-                if (epoch+1)%(int(val_epoch*5))==0 and wandblog:
+                if (epoch+1)%(int(val_epoch*5))==0 and log:
                     ys, pred, xs, Mh = test(test_loader, model)
                     fig=performance_plot(ys,pred, xs, Mh)
-                    title="performanceplot_"+str(epoch)
-                    wandb.log({title: [wandb.Image(fig, caption=title)]})
+                    writer.add_figure(tag=run_name_n, figure=fig, global_step=epoch+1)
         stop=time.time()
         spent=stop-start
         test_accs.append(te_acc)
@@ -150,18 +169,18 @@ def train_model(construct_dict):
         ys, pred, xs, Mh = test(test_loader, model)
         fig=performance_plot(ys,pred, xs, Mh)
         if save:
-            fig.savefig(f'{pointer}/performance_ne{n_epochs}_nt{trial}.png')
-        print(1)
-        scatter.append(np.std(ys-pred))
-        print(2)
+            fig.savefig(f'{log_dir}/performance_ne{n_epochs}_nt{trial}.png')
+        sig=np.std(ys-pred)
+        scatter.append(sig)
         yss.append(ys)
-        print(3)
         preds.append(pred)
-        print(4)
         xss.append(xs)
-        print(5)
         lowest.append(lowest_metric)
         Mhs.append(Mh)
+        metricf={'scatter': sig,
+        'lowest':lowest_metric}
+        paramsf=dict(list(data_params.items()) + list(run_params.items()) + list(construct_dict['hyper_params'].items()))
+        writer.add_hparams(paramsf, metricf, run_name=run_name_n)
     result_dict={'sigma':scatter,
     'test_acc': test_accs,
     'train_acc': train_accs,
@@ -170,9 +189,11 @@ def train_model(construct_dict):
     'xs': xss,
     'Mh': Mhs,
     'low':lowest}
-    with open(f'{pointer}/result_dict.pkl', 'wb') as handle:
+    if not osp.exists(log_dir_glob):
+            os.makedirs(log_dir_glob)
+    with open(f'{log_dir_glob}/result_dict.pkl', 'wb') as handle:
         pickle.dump(result_dict, handle)
-    with open(f'{pointer}/construct_dict.pkl', 'wb') as handle:
+    with open(f'{log_dir_glob}/construct_dict.pkl', 'wb') as handle:
         pickle.dump(construct_dict, handle)
 ################################
 #      Load dependencies       #
@@ -212,3 +233,12 @@ def setup_model(model_name, hyper_params):
     model         = model(**hyper_params)
 
     return model
+
+def get_lr_schedule(construct_dict):
+    schedule  = construct_dict['learn_params']['schedule']
+
+    import dev.lr_schedule as lr_module
+
+    schedule_class = getattr(lr_module, schedule)
+
+    return schedule_class
