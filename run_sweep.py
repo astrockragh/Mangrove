@@ -7,6 +7,8 @@ parser = argparse.ArgumentParser()
 ##folder to take experiments from
 parser.add_argument("-f", "--f", type=str, required=True)
 parser.add_argument("-gpu", "--gpu", type=str, required=False)
+parser.add_argument("-N", "--N", type=str, required=True)
+
 
 ##should be implemented in the slurm script --------------------------------
 
@@ -21,6 +23,7 @@ os.chdir(osp.expanduser("~/work/GraphMerge"))
 args = parser.parse_args()
 
 exp0_folder = str(args.f)
+N = int(str(args.N))
 
 ##########################################################
 #      Loop over JSON files and train models             # 
@@ -49,11 +52,10 @@ print(f"Starting process with {len(exp_list)} experiments")
 print(diff)
 # Loop over the experiments
 
-if len(exp_list)>100:
-    print('Selected too many compare runs, running 100 random runs')
+if len(exp_list)>N:
+    print(f'Selected too many compare runs, running {N} random runs')
     idxs = np.random.permutation(len(exp_list))
-    idxs[:100]
-    exp_list=exp_list[idxs]
+    exp_list=exp_list[idxs[:N]]
 
 for i in range(len(exp_list)):
     construct_dict=base
@@ -76,7 +78,7 @@ for i in range(len(exp_list)):
     #make_title
     title=''
     for key, val in zip(keys, exp_list[i]):
-        title+=key[:2]+str(val)
+        title+=key[:4]+str(val)
     construct_dict['experiment_name']=title
     epochexit=train_model(construct_dict)
     print(f'Exited training after {epochexit} epochs')

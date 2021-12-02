@@ -64,8 +64,11 @@ def train_model(construct_dict):
     group=construct_dict['group']
     pointer=osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphResults/results_{group}_{today}')
     if not osp.exists(pointer):
+        try:
             os.makedirs(pointer)
-    # Setup Log 
+        except:
+            print('Folder already exists')
+        # Setup Log 
     log=construct_dict["log"]
 
 
@@ -81,7 +84,12 @@ def train_model(construct_dict):
     batch_size=run_params['batch_size']
     shuffle=run_params['shuffle']
     save=run_params['save']
+    early_stopping=run_params['early_stopping']
+    patience=run_params['patience']
+
     lr=learn_params['learning_rate']
+    if learn_params['warmup']:
+        lr=lr/(learn_params['g_up'])**(learn_params['warmup'])
 
     ## load data
     train_data, test_data = load_data(**data_params)
@@ -89,13 +97,18 @@ def train_model(construct_dict):
     construct_dict['hyper_params']['in_channels']=train_data[0].num_node_features
     construct_dict['hyper_params']['out_channels']=len(np.array([train_data[0].y]))
 
-    lr_scheduler          = get_lr_schedule(construct_dict)       ##still needs implementation
+    ### learning related stuff ###
+    lr_scheduler          = get_lr_schedule(construct_dict) 
     loss_func            = get_loss_func(construct_dict['run_params']['loss_func'])
+    l1_lambda=run_params['l1_lambda']
+    l2_lambda=run_params['l2_lambda']
+
+
     metric            = get_metrics(construct_dict['run_params']['metrics'])
     performance_plot      = get_performance(construct_dict['run_params']['performance_plot'])
 
-    train_accs, test_accs, scatter, Mhs = [], [], [], []
-    yss, preds, xss, lowest = [], [], [], []
+    train_accs, test_accs, scatter, = [], [], []
+    preds,lowest, epochexit = [], [], []
     run_name = construct_dict['model']+f'_{case}'+f'_{make_id()}'
     log_dir_glob=osp.join(pointer, run_name)
     for trial in range(n_trials):
@@ -118,48 +131,71 @@ def train_model(construct_dict):
         train_loader=DataLoader(train_data, batch_size=batch_size, shuffle=shuffle) ## control shuffle
 
         optimizer = torch.optim.Adam(model.parameters(), lr=lr) ## need a lr schedule
-        scheduler=lr_scheduler(optimizer, learn_params)
+        scheduler=lr_scheduler(optimizer, **learn_params)
+        # scheduler=lr_scheduler(optimizer)
 
+        print(scheduler)
         # Initialize our train function
-        def train():
+        def train(epoch):
             model.train()
             return_loss=0
             for data in train_loader:  
                 out = model(data.x, data.edge_index, data.batch)  
                 loss = loss_func(out, data.y.view(-1,1))
+                l1_norm = sum(p.abs().sum() for p in model.parameters())
+                l2_norm = sum(p.pow(2.0).sum() for p in model.parameters())
+                loss = loss + l1_lambda * l1_norm + l2_lambda * l2_norm
                 return_loss+=loss
                 loss.backward()
                 optimizer.step() 
-                optimizer.zero_grad() 
+                optimizer.zero_grad()
+            if epoch==0:
+                writer.add_graph(model,[data.x, data.edge_index, data.batch]) 
             return return_loss/len(train_loader.dataset)
 
         tr_acc, te_acc=[],[]
+        early_stop=0
         start=time.time()
         ## do a tqdm wrapper
         for epoch in range(n_epochs):
-            trainloss=train()
+        
+            trainloss=train(epoch)
+            #learning rate scheduler step
             scheduler.step(epoch)
+
             if (epoch+1)%val_epoch==0:
                 train_metric = metric(train_loader, model)
                 test_metric = metric(test_loader, model)
                 if test_metric<lowest_metric:
                     lowest_metric=test_metric
+                    early_stop=0
                     if save:
                         torch.save(model.state_dict(), osp.join(model_path,'model.pt'))
+                else:
+                    early_stop+=1
                 tr_acc.append(train_metric)
                 te_acc.append(test_metric)
-
+                lr0=optimizer.state_dict()['param_groups'][0]['lr']
+                last10test=np.median(te_acc[-(10//val_epoch):])
                 if log:
                     writer.add_scalar('train_loss', trainloss,global_step=epoch+1)
+                    writer.add_scalar('last10test', last10test, global_step=epoch+1)
                     writer.add_scalar('train_scatter', train_metric,global_step=epoch+1)
                     writer.add_scalar('test_scatter', test_metric, global_step=epoch+1)
                     writer.add_scalar('best_scatter', lowest_metric, global_step=epoch+1)
-                    writer.add_scalar('learning_rate', lr, global_step=epoch+1)
-                print(f'Epoch: {int(epoch+1)}, Train: {train_metric:.4f}, Test scatter: {test_metric:.4f}, Lowest was {lowest_metric:.4f}')
+                    writer.add_scalar('learning_rate', lr0, global_step=epoch+1)
+                print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train: {train_metric:.4f}, Test scatter: {test_metric:.4f}, Lowest was {lowest_metric:.4f}, Last 10 was {last10test:.4f}, Epochs since improvement {val_epoch*early_stop}')
                 if (epoch+1)%(int(val_epoch*5))==0 and log:
                     ys, pred, xs, Mh = test(test_loader, model)
                     fig=performance_plot(ys,pred, xs, Mh)
                     writer.add_figure(tag=run_name_n, figure=fig, global_step=epoch+1)
+
+            if early_stopping:
+                if early_stop>patience:
+                    print(f'Exited after {epoch+1} epochs due to early stopping')
+                    epochexit.append(epoch)
+                    break
+                
         stop=time.time()
         spent=stop-start
         test_accs.append(te_acc)
@@ -172,23 +208,33 @@ def train_model(construct_dict):
             fig.savefig(f'{log_dir}/performance_ne{n_epochs}_nt{trial}.png')
         sig=np.std(ys-pred)
         scatter.append(sig)
-        yss.append(ys)
         preds.append(pred)
-        xss.append(xs)
         lowest.append(lowest_metric)
-        Mhs.append(Mh)
+        last20=np.median(te_acc[-(20//val_epoch):])
+        last10=np.median(te_acc[-(10//val_epoch):])
+
         metricf={'scatter': sig,
-        'lowest':lowest_metric}
+        'lowest':lowest_metric,
+        'epoch_exit':epoch,
+        'last20':last20,
+        'last10':last10}
         paramsf=dict(list(data_params.items()) + list(run_params.items()) + list(construct_dict['hyper_params'].items()))
+        ##adding number of model parameters
+        N_p=sum(p.numel() for p in model.parameters())
+        N_t=sum(p.numel() for p in model.parameters() if p.requires_grad)
+    
+        paramsf['N_params']=N_p
+        paramsf['N_trainable']=N_t
         writer.add_hparams(paramsf, metricf, run_name=run_name_n)
     result_dict={'sigma':scatter,
     'test_acc': test_accs,
     'train_acc': train_accs,
-    'ys': yss,
+    'ys': ys,
     'pred': pred,
-    'xs': xss,
-    'Mh': Mhs,
-    'low':lowest}
+    'xs': xs,
+    'Mh': Mh,
+    'low':lowest,
+    'epochexit': epochexit}
     if not osp.exists(log_dir_glob):
             os.makedirs(log_dir_glob)
     with open(f'{log_dir_glob}/result_dict.pkl', 'wb') as handle:

@@ -1,15 +1,17 @@
 {
     "experiment": "GraphMerge",
-    "group":  "percentile", 
-    "move":false,
+    "group":  "test_sweep_constant", 
+    "move":true,
     "model":  "Sage",
     "log": true,
 
     "run_params":{
-    "n_epochs":    20,
-    "n_trials": 2,
+    "n_epochs":    1000,
+    "n_trials": 1,
     "batch_size": 128,
     "val_epoch":   2,
+    "early_stopping": true,
+    "patience": 5,
     "loss_func": "L2",
     "metrics": "scatter",
     "performance_plot": "SAM_base",
@@ -19,11 +21,12 @@
 },
 "learn_params":{
     "learning_rate":   3e-3,
-    "schedule":   "warmup_expcos",
-    "g_up":   2,
-    "g_down":   0.95,
-    "warmup": 3
-
+    "schedule":   "warmup_exp",
+    "g_up":1,
+    "g_down":0.95,
+    "warmup":100,
+    "period":5, 
+    "eta_min":1e-5
 },
 
     "hyper_params": {

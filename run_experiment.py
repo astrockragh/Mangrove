@@ -1,4 +1,4 @@
-import os, sys, json, shutil, argparse
+import os, json, shutil, argparse
 
 import os.path as osp
 
@@ -32,6 +32,8 @@ if args.gpu=='1':
     from dev.train_script_gpu import train_model
 else:
     from dev.train_script_cpu import train_model
+    # from dev.train_script_cpu_debug import train_model
+
 
 
 #### --------------------------------- ####
