@@ -188,12 +188,12 @@ def create_graphs(tcols=[0,2,4,5,6,7,8,10,28], target=8, lim=10.5, save=True, ca
                     discards.append(np.array(discarded))
                     des,pro=convert(des, pro)
                     hal2=np.vstack([final,mergers,roots])
-                    global mass_index
+                    # global mass_index
                     if n==0:
                         fcols=[i for i in range(len(hal2[0])) if not_include[i]==0] ##choose non-id cols to carry forward
-                        mask=np.array([bool(i) for i in not_include])
-                        idcols=load_cols[~mask] ##choose non-id cols to carry forward
-                        mass_id=np.where(np.array(idcols)==10)[0][0]
+                        # mask=np.array([bool(i) for i in not_include])
+                        # idcols=load_cols[~mask] ##choose non-id cols to carry forward
+                        # mass_id=np.where(np.array(idcols)==10)[0][0]
                     hal2=hal2[:,fcols] ##take away id's
                     hals.append(hal2)
                     pr.append([int(p) for p in pro])
