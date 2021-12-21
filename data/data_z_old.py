@@ -19,7 +19,7 @@ def convert(d,p):
                 dfin.append(p.index(desc)+1)
     return dfin, np.arange(1, 1+len(p))
 
-def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,15,23], lim=10, save=True, case='test', transform=None, maxs=[1,1,1]):
+def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,14,15,16,17,18,23], lim=10, save=True, case='test', transform=None, maxs=[1,1,1]):
     dat=[]
     tcols=np.array(tcols)
     raw_path=osp.expanduser('~/../../../tigress/cj1223/merger_trees/isotrees/')
@@ -102,7 +102,7 @@ def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,15,23], lim=
                 #########################################################
                 
 
-                log = [10,38, 39, 40, 41, 42, 57, 58]
+                log=[10,38, 39, 40, 41, 42, 57, 58]
                 #simple log for the rest
                 def logt(x):
                     return np.log10(x+1)
@@ -111,18 +111,8 @@ def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,15,23], lim=
                         l1=np.where(load_cols==l)[0][0]+1
                         zhalos[zhalos.columns[l1]]=logt(zhalos[zhalos.columns[l1]])
 
-                minmax = [23,24,25]
-                #simple min/max for 1e13 scaling down
-                def maxscale(x):
-                    return x/max(x)
-                for l in minmax:
-                    if l in tcols:
-                        l1=np.where(load_cols==l)[0][0]+1
-                        zhalos[zhalos.columns[l1]]=maxscale(zhalos[zhalos.columns[l1]])
-
                 scale_cols=np.array(tcols[~is_cat[tcols]])
                 meta['scale_cols']=scale_cols
-
                 #########################################################
                 ### end inital hardcoded scaling, begin split/scale   ###
                 #########################################################
@@ -195,75 +185,53 @@ def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,15,23], lim=
                 hals=[]
                 pr,de=[],[]
                 discards=[]
-                extras=[]
+                ids=[]
                 print('Making merger tree')
                 for n in tqdm(range(len(halwgal))):
-                # for n in tqdm(range(8)):
-                    halmix = []
                     h=halwgal[n]
                     roots=h[h[:,4]==0]
                     mergers=h[h[:,4]>1]
                     final=h[h[:,3]==-1]
                     pro, des=[],[]
                     discarded=[]
-                    premerger_id=[]
-                    finalid=final[0][1]
-                    for q, mid in enumerate(mergers[:,1]):
-                        halmix.append(mergers[q]) ## add progenitor
+                    for mid in mergers[:,1]:
                         k=1
                         descid=hraw[n][:,3][np.where(mid==hraw[n][:,1])] ##descendant ID of raw where the id of the merger is
                         while descid not in mergers[:,1] and descid!=-1: 
-                            proid=hraw[n][:,1][np.where(descid==hraw[n][:,1])]
-                            descid=hraw[n][:,3][np.where(descid==hraw[n][:,1])] ##new descendant id where current descendant id = halo id
                             k+=1
+                            descid=hraw[n][:,3][np.where(descid==hraw[n][:,1])]
                         pro.append(mid)
-                        if k>1 and proid!=finalid: #only if relevant
-                            premerger_id.append(proid)
-                            halmix.append(hraw[n][np.where(proid==hraw[n][:,1])]) ### add halo before merger
-                            discarded.append(1)
-                            des.append(proid)
-                            pro.append(proid)
                         if descid!=-1:
                             des.append(descid[0])
                         else:
                             des.append(hraw[n][:,3][np.where(mid==hraw[n][:,1])][0])
-                #             halmix.append(hraw[n][np.where(descid==hraw[n][:,1])])
                         discarded.append(1/k) 
-                    
+
                     for r in roots:
                         descid=hraw[n][:,3][np.where(r[1]==hraw[n][:,1])] 
-                        halmix.append(r)
                         k=1
-                        while descid not in mergers[:,1] and descid!=[-1]: 
-                            proid=hraw[n][:,1][np.where(descid==hraw[n][:,1])] 
-                            descid=hraw[n][:,3][np.where(descid==hraw[n][:,1])]
+                        while descid not in mergers[:,1] and descid!=[-1]: ##could add 1/k
                             k+=1
-                            
-                        pro.append(r[1]) 
-                        if k>1 and proid!=finalid: #only if relevant
-                            premerger_id.append(proid)
-                            halmix.append(hraw[n][np.where(proid==hraw[n][:,1])])
-                            discarded.append(1)
-                            des.append(proid)
-                            pro.append(proid)
+                            descid=hraw[n][:,3][np.where(descid==hraw[n][:,1])]#consider adding the number of steps it went through
+                        pro.append(r[1])
                         if descid!=-1:
                             des.append(descid[0])
                         else:
                             des.append(hraw[n][:,3][np.where(r[1]==hraw[n][:,1])][0])
                         discarded.append(1/k) 
+
                     discards.append(np.array(discarded))
                     des,pro=convert(des, pro)
-                    hal2=np.vstack([final,np.vstack(halmix)])
+                    hal2=np.vstack([final,mergers,roots])
+                    # global mass_index
                     if n==0:
-                        fcols=[i for i in range(len(hal2[0])) if not_include[i]==0] ##choose non-id cols to carry forward in data
-                        idcols=[i for i in range(len(hal2[0])) if not_include[i]==1] ##choose id cols to carry forward in meta
-                    extra=hal2[:,np.array(idcols)[np.array([0,1])]]
-                    extras.append(extra)
+                        fcols=[i for i in range(len(hal2[0])) if not_include[i]==0] ##choose non-id cols to carry forward
                     hal2=hal2[:,fcols] ##take away id's
                     hals.append(hal2)
                     pr.append([int(p) for p in pro])
                     de.append([int(d) for d in des])
-                meta['extra']=np.array(extras, dtype=object)
+                    ids.append(hal2[:,[1,3]])
+                meta['ids']=ids
                 hals=np.array(hals,dtype=object)
                 out=np.array(out)
                 outtrans=[]

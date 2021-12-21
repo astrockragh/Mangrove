@@ -101,9 +101,13 @@ def train_model(construct_dict):
 
     ## load data
     train_data, test_data = load_data(**data_params)
+
+    n_targ=len(train_data[0].y)
+    n_feat=len(train_data[0].x[0])
+
     test_loader=DataLoader(test_data, batch_size=batch_size, shuffle=0, num_workers=num_workers)    ##never shuffle test
-    construct_dict['hyper_params']['in_channels']=train_data[0].num_node_features
-    construct_dict['hyper_params']['out_channels']=len(np.array([train_data[0].y]))
+    construct_dict['hyper_params']['in_channels']=n_feat
+    construct_dict['hyper_params']['out_channels']=n_targ
 
     ### learning related stuff ###
     lr_scheduler          = get_lr_schedule(construct_dict) 
@@ -128,7 +132,7 @@ def train_model(construct_dict):
         if log:
             from torch.utils.tensorboard import SummaryWriter
             writer=SummaryWriter(log_dir=log_dir)
-        lowest_metric=np.inf
+        lowest_metric=np.array([np.inf]*n_targ)
         model = setup_model(construct_dict['model'], construct_dict['hyper_params'])
         if save:  # Make folder for saved states
             model_path    = osp.join(log_dir, "trained_model") ##!!!!!!! needs to point to the right spot
@@ -149,7 +153,7 @@ def train_model(construct_dict):
             return_loss=0
             for data in train_loader:  
                 out = model(data.x, data.edge_index, data.batch)  
-                loss = loss_func(out, data.y.view(-1,1))
+                loss = loss_func(out, data.y.view(-1,n_targ))
                 l1_norm = sum(p.abs().sum() for p in model.parameters())
                 l2_norm = sum(p.pow(2.0).sum() for p in model.parameters())
                 loss = loss + l1_lambda * l1_norm + l2_lambda * l2_norm
@@ -172,9 +176,10 @@ def train_model(construct_dict):
             scheduler.step(epoch)
 
             if (epoch+1)%val_epoch==0:
-                train_metric = metric(train_loader, model)
-                test_metric = metric(test_loader, model)
-                if test_metric<lowest_metric:
+                train_metric = metric(train_loader, model, n_targ)
+                test_metric = metric(test_loader, model, n_targ)
+                # print(test_metric), print(lowest_metric)
+                if np.sum(test_metric)<np.sum(lowest_metric):
                     lowest_metric=test_metric
                     early_stop=0
                     if save:
@@ -184,19 +189,32 @@ def train_model(construct_dict):
                 tr_acc.append(train_metric)
                 te_acc.append(test_metric)
                 lr0=optimizer.state_dict()['param_groups'][0]['lr']
-                last10test=np.median(te_acc[-(10//val_epoch):])
+                last10test=np.median(te_acc[-(10//val_epoch):], axis=0)
                 if log:
                     writer.add_scalar('train_loss', trainloss,global_step=epoch+1)
-                    writer.add_scalar('last10test', last10test, global_step=epoch+1)
-                    writer.add_scalar('train_scatter', train_metric,global_step=epoch+1)
-                    writer.add_scalar('test_scatter', test_metric, global_step=epoch+1)
-                    writer.add_scalar('best_scatter', lowest_metric, global_step=epoch+1)
+                    if n_targ==1:
+                        writer.add_scalar('last10test', last10test, global_step=epoch+1)
+                        writer.add_scalar('train_scatter', train_metric,global_step=epoch+1)
+
+                        writer.add_scalar('test_scatter', test_metric, global_step=epoch+1)
+                        writer.add_scalar('best_scatter', lowest_metric, global_step=epoch+1)
                     writer.add_scalar('learning_rate', lr0, global_step=epoch+1)
-                print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train loss: {trainloss:.4f}, Train scatter: {train_metric:.4f}, Test scatter: {test_metric:.4f}, Lowest was {lowest_metric:.4f}, Last 10 was {last10test:.4f}, Epochs since improvement {val_epoch*early_stop}')
-                if (epoch+1)%(int(val_epoch*5))==0 and log:
-                    ys, pred, xs, Mh = test(test_loader, model)
-                    fig=performance_plot(ys,pred, xs, Mh)
-                    writer.add_figure(tag=run_name_n, figure=fig, global_step=epoch+1)
+
+                # if n_targ==1:
+                #     print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train loss: {trainloss:.4f}, Train scatter: {train_metric:.4f}')
+                #     print(f'Test scatter: {test_metric:.4f}, Lowest was {lowest_metric:.4f}, Last 10 was {last10test:.4f}, Epochs since improvement {val_epoch*early_stop}')
+                # else:
+                print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train loss: {np.round(trainloss.cpu().detach().numpy(),4)}, Train scatter: {np.round(train_metric,2)}')
+                print(f'Test scatter: {np.round(train_metric,4)}, Lowest was {np.round(lowest_metric,4)}')
+                print(f'Last 10 was {np.round(last10test,4)}, Epochs since improvement {val_epoch*early_stop}')
+                if n_targ==1:
+                    if (epoch+1)%(int(val_epoch*5))==0 and log:
+                        ys, pred, xs, Mh = test(test_loader, model)
+                        fig=performance_plot(ys,pred, xs, Mh)
+                        writer.add_figure(tag=run_name_n, figure=fig, global_step=epoch+1)
+                else:
+                    continue
+                   ### make multi performance plot
 
             if early_stopping:
                 if early_stop>patience:
