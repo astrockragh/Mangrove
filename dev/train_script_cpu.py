@@ -140,7 +140,7 @@ def train_model(construct_dict):
             model.train()
             return_loss=0
             for data in train_loader:  
-                out = model(data.x, data.edge_index, data.batch)  
+                out = model(data)  
                 loss = loss_func(out, data.y.view(-1,1))
                 l1_norm = sum(p.abs().sum() for p in model.parameters())
                 l2_norm = sum(p.pow(2.0).sum() for p in model.parameters())
@@ -150,7 +150,7 @@ def train_model(construct_dict):
                 optimizer.step() 
                 optimizer.zero_grad()
             if epoch==0:
-                writer.add_graph(model,[data.x, data.edge_index, data.batch]) 
+                writer.add_graph(model,[data]) 
             return return_loss/len(train_loader.dataset)
 
         tr_acc, te_acc=[],[]

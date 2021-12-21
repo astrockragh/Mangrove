@@ -6,6 +6,8 @@ import torch_geometric as tg
 from torch_geometric.loader import DataLoader
 from importlib import __import__
 
+from tqdm import tqdm
+
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -40,7 +42,7 @@ def test(loader, model):
     model.eval()
     with torch.no_grad():
         for dat in loader: 
-            out = model(dat.x, dat.edge_index, dat.batch) 
+            out = model(dat) 
             pred.append(out.view(1,-1).cpu().detach().numpy())
             ys.append(np.array(dat.y.cpu().numpy())) 
             u, counts = np.unique(dat.batch.cpu().numpy(), return_counts=1)
@@ -88,7 +90,6 @@ def train_model(construct_dict):
     n_epochs=run_params['n_epochs']
     val_epoch=run_params['val_epoch']
     batch_size=run_params['batch_size']
-    shuffle=run_params['shuffle']
     save=run_params['save']
     early_stopping=run_params['early_stopping']
     patience=run_params['patience']
@@ -102,7 +103,10 @@ def train_model(construct_dict):
     ## load data
     train_data, test_data = load_data(**data_params)
 
-    n_targ=len(train_data[0].y)
+    try:
+        n_targ=len(train_data[0].y)
+    except:
+        n_targ=1
     n_feat=len(train_data[0].x[0])
 
     test_loader=DataLoader(test_data, batch_size=batch_size, shuffle=0, num_workers=num_workers)    ##never shuffle test
@@ -140,11 +144,11 @@ def train_model(construct_dict):
                 os.makedirs(model_path)
                 print('Made folder for saving model')
 
-        train_loader=DataLoader(train_data, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers) ## control shuffle
+        train_loader=DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=num_workers)
 
-        optimizer = torch.optim.Adam(model.parameters(), lr=lr) ## need a lr schedule
+        optimizer = torch.optim.Adam(model.parameters(), lr=lr)
         scheduler=lr_scheduler(optimizer, **learn_params)
-        # scheduler=lr_scheduler(optimizer)
+
         _, _, test_loader = accelerator.prepare(model, optimizer, test_loader)
         model, optimizer, train_loader = accelerator.prepare(model, optimizer, train_loader)
         # Initialize our train function
@@ -152,7 +156,7 @@ def train_model(construct_dict):
             model.train()
             return_loss=0
             for data in train_loader:  
-                out = model(data.x, data.edge_index, data.batch)  
+                out = model(data)  
                 loss = loss_func(out, data.y.view(-1,n_targ))
                 l1_norm = sum(p.abs().sum() for p in model.parameters())
                 l2_norm = sum(p.pow(2.0).sum() for p in model.parameters())
@@ -161,15 +165,15 @@ def train_model(construct_dict):
                 accelerator.backward(loss)
                 optimizer.step() 
                 optimizer.zero_grad()
-            if epoch==0:
-                writer.add_graph(model,[data.x, data.edge_index, data.batch]) 
+            # if epoch==0:              #Doesn't work right now but could be fun to add back in
+            #     writer.add_graph(model,[data]) 
             return return_loss/len(train_loader.dataset)
 
         tr_acc, te_acc=[],[]
         early_stop=0
         start=time.time()
         ## do a tqdm wrapper
-        for epoch in range(n_epochs):
+        for epoch in tqdm(range(n_epochs)):
         
             trainloss=train(epoch)
             #learning rate scheduler step
