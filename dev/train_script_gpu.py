@@ -4,9 +4,15 @@ import os.path as osp
 import matplotlib.pyplot as plt
 import torch_geometric as tg
 from torch_geometric.loader import DataLoader
+from torch_geometric.data import Data
 from importlib import __import__
-
+import random
+import string
 from tqdm import tqdm
+
+# t_labels = ['Stellar mass', 'v_disk', 'Cold gas mass', 'SFR average over 100 yr']
+t_labels = np.array(['m_star', 'v_disk', 'm_cold', 'sfr_100'])
+
 
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -20,43 +26,46 @@ from datetime import date
 today = date.today()
 
 today = today.strftime("%d%m%y")
-def load_data(case, split=0.8):
-    data=pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl'), 'rb'))
+def load_data(case, targets, shuffle, split=0.8):
+    datat=pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl'), 'rb'))
+    data=[]
+    for d in datat:
+        data.append(Data(x=d.x, edge_index=d.edge_index, edge_attr=d.edge_attr, y=d.y[targets]))
+    if shuffle:
+        data=random.shuffle(data)
     test_data=data[int(len(data)*split):]
     train_data=data[:int(len(data)*split)]
     return train_data, test_data
 
 
 def make_id(length=6):
-    import random
-    import string
     # choose from all lowercase letters
     letters = string.ascii_lowercase
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
 
 ### test function
-def test(loader, model):
+def test(loader, model, n_targ):
     '''returns targets and predictions'''
     ys, pred,xs, Mh=[],[],[], []
     model.eval()
     with torch.no_grad():
         for dat in loader: 
             out = model(dat) 
-            pred.append(out.view(1,-1).cpu().detach().numpy())
-            ys.append(np.array(dat.y.cpu().numpy())) 
+            pred.append(out)
+            ys.append(dat.y.view(-1,n_targ)) 
             u, counts = np.unique(dat.batch.cpu().numpy(), return_counts=1)
             xs.append(np.array(torch.tensor_split(dat.x.cpu(), torch.cumsum(torch.tensor(counts[:-1]),0)), dtype=object))
             ## compile lists
-    ys=np.hstack(ys)
-    pred=np.hstack(pred)[0]
+    ys=torch.vstack(ys)
+    pred=torch.vstack(pred)
     xs=np.hstack(xs)
     xn=[]
     for x in xs:
         x0=x.cpu().detach().numpy()
         xn.append(x0)
         Mh.append(x0[0][3])
-    return ys,pred,xn, Mh
+    return ys.cpu().numpy(),pred.cpu().numpy(),xn, Mh
 
 
 # train loop
@@ -155,9 +164,13 @@ def train_model(construct_dict):
         def train(epoch):
             model.train()
             return_loss=0
-            for data in train_loader:  
-                out = model(data)  
-                loss = loss_func(out, data.y.view(-1,n_targ))
+            for data in train_loader: 
+                if run_params["loss_func"] in ["L1", "L2", "SmoothL1"]: 
+                    out = model(data)  
+                    loss = loss_func(out, data.y.view(-1,n_targ))
+                if run_params["loss_func"]=="Gauss1d":
+                    out, var = model(data)  
+                    loss = loss_func(out, data.y.view(-1,n_targ), var)
                 l1_norm = sum(p.abs().sum() for p in model.parameters())
                 l2_norm = sum(p.pow(2.0).sum() for p in model.parameters())
                 loss = loss + l1_lambda * l1_norm + l2_lambda * l2_norm
@@ -167,12 +180,12 @@ def train_model(construct_dict):
                 optimizer.zero_grad()
             # if epoch==0:              #Doesn't work right now but could be fun to add back in
             #     writer.add_graph(model,[data]) 
-            return return_loss/len(train_loader.dataset)
+            return return_loss
 
         tr_acc, te_acc=[],[]
         early_stop=0
         start=time.time()
-        ## do a tqdm wrapper
+        
         for epoch in tqdm(range(n_epochs)):
         
             trainloss=train(epoch)
@@ -182,7 +195,6 @@ def train_model(construct_dict):
             if (epoch+1)%val_epoch==0:
                 train_metric = metric(train_loader, model, n_targ)
                 test_metric = metric(test_loader, model, n_targ)
-                # print(test_metric), print(lowest_metric)
                 if np.sum(test_metric)<np.sum(lowest_metric):
                     lowest_metric=test_metric
                     early_stop=0
@@ -196,24 +208,28 @@ def train_model(construct_dict):
                 last10test=np.median(te_acc[-(10//val_epoch):], axis=0)
                 if log:
                     writer.add_scalar('train_loss', trainloss,global_step=epoch+1)
+                    writer.add_scalar('learning_rate', lr0, global_step=epoch+1)
+
                     if n_targ==1:
                         writer.add_scalar('last10test', last10test, global_step=epoch+1)
                         writer.add_scalar('train_scatter', train_metric,global_step=epoch+1)
-
                         writer.add_scalar('test_scatter', test_metric, global_step=epoch+1)
                         writer.add_scalar('best_scatter', lowest_metric, global_step=epoch+1)
-                    writer.add_scalar('learning_rate', lr0, global_step=epoch+1)
 
-                # if n_targ==1:
-                #     print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train loss: {trainloss:.4f}, Train scatter: {train_metric:.4f}')
-                #     print(f'Test scatter: {test_metric:.4f}, Lowest was {lowest_metric:.4f}, Last 10 was {last10test:.4f}, Epochs since improvement {val_epoch*early_stop}')
-                # else:
-                print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train loss: {np.round(trainloss.cpu().detach().numpy(),4)}, Train scatter: {np.round(train_metric,2)}')
-                print(f'Test scatter: {np.round(train_metric,4)}, Lowest was {np.round(lowest_metric,4)}')
-                print(f'Last 10 was {np.round(last10test,4)}, Epochs since improvement {val_epoch*early_stop}')
+                    else:
+                        labels = t_labels[data_params["targets"]]
+                        for i in range(n_targ):
+                            writer.add_scalar(f'last10test_{labels[i]}', last10test[i], global_step=epoch+1)
+                            writer.add_scalar(f'train_scatter_{labels[i]}', train_metric[i], global_step=epoch+1)
+                            writer.add_scalar(f'test_scatter_{labels[i]}', test_metric[i], global_step=epoch+1)
+                            writer.add_scalar(f'best_scatter_{labels[i]}', lowest_metric[i], global_step=epoch+1)
+
+                print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train loss: {trainloss.cpu().detach().numpy():.5f}, Train scatter: {np.round(train_metric,4)}')
+                print(f'Test scatter: {np.round(test_metric,4)}, Lowest was {np.round(lowest_metric,4)}')
+                print(f'Median for last 10 epochs: {np.round(last10test,4)}, Epochs since improvement {early_stop}')
                 if n_targ==1:
                     if (epoch+1)%(int(val_epoch*5))==0 and log:
-                        ys, pred, xs, Mh = test(test_loader, model)
+                        ys, pred, xs, Mh = test(test_loader, model, n_targ)
                         fig=performance_plot(ys,pred, xs, Mh)
                         writer.add_figure(tag=run_name_n, figure=fig, global_step=epoch+1)
                 else:
@@ -230,32 +246,62 @@ def train_model(construct_dict):
         spent=stop-start
         test_accs.append(te_acc)
         train_accs.append(tr_acc)
-        print(f"{spent:.2f} seconds spent training, {spent/n_epochs:.3f} seconds per epoch. Processed {len(train_loader.dataset)*n_epochs/spent:.0f} trees per second")
+        if n_epochs>epochexit[-1]:
+            pr_epoch=epochexit[-1]
+        else:
+            pr_epoch=n_epochs
+        print(f"{spent:.2f} seconds spent training, {spent/n_epochs:.3f} seconds per epoch. Processed {len(train_loader.dataset)*pr_epoch/spent:.0f} trees per second")
         
-        ys, pred, xs, Mh = test(test_loader, model)
-        fig=performance_plot(ys,pred, xs, Mh)
-        if save:
-            fig.savefig(f'{log_dir}/performance_ne{n_epochs}_nt{trial}.png')
-        sig=np.std(ys-pred)
+        ys, pred, xs, Mh = test(test_loader, model, n_targ)
+        if n_targ==1:
+            fig=performance_plot(ys,pred, xs, Mh)
+            if save:
+                fig.savefig(f'{log_dir}/performance_ne{n_epochs}_nt{trial}.png')
+        sig=np.std(ys-pred, axis=0)
+        print(sig)
         scatter.append(sig)
         preds.append(pred)
         lowest.append(lowest_metric)
-        last20=np.median(te_acc[-(20//val_epoch):])
-        last10=np.median(te_acc[-(10//val_epoch):])
-
-        metricf={'scatter': sig,
-        'lowest':lowest_metric,
-        'epoch_exit':epoch,
-        'last20':last20,
-        'last10':last10}
+        last20=np.median(te_acc[-(20//val_epoch):], axis=0)
+        last10=np.median(te_acc[-(10//val_epoch):], axis=0)
+        #################################
+        ###    Make saveable params  ###
+        #################################
+  
         paramsf=dict(list(data_params.items()) + list(run_params.items()) + list(construct_dict['hyper_params'].items()))
+        paramsf["targets"]=str(data_params["targets"])
         ##adding number of model parameters
         N_p=sum(p.numel() for p in model.parameters())
         N_t=sum(p.numel() for p in model.parameters() if p.requires_grad)
     
         paramsf['N_params']=N_p
         paramsf['N_trainable']=N_t
-        writer.add_hparams(paramsf, metricf, run_name=run_name_n)
+
+        #################################
+        ###    Make saveable metrics  ###
+        #################################
+        
+        if n_targ==1:
+
+            metricf={'scatter': sig,
+            'lowest':lowest_metric[0],
+            'epoch_exit':epoch,
+            'last20':last20,
+            'last10':last10}
+            print(metricf)
+            writer.add_hparams(paramsf, metricf, run_name=run_name_n)
+        else:
+            labels = t_labels[data_params["targets"]]
+            metricf={'epoch_exit':epoch}
+            for i in range(n_targ):
+
+                metricf[f'scatter_{labels[i]}']=sig[i]
+                metricf[f'lowest_{labels[i]}']=lowest_metric[i]
+                metricf[f'last20_{labels[i]}']=last20[i]
+                metricf[f'last10_{labels[i]}']=last10[i]
+            print(metricf)
+            writer.add_hparams(paramsf, metricf, run_name=run_name_n)
+        print(f'Finished {trial+1}/{n_trials}')
     result_dict={'sigma':scatter,
     'test_acc': test_accs,
     'train_acc': train_accs,

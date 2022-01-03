@@ -111,6 +111,16 @@ def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,14,15,16,17,
                         l1=np.where(load_cols==l)[0][0]+1
                         zhalos[zhalos.columns[l1]]=logt(zhalos[zhalos.columns[l1]])
 
+                minmax = [23,24,25]
+                #simple min/max for 1e13 scaling down
+                def maxscale(x):
+                    return x/max(x)
+                for l in minmax:
+                    if l in tcols:
+                        l1=np.where(load_cols==l)[0][0]+1
+                        zhalos[zhalos.columns[l1]]=maxscale(zhalos[zhalos.columns[l1]])
+
+
                 scale_cols=np.array(tcols[~is_cat[tcols]])
                 meta['scale_cols']=scale_cols
                 #########################################################
@@ -185,7 +195,6 @@ def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,14,15,16,17,
                 hals=[]
                 pr,de=[],[]
                 discards=[]
-                ids=[]
                 print('Making merger tree')
                 for n in tqdm(range(len(halwgal))):
                     h=halwgal[n]
@@ -230,8 +239,6 @@ def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,14,15,16,17,
                     hals.append(hal2)
                     pr.append([int(p) for p in pro])
                     de.append([int(d) for d in des])
-                    ids.append(hal2[:,[1,3]])
-                meta['ids']=ids
                 hals=np.array(hals,dtype=object)
                 out=np.array(out)
                 outtrans=[]
