@@ -69,6 +69,9 @@ for i in range(len(exp_list)):
         if key in construct_dict['run_params']:
             typ=type(construct_dict['run_params'][key])
             construct_dict['run_params'][key]=typ(exp_list[i][j])
+        if key in construct_dict['learn_params']:
+            typ=type(construct_dict['learn_params'][key])
+            construct_dict['learn_params'][key]=typ(exp_list[i][j])
         elif key in construct_dict['hyper_params']:
             typ=type(construct_dict['hyper_params'][key])
             construct_dict['hyper_params'][key]=typ(exp_list[i][j])

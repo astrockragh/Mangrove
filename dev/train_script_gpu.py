@@ -289,7 +289,7 @@ def train_model(construct_dict):
         ###    Make saveable params  ###
         #################################
   
-        paramsf=dict(list(data_params.items()) + list(run_params.items()) + list(construct_dict['hyper_params'].items()))
+        paramsf=dict(list(data_params.items()) + list(run_params.items()) + list(construct_dict['hyper_params'].items()) + list(construct_dict['learn_params'].items()))
         paramsf["targets"]=str(data_params["targets"])
         ##adding number of model parameters
         N_p=sum(p.numel() for p in model.parameters())
