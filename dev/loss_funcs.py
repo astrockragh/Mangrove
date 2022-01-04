@@ -16,7 +16,9 @@ def SmoothL1():
 ###  Homemade loss funcs   ####
 ###############################
 
-def Gauss2d_corr(pred, ys, sig1, sig2, rho):
+def Gauss2d_corr(pred, ys, var, rho):
+    sig1=var[:,0]
+    sig2=var[:,1]
     z1=(pred[:,0]-ys[:,0])/sig1
     z2=(pred[:,1]-ys[:,1])/sig2
     sigloss=sum(log(sig1)+log(sig2))
@@ -26,7 +28,9 @@ def Gauss2d_corr(pred, ys, sig1, sig2, rho):
     
     return err_loss+sigloss+rholoss, err_loss, sigloss, rholoss
 
-def Gauss2d(pred, ys, sig1, sig2):
+def Gauss2d(pred, ys, var):
+    sig1=var[:,0]
+    sig2=var[:,1]
     z1=(pred[:,0]-ys[:,0])/sig1
     z2=(pred[:,1]-ys[:,1])/sig2
     sigloss=sum(log(sig1)+log(sig2))

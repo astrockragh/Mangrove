@@ -45,17 +45,22 @@ def make_id(length=6):
     return result_str
 
 ### test function
-def test(loader, model, n_targ):
+def test(loader, model, n_targ, l_func):
     '''returns targets and predictions'''
     ys, pred,xs, Mh=[],[],[], []
     model.eval()
     with torch.no_grad():
-        for dat in loader: 
-            out = model(dat) 
+        for data in loader: 
+            if l_func in ["L1", "L2", "SmoothL1"]: 
+                out = model(data)  
+            if l_func in ["Gauss1d", "Gauss2d"]:
+                out, var = model(data)  
+            if l_func in ["Gauss2d_corr"]:
+                out, var, rho = model(data)  
             pred.append(out)
-            ys.append(dat.y.view(-1,n_targ)) 
-            u, counts = np.unique(dat.batch.cpu().numpy(), return_counts=1)
-            xs.append(np.array(torch.tensor_split(dat.x.cpu(), torch.cumsum(torch.tensor(counts[:-1]),0)), dtype=object))
+            ys.append(data.y.view(-1,n_targ)) 
+            u, counts = np.unique(data.batch.cpu().numpy(), return_counts=1)
+            xs.append(np.array(torch.tensor_split(data.x.cpu(), torch.cumsum(torch.tensor(counts[:-1]),0)), dtype=object))
             ## compile lists
     ys=torch.vstack(ys)
     pred=torch.vstack(pred)
@@ -164,13 +169,24 @@ def train_model(construct_dict):
         def train(epoch):
             model.train()
             return_loss=0
+            er_loss = torch.cuda.FloatTensor([0])
+            si_loss = torch.cuda.FloatTensor([0])
+            rh_loss = torch.cuda.FloatTensor([0])
             for data in train_loader: 
                 if run_params["loss_func"] in ["L1", "L2", "SmoothL1"]: 
                     out = model(data)  
                     loss = loss_func(out, data.y.view(-1,n_targ))
-                if run_params["loss_func"]=="Gauss1d":
+                if run_params["loss_func"] in ["Gauss1d", "Gauss2d"]:
                     out, var = model(data)  
-                    loss = loss_func(out, data.y.view(-1,n_targ), var)
+                    loss, err_loss, sig_loss = loss_func(out, data.y.view(-1,n_targ), var)
+                    er_loss+=err_loss
+                    si_loss+=sig_loss
+                if run_params["loss_func"] in ["Gauss2d_corr"]:
+                    out, var, rho = model(data)  
+                    loss, err_loss, sig_loss, rho_loss = loss_func(out, data.y.view(-1,n_targ), var, rho)
+                    er_loss+=err_loss
+                    si_loss+=sig_loss
+                    rh_loss+=rho_loss
                 l1_norm = sum(p.abs().sum() for p in model.parameters())
                 l2_norm = sum(p.pow(2.0).sum() for p in model.parameters())
                 loss = loss + l1_lambda * l1_norm + l2_lambda * l2_norm
@@ -180,7 +196,7 @@ def train_model(construct_dict):
                 optimizer.zero_grad()
             # if epoch==0:              #Doesn't work right now but could be fun to add back in
             #     writer.add_graph(model,[data]) 
-            return return_loss
+            return return_loss, er_loss, si_loss, rh_loss
 
         tr_acc, te_acc=[],[]
         early_stop=0
@@ -188,13 +204,13 @@ def train_model(construct_dict):
         
         for epoch in tqdm(range(n_epochs)):
         
-            trainloss=train(epoch)
+            trainloss, err_loss, sig_loss, rho_loss = train(epoch)
             #learning rate scheduler step
             scheduler.step(epoch)
 
             if (epoch+1)%val_epoch==0:
-                train_metric = metric(train_loader, model, n_targ)
-                test_metric = metric(test_loader, model, n_targ)
+                train_metric = metric(train_loader, model, n_targ, run_params['loss_func'])
+                test_metric = metric(test_loader, model, n_targ, run_params['loss_func'])
                 if np.sum(test_metric)<np.sum(lowest_metric):
                     lowest_metric=test_metric
                     early_stop=0
@@ -224,12 +240,18 @@ def train_model(construct_dict):
                             writer.add_scalar(f'test_scatter_{labels[i]}', test_metric[i], global_step=epoch+1)
                             writer.add_scalar(f'best_scatter_{labels[i]}', lowest_metric[i], global_step=epoch+1)
 
-                print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train loss: {trainloss.cpu().detach().numpy():.5f}, Train scatter: {np.round(train_metric,4)}')
+                
+                if run_params["loss_func"] in ["Gauss1d", "Gauss2d", "Gauss2d_corr"]:
+                    print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train loss: {trainloss.cpu().detach().numpy():.5f}, [Err/Sig/Rho]: {err_loss.cpu().detach().numpy()[0]:.5f}, \
+                        {sig_loss.cpu().detach().numpy()[0]:.5f}, {rho_loss.cpu().detach().numpy()[0]:.5f}')
+                    print(f'Train scatter: {np.round(train_metric,4)}')
+                else:
+                    print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train loss: {trainloss.cpu().detach().numpy():.5f}, Train scatter: {np.round(train_metric,4)}')
                 print(f'Test scatter: {np.round(test_metric,4)}, Lowest was {np.round(lowest_metric,4)}')
                 print(f'Median for last 10 epochs: {np.round(last10test,4)}, Epochs since improvement {early_stop}')
                 if n_targ==1:
                     if (epoch+1)%(int(val_epoch*5))==0 and log:
-                        ys, pred, xs, Mh = test(test_loader, model, n_targ)
+                        ys, pred, xs, Mh = test(test_loader, model, n_targ, run_params['loss_func'])
                         fig=performance_plot(ys,pred, xs, Mh)
                         writer.add_figure(tag=run_name_n, figure=fig, global_step=epoch+1)
                 else:
@@ -335,7 +357,11 @@ def get_loss_func(name):
     # Return loss func from the loss functions file given a function name
     import dev.loss_funcs as loss_func_module
     loss_func = getattr(loss_func_module, name)
-    return loss_func()
+    try:
+        l=loss_func()
+    except:
+        l=loss_func
+    return l
 
 
 def get_performance(name):

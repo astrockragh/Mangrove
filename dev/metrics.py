@@ -10,14 +10,19 @@ def scatter(loader, model, n_targ):
             correct += sum(square(out - dat.y.view(-1,n_targ)))
     return sqrt(correct/len(loader.dataset)).cpu().detach().numpy()
 
-def test_multi(loader, model, n_targ): ##### transform back missing
+def test_multi(loader, model, n_targ, l_func): ##### transform back missing
     model.eval()
     outs = []
     ys = []
     with no_grad(): ##this solves it!!!
-        for dat in loader: 
-            out = model(dat) 
-            ys.append(dat.y.view(-1,n_targ))
+        for data in loader: 
+            if l_func in ["L1", "L2", "SmoothL1"]: 
+                out = model(data)  
+            if l_func in ["Gauss1d", "Gauss2d"]:
+                out, var = model(data)  
+            if l_func in ["Gauss2d_corr"]:
+                out, var, rho = model(data)  
+            ys.append(data.y.view(-1,n_targ))
             outs.append(out)
     outss=vstack(outs)
     yss=vstack(ys)

@@ -2,7 +2,7 @@ import torch.nn.functional as F
 from torch.nn import Linear, LayerNorm, LeakyReLU, Module, ReLU, Sequential, ModuleList
 from torch_geometric.nn import SAGEConv, global_mean_pool, norm, global_max_pool, global_add_pool, MetaLayer
 from torch_scatter import scatter_mean, scatter_sum, scatter_max, scatter_min
-from torch import cat, square,zeros
+from torch import cat, square,zeros, clone, abs, sigmoid
 
 class MLP(Module):
     def __init__(self, n_in, n_out, hidden=64, nlayers=2, layer_norm=True):
@@ -23,7 +23,7 @@ class MLP(Module):
 
 class Sage(Module):
     def __init__(self, hidden_channels, in_channels, out_channels, encode=True, conv_layers=3, conv_activation='relu', 
-                    decode_layers=1, decode_activation='none', layernorm=True):
+                    decode_layers=2, decode_activation='none', layernorm=True, variance=0, agg='sum', rho=0):
         super(Sage, self).__init__()
         '''Model built upon the GraphSAGE convolutional layer. This is a node only model (no global, no edge).
         Model takes a data object from a dataloader in the forward call and takes out the rest itself. 
@@ -38,27 +38,84 @@ class Sage(Module):
         self.in_channels=in_channels
         self.out_channels=out_channels
         self.hidden_channels=hidden_channels
-        # convolutional layers
-        self.convs=[]
+        self.variance=variance
+        self.agg=agg
+        self.rho=rho
+        ########################
+        # Convolutional Layers #
+        ######################## 
+
+        self.convs=ModuleList()
         if self.encode:
             self.convs.append(SAGEConv(hidden_channels, hidden_channels))
         else:
             self.convs.append(SAGEConv(in_channels, hidden_channels))
         for _ in range(int(conv_layers-1)):
             self.convs.append(SAGEConv(hidden_channels, hidden_channels))
-        #linear layer
-        self.decoders=[]
-        for i in range(decode_layers-1):
-            if layernorm:
-                self.decoders.append(LayerNorm(normalized_shape=hidden_channels))
-            self.decoders.append(Linear(hidden_channels, hidden_channels))
-        if layernorm:
-            self.decoders.append(LayerNorm(normalized_shape=hidden_channels)) # layer_norm instead of batch_norm
 
-        self.decoders.append(Linear(hidden_channels, out_channels))
+        ##################
+        # Decode Layers #
+        ##################       
+
+        self.decoders = ModuleList()
+        self.norms = ModuleList()
+        for _ in range(out_channels):
+            self.decoder=ModuleList()
+            self.norm=ModuleList()
+            for i in range(decode_layers):
+                if i==decode_layers-1: ## if final layer, make layer with only one output
+                    self.norm.append(LayerNorm(normalized_shape=hidden_channels))
+                    self.decoder.append(Linear(hidden_channels, 1))
+                else:
+                    self.norm.append(LayerNorm(normalized_shape=hidden_channels))
+                    self.decoder.append(Linear(hidden_channels, hidden_channels))
+            self.decoders.append(self.decoder)
+            self.norms.append(self.norm)
+
+        ###################
+        # Variance Layers #
+        ###################
+
+        if variance:
+            self.sigs = ModuleList()
+            self.sig_norms = ModuleList()
+            for _ in range(out_channels):
+                self.sig=ModuleList()
+                self.sig_norm=ModuleList()
+                for i in range(decode_layers):
+                    if i==decode_layers-1:
+                        self.sig_norm.append(LayerNorm(normalized_shape=hidden_channels))
+                        self.sig.append(Linear(hidden_channels, 1))
+                    else:
+                        self.sig_norm.append(LayerNorm(normalized_shape=hidden_channels))
+                        self.sig.append(Linear(hidden_channels, hidden_channels))
+                self.sigs.append(self.sig)
+                self.sig_norms.append(self.sig_norm)
+
+        ######################
+        # Co-Variance Layers #
+        ######################
+
+        if self.rho!=0:
+            self.rhos = ModuleList()
+            self.rho_norms = ModuleList()
+            for _ in range(self.rho):
+                self.rho_l=ModuleList()
+                self.rho_norm=ModuleList()
+                for i in range(decode_layers):
+                    if i==decode_layers-1:
+                        self.rho_norm.append(LayerNorm(normalized_shape=hidden_channels))
+                        self.rho_l.append(Linear(hidden_channels, 1))
+                    else:
+                        self.rho_norm.append(LayerNorm(normalized_shape=hidden_channels))
+                        self.rho_l.append(Linear(hidden_channels, hidden_channels))
+                self.rhos.append(self.rho_l)
+                self.rho_norms.append(self.rho_norm)
         
-        self.convs=ModuleList(self.convs)
-        self.decode=Sequential(*self.decoders)
+        #####################
+        # Activation Layers #
+        #####################
+        
         self.conv_act=self.conv_act_f()
         self.decode_act=self.decode_act_f() ## could apply later
 
@@ -100,10 +157,46 @@ class Sage(Module):
             x=self.conv_act(x)
 
         x = global_add_pool(x, batch)  
+        
         #decoder
-        x = self.decode(x)
+        
+        x_out=[]
+        for norm, decode in zip(self.norms, self.decoders):
+            x1=clone(x)
+            for n, d in zip(norm, decode):
+                x1=d(n(x1))
+                x1=self.decode_act(x1)
+            x_out.append(x1)
+        x_out=cat(x_out, dim=1)
+        
+        # variance
+        if self.variance:
+            sig=[]
+            for norm, decode in zip(self.sig_norms, self.sigs):
+                x1=clone(x)
+                for n, d in zip(norm, decode):
+                    x1=d(n(x1))
+                    x1=self.decode_act(x1)
+                sig.append(x1)
+            sig=abs(cat(sig, dim=1))
 
-        return x
+        if self.rho!=0:
+            rho=[]
+            for norm, decode in zip(self.rho_norms, self.rhos):
+                x1=clone(x)
+                for n, d in zip(norm, decode):
+                    x1=d(n(x1))
+                    x1=self.decode_act(x1)
+                rho.append(x1)
+            rho=abs(cat(rho, dim=1)) ### not sure this works with only 1d
+        
+        if self.variance:
+            if self.rho!=0:
+                return x_out, sig, sigmoid(rho)
+            else:
+                return x_out, sig
+        else:
+            return x_out
     
 
 ######################################
@@ -200,6 +293,8 @@ class MetaMulti(Module):
         )
         self.hidden = hidden
         self.norm_out=LayerNorm(normalized_shape=self.hidden)
+
+    
     def forward(self, graph):
         x = self.node_enc(graph.x)  # Take all feats and encode
         e_feat = graph.x[:,[0,3]] # scale factor and virial mass
@@ -219,3 +314,184 @@ class MetaMulti(Module):
         out = self.decoder(self.norm_out(x))
 
         return out
+
+class Meta(Module):
+    def __init__(self, hidden_channels, in_channels, out_channels, encode=True, conv_layers=3, conv_activation='relu', 
+                    decode_layers=2, decode_activation='none', layernorm=True, variance=0, agg='sum', rho=0):
+        super(Meta, self).__init__()
+        '''Model built upon the GraphSAGE convolutional layer. This is a node only model (no global, no edge).
+        Model takes a data object from a dataloader in the forward call and takes out the rest itself. 
+        hidden_channels, n_in, n_out must be specified
+        Most other things can be customized at wish, e.g. activation functions for which ReLU and LeakyReLU can be used'''
+        self.encode=encode
+        self.node_enc = MLP(in_channels, hidden_channels, layer_norm=True)
+        self.edge_enc = MLP(3, hidden_channels, layer_norm=True)
+        self.decode_activation=decode_activation
+        self.conv_activation=conv_activation
+        self.layernorm=layernorm
+        self.in_channels=in_channels
+        self.out_channels=out_channels
+        self.hidden_channels=hidden_channels
+        self.variance=variance
+        self.agg=agg
+        self.rho=rho
+        ########################
+        # Convolutional Layers #
+        ######################## 
+
+        self.convs=ModuleList()
+        self.convs.append(MetaLayer(edge_model=EdgeModel(hidden_channels), node_model=NodeModel(hidden_channels), global_model=GlobalModelMulti(hidden_channels)))
+        for _ in range(int(conv_layers-1)):
+            self.convs.append(MetaLayer(edge_model=EdgeModel(hidden_channels), node_model=NodeModel(hidden_channels), global_model=GlobalModelMulti(hidden_channels)))
+
+        ##################
+        # Decode Layers #
+        ##################       
+
+        self.decoders = ModuleList()
+        self.norms = ModuleList()
+        for _ in range(out_channels):
+            self.decoder=ModuleList()
+            self.norm=ModuleList()
+            for i in range(decode_layers):
+                if i==decode_layers-1: ## if final layer, make layer with only one output
+                    self.norm.append(LayerNorm(normalized_shape=hidden_channels))
+                    self.decoder.append(Linear(hidden_channels, 1))
+                else:
+                    self.norm.append(LayerNorm(normalized_shape=hidden_channels))
+                    self.decoder.append(Linear(hidden_channels, hidden_channels))
+            self.decoders.append(self.decoder)
+            self.norms.append(self.norm)
+
+        ###################
+        # Variance Layers #
+        ###################
+
+        if variance:
+            self.sigs = ModuleList()
+            self.sig_norms = ModuleList()
+            for _ in range(out_channels):
+                self.sig=ModuleList()
+                self.sig_norm=ModuleList()
+                for i in range(decode_layers):
+                    if i==decode_layers-1:
+                        self.sig_norm.append(LayerNorm(normalized_shape=hidden_channels))
+                        self.sig.append(Linear(hidden_channels, 1))
+                    else:
+                        self.sig_norm.append(LayerNorm(normalized_shape=hidden_channels))
+                        self.sig.append(Linear(hidden_channels, hidden_channels))
+                self.sigs.append(self.sig)
+                self.sig_norms.append(self.sig_norm)
+
+        ######################
+        # Co-Variance Layers #
+        ######################
+
+        if self.rho!=0:
+            self.rhos = ModuleList()
+            self.rho_norms = ModuleList()
+            for _ in range(self.rho):
+                self.rho_l=ModuleList()
+                self.rho_norm=ModuleList()
+                for i in range(decode_layers):
+                    if i==decode_layers-1:
+                        self.rho_norm.append(LayerNorm(normalized_shape=hidden_channels))
+                        self.rho_l.append(Linear(hidden_channels, 1))
+                    else:
+                        self.rho_norm.append(LayerNorm(normalized_shape=hidden_channels))
+                        self.rho_l.append(Linear(hidden_channels, hidden_channels))
+                self.rhos.append(self.rho_l)
+                self.rho_norms.append(self.rho_norm)
+        
+        #####################
+        # Activation Layers #
+        #####################
+        
+        self.conv_act=self.conv_act_f()
+        self.decode_act=self.decode_act_f() ## could apply later
+
+    def conv_act_f(self):
+        if self.conv_activation =='relu':
+            print('RelU conv activation')
+            act = ReLU()
+            return act
+        if self.conv_activation =='leakyrelu':
+            print('LeakyRelU conv activation')
+            act=LeakyReLU()
+            return act
+        if not self.conv_activation:
+            raise ValueError("Please specify a conv activation function")
+
+    def decode_act_f(self):
+        if self.decode_activation =='relu':
+            print('RelU decode activation')
+            act = ReLU()
+            return act
+        if self.decode_activation =='leakyrelu':
+            print('LeakyRelU decode activation')
+            act=LeakyReLU()
+            return act
+        if not self.decode_activation:
+            print("Please specify a decode activation function")
+            return None
+
+    def forward(self, graph):
+
+        #get the data
+        x = self.node_enc(graph.x)  # Take all feats and encode
+        e_feat = graph.x[:,[0,3]] # scale factor and virial mass
+        adj = graph.edge_index
+        e_encode=cat([graph.edge_attr.view(-1,1), e_feat[adj[0]] - e_feat[adj[1]]], -1)
+        
+        e = self.edge_enc(e_encode) #put in edge_attr
+        # Initialize global features as 0:
+        u = zeros(
+            graph.batch[-1] + 1, self.hidden, device=x.device, dtype=torch.float32
+        )
+
+        #convolutions 
+        
+        batch = graph.batch
+        for op in self.convs:
+            x, e, u = op(x, adj, e, u, batch)
+        x = global_add_pool(x, batch)
+        
+        #decoder
+        
+        x_out=[]
+        for norm, decode in zip(self.norms, self.decoders):
+            x1=clone(x)
+            for n, d in zip(norm, decode):
+                x1=d(n(x1))
+                x1=self.decode_act(x1)
+            x_out.append(x1)
+        x_out=cat(x_out, dim=1)
+        
+        # variance
+        if self.variance:
+            sig=[]
+            for norm, decode in zip(self.sig_norms, self.sigs):
+                x1=clone(x)
+                for n, d in zip(norm, decode):
+                    x1=d(n(x1))
+                    x1=self.decode_act(x1)
+                sig.append(x1)
+            sig=abs(cat(sig, dim=1))
+
+        if self.rho!=0:
+            rho=[]
+            for norm, decode in zip(self.rho_norms, self.rhos):
+                x1=clone(x)
+                for n, d in zip(norm, decode):
+                    x1=d(n(x1))
+                    x1=self.decode_act(x1)
+                rho.append(x1)
+            rho=abs(cat(rho, dim=1)) ### not sure this works with only 1d
+        
+        if self.variance:
+            if self.rho!=0:
+                return x_out, sig, sigmoid(rho)
+            else:
+                return x_out, sig
+        else:
+            return x_out
