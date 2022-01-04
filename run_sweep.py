@@ -39,13 +39,13 @@ else:
 from dev.utils import perms
 
 # Load construction dictionary from json file
-with open("exp_compare/diff.json") as file:
+with open(f"{exp0_folder}/diff.json") as file:
     diff = json.load(file)
     
 keys=list(diff.keys())
 exp_list=perms(diff)
 # Load construction dictionary from json file
-with open("exp_compare/base.json") as file:
+with open(f"{exp0_folder}/base.json") as file:
     base = json.load(file)
 
 print(f"Starting process with {len(exp_list)} experiments")
@@ -78,7 +78,7 @@ for i in range(len(exp_list)):
     #make_title
     title=''
     for key, val in zip(keys, exp_list[i]):
-        title+=key[:4]+str(val)
+        title+=key[:3]+str(val)
     construct_dict['experiment_name']=title
     epochexit=train_model(construct_dict)
     print(f'Exited training after {epochexit} epochs')

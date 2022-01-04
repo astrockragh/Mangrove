@@ -17,10 +17,9 @@ t_labels = np.array(['m_star', 'v_disk', 'm_cold', 'sfr_100'])
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
-if torch.cuda.is_available():
-    from accelerate import Accelerator
-    accelerator = Accelerator()
-    device = accelerator.device
+from accelerate import Accelerator
+accelerator = Accelerator()
+device = accelerator.device
 
 from datetime import date
 today = date.today()
@@ -274,7 +273,7 @@ def train_model(construct_dict):
             pr_epoch=n_epochs
         print(f"{spent:.2f} seconds spent training, {spent/n_epochs:.3f} seconds per epoch. Processed {len(train_loader.dataset)*pr_epoch/spent:.0f} trees per second")
         
-        ys, pred, xs, Mh = test(test_loader, model, n_targ)
+        ys, pred, xs, Mh = test(test_loader, model, n_targ, run_params['loss_func'])
         if n_targ==1:
             fig=performance_plot(ys,pred, xs, Mh)
             if save:
@@ -339,6 +338,7 @@ def train_model(construct_dict):
         pickle.dump(result_dict, handle)
     with open(f'{log_dir_glob}/construct_dict.pkl', 'wb') as handle:
         pickle.dump(construct_dict, handle)
+        
 ################################
 #      Load dependencies       #
 ################################
@@ -350,7 +350,7 @@ def get_metrics(metric_name):
     return metrics
 
 ################################
-# Custom loss not relevant yet #
+#         Custom loss       #
 ################################
 
 def get_loss_func(name):
@@ -372,8 +372,6 @@ def get_performance(name):
 
 def setup_model(model_name, hyper_params):
     # Retrieve name and params for construction
-    # model_name    = construct_dict['model']
-    # hyper_params  = construct_dict['hyper_params']
 
     # Load model from model folder
     import dev.models as models

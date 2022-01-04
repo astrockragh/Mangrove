@@ -2,7 +2,7 @@ import torch.nn.functional as F
 from torch.nn import Linear, LayerNorm, LeakyReLU, Module, ReLU, Sequential, ModuleList
 from torch_geometric.nn import SAGEConv, global_mean_pool, norm, global_max_pool, global_add_pool, MetaLayer
 from torch_scatter import scatter_mean, scatter_sum, scatter_max, scatter_min
-from torch import cat, square,zeros, clone, abs, sigmoid
+from torch import cat, square,zeros, clone, abs, sigmoid, float32
 
 class MLP(Module):
     def __init__(self, n_in, n_out, hidden=64, nlayers=2, layer_norm=True):
@@ -155,8 +155,10 @@ class Sage(Module):
         for conv in self.convs:
             x = conv(x, edge_index)
             x=self.conv_act(x)
-
-        x = global_add_pool(x, batch)  
+        if self.agg=='sum':
+            x = global_add_pool(x, batch)
+        if self.agg=='max':
+            x = global_max_pool(x, batch)
         
         #decoder
         
@@ -304,7 +306,7 @@ class MetaMulti(Module):
         e = self.edge_enc(e_encode) #put in edge_attr
         # Initialize global features as 0:
         u = zeros(
-            graph.batch[-1] + 1, self.hidden, device=x.device, dtype=torch.float32
+            graph.batch[-1] + 1, self.hidden, device=x.device, dtype=float32
         )
         batch = graph.batch
         for op in self.ops:
@@ -446,7 +448,7 @@ class Meta(Module):
         e = self.edge_enc(e_encode) #put in edge_attr
         # Initialize global features as 0:
         u = zeros(
-            graph.batch[-1] + 1, self.hidden, device=x.device, dtype=torch.float32
+            graph.batch[-1] + 1, self.hidden_channels, device=x.device, dtype=float32
         )
 
         #convolutions 
@@ -454,7 +456,10 @@ class Meta(Module):
         batch = graph.batch
         for op in self.convs:
             x, e, u = op(x, adj, e, u, batch)
-        x = global_add_pool(x, batch)
+        if self.agg=='sum':
+            x = global_add_pool(x, batch)
+        if self.agg=='max':
+            x = global_max_pool(x, batch)
         
         #decoder
         

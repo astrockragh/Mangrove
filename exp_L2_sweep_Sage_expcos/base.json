@@ -1,34 +1,34 @@
 {
     "experiment": "GraphMerge",
-    "group":  "test_gpu", 
+    "group":  "sweep_smass", 
     "move":false,
-    "model":  "Meta",
+    "model":  "Sage",
     "log": true,
 
     "run_params":{
-    "n_epochs":    1000,
-    "n_trials": 2,
+    "n_epochs":    250,
+    "n_trials": 1,
     "batch_size": 512,
     "val_epoch":   2,
     "early_stopping": true,
-    "patience": 1,
+    "patience": 20,
     "l1_lambda":1e-5,
     "l2_lambda":1e-5,
-    "loss_func": "Gauss2d_corr",
+    "loss_func": "L2",
     "metrics": "test_multi",
     "performance_plot": "SAM_base",
     "shuffle":true,
     "save":true,
-    "seed":true,
+    "seed":false,
     "num_workers": 4
 }, 
 "learn_params":{
     "learning_rate":   3e-3,
-    "schedule":   "warmup_exp",
+    "schedule":   "warmup_expcos",
     "g_up":1,
     "g_down":0.95,
     "warmup":4,
-    "period":5, 
+    "period":10, 
     "eta_min":1e-5
 },
 
@@ -40,13 +40,13 @@
         "decode_layers":   3,
         "layernorm":      true,
         "agg": "sum",
-        "variance":     true,
-        "rho":        1
+        "variance":     false,
+        "rho":        0
     },
 
    "data_params":{ 
     "case": "vlarge_all_4t_z0.0_quantile_raw",
-    "targets": [0,2],
+    "targets": [0],
     "split": 0.8,
     "shuffle": 0
 }
