@@ -4,7 +4,7 @@ import numpy as np
 
 def SAM_base(ys, pred, xs, Mh):
     fig, ax =plt.subplots(figsize=(6,6))
-    ax.plot(ys,pred, 'ro')
+    ax.plot(ys,pred, 'ro', alpha=0.3)
     ax.plot([min(ys),max(ys)],[min(ys),max(ys)], 'k--', label='Perfect correspondance')
     ax.set(xlabel='SAM Truth',ylabel='GNN Prediction', title='True/predicted correlation')
     yhat=r'$\hat{y}$'

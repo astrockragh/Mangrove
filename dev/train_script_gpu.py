@@ -78,6 +78,7 @@ def train_model(construct_dict):
     """
     Train a model given a construction dictionairy
     """
+
     run_params=construct_dict['run_params']
     data_params=construct_dict['data_params']
     learn_params=construct_dict['learn_params']
@@ -151,6 +152,7 @@ def train_model(construct_dict):
             writer=SummaryWriter(log_dir=log_dir)
         lowest_metric=np.array([np.inf]*n_targ)
         model = setup_model(construct_dict['model'], construct_dict['hyper_params'])
+        print(f"N_params {sum(p.numel() for p in model.parameters())}")
         if save:  # Make folder for saved states
             model_path    = osp.join(log_dir, "trained_model") ##!!!!!!! needs to point to the right spot
             if not osp.isdir(model_path):
@@ -241,11 +243,10 @@ def train_model(construct_dict):
 
                 
                 if run_params["loss_func"] in ["Gauss1d", "Gauss2d", "Gauss2d_corr"]:
-                    print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train loss: {trainloss.cpu().detach().numpy():.5f}, [Err/Sig/Rho]: {err_loss.cpu().detach().numpy()[0]:.5f}, \
-                        {sig_loss.cpu().detach().numpy()[0]:.5f}, {rho_loss.cpu().detach().numpy()[0]:.5f}')
+                    print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.2E}, Train loss: {trainloss.cpu().detach().numpy():.2E}, [Err/Sig/Rho]: {err_loss.cpu().detach().numpy()[0]:.2E}, {sig_loss.cpu().detach().numpy()[0]:.2E}, {rho_loss.cpu().detach().numpy()[0]:.2E}')
                     print(f'Train scatter: {np.round(train_metric,4)}')
                 else:
-                    print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.5f}, Train loss: {trainloss.cpu().detach().numpy():.5f}, Train scatter: {np.round(train_metric,4)}')
+                    print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.2E}, Train loss: {trainloss.cpu().detach().numpy():.2E}, Train scatter: {np.round(train_metric,4)}')
                 print(f'Test scatter: {np.round(test_metric,4)}, Lowest was {np.round(lowest_metric,4)}')
                 print(f'Median for last 10 epochs: {np.round(last10test,4)}, Epochs since improvement {early_stop}')
                 if n_targ==1:
@@ -262,11 +263,17 @@ def train_model(construct_dict):
                     print(f'Exited after {epoch+1} epochs due to early stopping')
                     epochexit.append(epoch)
                     break
-                
+        if early_stopping:
+            if early_stop<patience:
+                epochexit.append(epoch)
+            else:
+                epochexit.append(n_epochs)
+
         stop=time.time()
         spent=stop-start
         test_accs.append(te_acc)
         train_accs.append(tr_acc)
+        
         if n_epochs>epochexit[-1]:
             pr_epoch=epochexit[-1]
         else:
@@ -285,6 +292,7 @@ def train_model(construct_dict):
         lowest.append(lowest_metric)
         last20=np.median(te_acc[-(20//val_epoch):], axis=0)
         last10=np.median(te_acc[-(10//val_epoch):], axis=0)
+        
         #################################
         ###    Make saveable params  ###
         #################################
@@ -328,8 +336,6 @@ def train_model(construct_dict):
     'train_acc': train_accs,
     'ys': ys,
     'pred': pred,
-    'xs': xs,
-    'Mh': Mh,
     'low':lowest,
     'epochexit': epochexit}
     if not osp.exists(log_dir_glob):
