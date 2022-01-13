@@ -39,6 +39,7 @@ def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,15,23], lim=
          'transform':transform,
          'target': target,
          'maxs':maxs}
+    extrastot=[]
     for i in range(0, maxs[0]):
         for j in range(0,maxs[1]):
             for k in range(0, maxs[2]):
@@ -263,7 +264,7 @@ def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,15,23], lim=
                     hals.append(hal2)
                     pr.append([int(p) for p in pro])
                     de.append([int(d) for d in des])
-                meta['extra']=np.array(extras, dtype=object)
+                extrastot.append(np.array(extras, dtype=object))
                 hals=np.array(hals,dtype=object)
                 out=np.array(out)
                 outtrans=[]
@@ -290,6 +291,7 @@ def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,15,23], lim=
                     dat.append(graph)
                 stop=time.time()
                 print(f'Done with tree. \n Time elapsed {stop-start} s')
+    meta['extra']=np.array(extrastot, dtype=object)
     if save:
         case=case+f'_z{zcut_true:.1f}_{transform}'
         print("Saving dataset")

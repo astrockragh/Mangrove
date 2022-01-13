@@ -1,0 +1,8 @@
+{   "case": ["vlarge_all_smass", "vlarge_all_4t_z0.0_quantile_raw"],
+    "learning_rate":   [1e-3, 3e-3],
+    "conv_layers":   [3,5],
+    "decode_layers": [3],
+    "hidden_channels": [64, 128],
+    "batch_size": [128, 256],
+    "l1_lambda":[0, 1e-5]
+}

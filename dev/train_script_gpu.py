@@ -27,11 +27,14 @@ today = date.today()
 today = today.strftime("%d%m%y")
 def load_data(case, targets, shuffle, split=0.8):
     datat=pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl'), 'rb'))
-    data=[]
-    for d in datat:
-        data.append(Data(x=d.x, edge_index=d.edge_index, edge_attr=d.edge_attr, y=d.y[targets]))
-    if shuffle:
-        data=random.shuffle(data)
+    if case!="vlarge_all_smass":
+        data=[]
+        for d in datat:
+            data.append(Data(x=d.x, edge_index=d.edge_index, edge_attr=d.edge_attr, y=d.y[targets]))
+        if shuffle:
+            data=random.shuffle(data)
+    else:
+        data=datat
     test_data=data[int(len(data)*split):]
     train_data=data[:int(len(data)*split)]
     return train_data, test_data
