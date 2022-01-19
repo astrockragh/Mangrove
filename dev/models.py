@@ -2,7 +2,7 @@ import torch.nn.functional as F
 from torch.nn import Linear, LayerNorm, LeakyReLU, Module, ReLU, Sequential, ModuleList
 from torch_geometric.nn import SAGEConv, global_mean_pool, norm, global_max_pool, global_add_pool, MetaLayer
 from torch_scatter import scatter_mean, scatter_sum, scatter_max, scatter_min
-from torch import cat, square,zeros, clone, abs, sigmoid, float32
+from torch import cat, square,zeros, clone, abs, sigmoid, float32, tanh
 
 class MLP(Module):
     def __init__(self, n_in, n_out, hidden=64, nlayers=2, layer_norm=True):
@@ -194,7 +194,7 @@ class Sage(Module):
         
         if self.variance:
             if self.rho!=0:
-                return x_out, sig, sigmoid(rho)
+                return x_out, sig, tanh(rho)
             else:
                 return x_out, sig
         else:
@@ -510,7 +510,7 @@ class Meta(Module):
         
         if self.variance:
             if self.rho!=0:
-                return x_out, sig, sigmoid(rho)
+                return x_out, sig, tanh(rho)
             else:
                 return x_out, sig
         else:
@@ -691,7 +691,7 @@ class MetaEdge(Module):
         
         if self.variance:
             if self.rho!=0:
-                return x_out, sig, sigmoid(rho)
+                return x_out, sig, tanh(rho)
             else:
                 return x_out, sig
         else:
@@ -872,7 +872,7 @@ class MetaNode(Module):
         
         if self.variance:
             if self.rho!=0:
-                return x_out, sig, sigmoid(rho)
+                return x_out, sig, tanh(rho)
             else:
                 return x_out, sig
         else:

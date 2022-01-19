@@ -1,5 +1,5 @@
 from torch.nn import MSELoss, L1Loss, SmoothL1Loss
-from torch import log, sum
+from torch import log, sum, square
 ###############################
 ###    Simple loss funcs   ####
 ###############################
@@ -37,6 +37,14 @@ def Gauss2d(pred, ys, var):
     err_loss = sum((z1**2+z2**2)/2)
     
     return err_loss+sigloss, err_loss, sigloss
+
+def GaussN(pred, ys, var):
+    z=(pred-ys)/var
+    sigloss=sum(log(var))
+    err_loss = sum((square(z)))/2
+    
+    return err_loss+sigloss, err_loss, sigloss    
+
 
 def Gauss1d(pred, ys, sig):
     z=(pred-ys)/sig

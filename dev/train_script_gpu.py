@@ -10,6 +10,8 @@ import random
 import string
 from tqdm import tqdm
 
+mus, scales = np.array([-1.18660497,  1.70294617,  0.11209364, -1.00491434]), np.array([0.93492807, 0.17271924, 0.46982766, 1.40001287])
+
 # t_labels = ['Stellar mass', 'v_disk', 'Cold gas mass', 'SFR average over 100 yr']
 t_labels = np.array(['m_star', 'v_disk', 'm_cold', 'sfr_100'])
 
@@ -25,14 +27,19 @@ from datetime import date
 today = date.today()
 
 today = today.strftime("%d%m%y")
-def load_data(case, targets, shuffle, split=0.8):
+def load_data(case, targets, del_feats, scale, shuffle, split=0.8):
     datat=pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl'), 'rb'))
+    a=np.arange(43)
+    feats=np.delete(a, del_feats)
     if case!="vlarge_all_smass":
         data=[]
         for d in datat:
-            data.append(Data(x=d.x, edge_index=d.edge_index, edge_attr=d.edge_attr, y=d.y[targets]))
+            if not scale:
+                data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=d.y[targets]))
+            else:
+                data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=(d.y[targets]-torch.Tensor(mus[targets]))/torch.Tensor(scales[targets])))
         if shuffle:
-            data=random.shuffle(data)
+            random.shuffle(data)
     else:
         data=datat
     test_data=data[int(len(data)*split):]
@@ -47,32 +54,42 @@ def make_id(length=6):
     return result_str
 
 ### test function
-def test(loader, model, n_targ, l_func):
+def test(loader, model, targs, l_func, scale):
     '''returns targets and predictions'''
     ys, pred,xs, Mh=[],[],[], []
     model.eval()
-    with torch.no_grad():
+    n_targ=len(targs)
+    outs = []
+    ys = []
+    if scale:
+        sca=torch.cuda.FloatTensor(scales[targs])
+        ms=torch.cuda.FloatTensor(mus[targs])
+    with torch.no_grad(): ##this solves it!!!
         for data in loader: 
             if l_func in ["L1", "L2", "SmoothL1"]: 
                 out = model(data)  
-            if l_func in ["Gauss1d", "Gauss2d"]:
+            if l_func in ["Gauss1d", "Gauss2d", "GaussN"]:
                 out, var = model(data)  
             if l_func in ["Gauss2d_corr"]:
-                out, var, rho = model(data)  
-            pred.append(out)
-            ys.append(data.y.view(-1,n_targ)) 
+                out, var, rho = model(data) 
+            if scale:
+                ys.append(data.y.view(-1,n_targ)*sca+ms)
+                pred.append(out*sca+ms)
+            else:
+                ys.append(data.y.view(-1,n_targ))
+                pred.append(out)
             u, counts = np.unique(data.batch.cpu().numpy(), return_counts=1)
-            xs.append(np.array(torch.tensor_split(data.x.cpu(), torch.cumsum(torch.tensor(counts[:-1]),0)), dtype=object))
+            # xs.append(np.array(torch.tensor_split(data.x.cpu(), torch.cumsum(torch.tensor(counts[:-1]),0)), dtype=object))
             ## compile lists
     ys=torch.vstack(ys)
     pred=torch.vstack(pred)
-    xs=np.hstack(xs)
+    # xs=np.hstack(xs)
     xn=[]
-    for x in xs:
-        x0=x.cpu().detach().numpy()
-        xn.append(x0)
-        Mh.append(x0[0][3])
-    return ys.cpu().numpy(),pred.cpu().numpy(),xn, Mh
+    # for x in xs:
+    #     x0=x.cpu().detach().numpy()
+    #     xn.append(x0)
+    #     Mh.append(x0[0][3])
+    return ys.cpu().numpy(), pred.cpu().numpy(), xn, Mh
 
 
 # train loop
@@ -114,7 +131,7 @@ def train_model(construct_dict):
 
 
     lr=learn_params['learning_rate']
-    if learn_params['warmup']:
+    if learn_params['warmup'] and learn_params["schedule"] in ["warmup_exp", "warmup_expcos"]:
         lr=lr/(learn_params['g_up'])**(learn_params['warmup'])
 
     ## load data
@@ -143,13 +160,13 @@ def train_model(construct_dict):
     train_accs, test_accs, scatter, = [], [], []
     preds,lowest, epochexit = [], [], []
     run_name = construct_dict['model']+f'_{case}'+f'_{make_id()}'
-    log_dir_glob=osp.join(pointer, run_name)
     for trial in range(n_trials):
         if n_trials>1:
             run_name_n=run_name+f'_{trial+1}_{n_trials}'
         else:
             run_name_n=run_name
         log_dir=osp.join(pointer, run_name_n)
+        print(log_dir)
         if log:
             from torch.utils.tensorboard import SummaryWriter
             writer=SummaryWriter(log_dir=log_dir)
@@ -165,12 +182,12 @@ def train_model(construct_dict):
         train_loader=DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=num_workers)
 
         optimizer = torch.optim.Adam(model.parameters(), lr=lr)
-        scheduler=lr_scheduler(optimizer, **learn_params)
+        scheduler=lr_scheduler(optimizer, **learn_params, total_steps=n_epochs*len(train_loader))
 
         _, _, test_loader = accelerator.prepare(model, optimizer, test_loader)
         model, optimizer, train_loader = accelerator.prepare(model, optimizer, train_loader)
         # Initialize our train function
-        def train(epoch):
+        def train(epoch, schedule):
             model.train()
             return_loss=0
             er_loss = torch.cuda.FloatTensor([0])
@@ -180,7 +197,7 @@ def train_model(construct_dict):
                 if run_params["loss_func"] in ["L1", "L2", "SmoothL1"]: 
                     out = model(data)  
                     loss = loss_func(out, data.y.view(-1,n_targ))
-                if run_params["loss_func"] in ["Gauss1d", "Gauss2d"]:
+                if run_params["loss_func"] in ["Gauss1d", "Gauss2d", "GaussN"]:
                     out, var = model(data)  
                     loss, err_loss, sig_loss = loss_func(out, data.y.view(-1,n_targ), var)
                     er_loss+=err_loss
@@ -198,28 +215,43 @@ def train_model(construct_dict):
                 accelerator.backward(loss)
                 optimizer.step() 
                 optimizer.zero_grad()
+                if schedule=="onecycle":
+                    scheduler.step(epoch)
             # if epoch==0:              #Doesn't work right now but could be fun to add back in
             #     writer.add_graph(model,[data]) 
-            return return_loss, er_loss, si_loss, rh_loss
+            return return_loss, er_loss, si_loss, rh_loss, l1_lambda * l1_norm, l2_lambda * l2_norm
 
         tr_acc, te_acc=[],[]
         early_stop=0
         start=time.time()
-        
+        k=0
         for epoch in tqdm(range(n_epochs)):
         
-            trainloss, err_loss, sig_loss, rho_loss = train(epoch)
+            trainloss, err_loss, sig_loss, rho_loss, l1_loss, l2_loss = train(epoch, learn_params["schedule"])
             #learning rate scheduler step
-            scheduler.step(epoch)
+            if learn_params["schedule"]!="onecycle":
+                scheduler.step(epoch)
 
             if (epoch+1)%val_epoch==0:
-                train_metric = metric(train_loader, model, n_targ, run_params['loss_func'])
-                test_metric = metric(test_loader, model, n_targ, run_params['loss_func'])
-                if np.sum(test_metric)<np.sum(lowest_metric):
+                train_metric, ys, pred = metric(train_loader, model, data_params['targets'], run_params['loss_func'], data_params['scale'])
+                test_metric, ys, pred = metric(test_loader, model, data_params['targets'], run_params['loss_func'], data_params['scale'])
+                if k==0:
                     lowest_metric=test_metric
+                    low_ys = ys
+                    low_pred = pred
+                    k+=1
+                if np.any(test_metric<lowest_metric):
+                    mask=test_metric<lowest_metric
+                    index=np.arange(n_targ)[mask]
+                    lowest_metric[mask]=test_metric[mask]
+                    # lowest_metric=test_metric
+
+                    low_ys[:,index]=ys[:,index]
+                    low_pred[:,index]=pred[:,index]
+
                     early_stop=0
                     if save:
-                        torch.save(model.state_dict(), osp.join(model_path,'model.pt'))
+                        torch.save(model.state_dict(), osp.join(model_path,'model_best.pt'))
                 else:
                     early_stop+=val_epoch
                 tr_acc.append(train_metric)
@@ -247,19 +279,26 @@ def train_model(construct_dict):
                 
                 if run_params["loss_func"] in ["Gauss1d", "Gauss2d", "Gauss2d_corr"]:
                     print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.2E}, Train loss: {trainloss.cpu().detach().numpy():.2E}, [Err/Sig/Rho]: {err_loss.cpu().detach().numpy()[0]:.2E}, {sig_loss.cpu().detach().numpy()[0]:.2E}, {rho_loss.cpu().detach().numpy()[0]:.2E}')
+                    print(f'L1 regularization loss: {l1_loss.cpu().detach().numpy():.2E}, L2 regularization loss: {l2_loss.cpu().detach().numpy():.2E}')
                     print(f'Train scatter: {np.round(train_metric,4)}')
                 else:
                     print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.2E}, Train loss: {trainloss.cpu().detach().numpy():.2E}, Train scatter: {np.round(train_metric,4)}')
+                    print(f'L1 regularization loss: {l1_loss.cpu().detach().numpy():.2E}, L2 regularization loss: {l2_loss.cpu().detach().numpy():.2E}')
                 print(f'Test scatter: {np.round(test_metric,4)}, Lowest was {np.round(lowest_metric,4)}')
+ 
                 print(f'Median for last 10 epochs: {np.round(last10test,4)}, Epochs since improvement {early_stop}')
-                if n_targ==1:
-                    if (epoch+1)%(int(val_epoch*5))==0 and log:
-                        ys, pred, xs, Mh = test(test_loader, model, n_targ, run_params['loss_func'])
-                        fig=performance_plot(ys,pred, xs, Mh)
+                if (epoch+1)%(int(val_epoch*5))==0 and log:
+                    if n_targ==1:
+    
+                        ys, pred, xs, Mh = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
+                        fig=performance_plot(ys,pred, xs, Mh, data_params["targets"])
                         writer.add_figure(tag=run_name_n, figure=fig, global_step=epoch+1)
-                else:
-                    continue
-                   ### make multi performance plot
+                    else:
+                        labels = t_labels[data_params["targets"]]
+                        ys, pred, xs, Mh = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
+                        figs = performance_plot(ys,pred, xs, Mh, data_params["targets"])
+                        for fig, label in zip(figs, labels):
+                            writer.add_figure(tag=f'{run_name_n}_{label}', figure=fig, global_step=epoch+1)
 
             if early_stopping:
                 if early_stop>patience:
@@ -283,11 +322,19 @@ def train_model(construct_dict):
             pr_epoch=n_epochs
         print(f"{spent:.2f} seconds spent training, {spent/n_epochs:.3f} seconds per epoch. Processed {len(train_loader.dataset)*pr_epoch/spent:.0f} trees per second")
         
-        ys, pred, xs, Mh = test(test_loader, model, n_targ, run_params['loss_func'])
-        if n_targ==1:
-            fig=performance_plot(ys,pred, xs, Mh)
-            if save:
-                fig.savefig(f'{log_dir}/performance_ne{n_epochs}_nt{trial}.png')
+        ys, pred, xs, Mh = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
+        if save:
+            if n_targ==1:
+                label = t_labels[data_params["targets"]]
+                figs=performance_plot(ys,pred, xs, Mh, data_params["targets"])
+                for fig in figs:
+                    fig.savefig(f'{log_dir}/performance_ne{n_epochs}_{label}.png')
+            else:
+                labels = t_labels[data_params["targets"]]
+                ys, pred, xs, Mh = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
+                figs = performance_plot(ys,pred, xs, Mh, data_params["targets"])
+                for fig, label in zip(figs, labels):
+                    fig.savefig(f'{log_dir}/performance_ne{n_epochs}_{label}.png')
         sig=np.std(ys-pred, axis=0)
         print(sig)
         scatter.append(sig)
@@ -301,11 +348,11 @@ def train_model(construct_dict):
         #################################
   
         paramsf=dict(list(data_params.items()) + list(run_params.items()) + list(construct_dict['hyper_params'].items()) + list(construct_dict['learn_params'].items()))
-        paramsf["targets"]=str(data_params["targets"])
+        paramsf["targets"]=int("".join([str(i+1) for i in data_params["targets"]]))
+        paramsf["del_feats"]=str(data_params["del_feats"])
         ##adding number of model parameters
         N_p=sum(p.numel() for p in model.parameters())
         N_t=sum(p.numel() for p in model.parameters() if p.requires_grad)
-    
         paramsf['N_params']=N_p
         paramsf['N_trainable']=N_t
 
@@ -313,40 +360,35 @@ def train_model(construct_dict):
         ###    Make saveable metrics  ###
         #################################
         
-        if n_targ==1:
+        
+        labels = t_labels[data_params["targets"]]
+        metricf={'epoch_exit':epoch}
+        for i in range(n_targ):
 
-            metricf={'scatter': sig,
-            'lowest':lowest_metric[0],
-            'epoch_exit':epoch,
-            'last20':last20,
-            'last10':last10}
-            print(metricf)
-            writer.add_hparams(paramsf, metricf, run_name=run_name_n)
-        else:
-            labels = t_labels[data_params["targets"]]
-            metricf={'epoch_exit':epoch}
-            for i in range(n_targ):
+            metricf[f'scatter_{labels[i]}']=sig[i]
+            metricf[f'lowest_{labels[i]}']=lowest_metric[i]
+            metricf[f'last20_{labels[i]}']=last20[i]
+            metricf[f'last10_{labels[i]}']=last10[i]
+        print(metricf)
+        writer.add_hparams(paramsf, metricf, run_name=run_name_n)
+        
 
-                metricf[f'scatter_{labels[i]}']=sig[i]
-                metricf[f'lowest_{labels[i]}']=lowest_metric[i]
-                metricf[f'last20_{labels[i]}']=last20[i]
-                metricf[f'last10_{labels[i]}']=last10[i]
-            print(metricf)
-            writer.add_hparams(paramsf, metricf, run_name=run_name_n)
         print(f'Finished {trial+1}/{n_trials}')
-    result_dict={'sigma':scatter,
-    'test_acc': test_accs,
-    'train_acc': train_accs,
-    'ys': ys,
-    'pred': pred,
-    'low':lowest,
-    'epochexit': epochexit}
-    if not osp.exists(log_dir_glob):
-            os.makedirs(log_dir_glob)
-    with open(f'{log_dir_glob}/result_dict.pkl', 'wb') as handle:
-        pickle.dump(result_dict, handle)
-    with open(f'{log_dir_glob}/construct_dict.pkl', 'wb') as handle:
-        pickle.dump(construct_dict, handle)
+        result_dict={'sigma':scatter,
+        'test_acc': te_acc,
+        'train_acc': tr_acc,
+        'ys': ys,
+        'pred': pred,
+        'low_ys': low_ys,
+        'low_pred': low_pred,
+        'low':lowest,
+        'epochexit': epochexit}
+        # if not osp.exists(log_dir):
+        #         os.makedirs(log_dir)
+        with open(f'{log_dir}/result_dict.pkl', 'wb') as handle:
+            pickle.dump(result_dict, handle)
+        with open(f'{log_dir}/construct_dict.pkl', 'wb') as handle:
+            pickle.dump(construct_dict, handle)
         
 ################################
 #      Load dependencies       #

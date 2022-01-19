@@ -88,5 +88,5 @@ for i in range(len(exp_list)):
     construct_dict['experiment_name']=title
     epochexit=train_model(construct_dict)
     print(f'Exited training after {epochexit} epochs')
-    print(f"Experiment {i} done: {i + 1} / {len(exp_list)}")
+    print(f"Experiment {i+1} done: {i + 1} / {len(exp_list)}")
 

@@ -4,5 +4,6 @@
     "decode_layers": [3],
     "hidden_channels": [64, 128],
     "l1_lambda":[0, 1e-5],
+    "batch_size": [128, 256],
     "case": ["vlarge_all_smass", "vlarge_all_4t_z0.0_quantile_raw"]
 }

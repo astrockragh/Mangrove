@@ -1,31 +1,31 @@
 {
     "experiment": "GraphMerge",
-    "group":  "test_gpu", 
+    "group":  "sweep_multi", 
     "move":false,
-    "model":  "Meta",
+    "model":  "Sage",
     "log": true,
 
     "run_params":{
-    "n_epochs":    1000,
-    "n_trials": 2,
-    "batch_size": 512,
+    "n_epochs":    500,
+    "n_trials": 1,
+    "batch_size": 256,
     "val_epoch":   2,
     "early_stopping": true,
-    "patience": 1,
+    "patience": 50,
     "l1_lambda":1e-5,
     "l2_lambda":1e-5,
     "loss_func": "Gauss2d_corr",
     "metrics": "test_multi",
-    "performance_plot": "SAM_base",
+    "performance_plot": "multi_base",
     "shuffle":true,
     "save":true,
     "seed":true,
     "num_workers": 4
 }, 
 "learn_params":{
-    "learning_rate":   3e-3,
-    "schedule":   "warmup_exp",
-    "g_up":1,
+    "learning_rate":   1e-2,
+    "schedule":   "onecycle",
+    "g_up":5,
     "g_down":0.95,
     "warmup":4,
     "period":5, 
@@ -33,8 +33,8 @@
 },
 
     "hyper_params": {
-        "hidden_channels":   64,  
-        "conv_layers":   3,
+        "hidden_channels":   128,  
+        "conv_layers":   4,
         "conv_activation": "relu",
         "decode_activation": "leakyrelu",
         "decode_layers":   3,
@@ -46,8 +46,10 @@
 
    "data_params":{ 
     "case": "vlarge_all_4t_z0.0_quantile_raw",
-    "targets": [0,2],
+    "targets": [0,1,2],
+    "del_feats": [],
     "split": 0.8,
-    "shuffle": 0
+    "shuffle": 1,
+    "scale": 1
 }
 }

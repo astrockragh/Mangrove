@@ -42,7 +42,7 @@ else:
 #### --------------------------------- ####
 
 exp_folder, exp_list = list_experiments(exp0_folder)
-print('whoops')
+# print('whoops')
 
 print(f"Starting process with {len(exp_list)} experiments" )
 print(exp_list)
