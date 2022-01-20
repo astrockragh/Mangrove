@@ -77,7 +77,10 @@ for i in range(len(exp_list)):
             construct_dict['hyper_params'][key]=typ(exp_list[i][j])
         elif key in construct_dict['data_params']:
             typ=type(construct_dict['data_params'][key])
-            construct_dict['data_params'][key]=typ(exp_list[i][j])
+            if key=='targets' and type(exp_list[i][j])!=list:
+                construct_dict['data_params'][key]=typ([exp_list[i][j]])
+            else:
+                construct_dict['data_params'][key]=typ(exp_list[i][j])
         elif key in construct_dict:
             typ=type(construct_dict[key])
             construct_dict[key]=typ(exp_list[i][j])

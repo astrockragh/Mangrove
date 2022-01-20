@@ -1,13 +1,13 @@
 {
     "experiment": "GraphMerge",
-    "group":  "sweep_redshift", 
+    "group":  "sweep_others", 
     "move":false,
     "model":  "Sage",
     "log": true,
 
     "run_params":{
-    "n_epochs":    300,
-    "n_trials": 1,
+    "n_epochs":    200,
+    "n_trials": 2,
     "batch_size": 128,
     "val_epoch":   2,
     "early_stopping": true,
@@ -34,7 +34,7 @@
 
     "hyper_params": {
         "hidden_channels":   128,  
-        "conv_layers":   4,
+        "conv_layers":   1,
         "conv_activation": "relu",
         "decode_activation": "leakyrelu",
         "decode_layers":   3,
@@ -45,7 +45,7 @@
     },
 
    "data_params":{ 
-    "case": "vlarge_all_4t_z0.0_quantile_raw",
+    "case": "vlarge_all_4t_quantile_raw_final",
     "targets": [0],
     "split": 0.8,
     "shuffle": 0,
