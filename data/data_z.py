@@ -268,20 +268,27 @@ def create_graphs(zcut=0, tcols=[0,2,4,5,6,7,8,10,28], target=[8,11,15,23], lim=
                 hals=np.array(hals,dtype=object)
                 out=np.array(out)
                 outtrans=[]
-                try:
+                for n in range(len(out)):
+                    outs=[]
                     for w in range(len(out[0])):
-                        pl=np.log10(out[:,w])
-                        if min(pl) == -np.inf:
-                            outtrans.append(np.log10(out[:,w]+1))
+                        pl=np.log10(out[n,w])
+                        if pl == -np.inf:
+                            if w==2:
+                                outs.append(-0.21)
+                            if w==3:
+                                outs.append(-2.507)
+                            print('failed', w, n, len(hals[n]))
                         else:
-                            outtrans.append(np.log10(out[:,w]))
-                    out=np.array(outtrans).T
-                except:
-                    pl=np.log10(out)
-                    if min(pl) == -np.inf:
-                        out=np.log10(out+1)
-                    else:
-                        out=np.log10(out)
+                            outs.append(np.log10(out[n,w]))
+                    # print(np.array(outs))
+                    # print(np.array(outs).shape)
+                    outtrans.append(np.array(outs).T)
+
+                    # except:
+                    #     outtrans.append(np.log10(out[n,w]+1))
+
+                out=np.array(outtrans)
+                print(out)
                 for n in tqdm(range(len(out))):
                     edge_index = torch.tensor([pr[n],de[n]], dtype=torch.long)
                     x = torch.tensor(hals[n], dtype=torch.float)

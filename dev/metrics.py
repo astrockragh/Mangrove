@@ -2,7 +2,8 @@ from torch import sqrt, sum, square, no_grad, vstack, std
 from torch.cuda import FloatTensor
 import numpy as np
 
-mus, scales = np.array([-1.18660497,  1.70294617,  0.11209364, -1.00491434]), np.array([0.93492807, 0.17271924, 0.46982766, 1.40001287])
+
+mus, scales = np.array([-1.1917865,  1.7023178,  -0.14979358, -2.5043619]), np.array([0.9338901, 0.17233825, 0.5423821, 0.9948792])
 
 def scatter(loader, model, n_targ):
     model.eval()

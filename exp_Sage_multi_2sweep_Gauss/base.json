@@ -49,7 +49,7 @@
     "targets": [0,1,2],
     "del_feats": [],
     "split": 0.8,
-    "shuffle": 1,
+    "shuffle": 0,
     "scale": 1
 }
 }
