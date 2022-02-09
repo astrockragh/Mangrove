@@ -2,7 +2,7 @@ import torch.nn.functional as F
 from torch.nn import Linear, LayerNorm, LeakyReLU, Module, ReLU, Sequential, ModuleList
 from torch_geometric.nn import SAGEConv, global_mean_pool, norm, global_max_pool, global_add_pool, MetaLayer
 from torch_scatter import scatter_mean, scatter_sum, scatter_max, scatter_min
-from torch import cat, square,zeros, clone, abs, sigmoid, float32, tanh
+from torch import cat, square,zeros, clone, abs, sigmoid, float32, tanh, clamp
 
 class MLP(Module):
     def __init__(self, n_in, n_out, hidden=64, nlayers=2, layer_norm=True):
@@ -180,7 +180,7 @@ class Sage(Module):
                     x1=d(n(x1))
                     x1=self.decode_act(x1)
                 sig.append(x1)
-            sig=abs(cat(sig, dim=1))
+            sig=abs(cat(sig, dim=1)) #stability
 
         if self.rho!=0:
             rho=[]
@@ -190,11 +190,11 @@ class Sage(Module):
                     x1=d(n(x1))
                     x1=self.decode_act(x1)
                 rho.append(x1)
-            rho=abs(cat(rho, dim=1)) ### not sure this works with only 1d
+            rho=cat(rho, dim=1)
         
         if self.variance:
             if self.rho!=0:
-                return x_out, sig, tanh(rho)
+                return x_out, sig, clamp(tanh(rho), min=-0.999, max=0.999) #stability
             else:
                 return x_out, sig
         else:
