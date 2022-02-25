@@ -1,7 +1,7 @@
 papers
 Untitled.ipynb
 slurm
-psyr
+pysr
 papers
 old_exps
 analysis/GNN_plots.ipynb
@@ -11,3 +11,4 @@ analysis/summary_write.ipynb
 analysis/trim_sweep_local.ipynb
 .ipynb_checkpoints
 .vscode
+adversarial_examples
