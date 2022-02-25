@@ -14,7 +14,9 @@ def SmoothL1():
 
 ###############################
 ###  Homemade loss funcs   ####
-###############################
+##########################################
+###  All are negative log likelihoods   ####
+##########################################
 
 def Gauss2d_corr(pred, ys, var, rho):
     sig1=var[:,0]
@@ -29,8 +31,7 @@ def Gauss2d_corr(pred, ys, var, rho):
     return err_loss+sigloss+rholoss, err_loss, sigloss, rholoss
 
 def Gauss4d_corr(pred, ys, sig, rho):
-#     global delta, bsize, A2, sig_inv, detloss, err_loss
-    
+    '''This is written assuming normal pytorch, on cuda, inputs should be 4xbatchsize, 4xbatchsize, 4xbatchsize, 6xbatchsize'''
     delta=pred-ys
     bsize = delta.shape[0]
     N = delta.shape[1]
@@ -42,7 +43,7 @@ def Gauss4d_corr(pred, ys, sig, rho):
                 sig[:,2]**2,rho[:,5]*sig[:,2]*sig[:,3],\
                  sig[:,3]**2])
 
-    A = zeros(N, N,bsize, device='cuda:0')
+    A = zeros(N, N,bsize, device='cuda:0') # assuming you're on the gpu
     A[0] = vals[:4]
     A[1] = vstack([vals[1], vals[4:7]])
     A[2] = vstack([vals[2], vals[5], vals[7:9]])
@@ -62,6 +63,7 @@ def Gauss4d_corr(pred, ys, sig, rho):
     return err_loss+detloss, err_loss, detloss
 
 def Gauss2d(pred, ys, var):
+    '''2d Gaussian, can be subbed for GaussND'''
     sig1=var[:,0]
     sig2=var[:,1]
     z1=(pred[:,0]-ys[:,0])/sig1
@@ -71,7 +73,8 @@ def Gauss2d(pred, ys, var):
     
     return err_loss+sigloss, err_loss, sigloss
 
-def GaussNd(pred, ys, var): #this could be substituted in for the general thing
+def GaussNd(pred, ys, var):
+    '''General uncorrelated gaussian, if you're having trouble you can try adding a small number to your sigmas'''
     z=(pred-ys)/var
     sigloss=sum(log(var))
     err_loss = sum((square(z)))/2
@@ -80,6 +83,7 @@ def GaussNd(pred, ys, var): #this could be substituted in for the general thing
 
 
 def Gauss1d(pred, ys, sig):
+    '''1d Gaussian, can be subbed for GaussND'''
     z=(pred-ys)/sig
     sigloss=sum(log(sig))
     err_loss = sum(z**2)/2

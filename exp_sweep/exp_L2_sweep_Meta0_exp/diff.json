@@ -1,7 +1,0 @@
-{
-    "learning_rate":   [1e-3],
-    "model":   ["Meta", "MetaEdge", "MetaNode"],
-    "conv_layers":   [3, 4],
-    "decode_layers": [2],
-    "conv_activation": ["leakyrelu"]
-}

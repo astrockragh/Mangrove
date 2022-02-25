@@ -1,9 +1,0 @@
-{
-    "learning_rate":   [1e-3, 3e-3],
-    "conv_layers":   [2,3,4],
-    "decode_layers": [1,2,3],
-    "conv_activation": ["relu", "leakyrelu"],
-    "decode_activation": ["relu", "leakyrelu"],
-    "l1_lambda":[0, 1e-5],
-    "l2_lambda":[0, 1e-5]
-}

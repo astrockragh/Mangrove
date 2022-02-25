@@ -1,3 +1,7 @@
+#########################################
+## deprecated cpu version for beginning ##
+#########################################
+
 import torch, pickle, time, os, random
 import numpy as np
 import os.path as osp
@@ -15,9 +19,9 @@ today = date.today()
 today = today.strftime("%d%m%y")
 def load_data(case, split=0.8):
     data=pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl'), 'rb'))
-    test_data=data[int(len(data)*split):]
+    val_data=data[int(len(data)*split):]
     train_data=data[:int(len(data)*split)]
-    return train_data, test_data
+    return train_data, val_data
 
 
 def make_id(length=6):
@@ -92,8 +96,8 @@ def train_model(construct_dict):
         lr=lr/(learn_params['g_up'])**(learn_params['warmup'])
 
     ## load data
-    train_data, test_data = load_data(**data_params)
-    test_loader=DataLoader(test_data, batch_size=batch_size, shuffle=0)    ##never shuffle test
+    train_data, val_data = load_data(**data_params)
+    test_loader=DataLoader(val_data, batch_size=batch_size, shuffle=0)    ##never shuffle test
     construct_dict['hyper_params']['in_channels']=train_data[0].num_node_features
     construct_dict['hyper_params']['out_channels']=len(np.array([train_data[0].y]))
 

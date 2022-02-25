@@ -1,0 +1,8 @@
+In this folder you can see the basic setup for running an experiment.
+Essentially, write the experiment paraneters in the json - file. The experiments to be done should be in the todo folder
+
+The needed command for running this is:
+
+'python run_experiment.py -f <folder> -gpu <1 if gpu, 0 if cpu>
+
+This will then do all the experiments currently in the todo folder

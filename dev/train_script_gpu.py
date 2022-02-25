@@ -1,3 +1,8 @@
+#########################################
+## Current GPU train loop              ##
+## Own libraries loaded in the bottom  ##
+#########################################
+
 import torch, pickle, time, os
 import numpy as np
 import os.path as osp
@@ -29,43 +34,8 @@ today = date.today()
 today = today.strftime("%d%m%y")
 
 
-# def load_data(case, targets, del_feats, scale, shuffle, split=0.8):
-#     datat=pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl'), 'rb'))
-#     a=np.arange(43)
-#     feats=np.delete(a, del_feats)
-#     if case!="vlarge_all_smass":
-#         data=[]
-#         for d in datat:
-#             if not scale:
-#                 data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=d.y[targets]))
-#             else:
-#                 data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=(d.y[targets]-torch.Tensor(mus[targets]))/torch.Tensor(scales[targets])))
-#     else:
-#         data=datat
-#     test_data=data[int(len(data)*split):]
-#     train_data=data[:int(len(data)*split)]
-#     return train_data, test_data
-    
-# for val    
-# def load_data(case, targets, del_feats, scale, shuffle, split=0.8):
-#     datat=pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl'), 'rb'))
-#     a=np.arange(43)
-#     feats=np.delete(a, del_feats)
-#     if case!="vlarge_all_smass":
-#         data=[]
-#         for d in datat:
-#             if not scale:
-#                 data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=d.y[targets]))
-#             else:
-#                 data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=(d.y[targets]-torch.Tensor(mus[targets]))/torch.Tensor(scales[targets])))
-#     else:
-#         data=datat
-#     val_data =  data[int(len(data)*split):int(len(data)*(split+0.1))]
-#     train_data=data[:int(len(data)*(split))]
-#     return train_data, val_data
-
 # for final testing
-def load_data(case, targets, del_feats, scale, shuffle, split=0.8):
+def load_data(case, targets, del_feats, scale, test=0,split=0.875): ##run_params
     datat=pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl'), 'rb'))
     a=np.arange(43)
     feats=np.delete(a, del_feats)
@@ -79,7 +49,7 @@ def load_data(case, targets, del_feats, scale, shuffle, split=0.8):
     else:
         data=datat
     testidx = pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/tvt_idx/test_idx.pkl'), 'rb'))
-    # trainidx = pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/tvt_idx/train_idx.pkl'), 'rb'))
+    # trainidx = pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/tvt_idx/train_idx.pkl'), 'rb')) ##I keep this so I can find this file later
 
     test_data=[]
     train_data=[]
@@ -88,11 +58,10 @@ def load_data(case, targets, del_feats, scale, shuffle, split=0.8):
             test_data.append(d)
         else:
             train_data.append(d)
-    print(len(test_data))
-    print(len(train_data))
-
-    return train_data, test_data
-
+    if test:
+        return train_data, test_data #train and val merged, test
+    else:
+        return train_data[:int(len(train_data)*(split))], train_data[int(len(train_data)*(split)):] #train, val, 70%/10% of total
 def make_id(length=6):
     # choose from all lowercase letters
     letters = string.ascii_lowercase
@@ -101,7 +70,8 @@ def make_id(length=6):
 
 ### test function
 def test(loader, model, targs, l_func, scale):
-    '''returns targets and predictions'''
+    '''returns targets and predictions, and some test metrics
+    This function here isn't pretty, xs shouldn't be used, they take up too much memory'''
     ys, pred,xs, Mh=[],[],[], []
     model.eval()
     n_targ=len(targs)
@@ -131,19 +101,11 @@ def test(loader, model, targs, l_func, scale):
             vars.append(var)
             rhos.append(rho)
 
-            # u, counts = np.unique(data.batch.cpu().numpy(), return_counts=1)
-            # xs.append(np.array(torch.tensor_split(data.x.cpu(), torch.cumsum(torch.tensor(counts[:-1]),0)), dtype=object))
-            ## compile lists
     ys = torch.vstack(ys)
     pred = torch.vstack(pred)
     vars = torch.vstack(vars)
     rhos = torch.vstack(rhos)
-    # xs=np.hstack(xs)
-    xn=[]
-    # for x in xs:
-    #     x0=x.cpu().detach().numpy()
-    #     xn.append(x0)
-    #     Mh.append(x0[0][3])
+    xn=[] ## keep for downstream dependency
     return ys.cpu().numpy(), pred.cpu().numpy(), xn, Mh, vars, rhos
 
 # train loop
@@ -192,7 +154,7 @@ def train_model(construct_dict):
     ## load data
     train_data, test_data = load_data(**data_params)
 
-    try:
+    try:  ##this is a bad solution but it works
         n_targ=len(train_data[0].y)
     except:
         n_targ=1
@@ -202,7 +164,7 @@ def train_model(construct_dict):
     construct_dict['hyper_params']['in_channels']=n_feat
     construct_dict['hyper_params']['out_channels']=n_targ
 
-    ### learning related stuff ###
+    ### learning related stuff, all get_xxx functions are defined further down ###
     lr_scheduler          = get_lr_schedule(construct_dict) 
     loss_func            = get_loss_func(construct_dict['run_params']['loss_func'])
     l1_lambda=run_params['l1_lambda']
@@ -229,12 +191,12 @@ def train_model(construct_dict):
         model = setup_model(construct_dict['model'], construct_dict['hyper_params'])
         print(f"N_params {sum(p.numel() for p in model.parameters())}")
         if save:  # Make folder for saved states
-            model_path    = osp.join(log_dir, "trained_model") ##!!!!!!! needs to point to the right spot
+            model_path    = osp.join(log_dir, "trained_model") ## needs to point to the right spot
             if not osp.isdir(model_path):
                 os.makedirs(model_path)
                 print('Made folder for saving model')
 
-        train_loader=DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=num_workers)
+        train_loader=DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=num_workers) #shuffle training
 
         optimizer = torch.optim.Adam(model.parameters(), lr=lr)
         scheduler=lr_scheduler(optimizer, **learn_params, total_steps=n_epochs*len(train_loader))
@@ -293,7 +255,7 @@ def train_model(construct_dict):
         
             trainloss, err_loss, sig_loss, rho_loss, l1_loss, l2_loss = train(epoch, learn_params["schedule"])
             #learning rate scheduler step
-            if learn_params["schedule"]!="onecycle":
+            if learn_params["schedule"]!="onecycle": #onecycle steps per batch, not epoch
                 scheduler.step(epoch)
 
             if (epoch+1)%val_epoch==0:
@@ -453,8 +415,6 @@ def train_model(construct_dict):
         'rhos': rhos,
         'low':lowest,
         'epochexit': epochexit}
-        # if not osp.exists(log_dir):
-        #         os.makedirs(log_dir)
         with open(f'{log_dir}/result_dict.pkl', 'wb') as handle:
             pickle.dump(result_dict, handle)
         with open(f'{log_dir}/construct_dict.pkl', 'wb') as handle:

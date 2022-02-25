@@ -2,8 +2,12 @@ from torch import sqrt, sum, square, no_grad, vstack, std, IntTensor
 from torch.cuda import FloatTensor
 import numpy as np
 
+##################################################
+### Could be defined in loop              ####
+### different funcs to calculate metrics  ####
+##################################################
 
-mus, scales = np.array([-1.1917865,  1.7023178,  -0.14979358, -2.5043619]), np.array([0.9338901, 0.17233825, 0.5423821, 0.9948792])
+mus, scales = np.array([-1.1917865,  1.7023178,  -0.14979358, -2.5043619]), np.array([0.9338901, 0.17233825, 0.5423821, 0.9948792])  ### training set mus/sigs to scale back
 
 def scatter(loader, model, n_targ):
     model.eval()
@@ -29,7 +33,7 @@ def test_multi(loader, model, targs, l_func, scale):
                 out = model(data)  
             if l_func in ["Gauss1d", "Gauss2d", "GaussNd"]:
                 out, var = model(data)  
-            if l_func in ["Gauss2d_corr, Gauss4d_coor"]:
+            if l_func in ["Gauss2d_corr, Gauss4d_corr"]:
                 out, var, rho = model(data) 
             if scale:
                 ys.append(data.y.view(-1,n_targ)*sca+ms)
@@ -41,7 +45,9 @@ def test_multi(loader, model, targs, l_func, scale):
     yss=vstack(ys)
     return std(outss - yss, axis=0).cpu().detach().numpy(), yss.cpu().detach().numpy(), outss.cpu().detach().numpy()
 
+
 def test_multi_varrho(loader, model, targs, l_func, scale): 
+    '''This one is the most updated'''
     model.eval()
     n_targ=len(targs)
     outs = []

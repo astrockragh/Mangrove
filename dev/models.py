@@ -7,7 +7,7 @@ from torch import cat, square,zeros, clone, abs, sigmoid, float32, tanh, clamp
 class MLP(Module):
     def __init__(self, n_in, n_out, hidden=64, nlayers=2, layer_norm=True):
         super().__init__()
-        '''Simple two_layer MLP class with ReLU activiation + layernorm to use later'''
+        '''Simple MLP class with ReLU activiation + layernorm'''
         layers = [Linear(n_in, hidden), ReLU()]
         for i in range(nlayers):
             layers.append(Linear(hidden, hidden))
@@ -31,7 +31,7 @@ class Sage(Module):
         Most other things can be customized at wish, e.g. activation functions for which ReLU and LeakyReLU can be used'''
         self.encode=encode
         if self.encode:
-            self.node_enc = MLP(in_channels, hidden_channels, layer_norm=True)
+            self.node_enc = MLP(in_channels, hidden_channels, layer_norm=True) #could turn up hidden states
         self.decode_activation=decode_activation
         self.conv_activation=conv_activation
         self.layernorm=layernorm
@@ -64,7 +64,7 @@ class Sage(Module):
             self.norm=ModuleList()
             for i in range(decode_layers):
                 if i==decode_layers-1: ## if final layer, make layer with only one output
-                    self.norm.append(LayerNorm(normalized_shape=hidden_channels))
+                    self.norm.append(LayerNorm(normalized_shape=hidden_channels))  
                     self.decoder.append(Linear(hidden_channels, 1))
                 else:
                     self.norm.append(LayerNorm(normalized_shape=hidden_channels))
@@ -148,14 +148,15 @@ class Sage(Module):
 
         #get the data
         x, edge_index, batch = graph.x, graph.edge_index, graph.batch
+        #encode
         if self.encode:
             x = self.node_enc(x)
         
         #convolutions 
         for conv in self.convs:
             x = conv(x, edge_index)
-            x=self.conv_act(x)
-        if self.agg=='sum':
+            x=self.conv_act(x) ##choose whichever
+        if self.agg=='sum':  ## sum for physics
             x = global_add_pool(x, batch)
         if self.agg=='max':
             x = global_max_pool(x, batch)
@@ -167,7 +168,7 @@ class Sage(Module):
             x1=clone(x)
             for n, d in zip(norm, decode):
                 x1=d(n(x1))
-                x1=self.decode_act(x1)
+                x1=self.decode_act(x1) ##note that these are LeakyReLU and should continue as such, otherwise you have to remove them from the last layer
             x_out.append(x1)
         x_out=cat(x_out, dim=1)
         
@@ -178,7 +179,7 @@ class Sage(Module):
                 x1=clone(x)
                 for n, d in zip(norm, decode):
                     x1=d(n(x1))
-                    x1=self.decode_act(x1)
+                    x1=self.decode_act(x1) ##note that these are LeakyReLU and should continue as such, otherwise you have to remove them from the last layer
                 sig.append(x1)
             sig=abs(cat(sig, dim=1)) #stability
 
@@ -188,7 +189,7 @@ class Sage(Module):
                 x1=clone(x)
                 for n, d in zip(norm, decode):
                     x1=d(n(x1))
-                    x1=self.decode_act(x1)
+                    x1=self.decode_act(x1) ##note that these are LeakyReLU and should continue as such, otherwise you have to remove them from the last layer
                 rho.append(x1)
             rho=cat(rho, dim=1)
         
@@ -213,7 +214,7 @@ class EdgeModel(Module):
         super(EdgeModel, self).__init__()
         self.mlp = MLP(hidden * 4, hidden, layer_norm=True)
 
-    def forward(self, src, dest, edge_attr, u, batch):
+    def forward(self, src, dest, edge_attr, u, batch): #forward should include everything
         # source, target: [E, F_x], where E is the number of edges.
         # edge_attr: [E, F_e]
         # u: [B, F_u], where B is the number of graphs. ##what is B??
@@ -228,7 +229,7 @@ class NodeModel(Module):
         self.node_mlp_1 = MLP(hidden * 2, hidden, layer_norm=True)
         self.node_mlp_2 = MLP(hidden * 3, hidden, layer_norm=True)
 
-    def forward(self, x, edge_index, edge_attr, u, batch):
+    def forward(self, x, edge_index, edge_attr, u, batch): #forward should include everything
         # x: [N, F_x], where N is the number of nodes.
         # edge_index: [2, E] with max entry N - 1.
         # edge_attr: [E, F_e]
@@ -247,7 +248,7 @@ class NodeNodeModel(Module):
         self.node_mlp_1 = MLP(hidden, hidden, layer_norm=True)
         self.node_mlp_2 = MLP(hidden, hidden, layer_norm=True)
 
-    def forward(self, x, edge_index, edge_attr, u, batch):
+    def forward(self, x, edge_index, edge_attr, u, batch): #forward should include everything
         # x: [N, F_x], where N is the number of nodes.
         # edge_index: [2, E] with max entry N - 1.
         # edge_attr: [E, F_e]
@@ -260,12 +261,16 @@ class NodeNodeModel(Module):
         out = x
         return x + self.node_mlp_2(out)
 
-class GlobalModel(Module):
+###############################################################################################
+## If one is interested in doing some decoding on the global model / put in global features ###
+###############################################################################################
+
+class GlobalModel(Module): 
     def __init__(self, hidden):
         super(GlobalModel, self).__init__()
         self.global_mlp = MLP(hidden * 2, hidden, layer_norm=True)
 
-    def forward(self, x, edge_index, edge_attr, u, batch):
+    def forward(self, x, edge_index, edge_attr, u, batch): #forward should include everything
         # x: [N, F_x], where N is the number of nodes.
         # edge_index: [2, E] with max entry N - 1.
         # edge_attr: [E, F_e]
@@ -278,8 +283,9 @@ class GlobalModelMulti(Module):
     def __init__(self, hidden):
         super(GlobalModelMulti, self).__init__()
         self.global_mlp = MLP(hidden * 5, hidden, layer_norm=True)
+        '''Global model with many different global feats'''
 
-    def forward(self, x, edge_index, edge_attr, u, batch):
+    def forward(self, x, edge_index, edge_attr, u, batch): #forward should include everything
         # x: [N, F_x], where N is the number of nodes.
         # edge_index: [2, E] with max entry N - 1.
         # edge_attr: [E, F_e]
@@ -295,10 +301,15 @@ class GlobalModelMulti(Module):
         concat = cat([u, s, mi, ma, std], dim=1)
         return u + self.global_mlp(concat) ## still a bit in doubt over if this should be a sum
 
+###############################################################################################
+
+# Put it all together like https://arxiv.org/pdf/1806.01261.pdf
+
 class MetaMulti(Module):
     def __init__(self, hidden_states, in_channels, out_channels, encode=True, conv_layers=3, conv_activation='relu', 
                     decode_layers=1, decode_activation='none', layernorm=True):
         super(self.__class__, self).__init__()
+        '''This model is in early attempt, it's a bit slow but has higher levels of interpretability and should theoretically be better'''
         hidden=hidden_states
         n_in=in_channels
         n_out=out_channels
@@ -339,7 +350,7 @@ class Meta(Module):
     def __init__(self, hidden_channels, in_channels, out_channels, encode=True, conv_layers=3, conv_activation='relu', 
                     decode_layers=2, decode_activation='none', layernorm=True, variance=0, agg='sum', rho=0):
         super(Meta, self).__init__()
-        ''' '''
+        '''Same as above but without the multi concat '''
         self.encode=encode
         self.node_enc = MLP(in_channels, hidden_channels, layer_norm=True)
         self.edge_enc = MLP(3, hidden_channels, layer_norm=True)
@@ -520,7 +531,7 @@ class MetaEdge(Module):
     def __init__(self, hidden_channels, in_channels, out_channels, encode=True, conv_layers=3, conv_activation='relu', 
                     decode_layers=2, decode_activation='none', layernorm=True, variance=0, agg='sum', rho=0):
         super(MetaEdge, self).__init__()
-        ''' '''
+        ''' Same as above but no global model'''
         self.encode=encode
         self.node_enc = MLP(in_channels, hidden_channels, layer_norm=True)
         self.edge_enc = MLP(3, hidden_channels, layer_norm=True)
@@ -701,7 +712,7 @@ class MetaNode(Module):
     def __init__(self, hidden_channels, in_channels, out_channels, encode=True, conv_layers=3, conv_activation='relu', 
                     decode_layers=2, decode_activation='none', layernorm=True, variance=0, agg='sum', rho=0):
         super(MetaNode, self).__init__()
-        ''' '''
+        '''Same as above but with only node'''
         self.encode=encode
         self.node_enc = MLP(in_channels, hidden_channels, layer_norm=True)
         self.decode_activation=decode_activation

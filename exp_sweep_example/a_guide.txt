@@ -1,0 +1,8 @@
+In this folder you can see the basic setup for running a set of different experiments without having to make many different experiment folders explicitly
+Essentially, write the base.json as the basic experiment, and the diff.json as a dict with keys that are in base.json, and then a list over values you want to try for that key in diff.json
+
+The needed command is
+
+'python run_sweep.py -f <folder> -gpu <1 if gpu, 0 if cpu> -N <N_experiments>'
+
+if the number of permutations in the given diff.json are above N, a subset is randomly selected

@@ -5,6 +5,8 @@ import matplotlib as mpl
 cols_t=np.array(['M_star', 'v_disk', 'm_cold gas', 'sfr_ave100Myr'])
 
 def SAM_base(ys, pred, xs, Mh):
+    ''' Basic lotting scheme for an unspecified range of targets, xs/Mh keywords aren't used, left for dependency 
+    ys/pred should be the same dimensionality'''
     fig, ax =plt.subplots(figsize=(6,6))
     ax.plot(ys,pred, 'ro', alpha=0.3)
     ax.plot([min(ys),max(ys)],[min(ys),max(ys)], 'k--', label='Perfect correspondance')
@@ -16,6 +18,8 @@ def SAM_base(ys, pred, xs, Mh):
     return fig
     
 def multi_base(ys, pred, xs, Mh, targets):
+    ''' Plotting scheme for an unspecified range of targets, xs/Mh keywords aren't used, left for dependency 
+    ys/pred should be the same dimensionality, targets should be numerical indexed, not boolean'''
     n_t = len(targets)
     figs=[]
     for n in range(n_t):
