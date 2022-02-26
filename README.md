@@ -17,8 +17,11 @@ This is for creating a conda environment to do your coding in
 Replace your anaconda module with whatever you have on your computer/cluster
 
 `module load anaconda3/2021.5`
+
 `conda create --name jtorch pytorch==1.9.0 jupyter torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=10.2 matplotlib tensorboard --channel pytorch`
+
 `conda activate jtorch`
+
 `pip install accelerate scikit-learn pandas`
 
 To determine the pytorch_geometric version that you need, check out https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html 
