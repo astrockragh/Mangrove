@@ -53,8 +53,8 @@ I recommend doing it through pip, not conda, like the below version, but check t
 - "learn_params": Parameters related to learning scheme
     - "learning_rate":   Learning rate (float)
     - "schedule":  Learning Rate scheduler name from dev/lr_schedule.py (str)
-    - "g_up": Exponent for warmup (float). $g_{up}^{epoch}*\text{learning rate}/ (g_{up}^{warmup})$
-    - "g_down": Exponent for cooldown (float). $g_{down}^{epoch}*\text{learning rate}$
+    - "g_up": Exponent for warmup (float). $(g_{up})^{epoch}*\text{learning rate}/ ((g_{up})^{warmup})$
+    - "g_down": Exponent for cooldown (float). $(g_{down})^{epoch}*\text{learning rate}$
     - "warmup": Number of epochs to warm up for (int)
     - "period": Period for cosine annealing in epochs (int)
     - "eta_min": Mininum learning rate for cosine annealing (float)
