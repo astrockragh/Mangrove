@@ -5,10 +5,22 @@ pysr
 papers
 old_exps
 analysis/GNN_plots.ipynb
+analysis/trim_sweep_local.ipynb
+analysis/trimmed_tree_plots.ipynb
+
 analysis/GNN_highz_all.ipynb
 analysis/GNN_highz_individual.ipynb
 analysis/summary_write.ipynb
-analysis/trim_sweep_local.ipynb
+analysis/summary_write.ipynb
+# paper_figures
+# analysis/SHAP_test.ipynb
+analysis/visualize_pytorch.ipynb
 .ipynb_checkpoints
 .vscode
 adversarial_examples
+transform
+data/*.ipynb
+data/data_z_old.py
+data/data_load.py
+train_loop/lr_schedule_test.ipynb
+data_selection

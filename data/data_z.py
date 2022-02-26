@@ -6,6 +6,10 @@ import pandas as pd
 from tqdm import tqdm
 import os.path as osp
 
+ #############################################################################
+ ## This is the new version that takes merger, early and premerger halos, ####
+ #############################################################################
+
 def convert(d,p):
     dfin=[]
     if len(p)!=len(np.unique(p)):
