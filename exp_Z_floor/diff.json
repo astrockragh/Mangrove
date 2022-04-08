@@ -1,0 +1,2 @@
+{  "batch_size": [256,512],
+"decode_layers": [2,3]}

@@ -1,0 +1,1156 @@
+Starting process with 6 experiments
+{'conv_layers': [1, 2, 3], 'batch_size': [256, 512]}
+Exploring ['conv_layers', 'batch_size']
+Currently doing [  1 256]
+{'experiment': 'GraphMerge', 'group': 'meta_pysr', 'move': False, 'model': 'MetaEdge', 'log': True, 'run_params': {'n_epochs': 500, 'n_trials': 1, 'batch_size': 256, 'val_epoch': 2, 'early_stopping': True, 'patience': 20, 'l1_lambda': 0.0001, 'l2_lambda': 0.0001, 'loss_func': 'GaussNd', 'metrics': 'test_multi_varrho', 'performance_plot': 'multi_base', 'save': True, 'seed': True, 'num_workers': 4}, 'learn_params': {'learning_rate': 0.01, 'schedule': 'onecycle', 'g_up': 1, 'g_down': 0.95, 'warmup': 4, 'period': 5, 'eta_min': 1e-05}, 'hyper_params': {'hidden_channels': 128, 'conv_layers': 1, 'conv_activation': 'relu', 'decode_activation': 'leakyrelu', 'decode_layers': 2, 'layernorm': True, 'agg': 'sum', 'variance': True, 'rho': 0}, 'data_params': {'case': 'vlarge_all_4t_z0.0_quantile_raw', 'targets': [0, 1, 2, 3], 'del_feats': [], 'split': 0.8, 'test': 0, 'scale': 0}, 'experiment_name': 'con1bat256'}
+/home/cj1223/../../scratch/gpfs/cj1223/GraphResults/results_meta_pysr_120322/MetaEdge_vlarge_all_4t_z0.0_quantile_raw_wdqutk
+RelU conv activation
+LeakyRelU decode activation
+N_params 298056
+Made folder for saving model
+  0%|          | 0/500 [00:00<?, ?it/s]  0%|          | 1/500 [00:31<4:20:46, 31.36s/it]  0%|          | 2/500 [01:19<5:43:58, 41.44s/it]Epoch: 2 done with learning rate 4.17E-04, Train loss: 1.27E+07, Train scatter: [0.9352 0.1669 0.5441 0.9954]
+L1 regularization loss: 1.52E+00, L2 regularization loss: 3.31E-01
+Test scatter: [0.9196 0.166  0.5355 0.9851], Lowest was [0.9196 0.166  0.5355 0.9851]
+Median for last 10 epochs: [0.9196 0.166  0.5355 0.9851], Epochs since improvement 2
+  1%|          | 3/500 [01:51<5:04:30, 36.76s/it]  1%|          | 4/500 [02:39<5:43:10, 41.51s/it]Epoch: 4 done with learning rate 4.67E-04, Train loss: 6.43E+06, Train scatter: [0.9352 0.148  0.544  0.9954]
+L1 regularization loss: 1.53E+00, L2 regularization loss: 3.54E-01
+Test scatter: [0.9197 0.148  0.5354 0.985 ], Lowest was [0.9196 0.148  0.5354 0.985 ]
+Median for last 10 epochs: [0.9196 0.148  0.5354 0.985 ], Epochs since improvement 0
+  1%|          | 5/500 [03:11<5:11:47, 37.79s/it]  1%|          | 6/500 [03:59<5:41:57, 41.53s/it]Epoch: 6 done with learning rate 5.51E-04, Train loss: 4.89E+06, Train scatter: [0.933  0.1134 0.5409 0.6602]
+L1 regularization loss: 1.57E+00, L2 regularization loss: 3.90E-01
+Test scatter: [0.9174 0.1138 0.5324 0.6508], Lowest was [0.9174 0.1138 0.5324 0.6508]
+Median for last 10 epochs: [0.9174 0.1138 0.5324 0.6508], Epochs since improvement 0
+  1%|▏         | 7/500 [04:31<5:13:56, 38.21s/it]  2%|▏         | 8/500 [05:19<5:40:22, 41.51s/it]Epoch: 8 done with learning rate 6.67E-04, Train loss: 3.98E+06, Train scatter: [0.9143 0.0972 0.5325 0.5938]
+L1 regularization loss: 1.59E+00, L2 regularization loss: 4.01E-01
+Test scatter: [0.9013 0.0967 0.5245 0.5962], Lowest was [0.9013 0.0967 0.5245 0.5962]
+Median for last 10 epochs: [0.9094 0.1052 0.5285 0.6235], Epochs since improvement 0
+  2%|▏         | 9/500 [05:51<5:13:43, 38.34s/it]Epoch: 10 done with learning rate 8.15E-04, Train loss: 3.34E+06, Train scatter: [0.7471 0.0901 0.5191 0.568 ]
+L1 regularization loss: 1.60E+00, L2 regularization loss: 4.10E-01
+Test scatter: [0.7411 0.0901 0.5114 0.5668], Lowest was [0.7411 0.0901 0.5114 0.5668]
+Median for last 10 epochs: [0.9013 0.0967 0.5245 0.5962], Epochs since improvement 0
+  2%|▏         | 10/500 [06:45<5:53:31, 43.29s/it]  2%|▏         | 11/500 [07:16<5:22:56, 39.62s/it]  2%|▏         | 12/500 [08:05<5:45:23, 42.47s/it]Epoch: 12 done with learning rate 9.94E-04, Train loss: 2.08E+06, Train scatter: [0.6561 0.0914 0.3928 0.5966]
+L1 regularization loss: 1.62E+00, L2 regularization loss: 4.19E-01
+Test scatter: [0.6602 0.0945 0.3934 0.6023], Lowest was [0.6602 0.0901 0.3934 0.5668]
+Median for last 10 epochs: [0.9013 0.0967 0.5245 0.6023], Epochs since improvement 0
+  3%|▎         | 13/500 [08:37<5:17:12, 39.08s/it]  3%|▎         | 14/500 [09:26<5:41:30, 42.16s/it]Epoch: 14 done with learning rate 1.20E-03, Train loss: 1.39E+06, Train scatter: [0.6514 0.0884 0.3452 0.5935]
+L1 regularization loss: 1.63E+00, L2 regularization loss: 4.27E-01
+Test scatter: [0.6159 0.0907 0.3513 0.597 ], Lowest was [0.6159 0.0901 0.3513 0.5668]
+Median for last 10 epochs: [0.7411 0.0945 0.5114 0.597 ], Epochs since improvement 0
+  3%|▎         | 15/500 [09:57<5:14:06, 38.86s/it]  3%|▎         | 16/500 [10:46<5:37:29, 41.84s/it]Epoch: 16 done with learning rate 1.44E-03, Train loss: 1.07E+06, Train scatter: [0.5938 0.0885 0.3335 0.5947]
+L1 regularization loss: 1.65E+00, L2 regularization loss: 4.37E-01
+Test scatter: [0.5786 0.0918 0.3398 0.6004], Lowest was [0.5786 0.0901 0.3398 0.5668]
+Median for last 10 epochs: [0.6602 0.0918 0.3934 0.597 ], Epochs since improvement 0
+  3%|▎         | 17/500 [11:17<5:11:14, 38.66s/it]  4%|▎         | 18/500 [12:06<5:35:45, 41.80s/it]Epoch: 18 done with learning rate 1.70E-03, Train loss: 9.30E+05, Train scatter: [0.4914 0.0829 0.3204 0.571 ]
+L1 regularization loss: 1.68E+00, L2 regularization loss: 4.47E-01
+Test scatter: [0.4846 0.0841 0.323  0.5734], Lowest was [0.4846 0.0841 0.323  0.5668]
+Median for last 10 epochs: [0.6159 0.0907 0.3513 0.597 ], Epochs since improvement 0
+  4%|▍         | 19/500 [12:37<5:09:38, 38.62s/it]Epoch: 20 done with learning rate 1.99E-03, Train loss: 8.01E+05, Train scatter: [0.6191 0.0815 0.315  0.5477]
+L1 regularization loss: 1.70E+00, L2 regularization loss: 4.56E-01
+Test scatter: [0.5772 0.0824 0.3192 0.5462], Lowest was [0.4846 0.0824 0.3192 0.5462]
+Median for last 10 epochs: [0.5786 0.0907 0.3398 0.597 ], Epochs since improvement 0
+  4%|▍         | 20/500 [13:32<5:46:06, 43.26s/it]  4%|▍         | 21/500 [14:03<5:16:32, 39.65s/it]  4%|▍         | 22/500 [14:51<5:37:35, 42.37s/it]Epoch: 22 done with learning rate 2.30E-03, Train loss: 7.31E+05, Train scatter: [0.5201 0.08   0.3122 0.5635]
+L1 regularization loss: 1.74E+00, L2 regularization loss: 4.71E-01
+Test scatter: [0.5225 0.082  0.3201 0.5657], Lowest was [0.4846 0.082  0.3192 0.5462]
+Median for last 10 epochs: [0.5772 0.0841 0.323  0.5734], Epochs since improvement 0
+  5%|▍         | 23/500 [15:23<5:10:18, 39.03s/it]  5%|▍         | 24/500 [16:12<5:33:31, 42.04s/it]Epoch: 24 done with learning rate 2.63E-03, Train loss: 6.48E+05, Train scatter: [0.4845 0.0799 0.3042 0.5484]
+L1 regularization loss: 1.77E+00, L2 regularization loss: 4.89E-01
+Test scatter: [0.4791 0.0823 0.3139 0.546 ], Lowest was [0.4791 0.082  0.3139 0.546 ]
+Median for last 10 epochs: [0.5225 0.0824 0.3201 0.5657], Epochs since improvement 0
+  5%|▌         | 25/500 [16:43<5:07:05, 38.79s/it]  5%|▌         | 26/500 [17:32<5:29:59, 41.77s/it]Epoch: 26 done with learning rate 2.98E-03, Train loss: 6.31E+05, Train scatter: [0.4575 0.0781 0.3037 0.5331]
+L1 regularization loss: 1.83E+00, L2 regularization loss: 5.13E-01
+Test scatter: [0.4498 0.0797 0.3072 0.5288], Lowest was [0.4498 0.0797 0.3072 0.5288]
+Median for last 10 epochs: [0.4846 0.0823 0.3192 0.5462], Epochs since improvement 0
+  5%|▌         | 27/500 [18:03<5:04:18, 38.60s/it]  6%|▌         | 28/500 [18:52<5:28:11, 41.72s/it]Epoch: 28 done with learning rate 3.34E-03, Train loss: 5.44E+05, Train scatter: [0.4974 0.0791 0.2946 0.5366]
+L1 regularization loss: 1.88E+00, L2 regularization loss: 5.37E-01
+Test scatter: [0.495  0.0817 0.3033 0.54  ], Lowest was [0.4498 0.0797 0.3033 0.5288]
+Median for last 10 epochs: [0.495  0.082  0.3139 0.546 ], Epochs since improvement 0
+  6%|▌         | 29/500 [19:23<5:02:31, 38.54s/it]Epoch: 30 done with learning rate 3.72E-03, Train loss: 5.99E+05, Train scatter: [0.4422 0.0797 0.3542 0.5207]
+L1 regularization loss: 1.91E+00, L2 regularization loss: 5.63E-01
+Test scatter: [0.453  0.0811 0.3569 0.5195], Lowest was [0.4498 0.0797 0.3033 0.5195]
+Median for last 10 epochs: [0.4791 0.0817 0.3139 0.54  ], Epochs since improvement 0
+  6%|▌         | 30/500 [20:17<5:38:32, 43.22s/it]  6%|▌         | 31/500 [20:48<5:09:47, 39.63s/it]  6%|▋         | 32/500 [21:37<5:30:57, 42.43s/it]Epoch: 32 done with learning rate 4.10E-03, Train loss: 4.68E+05, Train scatter: [0.4333 0.0752 0.2817 0.5035]
+L1 regularization loss: 1.96E+00, L2 regularization loss: 5.94E-01
+Test scatter: [0.4674 0.0762 0.289  0.4999], Lowest was [0.4498 0.0762 0.289  0.4999]
+Median for last 10 epochs: [0.4674 0.0811 0.3072 0.5288], Epochs since improvement 0
+  7%|▋         | 33/500 [22:09<5:04:11, 39.08s/it]  7%|▋         | 34/500 [22:57<5:26:07, 41.99s/it]Epoch: 34 done with learning rate 4.50E-03, Train loss: 3.75E+05, Train scatter: [0.4767 0.074  0.3498 0.5133]
+L1 regularization loss: 1.99E+00, L2 regularization loss: 6.21E-01
+Test scatter: [0.5101 0.0762 0.3684 0.5133], Lowest was [0.4498 0.0762 0.289  0.4999]
+Median for last 10 epochs: [0.4674 0.0797 0.3072 0.5195], Epochs since improvement 2
+  7%|▋         | 35/500 [23:29<5:00:27, 38.77s/it]  7%|▋         | 36/500 [24:18<5:23:40, 41.85s/it]Epoch: 36 done with learning rate 4.90E-03, Train loss: 2.80E+05, Train scatter: [0.4093 0.0717 0.2802 0.4938]
+L1 regularization loss: 2.02E+00, L2 regularization loss: 6.48E-01
+Test scatter: [0.408  0.0725 0.2885 0.4892], Lowest was [0.408  0.0725 0.2885 0.4892]
+Median for last 10 epochs: [0.4674 0.0762 0.3033 0.5133], Epochs since improvement 0
+  7%|▋         | 37/500 [24:49<4:58:21, 38.66s/it]  8%|▊         | 38/500 [25:38<5:22:26, 41.88s/it]Epoch: 38 done with learning rate 5.30E-03, Train loss: 2.28E+05, Train scatter: [0.3768 0.0712 0.291  0.4929]
+L1 regularization loss: 2.05E+00, L2 regularization loss: 6.76E-01
+Test scatter: [0.3961 0.0722 0.2977 0.4894], Lowest was [0.3961 0.0722 0.2885 0.4892]
+Median for last 10 epochs: [0.453  0.0762 0.2977 0.4999], Epochs since improvement 0
+  8%|▊         | 39/500 [26:09<4:57:02, 38.66s/it]Epoch: 40 done with learning rate 5.70E-03, Train loss: 1.15E+04, Train scatter: [0.3748 0.0656 0.2625 0.4745]
+L1 regularization loss: 2.08E+00, L2 regularization loss: 7.06E-01
+Test scatter: [0.3697 0.0672 0.2728 0.4731], Lowest was [0.3697 0.0672 0.2728 0.4731]
+Median for last 10 epochs: [0.408  0.0725 0.289  0.4894], Epochs since improvement 0
+  8%|▊         | 40/500 [27:04<5:32:48, 43.41s/it]  8%|▊         | 41/500 [27:35<5:04:10, 39.76s/it]  8%|▊         | 42/500 [28:24<5:25:08, 42.60s/it]Epoch: 42 done with learning rate 6.10E-03, Train loss: -2.66E+05, Train scatter: [0.4189 0.0624 0.2641 0.4725]
+L1 regularization loss: 2.13E+00, L2 regularization loss: 7.34E-01
+Test scatter: [0.4125 0.0636 0.273  0.4728], Lowest was [0.3697 0.0636 0.2728 0.4728]
+Median for last 10 epochs: [0.408  0.0722 0.2885 0.4892], Epochs since improvement 0
+  9%|▊         | 43/500 [28:56<4:58:39, 39.21s/it]  9%|▉         | 44/500 [29:44<5:18:56, 41.97s/it]Epoch: 44 done with learning rate 6.49E-03, Train loss: -2.83E+05, Train scatter: [0.4919 0.062  0.281  0.4863]
+L1 regularization loss: 2.15E+00, L2 regularization loss: 7.61E-01
+Test scatter: [0.4965 0.0638 0.2911 0.49  ], Lowest was [0.3697 0.0636 0.2728 0.4728]
+Median for last 10 epochs: [0.408  0.0672 0.2885 0.4892], Epochs since improvement 2
+  9%|▉         | 45/500 [30:15<4:53:57, 38.76s/it]  9%|▉         | 46/500 [31:05<5:18:01, 42.03s/it]Epoch: 46 done with learning rate 6.87E-03, Train loss: -2.86E+05, Train scatter: [0.4199 0.0597 0.265  0.4639]
+L1 regularization loss: 2.19E+00, L2 regularization loss: 7.94E-01
+Test scatter: [0.4185 0.0616 0.2765 0.4683], Lowest was [0.3697 0.0616 0.2728 0.4683]
+Median for last 10 epochs: [0.4125 0.0638 0.2765 0.4731], Epochs since improvement 0
+  9%|▉         | 47/500 [31:36<4:53:18, 38.85s/it] 10%|▉         | 48/500 [32:26<5:16:54, 42.07s/it]Epoch: 48 done with learning rate 7.24E-03, Train loss: -2.90E+05, Train scatter: [0.3468 0.0587 0.2718 0.4635]
+L1 regularization loss: 2.23E+00, L2 regularization loss: 8.26E-01
+Test scatter: [0.3514 0.0598 0.2833 0.4701], Lowest was [0.3514 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.4125 0.0636 0.2765 0.4728], Epochs since improvement 0
+ 10%|▉         | 49/500 [32:57<4:52:10, 38.87s/it]Epoch: 50 done with learning rate 7.60E-03, Train loss: -2.89E+05, Train scatter: [0.3555 0.061  0.2729 0.4724]
+L1 regularization loss: 2.27E+00, L2 regularization loss: 8.64E-01
+Test scatter: [0.3439 0.0621 0.2791 0.4772], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.4125 0.0621 0.2791 0.4728], Epochs since improvement 0
+ 10%|█         | 50/500 [33:52<5:26:21, 43.52s/it] 10%|█         | 51/500 [34:23<4:58:32, 39.89s/it] 10%|█         | 52/500 [35:13<5:18:53, 42.71s/it]Epoch: 52 done with learning rate 7.94E-03, Train loss: 2.14E+06, Train scatter: [0.9348 0.1714 0.5439 0.9952]
+L1 regularization loss: 3.47E+00, L2 regularization loss: 1.43E+00
+Test scatter: [0.9194 0.1676 0.5354 0.9849], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.4185 0.0621 0.2833 0.4772], Epochs since improvement 2
+ 11%|█         | 53/500 [35:44<4:52:33, 39.27s/it] 11%|█         | 54/500 [36:33<5:13:51, 42.22s/it]Epoch: 54 done with learning rate 8.26E-03, Train loss: 6.80E+05, Train scatter: [0.9352 0.1694 0.5431 0.9949]
+L1 regularization loss: 3.48E+00, L2 regularization loss: 1.47E+00
+Test scatter: [0.9198 0.1657 0.5345 0.9846], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.4185 0.0621 0.2833 0.4772], Epochs since improvement 4
+ 11%|█         | 55/500 [37:04<4:48:45, 38.93s/it] 11%|█         | 56/500 [37:53<5:10:44, 41.99s/it]Epoch: 56 done with learning rate 8.56E-03, Train loss: 4.72E+05, Train scatter: [0.9353 0.1508 0.5436 0.9943]
+L1 regularization loss: 3.48E+00, L2 regularization loss: 1.51E+00
+Test scatter: [0.9199 0.1477 0.5349 0.9839], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.9194 0.1477 0.5345 0.9839], Epochs since improvement 6
+ 11%|█▏        | 57/500 [38:25<4:46:51, 38.85s/it] 12%|█▏        | 58/500 [39:14<5:09:33, 42.02s/it]Epoch: 58 done with learning rate 8.83E-03, Train loss: 2.99E+05, Train scatter: [0.9347 0.1365 0.5431 0.9937]
+L1 regularization loss: 3.47E+00, L2 regularization loss: 1.59E+00
+Test scatter: [0.9193 0.1352 0.5345 0.9833], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.9194 0.1477 0.5345 0.9839], Epochs since improvement 8
+ 12%|█▏        | 59/500 [39:46<4:45:12, 38.80s/it]Epoch: 60 done with learning rate 9.08E-03, Train loss: 1.87E+05, Train scatter: [0.9332 0.1216 0.5177 0.9924]
+L1 regularization loss: 3.48E+00, L2 regularization loss: 1.71E+00
+Test scatter: [0.9179 0.1228 0.5018 0.982 ], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.9194 0.1477 0.5345 0.9839], Epochs since improvement 10
+ 12%|█▏        | 60/500 [40:40<5:18:41, 43.46s/it] 12%|█▏        | 61/500 [41:11<4:51:00, 39.77s/it] 12%|█▏        | 62/500 [42:01<5:11:57, 42.73s/it]Epoch: 62 done with learning rate 9.31E-03, Train loss: 1.02E+05, Train scatter: [0.9304 0.109  0.5354 0.9881]
+L1 regularization loss: 3.49E+00, L2 regularization loss: 1.76E+00
+Test scatter: [0.9151 0.1107 0.5271 0.9778], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.9193 0.1352 0.5345 0.9833], Epochs since improvement 12
+ 13%|█▎        | 63/500 [42:32<4:46:12, 39.30s/it] 13%|█▎        | 64/500 [43:21<5:06:55, 42.24s/it]Epoch: 64 done with learning rate 9.50E-03, Train loss: 4.35E+04, Train scatter: [0.9269 0.1003 0.5037 0.9662]
+L1 regularization loss: 3.51E+00, L2 regularization loss: 1.79E+00
+Test scatter: [0.9118 0.1023 0.5047 0.9563], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.9179 0.1228 0.5271 0.982 ], Epochs since improvement 14
+ 13%|█▎        | 65/500 [43:52<4:42:29, 38.96s/it] 13%|█▎        | 66/500 [44:42<5:05:24, 42.22s/it]Epoch: 66 done with learning rate 9.66E-03, Train loss: -1.48E+04, Train scatter: [0.9227 0.093  0.4677 0.6356]
+L1 regularization loss: 3.57E+00, L2 regularization loss: 1.91E+00
+Test scatter: [0.9077 0.0939 0.4693 0.632 ], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.9151 0.1107 0.5047 0.9778], Epochs since improvement 16
+ 13%|█▎        | 67/500 [45:13<4:40:55, 38.93s/it] 14%|█▎        | 68/500 [46:03<5:03:33, 42.16s/it]Epoch: 68 done with learning rate 9.80E-03, Train loss: -5.00E+04, Train scatter: [0.9144 0.0911 0.4287 0.6242]
+L1 regularization loss: 3.58E+00, L2 regularization loss: 1.96E+00
+Test scatter: [0.8995 0.0913 0.4269 0.6177], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.9118 0.1023 0.5018 0.9563], Epochs since improvement 18
+ 14%|█▍        | 69/500 [46:34<4:39:19, 38.89s/it]Epoch: 70 done with learning rate 9.90E-03, Train loss: 3.75E+04, Train scatter: [0.9    0.099  0.4404 0.6703]
+L1 regularization loss: 3.59E+00, L2 regularization loss: 2.04E+00
+Test scatter: [0.8864 0.0999 0.4416 0.6684], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.9077 0.0999 0.4693 0.6684], Epochs since improvement 20
+ 14%|█▍        | 70/500 [47:29<5:12:43, 43.64s/it] 14%|█▍        | 71/500 [48:00<4:45:36, 39.94s/it] 14%|█▍        | 71/500 [48:49<4:55:01, 41.26s/it]
+Epoch: 72 done with learning rate 9.96E-03, Train loss: -3.52E+04, Train scatter: [0.7703 0.0944 0.4425 0.6257]
+L1 regularization loss: 3.60E+00, L2 regularization loss: 2.15E+00
+Test scatter: [0.7628 0.0951 0.4422 0.6296], Lowest was [0.3439 0.0598 0.2728 0.4683]
+Median for last 10 epochs: [0.8995 0.0951 0.4422 0.632 ], Epochs since improvement 22
+Exited after 72 epochs due to early stopping
+2929.72 seconds spent training, 5.859 seconds per epoch. Processed 11884 trees per second
+[0.7627521  0.09506038 0.44219217 0.6296162 ]
+{'epoch_exit': 71, 'scatter_m_star': 0.7627521, 'lowest_m_star': 0.34392864, 'last20_m_star': 0.9134518, 'last10_m_star': 0.8994687, 'scatter_v_disk': 0.09506038, 'lowest_v_disk': 0.059830144, 'last20_v_disk': 0.10653026, 'last10_v_disk': 0.09506335, 'scatter_m_cold': 0.44219217, 'lowest_m_cold': 0.2728465, 'last20_m_cold': 0.5032313, 'last10_m_cold': 0.44220507, 'scatter_sfr_100': 0.6296162, 'lowest_sfr_100': 0.46832573, 'last20_sfr_100': 0.96705616, 'last10_sfr_100': 0.6320222}
+Finished 1/1
+Exited training after None epochs
+Experiment 1 done: 1 / 6
+Exploring ['conv_layers', 'batch_size']
+Currently doing [  1 512]
+{'experiment': 'GraphMerge', 'group': 'meta_pysr', 'move': False, 'model': 'MetaEdge', 'log': True, 'run_params': {'n_epochs': 500, 'n_trials': 1, 'batch_size': 512, 'val_epoch': 2, 'early_stopping': True, 'patience': 20, 'l1_lambda': 0.0001, 'l2_lambda': 0.0001, 'loss_func': 'GaussNd', 'metrics': 'test_multi_varrho', 'performance_plot': 'multi_base', 'save': True, 'seed': True, 'num_workers': 4}, 'learn_params': {'learning_rate': 0.01, 'schedule': 'onecycle', 'g_up': 1, 'g_down': 0.95, 'warmup': 4, 'period': 5, 'eta_min': 1e-05}, 'hyper_params': {'hidden_channels': 128, 'conv_layers': 1, 'conv_activation': 'relu', 'decode_activation': 'leakyrelu', 'decode_layers': 2, 'layernorm': True, 'agg': 'sum', 'variance': True, 'rho': 0, 'in_channels': 43, 'out_channels': 4}, 'data_params': {'case': 'vlarge_all_4t_z0.0_quantile_raw', 'targets': [0, 1, 2, 3], 'del_feats': [], 'split': 0.8, 'test': 0, 'scale': 0}, 'experiment_name': 'con1bat512'}
+/home/cj1223/../../scratch/gpfs/cj1223/GraphResults/results_meta_pysr_120322/MetaEdge_vlarge_all_4t_z0.0_quantile_raw_quoqlu
+RelU conv activation
+LeakyRelU decode activation
+N_params 298056
+Made folder for saving model
+  0%|          | 0/500 [00:00<?, ?it/s]  0%|          | 1/500 [00:28<3:55:10, 28.28s/it]  0%|          | 2/500 [01:12<5:13:40, 37.79s/it]Epoch: 2 done with learning rate 4.17E-04, Train loss: 2.36E+07, Train scatter: [0.9353 0.1639 0.5442 0.9954]
+L1 regularization loss: 1.51E+00, L2 regularization loss: 3.26E-01
+Test scatter: [0.9197 0.1661 0.5356 0.9851], Lowest was [0.9197 0.1661 0.5356 0.9851]
+Median for last 10 epochs: [0.9197 0.1661 0.5356 0.9851], Epochs since improvement 2
+  1%|          | 3/500 [01:40<4:33:35, 33.03s/it]  1%|          | 4/500 [02:26<5:15:25, 38.16s/it]Epoch: 4 done with learning rate 4.67E-04, Train loss: 1.19E+07, Train scatter: [0.9353 0.177  0.5441 0.9954]
+L1 regularization loss: 1.52E+00, L2 regularization loss: 3.32E-01
+Test scatter: [0.9197 0.1784 0.5355 0.9851], Lowest was [0.9197 0.1661 0.5355 0.9851]
+Median for last 10 epochs: [0.9197 0.1723 0.5355 0.9851], Epochs since improvement 0
+  1%|          | 5/500 [02:53<4:42:23, 34.23s/it]  1%|          | 6/500 [03:39<5:13:48, 38.11s/it]Epoch: 6 done with learning rate 5.51E-04, Train loss: 9.51E+06, Train scatter: [0.9352 0.1712 0.5441 0.9954]
+L1 regularization loss: 1.54E+00, L2 regularization loss: 3.44E-01
+Test scatter: [0.9196 0.167  0.5356 0.9851], Lowest was [0.9196 0.1661 0.5355 0.9851]
+Median for last 10 epochs: [0.9196 0.167  0.5355 0.9851], Epochs since improvement 0
+  1%|▏         | 7/500 [04:06<4:44:14, 34.59s/it]  2%|▏         | 8/500 [04:52<5:13:40, 38.25s/it]Epoch: 8 done with learning rate 6.67E-04, Train loss: 8.52E+06, Train scatter: [0.9352 0.1519 0.5441 0.9951]
+L1 regularization loss: 1.55E+00, L2 regularization loss: 3.65E-01
+Test scatter: [0.9196 0.1453 0.5355 0.9847], Lowest was [0.9196 0.1453 0.5355 0.9847]
+Median for last 10 epochs: [0.9196 0.1561 0.5355 0.9849], Epochs since improvement 0
+  2%|▏         | 9/500 [05:19<4:45:03, 34.83s/it]Epoch: 10 done with learning rate 8.15E-04, Train loss: 8.00E+06, Train scatter: [0.9351 0.1386 0.5441 0.7149]
+L1 regularization loss: 1.58E+00, L2 regularization loss: 3.93E-01
+Test scatter: [0.9194 0.134  0.5355 0.7277], Lowest was [0.9194 0.134  0.5355 0.7277]
+Median for last 10 epochs: [0.9196 0.1453 0.5355 0.9847], Epochs since improvement 0
+  2%|▏         | 10/500 [06:10<5:25:31, 39.86s/it]  2%|▏         | 11/500 [06:38<4:54:16, 36.11s/it]  2%|▏         | 12/500 [07:23<5:16:08, 38.87s/it]Epoch: 12 done with learning rate 9.94E-04, Train loss: 7.43E+06, Train scatter: [0.9326 0.1237 0.544  0.6819]
+L1 regularization loss: 1.60E+00, L2 regularization loss: 4.05E-01
+Test scatter: [0.9169 0.1195 0.5354 0.6719], Lowest was [0.9169 0.1195 0.5354 0.6719]
+Median for last 10 epochs: [0.9196 0.1453 0.5355 0.9847], Epochs since improvement 0
+  3%|▎         | 13/500 [07:51<4:47:26, 35.41s/it]  3%|▎         | 14/500 [08:37<5:12:35, 38.59s/it]Epoch: 14 done with learning rate 1.20E-03, Train loss: 6.73E+06, Train scatter: [0.9037 0.1151 0.543  0.6277]
+L1 regularization loss: 1.61E+00, L2 regularization loss: 4.13E-01
+Test scatter: [0.8873 0.1104 0.5344 0.6127], Lowest was [0.8873 0.1104 0.5344 0.6127]
+Median for last 10 epochs: [0.9194 0.134  0.5355 0.7277], Epochs since improvement 0
+  3%|▎         | 15/500 [09:04<4:44:51, 35.24s/it]  3%|▎         | 16/500 [09:49<5:08:09, 38.20s/it]Epoch: 16 done with learning rate 1.44E-03, Train loss: 6.12E+06, Train scatter: [0.7023 0.1091 0.5402 0.6034]
+L1 regularization loss: 1.62E+00, L2 regularization loss: 4.23E-01
+Test scatter: [0.6933 0.1058 0.5316 0.595 ], Lowest was [0.6933 0.1058 0.5316 0.595 ]
+Median for last 10 epochs: [0.9169 0.1195 0.5354 0.6719], Epochs since improvement 0
+  3%|▎         | 17/500 [10:17<4:41:36, 34.98s/it]  4%|▎         | 18/500 [11:02<5:06:07, 38.11s/it]Epoch: 18 done with learning rate 1.70E-03, Train loss: 5.67E+06, Train scatter: [0.5442 0.1034 0.5367 0.5773]
+L1 regularization loss: 1.64E+00, L2 regularization loss: 4.34E-01
+Test scatter: [0.5388 0.1011 0.5281 0.5696], Lowest was [0.5388 0.1011 0.5281 0.5696]
+Median for last 10 epochs: [0.8873 0.1104 0.5344 0.6127], Epochs since improvement 0
+  4%|▍         | 19/500 [11:30<4:40:02, 34.93s/it]Epoch: 20 done with learning rate 1.99E-03, Train loss: 5.35E+06, Train scatter: [0.4938 0.0989 0.5331 0.5635]
+L1 regularization loss: 1.66E+00, L2 regularization loss: 4.43E-01
+Test scatter: [0.4864 0.0969 0.5246 0.5572], Lowest was [0.4864 0.0969 0.5246 0.5572]
+Median for last 10 epochs: [0.6933 0.1058 0.5316 0.595 ], Epochs since improvement 0
+  4%|▍         | 20/500 [12:20<5:17:15, 39.66s/it]  4%|▍         | 21/500 [12:48<4:47:38, 36.03s/it]  4%|▍         | 22/500 [13:34<5:11:54, 39.15s/it]Epoch: 22 done with learning rate 2.30E-03, Train loss: 4.98E+06, Train scatter: [0.5208 0.0957 0.5302 0.6174]
+L1 regularization loss: 1.67E+00, L2 regularization loss: 4.52E-01
+Test scatter: [0.5203 0.0939 0.521  0.6149], Lowest was [0.4864 0.0939 0.521  0.5572]
+Median for last 10 epochs: [0.5388 0.1011 0.5281 0.595 ], Epochs since improvement 0
+  5%|▍         | 23/500 [14:02<4:43:49, 35.70s/it]  5%|▍         | 24/500 [14:48<5:07:30, 38.76s/it]Epoch: 24 done with learning rate 2.63E-03, Train loss: 4.15E+06, Train scatter: [0.5576 0.0942 0.5126 0.6271]
+L1 regularization loss: 1.68E+00, L2 regularization loss: 4.63E-01
+Test scatter: [0.5854 0.0941 0.505  0.628 ], Lowest was [0.4864 0.0939 0.505  0.5572]
+Median for last 10 epochs: [0.5388 0.0969 0.5246 0.595 ], Epochs since improvement 0
+  5%|▌         | 25/500 [15:15<4:40:21, 35.41s/it]  5%|▌         | 26/500 [16:01<5:04:44, 38.58s/it]Epoch: 26 done with learning rate 2.98E-03, Train loss: 3.85E+06, Train scatter: [0.658  0.1457 0.5415 0.7809]
+L1 regularization loss: 1.71E+00, L2 regularization loss: 4.73E-01
+Test scatter: [0.6474 0.1403 0.5333 0.7725], Lowest was [0.4864 0.0939 0.505  0.5572]
+Median for last 10 epochs: [0.5388 0.0969 0.5246 0.6149], Epochs since improvement 2
+  5%|▌         | 27/500 [16:29<4:38:05, 35.28s/it]  6%|▌         | 28/500 [17:15<5:02:23, 38.44s/it]Epoch: 28 done with learning rate 3.34E-03, Train loss: 3.94E+06, Train scatter: [0.5595 0.1138 0.522  0.7022]
+L1 regularization loss: 1.72E+00, L2 regularization loss: 4.80E-01
+Test scatter: [0.5761 0.1134 0.5146 0.7121], Lowest was [0.4864 0.0939 0.505  0.5572]
+Median for last 10 epochs: [0.5761 0.0969 0.521  0.628 ], Epochs since improvement 4
+  6%|▌         | 29/500 [17:42<4:35:46, 35.13s/it]Epoch: 30 done with learning rate 3.72E-03, Train loss: 2.66E+06, Train scatter: [0.5619 0.0936 0.3833 0.6022]
+L1 regularization loss: 1.74E+00, L2 regularization loss: 4.91E-01
+Test scatter: [0.5908 0.0976 0.389  0.5963], Lowest was [0.4864 0.0939 0.389  0.5572]
+Median for last 10 epochs: [0.5854 0.0976 0.5146 0.628 ], Epochs since improvement 0
+  6%|▌         | 30/500 [18:33<5:12:54, 39.95s/it]  6%|▌         | 31/500 [19:01<4:43:35, 36.28s/it]  6%|▋         | 32/500 [19:48<5:07:04, 39.37s/it]Epoch: 32 done with learning rate 4.10E-03, Train loss: 1.99E+06, Train scatter: [0.5003 0.0909 0.3585 0.5668]
+L1 regularization loss: 1.76E+00, L2 regularization loss: 5.00E-01
+Test scatter: [0.5268 0.0956 0.3675 0.5662], Lowest was [0.4864 0.0939 0.3675 0.5572]
+Median for last 10 epochs: [0.5854 0.0976 0.505  0.628 ], Epochs since improvement 0
+  7%|▋         | 33/500 [20:15<4:38:35, 35.79s/it]  7%|▋         | 34/500 [21:01<5:02:43, 38.98s/it]Epoch: 34 done with learning rate 4.50E-03, Train loss: 1.70E+06, Train scatter: [0.4615 0.0867 0.3374 0.5383]
+L1 regularization loss: 1.79E+00, L2 regularization loss: 5.16E-01
+Test scatter: [0.4605 0.0886 0.3412 0.5361], Lowest was [0.4605 0.0886 0.3412 0.5361]
+Median for last 10 epochs: [0.5761 0.0976 0.389  0.5963], Epochs since improvement 0
+  7%|▋         | 35/500 [21:29<4:35:24, 35.54s/it]  7%|▋         | 36/500 [22:15<4:59:52, 38.78s/it]Epoch: 36 done with learning rate 4.90E-03, Train loss: 1.56E+06, Train scatter: [0.4809 0.0859 0.3379 0.5449]
+L1 regularization loss: 1.82E+00, L2 regularization loss: 5.33E-01
+Test scatter: [0.4737 0.0857 0.3443 0.538 ], Lowest was [0.4605 0.0857 0.3412 0.5361]
+Median for last 10 epochs: [0.5268 0.0956 0.3675 0.5662], Epochs since improvement 0
+  7%|▋         | 37/500 [22:43<4:33:12, 35.40s/it]  8%|▊         | 38/500 [23:29<4:57:58, 38.70s/it]Epoch: 38 done with learning rate 5.30E-03, Train loss: 1.49E+06, Train scatter: [0.4276 0.083  0.3324 0.5293]
+L1 regularization loss: 1.85E+00, L2 regularization loss: 5.53E-01
+Test scatter: [0.4333 0.0835 0.335  0.5261], Lowest was [0.4333 0.0835 0.335  0.5261]
+Median for last 10 epochs: [0.4737 0.0886 0.3443 0.538 ], Epochs since improvement 0
+  8%|▊         | 39/500 [23:57<4:31:31, 35.34s/it]Epoch: 40 done with learning rate 5.70E-03, Train loss: 1.22E+06, Train scatter: [0.4488 0.0819 0.3115 0.5175]
+L1 regularization loss: 1.88E+00, L2 regularization loss: 5.69E-01
+Test scatter: [0.4604 0.0842 0.3163 0.5178], Lowest was [0.4333 0.0835 0.3163 0.5178]
+Median for last 10 epochs: [0.4605 0.0857 0.3412 0.5361], Epochs since improvement 0
+  8%|▊         | 40/500 [24:49<5:09:34, 40.38s/it]  8%|▊         | 41/500 [25:16<4:39:25, 36.53s/it]  8%|▊         | 42/500 [26:04<5:04:44, 39.92s/it]Epoch: 42 done with learning rate 6.10E-03, Train loss: 1.12E+06, Train scatter: [0.4149 0.0817 0.3122 0.5354]
+L1 regularization loss: 1.91E+00, L2 regularization loss: 5.90E-01
+Test scatter: [0.4215 0.0827 0.3206 0.539 ], Lowest was [0.4215 0.0827 0.3163 0.5178]
+Median for last 10 epochs: [0.4604 0.0842 0.335  0.5361], Epochs since improvement 0
+  9%|▊         | 43/500 [26:32<4:35:30, 36.17s/it]  9%|▉         | 44/500 [27:18<4:57:44, 39.18s/it]Epoch: 44 done with learning rate 6.49E-03, Train loss: 1.32E+06, Train scatter: [0.3333 0.0853 0.3525 0.5375]
+L1 regularization loss: 1.95E+00, L2 regularization loss: 6.13E-01
+Test scatter: [0.4479 0.0877 0.3516 0.5359], Lowest was [0.4215 0.0827 0.3163 0.5178]
+Median for last 10 epochs: [0.4479 0.0842 0.335  0.5359], Epochs since improvement 2
+  9%|▉         | 45/500 [27:45<4:30:22, 35.65s/it]  9%|▉         | 46/500 [28:33<4:56:20, 39.16s/it]Epoch: 46 done with learning rate 6.87E-03, Train loss: 1.08E+06, Train scatter: [0.3587 0.079  0.3018 0.5175]
+L1 regularization loss: 1.98E+00, L2 regularization loss: 6.34E-01
+Test scatter: [0.362  0.0793 0.3088 0.5163], Lowest was [0.362  0.0793 0.3088 0.5163]
+Median for last 10 epochs: [0.4333 0.0835 0.3206 0.5261], Epochs since improvement 0
+  9%|▉         | 47/500 [29:00<4:29:16, 35.67s/it] 10%|▉         | 48/500 [29:47<4:53:25, 38.95s/it]Epoch: 48 done with learning rate 7.24E-03, Train loss: 1.03E+06, Train scatter: [0.2995 0.0817 0.2971 0.5252]
+L1 regularization loss: 2.01E+00, L2 regularization loss: 6.58E-01
+Test scatter: [0.3122 0.0854 0.3106 0.5296], Lowest was [0.3122 0.0793 0.3088 0.5163]
+Median for last 10 epochs: [0.4215 0.0842 0.3163 0.5296], Epochs since improvement 0
+ 10%|▉         | 49/500 [30:14<4:26:48, 35.49s/it]Epoch: 50 done with learning rate 7.60E-03, Train loss: 9.41E+05, Train scatter: [0.3443 0.0803 0.3073 0.5216]
+L1 regularization loss: 2.03E+00, L2 regularization loss: 6.76E-01
+Test scatter: [0.3578 0.081  0.3146 0.522 ], Lowest was [0.3122 0.0793 0.3088 0.5163]
+Median for last 10 epochs: [0.362  0.0827 0.3146 0.5296], Epochs since improvement 2
+ 10%|█         | 50/500 [31:06<5:03:15, 40.43s/it] 10%|█         | 51/500 [31:34<4:33:43, 36.58s/it] 10%|█         | 52/500 [32:21<4:55:56, 39.63s/it]Epoch: 52 done with learning rate 7.94E-03, Train loss: 9.26E+05, Train scatter: [0.2891 0.077  0.3004 0.5024]
+L1 regularization loss: 2.06E+00, L2 regularization loss: 6.96E-01
+Test scatter: [0.2981 0.078  0.3079 0.5018], Lowest was [0.2981 0.078  0.3079 0.5018]
+Median for last 10 epochs: [0.3578 0.081  0.3106 0.522 ], Epochs since improvement 0
+ 11%|█         | 53/500 [32:48<4:27:43, 35.94s/it] 11%|█         | 54/500 [33:35<4:51:19, 39.19s/it]Epoch: 54 done with learning rate 8.26E-03, Train loss: 2.36E+06, Train scatter: [0.2945 0.0773 0.3989 0.4983]
+L1 regularization loss: 2.09E+00, L2 regularization loss: 7.17E-01
+Test scatter: [0.3024 0.0776 0.3935 0.4942], Lowest was [0.2981 0.0776 0.3079 0.4942]
+Median for last 10 epochs: [0.3122 0.0793 0.3106 0.5163], Epochs since improvement 0
+ 11%|█         | 55/500 [34:02<4:24:41, 35.69s/it] 11%|█         | 56/500 [34:48<4:47:40, 38.87s/it]Epoch: 56 done with learning rate 8.56E-03, Train loss: 9.09E+05, Train scatter: [0.2718 0.0773 0.2826 0.4974]
+L1 regularization loss: 2.10E+00, L2 regularization loss: 7.34E-01
+Test scatter: [0.2822 0.0795 0.2948 0.4952], Lowest was [0.2822 0.0776 0.2948 0.4942]
+Median for last 10 epochs: [0.3024 0.0795 0.3106 0.5018], Epochs since improvement 0
+ 11%|█▏        | 57/500 [35:16<4:21:50, 35.46s/it] 12%|█▏        | 58/500 [36:03<4:47:39, 39.05s/it]Epoch: 58 done with learning rate 8.83E-03, Train loss: 8.90E+05, Train scatter: [0.2737 0.0763 0.2837 0.4943]
+L1 regularization loss: 2.13E+00, L2 regularization loss: 7.58E-01
+Test scatter: [0.2816 0.0779 0.2904 0.4972], Lowest was [0.2816 0.0776 0.2904 0.4942]
+Median for last 10 epochs: [0.2981 0.078  0.3079 0.4972], Epochs since improvement 0
+ 12%|█▏        | 59/500 [36:31<4:21:34, 35.59s/it]Epoch: 60 done with learning rate 9.08E-03, Train loss: 9.21E+05, Train scatter: [0.2843 0.0771 0.291  0.4978]
+L1 regularization loss: 2.15E+00, L2 regularization loss: 7.80E-01
+Test scatter: [0.2981 0.078  0.3014 0.5028], Lowest was [0.2816 0.0776 0.2904 0.4942]
+Median for last 10 epochs: [0.2981 0.078  0.3014 0.4972], Epochs since improvement 2
+ 12%|█▏        | 60/500 [37:23<4:56:52, 40.48s/it] 12%|█▏        | 61/500 [37:50<4:27:20, 36.54s/it] 12%|█▏        | 62/500 [38:37<4:48:19, 39.50s/it]Epoch: 62 done with learning rate 9.31E-03, Train loss: 7.26E+05, Train scatter: [0.3092 0.0744 0.2851 0.5122]
+L1 regularization loss: 2.16E+00, L2 regularization loss: 7.99E-01
+Test scatter: [0.3207 0.0748 0.2924 0.5086], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.2981 0.0779 0.2948 0.4972], Epochs since improvement 0
+ 13%|█▎        | 63/500 [39:04<4:21:18, 35.88s/it] 13%|█▎        | 64/500 [39:50<4:42:56, 38.94s/it]Epoch: 64 done with learning rate 9.50E-03, Train loss: 7.83E+05, Train scatter: [0.3113 0.0759 0.2914 0.5245]
+L1 regularization loss: 2.19E+00, L2 regularization loss: 8.23E-01
+Test scatter: [0.3235 0.0759 0.2989 0.5246], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.2981 0.0779 0.2948 0.5028], Epochs since improvement 2
+ 13%|█▎        | 65/500 [40:17<4:17:05, 35.46s/it] 13%|█▎        | 66/500 [41:04<4:40:14, 38.74s/it]Epoch: 66 done with learning rate 9.66E-03, Train loss: 1.40E+07, Train scatter: [0.9351 0.1727 0.5441 0.9955]
+L1 regularization loss: 4.03E+00, L2 regularization loss: 1.62E+00
+Test scatter: [0.9194 0.1689 0.5355 0.9851], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.3207 0.0779 0.2989 0.5086], Epochs since improvement 4
+ 13%|█▎        | 67/500 [41:31<4:15:17, 35.37s/it] 14%|█▎        | 68/500 [42:19<4:40:22, 38.94s/it]Epoch: 68 done with learning rate 9.80E-03, Train loss: 1.16E+07, Train scatter: [0.9351 0.1727 0.5441 0.9954]
+L1 regularization loss: 4.02E+00, L2 regularization loss: 1.62E+00
+Test scatter: [0.9194 0.1689 0.5355 0.9851], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.3235 0.078  0.3014 0.5246], Epochs since improvement 6
+ 14%|█▍        | 69/500 [42:46<4:14:53, 35.48s/it]Epoch: 70 done with learning rate 9.90E-03, Train loss: 1.00E+07, Train scatter: [0.9351 0.1727 0.5441 0.9954]
+L1 regularization loss: 4.01E+00, L2 regularization loss: 1.62E+00
+Test scatter: [0.9195 0.1689 0.5355 0.9851], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.9194 0.1689 0.5355 0.9851], Epochs since improvement 8
+ 14%|█▍        | 70/500 [43:40<4:54:19, 41.07s/it] 14%|█▍        | 71/500 [44:07<4:24:19, 36.97s/it] 14%|█▍        | 72/500 [44:53<4:42:21, 39.58s/it]Epoch: 72 done with learning rate 9.96E-03, Train loss: 8.54E+06, Train scatter: [0.9351 0.1727 0.5441 0.9954]
+L1 regularization loss: 4.00E+00, L2 regularization loss: 1.62E+00
+Test scatter: [0.9195 0.1689 0.5355 0.9851], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.9194 0.1689 0.5355 0.9851], Epochs since improvement 10
+ 15%|█▍        | 73/500 [45:21<4:15:46, 35.94s/it] 15%|█▍        | 74/500 [46:07<4:37:09, 39.04s/it]Epoch: 74 done with learning rate 1.00E-02, Train loss: 7.63E+06, Train scatter: [0.9351 0.1727 0.5441 0.9954]
+L1 regularization loss: 4.00E+00, L2 regularization loss: 1.62E+00
+Test scatter: [0.9195 0.1689 0.5355 0.9851], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.9195 0.1689 0.5355 0.9851], Epochs since improvement 12
+ 15%|█▌        | 75/500 [46:34<4:11:47, 35.55s/it] 15%|█▌        | 76/500 [47:22<4:36:34, 39.14s/it]Epoch: 76 done with learning rate 1.00E-02, Train loss: 6.63E+06, Train scatter: [0.9351 0.1727 0.5441 0.9954]
+L1 regularization loss: 4.00E+00, L2 regularization loss: 1.63E+00
+Test scatter: [0.9195 0.1689 0.5355 0.9851], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.9195 0.1689 0.5355 0.9851], Epochs since improvement 14
+ 15%|█▌        | 77/500 [47:49<4:10:51, 35.58s/it] 16%|█▌        | 78/500 [48:36<4:33:37, 38.90s/it]Epoch: 78 done with learning rate 1.00E-02, Train loss: 5.38E+06, Train scatter: [0.9351 0.1727 0.5441 0.9954]
+L1 regularization loss: 3.99E+00, L2 regularization loss: 1.64E+00
+Test scatter: [0.9195 0.1689 0.5355 0.9851], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.9195 0.1689 0.5355 0.9851], Epochs since improvement 16
+ 16%|█▌        | 79/500 [49:03<4:08:47, 35.46s/it]Epoch: 80 done with learning rate 1.00E-02, Train loss: 4.25E+06, Train scatter: [0.9351 0.1727 0.5441 0.9954]
+L1 regularization loss: 3.99E+00, L2 regularization loss: 1.67E+00
+Test scatter: [0.9195 0.1689 0.5355 0.9851], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.9195 0.1689 0.5355 0.9851], Epochs since improvement 18
+ 16%|█▌        | 80/500 [49:55<4:42:32, 40.36s/it] 16%|█▌        | 81/500 [50:22<4:14:39, 36.47s/it] 16%|█▋        | 82/500 [51:09<4:36:09, 39.64s/it]Epoch: 82 done with learning rate 9.99E-03, Train loss: 3.58E+06, Train scatter: [0.9351 0.1727 0.5441 0.9954]
+L1 regularization loss: 4.00E+00, L2 regularization loss: 1.71E+00
+Test scatter: [0.9195 0.1689 0.5355 0.9851], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.9195 0.1689 0.5355 0.9851], Epochs since improvement 20
+ 17%|█▋        | 83/500 [51:37<4:10:06, 35.99s/it] 17%|█▋        | 83/500 [52:23<4:23:13, 37.87s/it]
+Epoch: 84 done with learning rate 9.99E-03, Train loss: 3.19E+06, Train scatter: [0.9351 0.1727 0.5441 0.9954]
+L1 regularization loss: 4.00E+00, L2 regularization loss: 1.76E+00
+Test scatter: [0.9195 0.1689 0.5355 0.9851], Lowest was [0.2816 0.0748 0.2904 0.4942]
+Median for last 10 epochs: [0.9195 0.1689 0.5355 0.9851], Epochs since improvement 22
+Exited after 84 epochs due to early stopping
+3143.51 seconds spent training, 6.287 seconds per epoch. Processed 11076 trees per second
+[0.91949105 0.16889332 0.5354725  0.98504007]
+{'epoch_exit': 83, 'scatter_m_star': 0.91949105, 'lowest_m_star': 0.28164765, 'last20_m_star': 0.9194914, 'last10_m_star': 0.9195123, 'scatter_v_disk': 0.16889332, 'lowest_v_disk': 0.07475756, 'last20_v_disk': 0.1689148, 'last10_v_disk': 0.16891111, 'scatter_m_cold': 0.5354725, 'lowest_m_cold': 0.2903814, 'last20_m_cold': 0.53548765, 'last10_m_cold': 0.53548753, 'scatter_sfr_100': 0.98504007, 'lowest_sfr_100': 0.49417365, 'last20_sfr_100': 0.98506963, 'last10_sfr_100': 0.98507077}
+Finished 1/1
+Exited training after None epochs
+Experiment 2 done: 2 / 6
+Exploring ['conv_layers', 'batch_size']
+Currently doing [  2 256]
+{'experiment': 'GraphMerge', 'group': 'meta_pysr', 'move': False, 'model': 'MetaEdge', 'log': True, 'run_params': {'n_epochs': 500, 'n_trials': 1, 'batch_size': 256, 'val_epoch': 2, 'early_stopping': True, 'patience': 20, 'l1_lambda': 0.0001, 'l2_lambda': 0.0001, 'loss_func': 'GaussNd', 'metrics': 'test_multi_varrho', 'performance_plot': 'multi_base', 'save': True, 'seed': True, 'num_workers': 4}, 'learn_params': {'learning_rate': 0.01, 'schedule': 'onecycle', 'g_up': 1, 'g_down': 0.95, 'warmup': 4, 'period': 5, 'eta_min': 1e-05}, 'hyper_params': {'hidden_channels': 128, 'conv_layers': 2, 'conv_activation': 'relu', 'decode_activation': 'leakyrelu', 'decode_layers': 2, 'layernorm': True, 'agg': 'sum', 'variance': True, 'rho': 0, 'in_channels': 43, 'out_channels': 4}, 'data_params': {'case': 'vlarge_all_4t_z0.0_quantile_raw', 'targets': [0, 1, 2, 3], 'del_feats': [], 'split': 0.8, 'test': 0, 'scale': 0}, 'experiment_name': 'con2bat256'}
+/home/cj1223/../../scratch/gpfs/cj1223/GraphResults/results_meta_pysr_120322/MetaEdge_vlarge_all_4t_z0.0_quantile_raw_ipwnmf
+RelU conv activation
+LeakyRelU decode activation
+N_params 422280
+Made folder for saving model
+  0%|          | 0/500 [00:00<?, ?it/s]  0%|          | 1/500 [00:47<6:38:10, 47.88s/it]  0%|          | 2/500 [01:59<8:33:45, 61.90s/it]Epoch: 2 done with learning rate 4.17E-04, Train loss: 2.29E+07, Train scatter: [0.9351 0.1349 0.544  0.9954]
+L1 regularization loss: 1.99E+00, L2 regularization loss: 3.83E-01
+Test scatter: [0.9195 0.1327 0.5354 0.9851], Lowest was [0.9195 0.1327 0.5354 0.9851]
+Median for last 10 epochs: [0.9195 0.1327 0.5354 0.9851], Epochs since improvement 2
+  1%|          | 3/500 [02:46<7:36:34, 55.12s/it]  1%|          | 4/500 [03:58<8:29:30, 61.63s/it]Epoch: 4 done with learning rate 4.67E-04, Train loss: 1.49E+07, Train scatter: [0.9322 0.0965 0.5439 0.9952]
+L1 regularization loss: 2.01E+00, L2 regularization loss: 4.11E-01
+Test scatter: [0.9166 0.0955 0.5354 0.9849], Lowest was [0.9166 0.0955 0.5354 0.9849]
+Median for last 10 epochs: [0.9166 0.0955 0.5354 0.9849], Epochs since improvement 0
+  1%|          | 5/500 [04:45<7:44:17, 56.28s/it]  1%|          | 6/500 [05:56<8:25:54, 61.45s/it]Epoch: 6 done with learning rate 5.51E-04, Train loss: 9.27E+06, Train scatter: [0.743  0.0855 0.5438 0.6249]
+L1 regularization loss: 2.05E+00, L2 regularization loss: 4.55E-01
+Test scatter: [0.7317 0.0849 0.5353 0.6213], Lowest was [0.7317 0.0849 0.5353 0.6213]
+Median for last 10 epochs: [0.7317 0.0849 0.5353 0.6213], Epochs since improvement 0
+  1%|▏         | 7/500 [06:43<7:45:49, 56.69s/it]  2%|▏         | 8/500 [07:54<8:22:11, 61.24s/it]Epoch: 8 done with learning rate 6.67E-04, Train loss: 5.63E+06, Train scatter: [0.497  0.0783 0.5439 0.5549]
+L1 regularization loss: 2.07E+00, L2 regularization loss: 4.68E-01
+Test scatter: [0.5032 0.0779 0.5353 0.5519], Lowest was [0.5032 0.0779 0.5353 0.5519]
+Median for last 10 epochs: [0.6174 0.0814 0.5353 0.5866], Epochs since improvement 0
+  2%|▏         | 9/500 [08:41<7:44:29, 56.76s/it]Epoch: 10 done with learning rate 8.15E-04, Train loss: 4.25E+06, Train scatter: [0.3121 0.0758 0.5439 0.532 ]
+L1 regularization loss: 2.07E+00, L2 regularization loss: 4.76E-01
+Test scatter: [0.3179 0.0752 0.5353 0.5276], Lowest was [0.3179 0.0752 0.5353 0.5276]
+Median for last 10 epochs: [0.5032 0.0779 0.5353 0.5519], Epochs since improvement 0
+  2%|▏         | 10/500 [10:00<8:39:33, 63.62s/it]  2%|▏         | 11/500 [10:47<7:57:12, 58.55s/it]  2%|▏         | 12/500 [11:59<8:28:59, 62.58s/it]Epoch: 12 done with learning rate 9.94E-04, Train loss: 3.75E+06, Train scatter: [0.3219 0.0746 0.5439 0.5282]
+L1 regularization loss: 2.08E+00, L2 regularization loss: 4.82E-01
+Test scatter: [0.3271 0.0739 0.5353 0.5255], Lowest was [0.3179 0.0739 0.5353 0.5255]
+Median for last 10 epochs: [0.5032 0.0779 0.5353 0.5519], Epochs since improvement 0
+  3%|▎         | 13/500 [12:46<7:49:45, 57.88s/it]  3%|▎         | 14/500 [13:58<8:23:49, 62.20s/it]Epoch: 14 done with learning rate 1.20E-03, Train loss: 3.53E+06, Train scatter: [0.3091 0.0722 0.5439 0.5248]
+L1 regularization loss: 2.08E+00, L2 regularization loss: 4.86E-01
+Test scatter: [0.3179 0.0722 0.5353 0.5258], Lowest was [0.3179 0.0722 0.5353 0.5255]
+Median for last 10 epochs: [0.3271 0.0752 0.5353 0.5276], Epochs since improvement 0
+  3%|▎         | 15/500 [14:45<7:45:24, 57.58s/it]  3%|▎         | 16/500 [15:57<8:19:11, 61.88s/it]Epoch: 16 done with learning rate 1.44E-03, Train loss: 3.63E+06, Train scatter: [0.2479 0.0727 0.5438 0.5147]
+L1 regularization loss: 2.09E+00, L2 regularization loss: 4.90E-01
+Test scatter: [0.2483 0.0718 0.5352 0.5116], Lowest was [0.2483 0.0718 0.5352 0.5116]
+Median for last 10 epochs: [0.3179 0.0739 0.5353 0.5258], Epochs since improvement 0
+  3%|▎         | 17/500 [16:44<7:42:09, 57.41s/it]  4%|▎         | 18/500 [17:56<8:16:52, 61.85s/it]Epoch: 18 done with learning rate 1.70E-03, Train loss: 3.39E+06, Train scatter: [0.2494 0.0719 0.5437 0.5095]
+L1 regularization loss: 2.10E+00, L2 regularization loss: 4.93E-01
+Test scatter: [0.2512 0.0718 0.5352 0.5056], Lowest was [0.2483 0.0718 0.5352 0.5056]
+Median for last 10 epochs: [0.3179 0.0722 0.5353 0.5255], Epochs since improvement 0
+  4%|▍         | 19/500 [18:43<7:40:02, 57.39s/it]Epoch: 20 done with learning rate 1.99E-03, Train loss: 3.19E+06, Train scatter: [0.2244 0.0692 0.5436 0.5115]
+L1 regularization loss: 2.11E+00, L2 regularization loss: 4.98E-01
+Test scatter: [0.2305 0.0696 0.5351 0.5082], Lowest was [0.2305 0.0696 0.5351 0.5056]
+Median for last 10 epochs: [0.2512 0.0718 0.5352 0.5116], Epochs since improvement 0
+  4%|▍         | 20/500 [20:02<8:32:09, 64.02s/it]  4%|▍         | 21/500 [20:49<7:50:17, 58.91s/it]  4%|▍         | 22/500 [22:01<8:19:02, 62.64s/it]Epoch: 22 done with learning rate 2.30E-03, Train loss: 3.07E+06, Train scatter: [0.2171 0.066  0.5435 0.4952]
+L1 regularization loss: 2.12E+00, L2 regularization loss: 5.02E-01
+Test scatter: [0.2192 0.0659 0.535  0.4895], Lowest was [0.2192 0.0659 0.535  0.4895]
+Median for last 10 epochs: [0.2483 0.0718 0.5352 0.5082], Epochs since improvement 0
+  5%|▍         | 23/500 [22:48<7:41:01, 57.99s/it]  5%|▍         | 24/500 [24:00<8:13:27, 62.20s/it]Epoch: 24 done with learning rate 2.63E-03, Train loss: 3.03E+06, Train scatter: [0.2094 0.0654 0.5435 0.4974]
+L1 regularization loss: 2.14E+00, L2 regularization loss: 5.07E-01
+Test scatter: [0.2137 0.065  0.5349 0.49  ], Lowest was [0.2137 0.065  0.5349 0.4895]
+Median for last 10 epochs: [0.2305 0.0696 0.5351 0.5056], Epochs since improvement 0
+  5%|▌         | 25/500 [24:47<7:35:51, 57.58s/it]  5%|▌         | 26/500 [25:57<8:06:05, 61.53s/it]Epoch: 26 done with learning rate 2.98E-03, Train loss: 2.99E+06, Train scatter: [0.2081 0.0652 0.5434 0.4978]
+L1 regularization loss: 2.15E+00, L2 regularization loss: 5.13E-01
+Test scatter: [0.2106 0.0654 0.5349 0.4925], Lowest was [0.2106 0.065  0.5349 0.4895]
+Median for last 10 epochs: [0.2192 0.0659 0.535  0.4925], Epochs since improvement 0
+  5%|▌         | 27/500 [26:45<7:31:03, 57.22s/it]  6%|▌         | 28/500 [27:56<8:04:05, 61.54s/it]Epoch: 28 done with learning rate 3.34E-03, Train loss: 2.97E+06, Train scatter: [0.2053 0.0615 0.5434 0.4973]
+L1 regularization loss: 2.17E+00, L2 regularization loss: 5.22E-01
+Test scatter: [0.2081 0.0615 0.5349 0.4935], Lowest was [0.2081 0.0615 0.5349 0.4895]
+Median for last 10 epochs: [0.2137 0.0654 0.5349 0.4925], Epochs since improvement 0
+  6%|▌         | 29/500 [28:43<7:28:32, 57.14s/it]Epoch: 30 done with learning rate 3.72E-03, Train loss: 2.95E+06, Train scatter: [0.2228 0.0626 0.5434 0.4954]
+L1 regularization loss: 2.19E+00, L2 regularization loss: 5.29E-01
+Test scatter: [0.2277 0.0623 0.5349 0.4885], Lowest was [0.2081 0.0615 0.5349 0.4885]
+Median for last 10 epochs: [0.2137 0.065  0.5349 0.49  ], Epochs since improvement 0
+  6%|▌         | 30/500 [30:01<8:17:14, 63.48s/it]  6%|▌         | 31/500 [30:48<7:37:05, 58.48s/it]  6%|▋         | 32/500 [32:00<8:08:13, 62.59s/it]Epoch: 32 done with learning rate 4.10E-03, Train loss: 3.02E+06, Train scatter: [0.2026 0.0641 0.5434 0.4977]
+L1 regularization loss: 2.23E+00, L2 regularization loss: 5.43E-01
+Test scatter: [0.2089 0.064  0.5348 0.4912], Lowest was [0.2081 0.0615 0.5348 0.4885]
+Median for last 10 epochs: [0.2106 0.064  0.5349 0.4912], Epochs since improvement 0
+  7%|▋         | 33/500 [32:47<7:31:09, 57.96s/it]  7%|▋         | 34/500 [33:59<8:01:51, 62.04s/it]Epoch: 34 done with learning rate 4.50E-03, Train loss: 2.95E+06, Train scatter: [0.2606 0.0714 0.5434 0.5017]
+L1 regularization loss: 2.25E+00, L2 regularization loss: 5.52E-01
+Test scatter: [0.2561 0.0713 0.5348 0.4953], Lowest was [0.2081 0.0615 0.5348 0.4885]
+Median for last 10 epochs: [0.2106 0.064  0.5349 0.4925], Epochs since improvement 2
+  7%|▋         | 35/500 [34:46<7:25:37, 57.50s/it]  7%|▋         | 36/500 [35:57<7:55:35, 61.50s/it]Epoch: 36 done with learning rate 4.90E-03, Train loss: 2.93E+06, Train scatter: [0.2924 0.0724 0.5433 0.5158]
+L1 regularization loss: 2.26E+00, L2 regularization loss: 5.61E-01
+Test scatter: [0.2959 0.0723 0.5347 0.5095], Lowest was [0.2081 0.0615 0.5347 0.4885]
+Median for last 10 epochs: [0.2277 0.064  0.5348 0.4935], Epochs since improvement 0
+  7%|▋         | 37/500 [36:44<7:20:36, 57.10s/it]  8%|▊         | 38/500 [37:55<7:52:26, 61.36s/it]Epoch: 38 done with learning rate 5.30E-03, Train loss: 2.91E+06, Train scatter: [0.2214 0.061  0.543  0.4906]
+L1 regularization loss: 2.28E+00, L2 regularization loss: 5.73E-01
+Test scatter: [0.2239 0.0607 0.5345 0.4892], Lowest was [0.2081 0.0607 0.5345 0.4885]
+Median for last 10 epochs: [0.2277 0.064  0.5348 0.4912], Epochs since improvement 0
+  8%|▊         | 39/500 [38:41<7:17:21, 56.92s/it]Epoch: 40 done with learning rate 5.70E-03, Train loss: 2.95E+06, Train scatter: [0.3691 0.0638 0.543  0.4892]
+L1 regularization loss: 2.32E+00, L2 regularization loss: 5.91E-01
+Test scatter: [0.3606 0.0636 0.5344 0.486 ], Lowest was [0.2081 0.0607 0.5344 0.486 ]
+Median for last 10 epochs: [0.2561 0.064  0.5347 0.4912], Epochs since improvement 0
+  8%|▊         | 40/500 [40:00<8:05:26, 63.32s/it]  8%|▊         | 41/500 [40:47<7:26:32, 58.37s/it]  8%|▊         | 42/500 [41:58<7:55:12, 62.26s/it]Epoch: 42 done with learning rate 6.10E-03, Train loss: 2.92E+06, Train scatter: [0.2151 0.0606 0.5427 0.4968]
+L1 regularization loss: 2.34E+00, L2 regularization loss: 6.08E-01
+Test scatter: [0.2257 0.0608 0.5341 0.4932], Lowest was [0.2081 0.0607 0.5341 0.486 ]
+Median for last 10 epochs: [0.2561 0.0636 0.5345 0.4932], Epochs since improvement 0
+  9%|▊         | 43/500 [42:45<7:18:42, 57.60s/it]  9%|▉         | 44/500 [43:56<7:50:05, 61.85s/it]Epoch: 44 done with learning rate 6.49E-03, Train loss: 2.92E+06, Train scatter: [0.2699 0.062  0.542  0.4862]
+L1 regularization loss: 2.38E+00, L2 regularization loss: 6.28E-01
+Test scatter: [0.2797 0.0618 0.5335 0.4829], Lowest was [0.2081 0.0607 0.5335 0.4829]
+Median for last 10 epochs: [0.2797 0.0618 0.5344 0.4892], Epochs since improvement 0
+  9%|▉         | 45/500 [44:43<7:14:52, 57.35s/it]  9%|▉         | 46/500 [45:55<7:46:59, 61.72s/it]Epoch: 46 done with learning rate 6.87E-03, Train loss: 2.90E+06, Train scatter: [0.1981 0.0623 0.5412 0.488 ]
+L1 regularization loss: 2.40E+00, L2 regularization loss: 6.52E-01
+Test scatter: [0.2007 0.0611 0.5327 0.4814], Lowest was [0.2007 0.0607 0.5327 0.4814]
+Median for last 10 epochs: [0.2257 0.0611 0.5341 0.486 ], Epochs since improvement 0
+  9%|▉         | 47/500 [46:42<7:12:08, 57.24s/it] 10%|▉         | 48/500 [47:54<7:44:29, 61.66s/it]Epoch: 48 done with learning rate 7.24E-03, Train loss: 2.94E+06, Train scatter: [0.8619 0.1738 0.5423 0.7932]
+L1 regularization loss: 2.53E+00, L2 regularization loss: 7.11E-01
+Test scatter: [0.8489 0.1699 0.5338 0.7871], Lowest was [0.2007 0.0607 0.5327 0.4814]
+Median for last 10 epochs: [0.2797 0.0618 0.5338 0.486 ], Epochs since improvement 2
+ 10%|▉         | 49/500 [48:41<7:09:53, 57.19s/it]Epoch: 50 done with learning rate 7.60E-03, Train loss: 2.94E+06, Train scatter: [0.5377 0.1274 0.54   0.6702]
+L1 regularization loss: 2.67E+00, L2 regularization loss: 8.16E-01
+Test scatter: [0.5306 0.1251 0.5316 0.6668], Lowest was [0.2007 0.0607 0.5316 0.4814]
+Median for last 10 epochs: [0.2797 0.0618 0.5335 0.4932], Epochs since improvement 0
+ 10%|█         | 50/500 [50:01<8:00:52, 64.12s/it] 10%|█         | 51/500 [50:48<7:20:40, 58.89s/it] 10%|█         | 52/500 [51:59<7:48:07, 62.70s/it]Epoch: 52 done with learning rate 7.94E-03, Train loss: 2.91E+06, Train scatter: [0.4461 0.1141 0.541  0.7027]
+L1 regularization loss: 2.75E+00, L2 regularization loss: 8.92E-01
+Test scatter: [0.4553 0.1143 0.5325 0.7041], Lowest was [0.2007 0.0607 0.5316 0.4814]
+Median for last 10 epochs: [0.4553 0.1143 0.5327 0.6668], Epochs since improvement 2
+ 11%|█         | 53/500 [52:46<7:11:25, 57.91s/it] 11%|█         | 54/500 [53:57<7:40:05, 61.90s/it]Epoch: 54 done with learning rate 8.26E-03, Train loss: 2.97E+06, Train scatter: [0.681  0.1666 0.5416 0.7788]
+L1 regularization loss: 2.81E+00, L2 regularization loss: 9.49E-01
+Test scatter: [0.6766 0.1631 0.5332 0.7754], Lowest was [0.2007 0.0607 0.5316 0.4814]
+Median for last 10 epochs: [0.5306 0.1251 0.5327 0.7041], Epochs since improvement 4
+ 11%|█         | 55/500 [54:44<7:05:30, 57.37s/it] 11%|█         | 56/500 [55:56<7:36:26, 61.68s/it]Epoch: 56 done with learning rate 8.56E-03, Train loss: 2.80E+06, Train scatter: [0.3488 0.0974 0.5385 0.6221]
+L1 regularization loss: 2.79E+00, L2 regularization loss: 9.91E-01
+Test scatter: [0.3475 0.0961 0.5301 0.6077], Lowest was [0.2007 0.0607 0.5301 0.4814]
+Median for last 10 epochs: [0.5306 0.1251 0.5325 0.7041], Epochs since improvement 0
+ 11%|█▏        | 57/500 [56:42<7:01:46, 57.12s/it] 12%|█▏        | 58/500 [57:54<7:33:41, 61.59s/it]Epoch: 58 done with learning rate 8.83E-03, Train loss: 2.40E+06, Train scatter: [0.3978 0.0917 0.4708 0.6145]
+L1 regularization loss: 2.96E+00, L2 regularization loss: 1.10E+00
+Test scatter: [0.3921 0.0919 0.4628 0.6098], Lowest was [0.2007 0.0607 0.4628 0.4814]
+Median for last 10 epochs: [0.4553 0.1143 0.5316 0.6668], Epochs since improvement 0
+ 12%|█▏        | 59/500 [58:41<6:59:44, 57.11s/it]Epoch: 60 done with learning rate 9.08E-03, Train loss: 1.98E+06, Train scatter: [0.3566 0.0762 0.3985 0.573 ]
+L1 regularization loss: 2.95E+00, L2 regularization loss: 1.15E+00
+Test scatter: [0.3633 0.0768 0.4005 0.5778], Lowest was [0.2007 0.0607 0.4005 0.4814]
+Median for last 10 epochs: [0.3921 0.0961 0.5301 0.6098], Epochs since improvement 0
+ 12%|█▏        | 60/500 [1:00:00<7:46:38, 63.63s/it] 12%|█▏        | 61/500 [1:00:46<7:08:39, 58.59s/it] 12%|█▏        | 62/500 [1:01:58<7:35:20, 62.38s/it]Epoch: 62 done with learning rate 9.31E-03, Train loss: 1.89E+06, Train scatter: [0.2794 0.0703 0.3735 0.5345]
+L1 regularization loss: 2.97E+00, L2 regularization loss: 1.19E+00
+Test scatter: [0.287  0.0713 0.3761 0.5356], Lowest was [0.2007 0.0607 0.3761 0.4814]
+Median for last 10 epochs: [0.3633 0.0919 0.4628 0.6077], Epochs since improvement 0
+ 13%|█▎        | 63/500 [1:02:44<7:00:13, 57.70s/it] 13%|█▎        | 64/500 [1:03:56<7:29:26, 61.85s/it]Epoch: 64 done with learning rate 9.50E-03, Train loss: 1.84E+06, Train scatter: [0.2925 0.0667 0.4075 0.5145]
+L1 regularization loss: 2.99E+00, L2 regularization loss: 1.26E+00
+Test scatter: [0.296  0.0682 0.4162 0.5143], Lowest was [0.2007 0.0607 0.3761 0.4814]
+Median for last 10 epochs: [0.3475 0.0768 0.4162 0.5778], Epochs since improvement 2
+ 13%|█▎        | 65/500 [1:04:43<6:55:35, 57.32s/it] 13%|█▎        | 66/500 [1:05:55<7:26:39, 61.75s/it]Epoch: 66 done with learning rate 9.66E-03, Train loss: 1.78E+06, Train scatter: [0.2575 0.0684 0.4375 0.5121]
+L1 regularization loss: 2.99E+00, L2 regularization loss: 1.30E+00
+Test scatter: [0.2652 0.0708 0.447  0.5152], Lowest was [0.2007 0.0607 0.3761 0.4814]
+Median for last 10 epochs: [0.296  0.0713 0.4162 0.5356], Epochs since improvement 4
+ 13%|█▎        | 67/500 [1:06:42<6:53:02, 57.23s/it] 14%|█▎        | 68/500 [1:07:54<7:24:33, 61.74s/it]Epoch: 68 done with learning rate 9.80E-03, Train loss: 1.77E+06, Train scatter: [0.2612 0.0655 0.3714 0.5061]
+L1 regularization loss: 3.02E+00, L2 regularization loss: 1.36E+00
+Test scatter: [0.2621 0.0659 0.3766 0.5044], Lowest was [0.2007 0.0607 0.3761 0.4814]
+Median for last 10 epochs: [0.287  0.0708 0.4005 0.5152], Epochs since improvement 6
+ 14%|█▍        | 69/500 [1:08:41<6:51:19, 57.26s/it]Epoch: 70 done with learning rate 9.90E-03, Train loss: 1.72E+06, Train scatter: [0.2911 0.0622 0.4054 0.5027]
+L1 regularization loss: 3.03E+00, L2 regularization loss: 1.41E+00
+Test scatter: [0.2915 0.0624 0.4094 0.4983], Lowest was [0.2007 0.0607 0.3761 0.4814]
+Median for last 10 epochs: [0.287  0.0682 0.4094 0.5143], Epochs since improvement 8
+ 14%|█▍        | 70/500 [1:09:58<7:34:23, 63.40s/it] 14%|█▍        | 71/500 [1:10:45<6:57:25, 58.38s/it] 14%|█▍        | 72/500 [1:11:56<7:23:10, 62.13s/it]Epoch: 72 done with learning rate 9.96E-03, Train loss: 1.67E+06, Train scatter: [0.2368 0.0599 0.391  0.4856]
+L1 regularization loss: 3.04E+00, L2 regularization loss: 1.46E+00
+Test scatter: [0.2354 0.0605 0.3946 0.4801], Lowest was [0.2007 0.0605 0.3761 0.4801]
+Median for last 10 epochs: [0.2652 0.0659 0.4094 0.5044], Epochs since improvement 0
+ 15%|█▍        | 73/500 [1:12:43<6:49:22, 57.52s/it] 15%|█▍        | 74/500 [1:13:54<7:18:53, 61.82s/it]Epoch: 74 done with learning rate 1.00E-02, Train loss: 1.53E+06, Train scatter: [0.2708 0.0581 0.384  0.4727]
+L1 regularization loss: 3.06E+00, L2 regularization loss: 1.52E+00
+Test scatter: [0.2643 0.0589 0.3923 0.4723], Lowest was [0.2007 0.0589 0.3761 0.4723]
+Median for last 10 epochs: [0.2643 0.0624 0.3946 0.4983], Epochs since improvement 0
+ 15%|█▌        | 75/500 [1:14:41<6:45:34, 57.26s/it] 15%|█▌        | 76/500 [1:15:53<7:16:06, 61.71s/it]Epoch: 76 done with learning rate 1.00E-02, Train loss: 8.70E+05, Train scatter: [0.246  0.0636 0.3139 0.4782]
+L1 regularization loss: 3.10E+00, L2 regularization loss: 1.60E+00
+Test scatter: [0.2509 0.0647 0.3203 0.4777], Lowest was [0.2007 0.0589 0.3203 0.4723]
+Median for last 10 epochs: [0.2621 0.0624 0.3923 0.4801], Epochs since improvement 0
+ 15%|█▌        | 77/500 [1:16:40<6:43:32, 57.24s/it] 16%|█▌        | 78/500 [1:17:51<7:11:18, 61.32s/it]Epoch: 78 done with learning rate 1.00E-02, Train loss: 5.02E+05, Train scatter: [0.2468 0.0672 0.2943 0.4905]
+L1 regularization loss: 3.13E+00, L2 regularization loss: 1.68E+00
+Test scatter: [0.255  0.0671 0.2965 0.4893], Lowest was [0.2007 0.0589 0.2965 0.4723]
+Median for last 10 epochs: [0.255  0.0624 0.3923 0.4801], Epochs since improvement 0
+ 16%|█▌        | 79/500 [1:18:38<6:39:45, 56.97s/it]Epoch: 80 done with learning rate 1.00E-02, Train loss: 4.33E+05, Train scatter: [0.2247 0.0541 0.2737 0.4687]
+L1 regularization loss: 3.22E+00, L2 regularization loss: 1.78E+00
+Test scatter: [0.2267 0.0546 0.2811 0.4662], Lowest was [0.2007 0.0546 0.2811 0.4662]
+Median for last 10 epochs: [0.2509 0.0605 0.3203 0.4777], Epochs since improvement 0
+ 16%|█▌        | 80/500 [1:19:56<7:24:36, 63.52s/it] 16%|█▌        | 81/500 [1:20:43<6:48:05, 58.44s/it] 16%|█▋        | 82/500 [1:21:55<7:15:54, 62.57s/it]Epoch: 82 done with learning rate 9.99E-03, Train loss: 3.75E+05, Train scatter: [0.2478 0.0566 0.2744 0.4784]
+L1 regularization loss: 3.26E+00, L2 regularization loss: 1.86E+00
+Test scatter: [0.2485 0.0572 0.2787 0.4789], Lowest was [0.2007 0.0546 0.2787 0.4662]
+Median for last 10 epochs: [0.2509 0.0589 0.2965 0.4777], Epochs since improvement 0
+ 17%|█▋        | 83/500 [1:22:42<6:41:39, 57.79s/it] 17%|█▋        | 84/500 [1:23:53<7:09:03, 61.88s/it]Epoch: 84 done with learning rate 9.99E-03, Train loss: 3.46E+05, Train scatter: [0.2284 0.058  0.2878 0.4699]
+L1 regularization loss: 3.32E+00, L2 regularization loss: 1.97E+00
+Test scatter: [0.2356 0.0605 0.2953 0.4729], Lowest was [0.2007 0.0546 0.2787 0.4662]
+Median for last 10 epochs: [0.2485 0.0605 0.2953 0.4777], Epochs since improvement 2
+ 17%|█▋        | 85/500 [1:24:40<6:36:22, 57.31s/it] 17%|█▋        | 86/500 [1:25:51<7:03:09, 61.33s/it]Epoch: 86 done with learning rate 9.98E-03, Train loss: 2.81E+05, Train scatter: [0.2084 0.0538 0.2802 0.4576]
+L1 regularization loss: 3.30E+00, L2 regularization loss: 2.04E+00
+Test scatter: [0.2109 0.0533 0.2917 0.4544], Lowest was [0.2007 0.0533 0.2787 0.4544]
+Median for last 10 epochs: [0.2356 0.0572 0.2917 0.4729], Epochs since improvement 0
+ 17%|█▋        | 87/500 [1:26:37<6:32:01, 56.95s/it] 18%|█▊        | 88/500 [1:27:49<7:01:06, 61.33s/it]Epoch: 88 done with learning rate 9.98E-03, Train loss: 2.64E+05, Train scatter: [0.2083 0.0514 0.2558 0.4547]
+L1 regularization loss: 3.34E+00, L2 regularization loss: 2.12E+00
+Test scatter: [0.2138 0.0515 0.263  0.4525], Lowest was [0.2007 0.0515 0.263  0.4525]
+Median for last 10 epochs: [0.2267 0.0546 0.2811 0.4662], Epochs since improvement 0
+ 18%|█▊        | 89/500 [1:28:36<6:30:10, 56.96s/it]Epoch: 90 done with learning rate 9.97E-03, Train loss: 2.66E+05, Train scatter: [0.2208 0.0544 0.2481 0.4547]
+L1 regularization loss: 3.37E+00, L2 regularization loss: 2.22E+00
+Test scatter: [0.2244 0.0554 0.2572 0.4526], Lowest was [0.2007 0.0515 0.2572 0.4525]
+Median for last 10 epochs: [0.2244 0.0554 0.2787 0.4544], Epochs since improvement 0
+ 18%|█▊        | 90/500 [1:29:53<7:11:28, 63.14s/it] 18%|█▊        | 91/500 [1:30:40<6:36:54, 58.23s/it] 18%|█▊        | 92/500 [1:31:52<7:04:19, 62.40s/it]Epoch: 92 done with learning rate 9.96E-03, Train loss: 2.71E+05, Train scatter: [0.2504 0.0502 0.246  0.4456]
+L1 regularization loss: 3.44E+00, L2 regularization loss: 2.34E+00
+Test scatter: [0.2424 0.0507 0.2521 0.4426], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.2244 0.0533 0.263  0.4526], Epochs since improvement 0
+ 19%|█▊        | 93/500 [1:32:39<6:31:58, 57.79s/it] 19%|█▉        | 94/500 [1:33:51<6:59:24, 61.98s/it]Epoch: 94 done with learning rate 9.95E-03, Train loss: 4.23E+06, Train scatter: [0.9167 0.1323 0.544  0.9718]
+L1 regularization loss: 8.54E+00, L2 regularization loss: 4.53E+00
+Test scatter: [0.9011 0.1289 0.5354 0.9612], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.2244 0.0533 0.263  0.4526], Epochs since improvement 2
+ 19%|█▉        | 95/500 [1:34:38<6:27:37, 57.43s/it] 19%|█▉        | 96/500 [1:35:48<6:52:28, 61.26s/it]Epoch: 96 done with learning rate 9.94E-03, Train loss: 3.60E+06, Train scatter: [0.8634 0.1285 0.5439 0.9657]
+L1 regularization loss: 8.53E+00, L2 regularization loss: 4.58E+00
+Test scatter: [0.8487 0.1267 0.5353 0.9552], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.2424 0.0554 0.263  0.4526], Epochs since improvement 4
+ 19%|█▉        | 97/500 [1:36:35<6:22:39, 56.97s/it] 20%|█▉        | 98/500 [1:37:46<6:49:07, 61.06s/it]Epoch: 98 done with learning rate 9.93E-03, Train loss: 3.32E+06, Train scatter: [0.6264 0.1244 0.5438 0.9528]
+L1 regularization loss: 8.54E+00, L2 regularization loss: 4.71E+00
+Test scatter: [0.6225 0.1226 0.5352 0.9421], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.6225 0.1226 0.5352 0.9421], Epochs since improvement 6
+ 20%|█▉        | 99/500 [1:38:32<6:19:30, 56.78s/it]Epoch: 100 done with learning rate 9.91E-03, Train loss: 3.09E+06, Train scatter: [0.5811 0.1236 0.5437 0.9344]
+L1 regularization loss: 8.55E+00, L2 regularization loss: 4.78E+00
+Test scatter: [0.5781 0.1217 0.5352 0.9228], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.6225 0.1226 0.5352 0.9421], Epochs since improvement 8
+ 20%|██        | 100/500 [1:39:49<6:59:12, 62.88s/it] 20%|██        | 101/500 [1:40:37<6:26:41, 58.15s/it] 20%|██        | 102/500 [1:41:48<6:51:26, 62.03s/it]Epoch: 102 done with learning rate 9.90E-03, Train loss: 3.01E+06, Train scatter: [0.5213 0.1239 0.5436 0.886 ]
+L1 regularization loss: 8.57E+00, L2 regularization loss: 4.88E+00
+Test scatter: [0.5209 0.1214 0.5351 0.8736], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.6225 0.1226 0.5352 0.9421], Epochs since improvement 10
+ 21%|██        | 103/500 [1:42:35<6:20:37, 57.53s/it] 21%|██        | 104/500 [1:43:45<6:45:16, 61.41s/it]Epoch: 104 done with learning rate 9.89E-03, Train loss: 2.87E+06, Train scatter: [0.5303 0.1224 0.5433 0.8264]
+L1 regularization loss: 8.57E+00, L2 regularization loss: 4.96E+00
+Test scatter: [0.5155 0.1202 0.5348 0.8162], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.5781 0.1217 0.5352 0.9228], Epochs since improvement 12
+ 21%|██        | 105/500 [1:44:32<6:15:39, 57.06s/it] 21%|██        | 106/500 [1:45:43<6:41:53, 61.20s/it]Epoch: 106 done with learning rate 9.87E-03, Train loss: 2.75E+06, Train scatter: [0.5136 0.1211 0.542  0.7641]
+L1 regularization loss: 8.56E+00, L2 regularization loss: 5.01E+00
+Test scatter: [0.5203 0.1192 0.5335 0.7565], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.5209 0.1214 0.5351 0.8736], Epochs since improvement 14
+ 21%|██▏       | 107/500 [1:46:30<6:12:35, 56.88s/it] 22%|██▏       | 108/500 [1:47:40<6:38:40, 61.02s/it]Epoch: 108 done with learning rate 9.85E-03, Train loss: 2.56E+06, Train scatter: [0.5247 0.1224 0.5369 0.7413]
+L1 regularization loss: 8.59E+00, L2 regularization loss: 5.15E+00
+Test scatter: [0.5168 0.1201 0.5279 0.7322], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.5203 0.1202 0.5348 0.8162], Epochs since improvement 16
+ 22%|██▏       | 109/500 [1:48:28<6:10:34, 56.87s/it]Epoch: 110 done with learning rate 9.83E-03, Train loss: 2.12E+06, Train scatter: [0.4702 0.1124 0.4772 0.7105]
+L1 regularization loss: 8.63E+00, L2 regularization loss: 5.41E+00
+Test scatter: [0.4812 0.1119 0.4747 0.7107], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.5168 0.1201 0.5335 0.7565], Epochs since improvement 18
+ 22%|██▏       | 110/500 [1:49:47<6:53:32, 63.62s/it] 22%|██▏       | 111/500 [1:50:35<6:21:23, 58.83s/it] 22%|██▏       | 112/500 [1:51:46<6:44:54, 62.61s/it]Epoch: 112 done with learning rate 9.81E-03, Train loss: 1.71E+06, Train scatter: [0.5238 0.1006 0.4434 0.6989]
+L1 regularization loss: 8.68E+00, L2 regularization loss: 5.63E+00
+Test scatter: [0.5232 0.1006 0.4426 0.7133], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.5168 0.1192 0.5279 0.7322], Epochs since improvement 20
+ 23%|██▎       | 113/500 [1:52:33<6:13:38, 57.93s/it] 23%|██▎       | 113/500 [1:53:46<6:29:38, 60.41s/it]
+Epoch: 114 done with learning rate 9.79E-03, Train loss: 1.43E+06, Train scatter: [0.4388 0.0941 0.4331 0.7131]
+L1 regularization loss: 8.72E+00, L2 regularization loss: 5.77E+00
+Test scatter: [0.4726 0.0968 0.4525 0.7681], Lowest was [0.2007 0.0507 0.2521 0.4426]
+Median for last 10 epochs: [0.5168 0.1119 0.4747 0.7322], Epochs since improvement 22
+Exited after 114 epochs due to early stopping
+6826.43 seconds spent training, 13.653 seconds per epoch. Processed 5100 trees per second
+[0.47259024 0.09680305 0.4524815  0.7680687 ]
+{'epoch_exit': 113, 'scatter_m_star': 0.47259024, 'lowest_m_star': 0.20073314, 'last20_m_star': 0.52060807, 'last10_m_star': 0.51681536, 'scatter_v_disk': 0.096803054, 'lowest_v_disk': 0.05067969, 'last20_v_disk': 0.12018463, 'last10_v_disk': 0.111861564, 'scatter_m_cold': 0.4524815, 'lowest_m_cold': 0.25209528, 'last20_m_cold': 0.5341314, 'last10_m_cold': 0.47472224, 'scatter_sfr_100': 0.7680687, 'lowest_sfr_100': 0.44257224, 'last20_sfr_100': 0.792135, 'last10_sfr_100': 0.7322081}
+Finished 1/1
+Exited training after None epochs
+Experiment 3 done: 3 / 6
+Exploring ['conv_layers', 'batch_size']
+Currently doing [  2 512]
+{'experiment': 'GraphMerge', 'group': 'meta_pysr', 'move': False, 'model': 'MetaEdge', 'log': True, 'run_params': {'n_epochs': 500, 'n_trials': 1, 'batch_size': 512, 'val_epoch': 2, 'early_stopping': True, 'patience': 20, 'l1_lambda': 0.0001, 'l2_lambda': 0.0001, 'loss_func': 'GaussNd', 'metrics': 'test_multi_varrho', 'performance_plot': 'multi_base', 'save': True, 'seed': True, 'num_workers': 4}, 'learn_params': {'learning_rate': 0.01, 'schedule': 'onecycle', 'g_up': 1, 'g_down': 0.95, 'warmup': 4, 'period': 5, 'eta_min': 1e-05}, 'hyper_params': {'hidden_channels': 128, 'conv_layers': 2, 'conv_activation': 'relu', 'decode_activation': 'leakyrelu', 'decode_layers': 2, 'layernorm': True, 'agg': 'sum', 'variance': True, 'rho': 0, 'in_channels': 43, 'out_channels': 4}, 'data_params': {'case': 'vlarge_all_4t_z0.0_quantile_raw', 'targets': [0, 1, 2, 3], 'del_feats': [], 'split': 0.8, 'test': 0, 'scale': 0}, 'experiment_name': 'con2bat512'}
+/home/cj1223/../../scratch/gpfs/cj1223/GraphResults/results_meta_pysr_120322/MetaEdge_vlarge_all_4t_z0.0_quantile_raw_iqolcm
+RelU conv activation
+LeakyRelU decode activation
+N_params 422280
+Made folder for saving model
+  0%|          | 0/500 [00:00<?, ?it/s]  0%|          | 1/500 [00:41<5:47:41, 41.81s/it]  0%|          | 2/500 [01:45<7:32:48, 54.55s/it]Epoch: 2 done with learning rate 4.17E-04, Train loss: 3.01E+07, Train scatter: [0.9352 0.1712 0.5441 0.9954]
+L1 regularization loss: 1.98E+00, L2 regularization loss: 3.76E-01
+Test scatter: [0.9196 0.1674 0.5356 0.9851], Lowest was [0.9196 0.1674 0.5356 0.9851]
+Median for last 10 epochs: [0.9196 0.1674 0.5356 0.9851], Epochs since improvement 2
+  1%|          | 3/500 [02:25<6:39:21, 48.21s/it]  1%|          | 4/500 [03:28<7:26:31, 54.02s/it]Epoch: 4 done with learning rate 4.67E-04, Train loss: 2.21E+07, Train scatter: [0.9352 0.1563 0.5441 0.9954]
+L1 regularization loss: 1.99E+00, L2 regularization loss: 3.85E-01
+Test scatter: [0.9196 0.1525 0.5355 0.9851], Lowest was [0.9196 0.1525 0.5355 0.9851]
+Median for last 10 epochs: [0.9196 0.1525 0.5355 0.9851], Epochs since improvement 0
+  1%|          | 5/500 [04:09<6:45:31, 49.16s/it]  1%|          | 6/500 [05:12<7:22:30, 53.75s/it]Epoch: 6 done with learning rate 5.51E-04, Train loss: 1.72E+07, Train scatter: [0.9349 0.1111 0.544  0.9954]
+L1 regularization loss: 2.01E+00, L2 regularization loss: 4.01E-01
+Test scatter: [0.9193 0.1104 0.5355 0.9851], Lowest was [0.9193 0.1104 0.5355 0.9851]
+Median for last 10 epochs: [0.9193 0.1104 0.5355 0.9851], Epochs since improvement 0
+  1%|▏         | 7/500 [05:52<6:46:30, 49.47s/it]  2%|▏         | 8/500 [06:55<7:20:52, 53.76s/it]Epoch: 8 done with learning rate 6.67E-04, Train loss: 1.33E+07, Train scatter: [0.9185 0.0958 0.544  0.871 ]
+L1 regularization loss: 2.03E+00, L2 regularization loss: 4.27E-01
+Test scatter: [0.903  0.0965 0.5354 0.8566], Lowest was [0.903  0.0965 0.5354 0.8566]
+Median for last 10 epochs: [0.9111 0.1035 0.5354 0.9208], Epochs since improvement 0
+  2%|▏         | 9/500 [07:36<6:46:04, 49.62s/it]Epoch: 10 done with learning rate 8.15E-04, Train loss: 1.06E+07, Train scatter: [0.9234 0.1289 0.544  0.9644]
+L1 regularization loss: 2.06E+00, L2 regularization loss: 4.54E-01
+Test scatter: [0.9073 0.1266 0.5354 0.9558], Lowest was [0.903  0.0965 0.5354 0.8566]
+Median for last 10 epochs: [0.9073 0.1104 0.5354 0.9558], Epochs since improvement 2
+  2%|▏         | 10/500 [08:45<7:34:26, 55.65s/it]  2%|▏         | 11/500 [09:26<6:56:31, 51.11s/it]  2%|▏         | 12/500 [10:29<7:25:45, 54.81s/it]Epoch: 12 done with learning rate 9.94E-04, Train loss: 7.58E+06, Train scatter: [0.7407 0.0962 0.5438 0.6449]
+L1 regularization loss: 2.08E+00, L2 regularization loss: 4.71E-01
+Test scatter: [0.7247 0.0956 0.5353 0.6377], Lowest was [0.7247 0.0956 0.5353 0.6377]
+Median for last 10 epochs: [0.9073 0.1104 0.5354 0.9558], Epochs since improvement 0
+  3%|▎         | 13/500 [11:10<6:50:12, 50.54s/it]  3%|▎         | 14/500 [12:15<7:24:55, 54.93s/it]Epoch: 14 done with learning rate 1.20E-03, Train loss: 5.75E+06, Train scatter: [0.5834 0.0907 0.5438 0.5829]
+L1 regularization loss: 2.10E+00, L2 regularization loss: 4.82E-01
+Test scatter: [0.578  0.0908 0.5352 0.5783], Lowest was [0.578  0.0908 0.5352 0.5783]
+Median for last 10 epochs: [0.903  0.0965 0.5354 0.8566], Epochs since improvement 0
+  3%|▎         | 15/500 [12:56<6:49:57, 50.72s/it]  3%|▎         | 16/500 [14:00<7:21:36, 54.75s/it]Epoch: 16 done with learning rate 1.44E-03, Train loss: 4.87E+06, Train scatter: [0.5639 0.086  0.5438 0.5901]
+L1 regularization loss: 2.10E+00, L2 regularization loss: 4.91E-01
+Test scatter: [0.5611 0.0864 0.5353 0.5834], Lowest was [0.5611 0.0864 0.5352 0.5783]
+Median for last 10 epochs: [0.7247 0.0956 0.5353 0.6377], Epochs since improvement 0
+  3%|▎         | 17/500 [14:41<6:46:48, 50.54s/it]  4%|▎         | 18/500 [15:45<7:18:37, 54.60s/it]Epoch: 18 done with learning rate 1.70E-03, Train loss: 4.52E+06, Train scatter: [0.4422 0.0857 0.5439 0.5394]
+L1 regularization loss: 2.11E+00, L2 regularization loss: 5.02E-01
+Test scatter: [0.4398 0.0864 0.5353 0.5387], Lowest was [0.4398 0.0864 0.5352 0.5387]
+Median for last 10 epochs: [0.578  0.0908 0.5353 0.5834], Epochs since improvement 0
+  4%|▍         | 19/500 [16:25<6:44:40, 50.48s/it]Epoch: 20 done with learning rate 1.99E-03, Train loss: 4.14E+06, Train scatter: [0.4428 0.086  0.5438 0.6128]
+L1 regularization loss: 2.13E+00, L2 regularization loss: 5.10E-01
+Test scatter: [0.4385 0.0867 0.5352 0.6114], Lowest was [0.4385 0.0864 0.5352 0.5387]
+Median for last 10 epochs: [0.5611 0.0867 0.5353 0.5834], Epochs since improvement 0
+  4%|▍         | 20/500 [17:36<7:32:15, 56.53s/it]  4%|▍         | 21/500 [18:17<6:53:46, 51.83s/it]  4%|▍         | 22/500 [19:21<7:21:56, 55.47s/it]Epoch: 22 done with learning rate 2.30E-03, Train loss: 4.02E+06, Train scatter: [0.2656 0.0804 0.5438 0.5299]
+L1 regularization loss: 2.14E+00, L2 regularization loss: 5.18E-01
+Test scatter: [0.2762 0.0811 0.5352 0.5317], Lowest was [0.2762 0.0811 0.5352 0.5317]
+Median for last 10 epochs: [0.4398 0.0864 0.5352 0.5783], Epochs since improvement 0
+  5%|▍         | 23/500 [20:02<6:45:50, 51.05s/it]  5%|▍         | 24/500 [21:06<7:16:12, 54.98s/it]Epoch: 24 done with learning rate 2.63E-03, Train loss: 3.90E+06, Train scatter: [0.3543 0.0798 0.5438 0.5695]
+L1 regularization loss: 2.14E+00, L2 regularization loss: 5.23E-01
+Test scatter: [0.366  0.0802 0.5352 0.578 ], Lowest was [0.2762 0.0802 0.5352 0.5317]
+Median for last 10 epochs: [0.4385 0.0864 0.5352 0.578 ], Epochs since improvement 0
+  5%|▌         | 25/500 [21:47<6:41:39, 50.74s/it]  5%|▌         | 26/500 [22:50<7:11:52, 54.67s/it]Epoch: 26 done with learning rate 2.98E-03, Train loss: 3.82E+06, Train scatter: [0.2589 0.0781 0.5437 0.524 ]
+L1 regularization loss: 2.15E+00, L2 regularization loss: 5.27E-01
+Test scatter: [0.2629 0.0786 0.5352 0.5226], Lowest was [0.2629 0.0786 0.5352 0.5226]
+Median for last 10 epochs: [0.366  0.0811 0.5352 0.5387], Epochs since improvement 0
+  5%|▌         | 27/500 [23:31<6:38:20, 50.53s/it]  6%|▌         | 28/500 [24:35<7:07:34, 54.35s/it]Epoch: 28 done with learning rate 3.34E-03, Train loss: 3.76E+06, Train scatter: [0.24   0.0771 0.5436 0.5373]
+L1 regularization loss: 2.16E+00, L2 regularization loss: 5.30E-01
+Test scatter: [0.2482 0.0775 0.5351 0.5338], Lowest was [0.2482 0.0775 0.5351 0.5226]
+Median for last 10 epochs: [0.2762 0.0802 0.5352 0.5338], Epochs since improvement 0
+  6%|▌         | 29/500 [25:15<6:34:28, 50.25s/it]Epoch: 30 done with learning rate 3.72E-03, Train loss: 3.71E+06, Train scatter: [0.225  0.0742 0.5436 0.5158]
+L1 regularization loss: 2.17E+00, L2 regularization loss: 5.36E-01
+Test scatter: [0.2344 0.0746 0.5351 0.5163], Lowest was [0.2344 0.0746 0.5351 0.5163]
+Median for last 10 epochs: [0.2629 0.0786 0.5352 0.5317], Epochs since improvement 0
+  6%|▌         | 30/500 [26:27<7:23:23, 56.60s/it]  6%|▌         | 31/500 [27:07<6:44:39, 51.77s/it]  6%|▋         | 32/500 [28:11<7:12:34, 55.46s/it]Epoch: 32 done with learning rate 4.10E-03, Train loss: 3.66E+06, Train scatter: [0.2948 0.077  0.5435 0.5355]
+L1 regularization loss: 2.19E+00, L2 regularization loss: 5.43E-01
+Test scatter: [0.302  0.0776 0.535  0.5336], Lowest was [0.2344 0.0746 0.535  0.5163]
+Median for last 10 epochs: [0.2629 0.0776 0.5351 0.5336], Epochs since improvement 0
+  7%|▋         | 33/500 [28:52<6:36:55, 51.00s/it]  7%|▋         | 34/500 [29:56<7:05:34, 54.79s/it]Epoch: 34 done with learning rate 4.50E-03, Train loss: 3.49E+06, Train scatter: [0.2268 0.0718 0.5435 0.5221]
+L1 regularization loss: 2.20E+00, L2 regularization loss: 5.50E-01
+Test scatter: [0.2334 0.0727 0.535  0.523 ], Lowest was [0.2334 0.0727 0.535  0.5163]
+Median for last 10 epochs: [0.2482 0.0775 0.5351 0.523 ], Epochs since improvement 0
+  7%|▋         | 35/500 [30:36<6:31:26, 50.51s/it]  7%|▋         | 36/500 [31:39<7:00:15, 54.34s/it]Epoch: 36 done with learning rate 4.90E-03, Train loss: 3.48E+06, Train scatter: [0.2885 0.0818 0.5435 0.5502]
+L1 regularization loss: 2.22E+00, L2 regularization loss: 5.57E-01
+Test scatter: [0.2913 0.0814 0.5349 0.5473], Lowest was [0.2334 0.0727 0.5349 0.5163]
+Median for last 10 epochs: [0.2482 0.0775 0.535  0.5336], Epochs since improvement 0
+  7%|▋         | 37/500 [32:20<6:27:53, 50.27s/it]  8%|▊         | 38/500 [33:23<6:56:42, 54.12s/it]Epoch: 38 done with learning rate 5.30E-03, Train loss: 3.43E+06, Train scatter: [0.1989 0.0706 0.5434 0.5033]
+L1 regularization loss: 2.24E+00, L2 regularization loss: 5.66E-01
+Test scatter: [0.2069 0.0713 0.5349 0.5028], Lowest was [0.2069 0.0713 0.5349 0.5028]
+Median for last 10 epochs: [0.2344 0.0746 0.535  0.523 ], Epochs since improvement 0
+  8%|▊         | 39/500 [34:04<6:24:28, 50.04s/it]Epoch: 40 done with learning rate 5.70E-03, Train loss: 3.34E+06, Train scatter: [0.2311 0.0716 0.5434 0.5366]
+L1 regularization loss: 2.25E+00, L2 regularization loss: 5.73E-01
+Test scatter: [0.2385 0.0722 0.5349 0.5428], Lowest was [0.2069 0.0713 0.5349 0.5028]
+Median for last 10 epochs: [0.2385 0.0727 0.5349 0.5336], Epochs since improvement 0
+  8%|▊         | 40/500 [35:14<7:09:50, 56.07s/it]  8%|▊         | 41/500 [35:54<6:33:25, 51.43s/it]  8%|▊         | 42/500 [36:59<7:02:58, 55.41s/it]Epoch: 42 done with learning rate 6.10E-03, Train loss: 3.24E+06, Train scatter: [0.2578 0.069  0.5432 0.5147]
+L1 regularization loss: 2.27E+00, L2 regularization loss: 5.81E-01
+Test scatter: [0.2737 0.0696 0.5347 0.5185], Lowest was [0.2069 0.0696 0.5347 0.5028]
+Median for last 10 epochs: [0.2385 0.0722 0.5349 0.523 ], Epochs since improvement 0
+  9%|▊         | 43/500 [37:40<6:28:00, 50.94s/it]  9%|▉         | 44/500 [38:43<6:55:06, 54.62s/it]Epoch: 44 done with learning rate 6.49E-03, Train loss: 3.30E+06, Train scatter: [0.2227 0.0716 0.543  0.5141]
+L1 regularization loss: 2.29E+00, L2 regularization loss: 5.91E-01
+Test scatter: [0.2434 0.0727 0.5345 0.5099], Lowest was [0.2069 0.0696 0.5345 0.5028]
+Median for last 10 epochs: [0.2434 0.0722 0.5349 0.5185], Epochs since improvement 0
+  9%|▉         | 45/500 [39:24<6:22:36, 50.45s/it]  9%|▉         | 46/500 [40:27<6:51:56, 54.44s/it]Epoch: 46 done with learning rate 6.87E-03, Train loss: 3.07E+06, Train scatter: [0.3469 0.0695 0.5431 0.504 ]
+L1 regularization loss: 2.32E+00, L2 regularization loss: 6.02E-01
+Test scatter: [0.3448 0.0695 0.5346 0.5009], Lowest was [0.2069 0.0695 0.5345 0.5009]
+Median for last 10 epochs: [0.2434 0.0713 0.5347 0.5099], Epochs since improvement 0
+  9%|▉         | 47/500 [41:08<6:19:31, 50.27s/it] 10%|▉         | 48/500 [42:11<6:48:48, 54.27s/it]Epoch: 48 done with learning rate 7.24E-03, Train loss: 3.06E+06, Train scatter: [0.3477 0.0772 0.543  0.5317]
+L1 regularization loss: 2.34E+00, L2 regularization loss: 6.14E-01
+Test scatter: [0.3491 0.0771 0.5345 0.5247], Lowest was [0.2069 0.0695 0.5345 0.5009]
+Median for last 10 epochs: [0.2737 0.0722 0.5346 0.5185], Epochs since improvement 2
+ 10%|▉         | 49/500 [42:52<6:17:05, 50.17s/it]Epoch: 50 done with learning rate 7.60E-03, Train loss: 3.07E+06, Train scatter: [0.2679 0.0757 0.5428 0.5459]
+L1 regularization loss: 2.39E+00, L2 regularization loss: 6.33E-01
+Test scatter: [0.3605 0.0745 0.5343 0.5409], Lowest was [0.2069 0.0695 0.5343 0.5009]
+Median for last 10 epochs: [0.3448 0.0727 0.5345 0.5185], Epochs since improvement 0
+ 10%|█         | 50/500 [44:02<6:59:39, 55.95s/it] 10%|█         | 51/500 [44:42<6:24:39, 51.40s/it] 10%|█         | 52/500 [45:46<6:50:21, 54.96s/it]Epoch: 52 done with learning rate 7.94E-03, Train loss: 3.02E+06, Train scatter: [0.2312 0.0788 0.5431 0.5322]
+L1 regularization loss: 2.42E+00, L2 regularization loss: 6.43E-01
+Test scatter: [0.2417 0.0783 0.5346 0.5354], Lowest was [0.2069 0.0695 0.5343 0.5009]
+Median for last 10 epochs: [0.3448 0.0745 0.5345 0.5247], Epochs since improvement 2
+ 11%|█         | 53/500 [46:26<6:17:40, 50.69s/it] 11%|█         | 54/500 [47:30<6:45:24, 54.54s/it]Epoch: 54 done with learning rate 8.26E-03, Train loss: 3.04E+06, Train scatter: [0.2383 0.0767 0.5431 0.5052]
+L1 regularization loss: 2.43E+00, L2 regularization loss: 6.52E-01
+Test scatter: [0.2397 0.0761 0.5345 0.5035], Lowest was [0.2069 0.0695 0.5343 0.5009]
+Median for last 10 epochs: [0.3448 0.0761 0.5345 0.5247], Epochs since improvement 4
+ 11%|█         | 55/500 [48:11<6:13:45, 50.39s/it] 11%|█         | 56/500 [49:13<6:40:25, 54.11s/it]Epoch: 56 done with learning rate 8.56E-03, Train loss: 3.04E+06, Train scatter: [0.2431 0.0816 0.543  0.5023]
+L1 regularization loss: 2.45E+00, L2 regularization loss: 6.62E-01
+Test scatter: [0.2525 0.0809 0.5345 0.4987], Lowest was [0.2069 0.0695 0.5343 0.4987]
+Median for last 10 epochs: [0.2525 0.0771 0.5345 0.5247], Epochs since improvement 0
+ 11%|█▏        | 57/500 [49:54<6:10:16, 50.15s/it] 12%|█▏        | 58/500 [50:57<6:37:54, 54.01s/it]Epoch: 58 done with learning rate 8.83E-03, Train loss: 3.03E+06, Train scatter: [0.597  0.0923 0.5429 0.551 ]
+L1 regularization loss: 2.46E+00, L2 regularization loss: 6.70E-01
+Test scatter: [0.5871 0.0916 0.5344 0.5431], Lowest was [0.2069 0.0695 0.5343 0.4987]
+Median for last 10 epochs: [0.2525 0.0783 0.5345 0.5354], Epochs since improvement 2
+ 12%|█▏        | 59/500 [51:38<6:07:25, 49.99s/it]Epoch: 60 done with learning rate 9.08E-03, Train loss: 3.02E+06, Train scatter: [0.4347 0.0682 0.5429 0.5074]
+L1 regularization loss: 2.49E+00, L2 regularization loss: 6.85E-01
+Test scatter: [0.4278 0.0674 0.5344 0.5042], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.2525 0.0783 0.5345 0.5042], Epochs since improvement 0
+ 12%|█▏        | 60/500 [52:48<6:51:49, 56.16s/it] 12%|█▏        | 61/500 [53:29<6:17:36, 51.61s/it] 12%|█▏        | 62/500 [54:33<6:42:39, 55.16s/it]Epoch: 62 done with learning rate 9.31E-03, Train loss: 3.01E+06, Train scatter: [0.3733 0.0706 0.5429 0.5194]
+L1 regularization loss: 2.50E+00, L2 regularization loss: 6.94E-01
+Test scatter: [0.3801 0.0709 0.5344 0.5201], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.3801 0.0761 0.5344 0.5042], Epochs since improvement 2
+ 13%|█▎        | 63/500 [55:14<6:11:19, 50.98s/it] 13%|█▎        | 64/500 [56:17<6:36:40, 54.59s/it]Epoch: 64 done with learning rate 9.50E-03, Train loss: 3.45E+10, Train scatter: [0.9352 0.1725 0.5441 0.996 ]
+L1 regularization loss: 7.69E+00, L2 regularization loss: 2.60E+00
+Test scatter: [0.9196 0.1687 0.5355 0.9857], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.4278 0.0809 0.5344 0.5201], Epochs since improvement 4
+ 13%|█▎        | 65/500 [56:58<6:06:31, 50.56s/it] 13%|█▎        | 66/500 [58:02<6:34:33, 54.55s/it]Epoch: 66 done with learning rate 9.66E-03, Train loss: 2.68E+07, Train scatter: [0.9352 0.1725 0.5441 0.9961]
+L1 regularization loss: 7.70E+00, L2 regularization loss: 2.62E+00
+Test scatter: [0.9196 0.1687 0.5355 0.9857], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.5871 0.0916 0.5344 0.5431], Epochs since improvement 6
+ 13%|█▎        | 67/500 [58:43<6:03:49, 50.42s/it] 14%|█▎        | 68/500 [59:46<6:29:59, 54.17s/it]Epoch: 68 done with learning rate 9.80E-03, Train loss: 2.67E+07, Train scatter: [0.9352 0.1725 0.5441 0.9961]
+L1 regularization loss: 7.70E+00, L2 regularization loss: 2.62E+00
+Test scatter: [0.9196 0.1687 0.5355 0.9857], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.9196 0.1687 0.5355 0.9857], Epochs since improvement 8
+ 14%|█▍        | 69/500 [1:00:27<6:00:22, 50.17s/it]Epoch: 70 done with learning rate 9.90E-03, Train loss: 2.67E+07, Train scatter: [0.9352 0.1725 0.5441 0.9961]
+L1 regularization loss: 7.70E+00, L2 regularization loss: 2.63E+00
+Test scatter: [0.9196 0.1687 0.5355 0.9857], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.9196 0.1687 0.5355 0.9857], Epochs since improvement 10
+ 14%|█▍        | 70/500 [1:01:37<6:42:44, 56.20s/it] 14%|█▍        | 71/500 [1:02:18<6:08:35, 51.55s/it] 14%|█▍        | 72/500 [1:03:21<6:33:31, 55.17s/it]Epoch: 72 done with learning rate 9.96E-03, Train loss: 2.66E+07, Train scatter: [0.9352 0.1725 0.5441 0.9961]
+L1 regularization loss: 7.70E+00, L2 regularization loss: 2.65E+00
+Test scatter: [0.9196 0.1687 0.5355 0.9857], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.9196 0.1687 0.5355 0.9857], Epochs since improvement 12
+ 15%|█▍        | 73/500 [1:04:02<6:01:41, 50.82s/it] 15%|█▍        | 74/500 [1:05:07<6:30:54, 55.06s/it]Epoch: 74 done with learning rate 1.00E-02, Train loss: 2.66E+07, Train scatter: [0.9352 0.1725 0.5441 0.9961]
+L1 regularization loss: 7.70E+00, L2 regularization loss: 2.67E+00
+Test scatter: [0.9196 0.1687 0.5355 0.9857], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.9196 0.1687 0.5355 0.9857], Epochs since improvement 14
+ 15%|█▌        | 75/500 [1:05:48<5:59:22, 50.74s/it] 15%|█▌        | 76/500 [1:06:51<6:25:01, 54.48s/it]Epoch: 76 done with learning rate 1.00E-02, Train loss: 1.96E+07, Train scatter: [0.9352 0.1723 0.5441 0.9965]
+L1 regularization loss: 7.73E+00, L2 regularization loss: 2.75E+00
+Test scatter: [0.9196 0.1685 0.5355 0.9861], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.9196 0.1687 0.5355 0.9857], Epochs since improvement 16
+ 15%|█▌        | 77/500 [1:07:31<5:54:55, 50.34s/it] 16%|█▌        | 78/500 [1:08:35<6:21:08, 54.19s/it]Epoch: 78 done with learning rate 1.00E-02, Train loss: 1.78E+07, Train scatter: [0.9352 0.1721 0.5441 0.9967]
+L1 regularization loss: 7.74E+00, L2 regularization loss: 2.86E+00
+Test scatter: [0.9196 0.1683 0.5355 0.9863], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.9196 0.1687 0.5355 0.9857], Epochs since improvement 18
+ 16%|█▌        | 79/500 [1:09:15<5:51:40, 50.12s/it]Epoch: 80 done with learning rate 1.00E-02, Train loss: 1.75E+07, Train scatter: [0.9352 0.1721 0.5441 0.9968]
+L1 regularization loss: 7.75E+00, L2 regularization loss: 2.93E+00
+Test scatter: [0.9196 0.1683 0.5355 0.9864], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.9196 0.1685 0.5355 0.9861], Epochs since improvement 20
+ 16%|█▌        | 80/500 [1:10:27<6:35:50, 56.55s/it] 16%|█▌        | 81/500 [1:11:07<6:01:35, 51.78s/it] 16%|█▌        | 81/500 [1:12:11<6:13:24, 53.47s/it]
+Epoch: 82 done with learning rate 9.99E-03, Train loss: 1.70E+07, Train scatter: [0.9352 0.1726 0.5441 0.9977]
+L1 regularization loss: 7.78E+00, L2 regularization loss: 3.13E+00
+Test scatter: [0.9196 0.1688 0.5355 0.9873], Lowest was [0.2069 0.0674 0.5343 0.4987]
+Median for last 10 epochs: [0.9196 0.1685 0.5355 0.9863], Epochs since improvement 22
+Exited after 82 epochs due to early stopping
+4331.24 seconds spent training, 8.662 seconds per epoch. Processed 8039 trees per second
+[0.9195423  0.16877827 0.53548014 0.98725885]
+{'epoch_exit': 81, 'scatter_m_star': 0.9195423, 'lowest_m_star': 0.20690548, 'last20_m_star': 0.9196045, 'last10_m_star': 0.91961294, 'scatter_v_disk': 0.16877827, 'lowest_v_disk': 0.067446575, 'last20_v_disk': 0.1686846, 'last10_v_disk': 0.16845752, 'scatter_m_cold': 0.53548014, 'lowest_m_cold': 0.5343074, 'last20_m_cold': 0.5354935, 'last10_m_cold': 0.53549194, 'scatter_sfr_100': 0.98725885, 'lowest_sfr_100': 0.49870694, 'last20_sfr_100': 0.9856846, 'last10_sfr_100': 0.98633665}
+Finished 1/1
+Exited training after None epochs
+Experiment 4 done: 4 / 6
+Exploring ['conv_layers', 'batch_size']
+Currently doing [  3 256]
+{'experiment': 'GraphMerge', 'group': 'meta_pysr', 'move': False, 'model': 'MetaEdge', 'log': True, 'run_params': {'n_epochs': 500, 'n_trials': 1, 'batch_size': 256, 'val_epoch': 2, 'early_stopping': True, 'patience': 20, 'l1_lambda': 0.0001, 'l2_lambda': 0.0001, 'loss_func': 'GaussNd', 'metrics': 'test_multi_varrho', 'performance_plot': 'multi_base', 'save': True, 'seed': True, 'num_workers': 4}, 'learn_params': {'learning_rate': 0.01, 'schedule': 'onecycle', 'g_up': 1, 'g_down': 0.95, 'warmup': 4, 'period': 5, 'eta_min': 1e-05}, 'hyper_params': {'hidden_channels': 128, 'conv_layers': 3, 'conv_activation': 'relu', 'decode_activation': 'leakyrelu', 'decode_layers': 2, 'layernorm': True, 'agg': 'sum', 'variance': True, 'rho': 0, 'in_channels': 43, 'out_channels': 4}, 'data_params': {'case': 'vlarge_all_4t_z0.0_quantile_raw', 'targets': [0, 1, 2, 3], 'del_feats': [], 'split': 0.8, 'test': 0, 'scale': 0}, 'experiment_name': 'con3bat256'}
+/home/cj1223/../../scratch/gpfs/cj1223/GraphResults/results_meta_pysr_120322/MetaEdge_vlarge_all_4t_z0.0_quantile_raw_sqpndr
+RelU conv activation
+LeakyRelU decode activation
+N_params 546504
+Made folder for saving model
+  0%|          | 0/500 [00:00<?, ?it/s]  0%|          | 1/500 [01:01<8:27:58, 61.08s/it]  0%|          | 2/500 [02:30<10:47:14, 77.98s/it]Epoch: 2 done with learning rate 4.17E-04, Train loss: 9.34E+07, Train scatter: [0.9352 0.1318 0.5441 0.9955]
+L1 regularization loss: 2.45E+00, L2 regularization loss: 4.24E-01
+Test scatter: [0.9195 0.1281 0.5355 0.9852], Lowest was [0.9195 0.1281 0.5355 0.9852]
+Median for last 10 epochs: [0.9195 0.1281 0.5355 0.9852], Epochs since improvement 2
+  1%|          | 3/500 [03:32<9:43:36, 70.46s/it]   1%|          | 4/500 [05:02<10:47:24, 78.31s/it]Epoch: 4 done with learning rate 4.67E-04, Train loss: 8.02E+07, Train scatter: [0.9334 0.1059 0.5439 0.9954]
+L1 regularization loss: 2.47E+00, L2 regularization loss: 4.29E-01
+Test scatter: [0.9178 0.1051 0.5353 0.9851], Lowest was [0.9178 0.1051 0.5353 0.9851]
+Median for last 10 epochs: [0.9178 0.1051 0.5353 0.9851], Epochs since improvement 0
+  1%|          | 5/500 [06:04<9:56:11, 72.27s/it]   1%|          | 6/500 [07:35<10:47:14, 78.61s/it]Epoch: 6 done with learning rate 5.51E-04, Train loss: 7.65E+07, Train scatter: [0.9135 0.0905 0.5409 0.9953]
+L1 regularization loss: 2.49E+00, L2 regularization loss: 4.37E-01
+Test scatter: [0.8991 0.0907 0.5325 0.985 ], Lowest was [0.8991 0.0907 0.5325 0.985 ]
+Median for last 10 epochs: [0.8991 0.0907 0.5325 0.985 ], Epochs since improvement 0
+  1%|▏         | 7/500 [08:36<10:00:10, 73.04s/it]  2%|▏         | 8/500 [10:07<10:45:11, 78.68s/it]Epoch: 8 done with learning rate 6.67E-04, Train loss: 7.46E+07, Train scatter: [0.6874 0.0929 0.4186 0.9953]
+L1 regularization loss: 2.50E+00, L2 regularization loss: 4.51E-01
+Test scatter: [0.6651 0.0921 0.4101 0.985 ], Lowest was [0.6651 0.0907 0.4101 0.985 ]
+Median for last 10 epochs: [0.7821 0.0914 0.4713 0.985 ], Epochs since improvement 0
+  2%|▏         | 9/500 [11:09<10:00:18, 73.36s/it]Epoch: 10 done with learning rate 8.15E-04, Train loss: 7.29E+07, Train scatter: [0.564  0.0864 0.3906 0.9954]
+L1 regularization loss: 2.52E+00, L2 regularization loss: 4.62E-01
+Test scatter: [0.5767 0.0883 0.3901 0.985 ], Lowest was [0.5767 0.0883 0.3901 0.985 ]
+Median for last 10 epochs: [0.6651 0.0907 0.4101 0.985 ], Epochs since improvement 0
+  2%|▏         | 10/500 [12:48<11:04:07, 81.32s/it]  2%|▏         | 11/500 [13:50<10:13:49, 75.32s/it]  2%|▏         | 12/500 [15:19<10:47:33, 79.62s/it]Epoch: 12 done with learning rate 9.94E-04, Train loss: 7.19E+07, Train scatter: [0.5845 0.0819 0.342  0.9953]
+L1 regularization loss: 2.53E+00, L2 regularization loss: 4.68E-01
+Test scatter: [0.603  0.0848 0.3469 0.985 ], Lowest was [0.5767 0.0848 0.3469 0.985 ]
+Median for last 10 epochs: [0.6651 0.0907 0.4101 0.985 ], Epochs since improvement 0
+  3%|▎         | 13/500 [16:21<10:02:06, 74.18s/it]  3%|▎         | 14/500 [17:51<10:41:24, 79.19s/it]Epoch: 14 done with learning rate 1.20E-03, Train loss: 7.11E+07, Train scatter: [0.629  0.082  0.3404 0.9954]
+L1 regularization loss: 2.54E+00, L2 regularization loss: 4.73E-01
+Test scatter: [0.636  0.0841 0.3455 0.985 ], Lowest was [0.5767 0.0841 0.3455 0.985 ]
+Median for last 10 epochs: [0.636  0.0883 0.3901 0.985 ], Epochs since improvement 0
+  3%|▎         | 15/500 [18:54<9:58:34, 74.05s/it]   3%|▎         | 16/500 [20:24<10:37:13, 78.99s/it]Epoch: 16 done with learning rate 1.44E-03, Train loss: 6.89E+07, Train scatter: [0.5228 0.0792 0.326  0.9955]
+L1 regularization loss: 2.56E+00, L2 regularization loss: 4.80E-01
+Test scatter: [0.5321 0.0804 0.3313 0.9852], Lowest was [0.5321 0.0804 0.3313 0.985 ]
+Median for last 10 epochs: [0.603  0.0848 0.3469 0.985 ], Epochs since improvement 0
+  3%|▎         | 17/500 [21:26<9:53:56, 73.78s/it]   4%|▎         | 18/500 [22:57<10:33:47, 78.89s/it]Epoch: 18 done with learning rate 1.70E-03, Train loss: 3.28E+07, Train scatter: [0.5617 0.0942 0.3598 0.8779]
+L1 regularization loss: 2.58E+00, L2 regularization loss: 4.91E-01
+Test scatter: [0.5598 0.0963 0.3587 0.8644], Lowest was [0.5321 0.0804 0.3313 0.8644]
+Median for last 10 epochs: [0.5767 0.0848 0.3469 0.985 ], Epochs since improvement 0
+  4%|▍         | 19/500 [23:58<9:50:57, 73.72s/it] Epoch: 20 done with learning rate 1.99E-03, Train loss: 4.88E+06, Train scatter: [0.4532 0.0716 0.2996 0.5585]
+L1 regularization loss: 2.61E+00, L2 regularization loss: 5.06E-01
+Test scatter: [0.4574 0.0719 0.3031 0.5665], Lowest was [0.4574 0.0719 0.3031 0.5665]
+Median for last 10 epochs: [0.5598 0.0841 0.3455 0.985 ], Epochs since improvement 0
+  4%|▍         | 20/500 [25:36<10:47:10, 80.90s/it]  4%|▍         | 21/500 [26:38<10:00:15, 75.19s/it]  4%|▍         | 22/500 [28:09<10:37:17, 79.99s/it]Epoch: 22 done with learning rate 2.30E-03, Train loss: 3.74E+06, Train scatter: [0.4614 0.074  0.3197 0.5306]
+L1 regularization loss: 2.65E+00, L2 regularization loss: 5.27E-01
+Test scatter: [0.4588 0.0747 0.3224 0.5361], Lowest was [0.4574 0.0719 0.3031 0.5361]
+Median for last 10 epochs: [0.5321 0.0804 0.3313 0.8644], Epochs since improvement 0
+  5%|▍         | 23/500 [29:11<9:52:14, 74.50s/it]   5%|▍         | 24/500 [30:40<10:27:10, 79.06s/it]Epoch: 24 done with learning rate 2.63E-03, Train loss: 3.35E+06, Train scatter: [0.6123 0.0721 0.3041 0.5356]
+L1 regularization loss: 2.71E+00, L2 regularization loss: 5.54E-01
+Test scatter: [0.6091 0.073  0.3093 0.5407], Lowest was [0.4574 0.0719 0.3031 0.5361]
+Median for last 10 epochs: [0.5321 0.0747 0.3224 0.5665], Epochs since improvement 2
+  5%|▌         | 25/500 [31:42<9:44:20, 73.81s/it]   5%|▌         | 26/500 [33:13<10:23:50, 78.97s/it]Epoch: 26 done with learning rate 2.98E-03, Train loss: 3.23E+06, Train scatter: [0.4309 0.0694 0.3088 0.537 ]
+L1 regularization loss: 2.77E+00, L2 regularization loss: 5.87E-01
+Test scatter: [0.4263 0.0695 0.3088 0.5414], Lowest was [0.4263 0.0695 0.3031 0.5361]
+Median for last 10 epochs: [0.4588 0.073  0.3093 0.5414], Epochs since improvement 0
+  5%|▌         | 27/500 [34:15<9:41:53, 73.81s/it]   6%|▌         | 28/500 [35:45<10:19:30, 78.75s/it]Epoch: 28 done with learning rate 3.34E-03, Train loss: 3.06E+06, Train scatter: [0.4576 0.0675 0.2924 0.4864]
+L1 regularization loss: 2.84E+00, L2 regularization loss: 6.31E-01
+Test scatter: [0.4506 0.067  0.2911 0.4844], Lowest was [0.4263 0.067  0.2911 0.4844]
+Median for last 10 epochs: [0.4574 0.0719 0.3088 0.5407], Epochs since improvement 0
+  6%|▌         | 29/500 [36:46<9:37:41, 73.59s/it] Epoch: 30 done with learning rate 3.72E-03, Train loss: 2.88E+06, Train scatter: [0.4233 0.0645 0.2886 0.4844]
+L1 regularization loss: 2.90E+00, L2 regularization loss: 6.84E-01
+Test scatter: [0.4171 0.0647 0.2904 0.4875], Lowest was [0.4171 0.0647 0.2904 0.4844]
+Median for last 10 epochs: [0.4506 0.0695 0.3088 0.5361], Epochs since improvement 0
+  6%|▌         | 30/500 [38:24<10:32:07, 80.70s/it]  6%|▌         | 31/500 [39:25<9:46:22, 75.02s/it]   6%|▋         | 32/500 [40:56<10:22:14, 79.77s/it]Epoch: 32 done with learning rate 4.10E-03, Train loss: 2.78E+06, Train scatter: [0.4662 0.0644 0.2916 0.495 ]
+L1 regularization loss: 3.02E+00, L2 regularization loss: 7.57E-01
+Test scatter: [0.464  0.0648 0.295  0.4993], Lowest was [0.4171 0.0647 0.2904 0.4844]
+Median for last 10 epochs: [0.4506 0.067  0.295  0.4993], Epochs since improvement 2
+  7%|▋         | 33/500 [41:58<9:38:32, 74.33s/it]   7%|▋         | 34/500 [43:28<10:14:56, 79.18s/it]Epoch: 34 done with learning rate 4.50E-03, Train loss: 2.67E+06, Train scatter: [0.3916 0.0638 0.283  0.4818]
+L1 regularization loss: 3.10E+00, L2 regularization loss: 8.25E-01
+Test scatter: [0.3847 0.0637 0.2867 0.4882], Lowest was [0.3847 0.0637 0.2867 0.4844]
+Median for last 10 epochs: [0.4263 0.0648 0.2911 0.4882], Epochs since improvement 0
+  7%|▋         | 35/500 [44:30<9:32:54, 73.92s/it]   7%|▋         | 36/500 [46:00<10:08:40, 78.71s/it]Epoch: 36 done with learning rate 4.90E-03, Train loss: 2.98E+06, Train scatter: [0.4254 0.0667 0.2994 0.4776]
+L1 regularization loss: 3.20E+00, L2 regularization loss: 9.01E-01
+Test scatter: [0.4226 0.0673 0.2993 0.4756], Lowest was [0.3847 0.0637 0.2867 0.4756]
+Median for last 10 epochs: [0.4226 0.0648 0.2911 0.4875], Epochs since improvement 0
+  7%|▋         | 37/500 [47:02<9:27:42, 73.57s/it]   8%|▊         | 38/500 [48:33<10:06:34, 78.78s/it]Epoch: 38 done with learning rate 5.30E-03, Train loss: 2.50E+06, Train scatter: [0.4651 0.0612 0.2932 0.4695]
+L1 regularization loss: 3.31E+00, L2 regularization loss: 1.05E+00
+Test scatter: [0.4563 0.0615 0.2949 0.4709], Lowest was [0.3847 0.0615 0.2867 0.4709]
+Median for last 10 epochs: [0.4226 0.0647 0.2949 0.4875], Epochs since improvement 0
+  8%|▊         | 39/500 [49:34<9:25:31, 73.61s/it] Epoch: 40 done with learning rate 5.70E-03, Train loss: 2.31E+06, Train scatter: [0.4269 0.0613 0.2812 0.4799]
+L1 regularization loss: 3.40E+00, L2 regularization loss: 1.19E+00
+Test scatter: [0.4201 0.0619 0.2831 0.484 ], Lowest was [0.3847 0.0615 0.2831 0.4709]
+Median for last 10 epochs: [0.4226 0.0637 0.2949 0.484 ], Epochs since improvement 0
+  8%|▊         | 40/500 [51:12<10:19:33, 80.81s/it]  8%|▊         | 41/500 [52:13<9:34:29, 75.10s/it]   8%|▊         | 42/500 [53:44<10:07:53, 79.64s/it]Epoch: 42 done with learning rate 6.10E-03, Train loss: 2.25E+06, Train scatter: [0.393  0.0589 0.2957 0.4741]
+L1 regularization loss: 3.48E+00, L2 regularization loss: 1.31E+00
+Test scatter: [0.3896 0.0595 0.2983 0.4812], Lowest was [0.3847 0.0595 0.2831 0.4709]
+Median for last 10 epochs: [0.4201 0.0619 0.2949 0.4812], Epochs since improvement 0
+  9%|▊         | 43/500 [54:45<9:25:29, 74.24s/it]   9%|▉         | 44/500 [56:15<10:00:24, 79.00s/it]Epoch: 44 done with learning rate 6.49E-03, Train loss: 4.87E+06, Train scatter: [0.4912 0.0885 0.4103 0.5969]
+L1 regularization loss: 3.74E+00, L2 regularization loss: 1.46E+00
+Test scatter: [0.5048 0.0899 0.4129 0.6021], Lowest was [0.3847 0.0595 0.2831 0.4709]
+Median for last 10 epochs: [0.4226 0.0619 0.2983 0.4812], Epochs since improvement 2
+  9%|▉         | 45/500 [57:17<9:19:28, 73.78s/it]   9%|▉         | 46/500 [58:48<9:57:16, 78.94s/it]Epoch: 46 done with learning rate 6.87E-03, Train loss: 3.05E+06, Train scatter: [0.3767 0.0752 0.3839 0.5367]
+L1 regularization loss: 3.76E+00, L2 regularization loss: 1.48E+00
+Test scatter: [0.3906 0.0753 0.3862 0.5437], Lowest was [0.3847 0.0595 0.2831 0.4709]
+Median for last 10 epochs: [0.4201 0.0619 0.2983 0.484 ], Epochs since improvement 4
+  9%|▉         | 47/500 [59:50<9:16:53, 73.76s/it] 10%|▉         | 48/500 [1:01:19<9:50:34, 78.40s/it]Epoch: 48 done with learning rate 7.24E-03, Train loss: 2.51E+06, Train scatter: [0.4327 0.0706 0.3575 0.5048]
+L1 regularization loss: 3.79E+00, L2 regularization loss: 1.50E+00
+Test scatter: [0.4281 0.0712 0.3611 0.5055], Lowest was [0.3847 0.0595 0.2831 0.4709]
+Median for last 10 epochs: [0.4201 0.0712 0.3611 0.5055], Epochs since improvement 6
+ 10%|▉         | 49/500 [1:02:21<9:11:26, 73.36s/it]Epoch: 50 done with learning rate 7.60E-03, Train loss: 2.24E+06, Train scatter: [0.4037 0.0694 0.3604 0.514 ]
+L1 regularization loss: 3.79E+00, L2 regularization loss: 1.52E+00
+Test scatter: [0.3971 0.0701 0.3642 0.5156], Lowest was [0.3847 0.0595 0.2831 0.4709]
+Median for last 10 epochs: [0.3971 0.0712 0.3642 0.5156], Epochs since improvement 8
+ 10%|█         | 50/500 [1:03:58<10:04:53, 80.65s/it] 10%|█         | 51/500 [1:05:00<9:21:27, 75.03s/it]  10%|█         | 52/500 [1:06:30<9:54:09, 79.57s/it]Epoch: 52 done with learning rate 7.94E-03, Train loss: 2.12E+06, Train scatter: [0.4214 0.0665 0.3448 0.4921]
+L1 regularization loss: 3.79E+00, L2 regularization loss: 1.52E+00
+Test scatter: [0.4155 0.0666 0.3472 0.4898], Lowest was [0.3847 0.0595 0.2831 0.4709]
+Median for last 10 epochs: [0.4155 0.0712 0.3642 0.5156], Epochs since improvement 10
+ 11%|█         | 53/500 [1:07:32<9:12:17, 74.13s/it] 11%|█         | 54/500 [1:09:01<9:45:53, 78.82s/it]Epoch: 54 done with learning rate 8.26E-03, Train loss: 1.95E+06, Train scatter: [0.3862 0.0646 0.3481 0.4809]
+L1 regularization loss: 3.79E+00, L2 regularization loss: 1.53E+00
+Test scatter: [0.3838 0.0657 0.3513 0.4808], Lowest was [0.3838 0.0595 0.2831 0.4709]
+Median for last 10 epochs: [0.3971 0.0701 0.3611 0.5055], Epochs since improvement 0
+ 11%|█         | 55/500 [1:10:03<9:06:13, 73.65s/it] 11%|█         | 56/500 [1:11:34<9:42:31, 78.72s/it]Epoch: 56 done with learning rate 8.56E-03, Train loss: 1.87E+06, Train scatter: [0.417  0.0639 0.3445 0.4752]
+L1 regularization loss: 3.80E+00, L2 regularization loss: 1.54E+00
+Test scatter: [0.4061 0.0641 0.3452 0.476 ], Lowest was [0.3838 0.0595 0.2831 0.4709]
+Median for last 10 epochs: [0.4061 0.0666 0.3513 0.4898], Epochs since improvement 2
+ 11%|█▏        | 57/500 [1:12:35<9:03:29, 73.61s/it] 12%|█▏        | 58/500 [1:14:05<9:38:32, 78.54s/it]Epoch: 58 done with learning rate 8.83E-03, Train loss: 1.73E+06, Train scatter: [0.4322 0.0658 0.3379 0.468 ]
+L1 regularization loss: 3.82E+00, L2 regularization loss: 1.54E+00
+Test scatter: [0.4292 0.0677 0.3429 0.4707], Lowest was [0.3838 0.0595 0.2831 0.4707]
+Median for last 10 epochs: [0.4061 0.0666 0.3472 0.4808], Epochs since improvement 0
+ 12%|█▏        | 59/500 [1:15:07<9:00:00, 73.47s/it]Epoch: 60 done with learning rate 9.08E-03, Train loss: 1.63E+06, Train scatter: [0.4147 0.0654 0.3327 0.465 ]
+L1 regularization loss: 3.84E+00, L2 regularization loss: 1.55E+00
+Test scatter: [0.4105 0.0659 0.3364 0.4653], Lowest was [0.3838 0.0595 0.2831 0.4653]
+Median for last 10 epochs: [0.4105 0.0659 0.3452 0.476 ], Epochs since improvement 0
+ 12%|█▏        | 60/500 [1:16:45<9:52:53, 80.85s/it] 12%|█▏        | 61/500 [1:17:47<9:09:24, 75.09s/it] 12%|█▏        | 62/500 [1:19:17<9:41:50, 79.70s/it]Epoch: 62 done with learning rate 9.31E-03, Train loss: 1.53E+06, Train scatter: [0.402  0.0616 0.3259 0.4577]
+L1 regularization loss: 3.88E+00, L2 regularization loss: 1.57E+00
+Test scatter: [0.398  0.063  0.3297 0.4604], Lowest was [0.3838 0.0595 0.2831 0.4604]
+Median for last 10 epochs: [0.4061 0.0657 0.3429 0.4707], Epochs since improvement 0
+ 13%|█▎        | 63/500 [1:20:19<9:00:33, 74.22s/it] 13%|█▎        | 64/500 [1:21:49<9:35:43, 79.23s/it]Epoch: 64 done with learning rate 9.50E-03, Train loss: 1.49E+06, Train scatter: [0.3795 0.0606 0.3303 0.4468]
+L1 regularization loss: 3.86E+00, L2 regularization loss: 1.58E+00
+Test scatter: [0.3701 0.0613 0.3335 0.444 ], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.4061 0.0641 0.3364 0.4653], Epochs since improvement 0
+ 13%|█▎        | 65/500 [1:22:51<8:55:46, 73.90s/it] 13%|█▎        | 66/500 [1:24:21<9:30:40, 78.89s/it]Epoch: 66 done with learning rate 9.66E-03, Train loss: 1.63E+07, Train scatter: [0.9343 0.1756 0.5439 0.9857]
+L1 regularization loss: 1.10E+01, L2 regularization loss: 4.29E+00
+Test scatter: [0.9187 0.1717 0.5353 0.9756], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.4105 0.0659 0.3364 0.4653], Epochs since improvement 2
+ 13%|█▎        | 67/500 [1:25:23<8:51:53, 73.70s/it] 14%|█▎        | 68/500 [1:26:53<9:24:38, 78.42s/it]Epoch: 68 done with learning rate 9.80E-03, Train loss: 5.63E+06, Train scatter: [0.93   0.1303 0.5434 0.7424]
+L1 regularization loss: 1.11E+01, L2 regularization loss: 4.54E+00
+Test scatter: [0.9145 0.1279 0.5348 0.7381], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.4105 0.0659 0.3364 0.4653], Epochs since improvement 4
+ 14%|█▍        | 69/500 [1:27:54<8:47:33, 73.44s/it]Epoch: 70 done with learning rate 9.90E-03, Train loss: 4.34E+06, Train scatter: [0.9272 0.1241 0.5434 0.7041]
+L1 regularization loss: 1.11E+01, L2 regularization loss: 4.67E+00
+Test scatter: [0.9117 0.1216 0.5348 0.6989], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.9117 0.1216 0.5348 0.6989], Epochs since improvement 6
+ 14%|█▍        | 70/500 [1:29:32<9:38:42, 80.75s/it] 14%|█▍        | 71/500 [1:30:33<8:55:24, 74.88s/it] 14%|█▍        | 72/500 [1:32:04<9:28:17, 79.67s/it]Epoch: 72 done with learning rate 9.96E-03, Train loss: 6.75E+06, Train scatter: [0.9203 0.1396 0.543  0.9398]
+L1 regularization loss: 1.12E+01, L2 regularization loss: 4.76E+00
+Test scatter: [0.905  0.1377 0.5345 0.9309], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.9117 0.1279 0.5348 0.7381], Epochs since improvement 8
+ 15%|█▍        | 73/500 [1:33:05<8:47:37, 74.14s/it] 15%|█▍        | 74/500 [1:34:37<9:23:54, 79.42s/it]Epoch: 74 done with learning rate 1.00E-02, Train loss: 6.19E+06, Train scatter: [0.9122 0.1351 0.5422 0.9797]
+L1 regularization loss: 1.13E+01, L2 regularization loss: 5.00E+00
+Test scatter: [0.8971 0.1327 0.5337 0.9697], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.9117 0.1327 0.5348 0.9309], Epochs since improvement 10
+ 15%|█▌        | 75/500 [1:35:38<8:44:03, 73.98s/it] 15%|█▌        | 76/500 [1:37:08<9:16:22, 78.73s/it]Epoch: 76 done with learning rate 1.00E-02, Train loss: 2.99E+06, Train scatter: [0.8189 0.1282 0.5274 0.7103]
+L1 regularization loss: 1.14E+01, L2 regularization loss: 5.48E+00
+Test scatter: [0.8054 0.1257 0.5194 0.709 ], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.905  0.1279 0.5345 0.7381], Epochs since improvement 12
+ 15%|█▌        | 77/500 [1:38:10<8:38:39, 73.57s/it] 16%|█▌        | 78/500 [1:39:40<9:12:44, 78.59s/it]Epoch: 78 done with learning rate 1.00E-02, Train loss: 1.94E+06, Train scatter: [0.5222 0.119  0.5437 0.6668]
+L1 regularization loss: 1.14E+01, L2 regularization loss: 5.84E+00
+Test scatter: [0.5149 0.1161 0.5352 0.6607], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.8971 0.1257 0.5345 0.709 ], Epochs since improvement 14
+ 16%|█▌        | 79/500 [1:40:42<8:36:44, 73.65s/it]Epoch: 80 done with learning rate 1.00E-02, Train loss: 1.51E+06, Train scatter: [0.5513 0.1115 0.5244 0.6478]
+L1 regularization loss: 1.14E+01, L2 regularization loss: 5.90E+00
+Test scatter: [0.5415 0.1088 0.5162 0.6404], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.8054 0.1257 0.5337 0.709 ], Epochs since improvement 16
+ 16%|█▌        | 80/500 [1:42:22<9:30:47, 81.54s/it] 16%|█▌        | 81/500 [1:43:24<8:47:27, 75.53s/it] 16%|█▋        | 82/500 [1:44:55<9:18:54, 80.23s/it]Epoch: 82 done with learning rate 9.99E-03, Train loss: 1.14E+06, Train scatter: [0.5151 0.108  0.5433 0.6362]
+L1 regularization loss: 1.14E+01, L2 regularization loss: 5.93E+00
+Test scatter: [0.5069 0.1056 0.5347 0.6295], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.5415 0.1161 0.5337 0.6607], Epochs since improvement 18
+ 17%|█▋        | 83/500 [1:45:56<8:38:27, 74.60s/it] 17%|█▋        | 84/500 [1:47:28<9:12:39, 79.71s/it]Epoch: 84 done with learning rate 9.99E-03, Train loss: 7.95E+05, Train scatter: [0.4587 0.1067 0.517  0.6346]
+L1 regularization loss: 1.14E+01, L2 regularization loss: 5.95E+00
+Test scatter: [0.4539 0.1045 0.5091 0.6278], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.5149 0.1088 0.5194 0.6404], Epochs since improvement 20
+ 17%|█▋        | 85/500 [1:48:29<8:33:29, 74.24s/it] 17%|█▋        | 85/500 [1:50:01<8:57:08, 77.66s/it]
+Epoch: 86 done with learning rate 9.98E-03, Train loss: 5.12E+05, Train scatter: [0.5003 0.1041 0.5042 0.6205]
+L1 regularization loss: 1.14E+01, L2 regularization loss: 5.97E+00
+Test scatter: [0.4928 0.1018 0.4963 0.6142], Lowest was [0.3701 0.0595 0.2831 0.444 ]
+Median for last 10 epochs: [0.5069 0.1056 0.5162 0.6295], Epochs since improvement 22
+Exited after 86 epochs due to early stopping
+6601.01 seconds spent training, 13.202 seconds per epoch. Processed 5275 trees per second
+[0.49278513 0.10175803 0.49629107 0.6141481 ]
+{'epoch_exit': 85, 'scatter_m_star': 0.49278513, 'lowest_m_star': 0.37006593, 'last20_m_star': 0.67343694, 'last10_m_star': 0.50693303, 'scatter_v_disk': 0.10175803, 'lowest_v_disk': 0.059489954, 'last20_v_disk': 0.11887827, 'last10_v_disk': 0.10558548, 'scatter_m_cold': 0.49629107, 'lowest_m_cold': 0.2831497, 'last20_m_cold': 0.5340897, 'last10_m_cold': 0.5162391, 'scatter_sfr_100': 0.6141481, 'lowest_sfr_100': 0.44395134, 'last20_sfr_100': 0.6797887, 'last10_sfr_100': 0.62950724}
+Finished 1/1
+Exited training after None epochs
+Experiment 5 done: 5 / 6
+Exploring ['conv_layers', 'batch_size']
+Currently doing [  3 512]
+{'experiment': 'GraphMerge', 'group': 'meta_pysr', 'move': False, 'model': 'MetaEdge', 'log': True, 'run_params': {'n_epochs': 500, 'n_trials': 1, 'batch_size': 512, 'val_epoch': 2, 'early_stopping': True, 'patience': 20, 'l1_lambda': 0.0001, 'l2_lambda': 0.0001, 'loss_func': 'GaussNd', 'metrics': 'test_multi_varrho', 'performance_plot': 'multi_base', 'save': True, 'seed': True, 'num_workers': 4}, 'learn_params': {'learning_rate': 0.01, 'schedule': 'onecycle', 'g_up': 1, 'g_down': 0.95, 'warmup': 4, 'period': 5, 'eta_min': 1e-05}, 'hyper_params': {'hidden_channels': 128, 'conv_layers': 3, 'conv_activation': 'relu', 'decode_activation': 'leakyrelu', 'decode_layers': 2, 'layernorm': True, 'agg': 'sum', 'variance': True, 'rho': 0, 'in_channels': 43, 'out_channels': 4}, 'data_params': {'case': 'vlarge_all_4t_z0.0_quantile_raw', 'targets': [0, 1, 2, 3], 'del_feats': [], 'split': 0.8, 'test': 0, 'scale': 0}, 'experiment_name': 'con3bat512'}
+/home/cj1223/../../scratch/gpfs/cj1223/GraphResults/results_meta_pysr_120322/MetaEdge_vlarge_all_4t_z0.0_quantile_raw_tisfwf
+RelU conv activation
+LeakyRelU decode activation
+N_params 546504
+Made folder for saving model
+  0%|          | 0/500 [00:00<?, ?it/s]  0%|          | 1/500 [00:53<7:24:37, 53.46s/it]  0%|          | 2/500 [02:14<9:37:13, 69.55s/it]Epoch: 2 done with learning rate 4.17E-04, Train loss: 1.19E+08, Train scatter: [0.9352 0.1731 0.5441 0.9953]
+L1 regularization loss: 2.44E+00, L2 regularization loss: 4.23E-01
+Test scatter: [0.9196 0.1677 0.5355 0.985 ], Lowest was [0.9196 0.1677 0.5355 0.985 ]
+Median for last 10 epochs: [0.9196 0.1677 0.5355 0.985 ], Epochs since improvement 2
+  1%|          | 3/500 [03:07<8:35:59, 62.29s/it]  1%|          | 4/500 [04:29<9:39:29, 70.10s/it]Epoch: 4 done with learning rate 4.67E-04, Train loss: 8.68E+07, Train scatter: [0.9352 0.1364 0.5441 0.9954]
+L1 regularization loss: 2.46E+00, L2 regularization loss: 4.25E-01
+Test scatter: [0.9195 0.1317 0.5355 0.9851], Lowest was [0.9195 0.1317 0.5355 0.985 ]
+Median for last 10 epochs: [0.9195 0.1317 0.5355 0.9851], Epochs since improvement 0
+  1%|          | 5/500 [05:23<8:50:14, 64.27s/it]  1%|          | 6/500 [06:45<9:36:55, 70.07s/it]Epoch: 6 done with learning rate 5.51E-04, Train loss: 8.24E+07, Train scatter: [0.9349 0.112  0.5441 0.9954]
+L1 regularization loss: 2.46E+00, L2 regularization loss: 4.28E-01
+Test scatter: [0.9193 0.1104 0.5355 0.985 ], Lowest was [0.9193 0.1104 0.5355 0.985 ]
+Median for last 10 epochs: [0.9193 0.1104 0.5355 0.985 ], Epochs since improvement 0
+  1%|▏         | 7/500 [07:39<8:51:59, 64.75s/it]  2%|▏         | 8/500 [08:59<9:32:44, 69.85s/it]Epoch: 8 done with learning rate 6.67E-04, Train loss: 8.01E+07, Train scatter: [0.9309 0.1016 0.544  0.9954]
+L1 regularization loss: 2.47E+00, L2 regularization loss: 4.32E-01
+Test scatter: [0.9155 0.1    0.5354 0.9851], Lowest was [0.9155 0.1    0.5354 0.985 ]
+Median for last 10 epochs: [0.9174 0.1052 0.5355 0.985 ], Epochs since improvement 0
+  2%|▏         | 9/500 [09:53<8:49:54, 64.75s/it]Epoch: 10 done with learning rate 8.15E-04, Train loss: 7.89E+07, Train scatter: [0.7775 0.0929 0.5439 0.9955]
+L1 regularization loss: 2.49E+00, L2 regularization loss: 4.39E-01
+Test scatter: [0.7699 0.0924 0.5353 0.9851], Lowest was [0.7699 0.0924 0.5353 0.985 ]
+Median for last 10 epochs: [0.9155 0.1    0.5354 0.9851], Epochs since improvement 0
+/home/cj1223/work/GraphMerge/dev/eval_plot.py:26: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  fig, ax =plt.subplots(1,2, figsize=(12,6))
+  2%|▏         | 10/500 [11:20<9:46:17, 71.79s/it]  2%|▏         | 11/500 [12:14<9:00:42, 66.35s/it]  2%|▏         | 12/500 [13:36<9:37:06, 70.96s/it]Epoch: 12 done with learning rate 9.94E-04, Train loss: 7.78E+07, Train scatter: [0.621  0.0863 0.5436 0.9954]
+L1 regularization loss: 2.50E+00, L2 regularization loss: 4.48E-01
+Test scatter: [0.6201 0.0859 0.535  0.9851], Lowest was [0.6201 0.0859 0.535  0.985 ]
+Median for last 10 epochs: [0.9155 0.1    0.5354 0.9851], Epochs since improvement 0
+  3%|▎         | 13/500 [14:30<8:53:47, 65.77s/it]  3%|▎         | 14/500 [15:51<9:30:15, 70.40s/it]Epoch: 14 done with learning rate 1.20E-03, Train loss: 7.63E+07, Train scatter: [0.5598 0.0848 0.5412 0.9954]
+L1 regularization loss: 2.51E+00, L2 regularization loss: 4.59E-01
+Test scatter: [0.5438 0.0843 0.533  0.9851], Lowest was [0.5438 0.0843 0.533  0.985 ]
+Median for last 10 epochs: [0.7699 0.0924 0.5353 0.9851], Epochs since improvement 0
+  3%|▎         | 15/500 [16:45<8:49:09, 65.46s/it]  3%|▎         | 16/500 [18:06<9:25:54, 70.15s/it]Epoch: 16 done with learning rate 1.44E-03, Train loss: 7.53E+07, Train scatter: [0.4976 0.0899 0.5345 0.9954]
+L1 regularization loss: 2.52E+00, L2 regularization loss: 4.65E-01
+Test scatter: [0.489  0.0892 0.5268 0.985 ], Lowest was [0.489  0.0843 0.5268 0.985 ]
+Median for last 10 epochs: [0.6201 0.0892 0.535  0.9851], Epochs since improvement 0
+  3%|▎         | 17/500 [19:00<8:45:14, 65.25s/it]  4%|▎         | 18/500 [20:21<9:23:48, 70.18s/it]Epoch: 18 done with learning rate 1.70E-03, Train loss: 7.87E+07, Train scatter: [0.6775 0.1339 0.5441 0.9954]
+L1 regularization loss: 2.55E+00, L2 regularization loss: 4.72E-01
+Test scatter: [0.679  0.1309 0.5355 0.9851], Lowest was [0.489  0.0843 0.5268 0.985 ]
+Median for last 10 epochs: [0.6201 0.0892 0.535  0.9851], Epochs since improvement 2
+  4%|▍         | 19/500 [21:15<8:43:12, 65.27s/it]Epoch: 20 done with learning rate 1.99E-03, Train loss: 7.49E+07, Train scatter: [0.5083 0.1052 0.544  0.9954]
+L1 regularization loss: 2.57E+00, L2 regularization loss: 4.83E-01
+Test scatter: [0.5003 0.1035 0.5354 0.985 ], Lowest was [0.489  0.0843 0.5268 0.985 ]
+Median for last 10 epochs: [0.5438 0.0892 0.535  0.9851], Epochs since improvement 4
+/home/cj1223/work/GraphMerge/dev/eval_plot.py:26: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  fig, ax =plt.subplots(1,2, figsize=(12,6))
+  4%|▍         | 20/500 [22:43<9:36:24, 72.05s/it]  4%|▍         | 21/500 [23:37<8:51:47, 66.61s/it]  4%|▍         | 22/500 [24:58<9:24:28, 70.85s/it]Epoch: 22 done with learning rate 2.30E-03, Train loss: 7.43E+07, Train scatter: [0.7989 0.0953 0.5436 0.9954]
+L1 regularization loss: 2.58E+00, L2 regularization loss: 4.90E-01
+Test scatter: [0.7832 0.0945 0.535  0.985 ], Lowest was [0.489  0.0843 0.5268 0.985 ]
+Median for last 10 epochs: [0.5438 0.0945 0.535  0.985 ], Epochs since improvement 6
+  5%|▍         | 23/500 [25:52<8:42:47, 65.76s/it]  5%|▍         | 24/500 [27:13<9:17:52, 70.32s/it]Epoch: 24 done with learning rate 2.63E-03, Train loss: 7.39E+07, Train scatter: [0.4769 0.0912 0.5426 0.9954]
+L1 regularization loss: 2.59E+00, L2 regularization loss: 4.98E-01
+Test scatter: [0.4746 0.0894 0.534  0.985 ], Lowest was [0.4746 0.0843 0.5268 0.985 ]
+Median for last 10 epochs: [0.5003 0.0945 0.535  0.985 ], Epochs since improvement 0
+  5%|▌         | 25/500 [28:07<8:38:13, 65.46s/it]  5%|▌         | 26/500 [29:29<9:16:06, 70.39s/it]Epoch: 26 done with learning rate 2.98E-03, Train loss: 7.34E+07, Train scatter: [0.4683 0.0904 0.5297 0.9953]
+L1 regularization loss: 2.61E+00, L2 regularization loss: 5.11E-01
+Test scatter: [0.459  0.0892 0.5216 0.985 ], Lowest was [0.459  0.0843 0.5216 0.985 ]
+Median for last 10 epochs: [0.5003 0.0945 0.535  0.985 ], Epochs since improvement 0
+  5%|▌         | 27/500 [30:23<8:35:50, 65.43s/it]  6%|▌         | 28/500 [31:44<9:11:29, 70.10s/it]Epoch: 28 done with learning rate 3.34E-03, Train loss: 7.29E+07, Train scatter: [0.5171 0.0972 0.4411 0.9953]
+L1 regularization loss: 2.66E+00, L2 regularization loss: 5.38E-01
+Test scatter: [0.5065 0.0939 0.436  0.9849], Lowest was [0.459  0.0843 0.436  0.9849]
+Median for last 10 epochs: [0.5003 0.0939 0.534  0.985 ], Epochs since improvement 0
+  6%|▌         | 29/500 [32:37<8:31:58, 65.22s/it]Epoch: 30 done with learning rate 3.72E-03, Train loss: 7.19E+07, Train scatter: [0.6211 0.0927 0.4316 0.9954]
+L1 regularization loss: 2.71E+00, L2 regularization loss: 5.58E-01
+Test scatter: [0.6564 0.0927 0.4389 0.985 ], Lowest was [0.459  0.0843 0.436  0.9849]
+Median for last 10 epochs: [0.5065 0.0927 0.5216 0.985 ], Epochs since improvement 2
+/home/cj1223/work/GraphMerge/dev/eval_plot.py:26: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  fig, ax =plt.subplots(1,2, figsize=(12,6))
+  6%|▌         | 30/500 [34:05<9:24:15, 72.03s/it]  6%|▌         | 31/500 [34:59<8:40:47, 66.63s/it]  6%|▋         | 32/500 [36:21<9:14:56, 71.15s/it]Epoch: 32 done with learning rate 4.10E-03, Train loss: 7.10E+07, Train scatter: [0.7041 0.0904 0.3709 0.9953]
+L1 regularization loss: 2.73E+00, L2 regularization loss: 5.70E-01
+Test scatter: [0.721  0.0929 0.3695 0.9849], Lowest was [0.459  0.0843 0.3695 0.9849]
+Median for last 10 epochs: [0.5065 0.0927 0.4389 0.985 ], Epochs since improvement 0
+  7%|▋         | 33/500 [37:15<8:33:12, 65.94s/it]  7%|▋         | 34/500 [38:36<9:08:24, 70.61s/it]Epoch: 34 done with learning rate 4.50E-03, Train loss: 7.04E+07, Train scatter: [0.5291 0.087  0.3518 0.9954]
+L1 regularization loss: 2.75E+00, L2 regularization loss: 5.80E-01
+Test scatter: [0.5392 0.0871 0.3553 0.985 ], Lowest was [0.459  0.0843 0.3553 0.9849]
+Median for last 10 epochs: [0.5392 0.0927 0.436  0.985 ], Epochs since improvement 0
+  7%|▋         | 35/500 [39:30<8:28:20, 65.59s/it]  7%|▋         | 36/500 [40:50<9:01:17, 69.99s/it]Epoch: 36 done with learning rate 4.90E-03, Train loss: 6.97E+07, Train scatter: [0.5131 0.0814 0.3339 0.9953]
+L1 regularization loss: 2.76E+00, L2 regularization loss: 5.89E-01
+Test scatter: [0.5301 0.0828 0.331  0.985 ], Lowest was [0.459  0.0828 0.331  0.9849]
+Median for last 10 epochs: [0.5392 0.0927 0.3695 0.985 ], Epochs since improvement 0
+  7%|▋         | 37/500 [41:44<8:22:25, 65.11s/it]  8%|▊         | 38/500 [43:05<8:58:05, 69.88s/it]Epoch: 38 done with learning rate 5.30E-03, Train loss: 6.67E+07, Train scatter: [0.5543 0.0836 0.3324 0.9952]
+L1 regularization loss: 2.78E+00, L2 regularization loss: 6.03E-01
+Test scatter: [0.5674 0.0841 0.3389 0.9849], Lowest was [0.459  0.0828 0.331  0.9849]
+Median for last 10 epochs: [0.5674 0.0871 0.3553 0.985 ], Epochs since improvement 0
+  8%|▊         | 39/500 [43:59<8:19:53, 65.06s/it]Epoch: 40 done with learning rate 5.70E-03, Train loss: 2.29E+07, Train scatter: [0.5486 0.0832 0.3915 0.9953]
+L1 regularization loss: 2.80E+00, L2 regularization loss: 6.25E-01
+Test scatter: [0.5535 0.0825 0.3909 0.985 ], Lowest was [0.459  0.0825 0.331  0.9849]
+Median for last 10 epochs: [0.5535 0.0841 0.3553 0.985 ], Epochs since improvement 0
+/home/cj1223/work/GraphMerge/dev/eval_plot.py:26: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  fig, ax =plt.subplots(1,2, figsize=(12,6))
+  8%|▊         | 40/500 [45:26<9:09:49, 71.72s/it]  8%|▊         | 41/500 [46:20<8:28:03, 66.41s/it]  8%|▊         | 42/500 [47:42<9:01:52, 70.99s/it]Epoch: 42 done with learning rate 6.10E-03, Train loss: 1.26E+07, Train scatter: [0.5904 0.1182 0.5047 0.7386]
+L1 regularization loss: 2.87E+00, L2 regularization loss: 6.68E-01
+Test scatter: [0.583  0.1167 0.4962 0.737 ], Lowest was [0.459  0.0825 0.331  0.737 ]
+Median for last 10 epochs: [0.5535 0.0841 0.3553 0.985 ], Epochs since improvement 0
+  9%|▊         | 43/500 [48:36<8:21:38, 65.86s/it]  9%|▉         | 44/500 [49:57<8:54:28, 70.33s/it]Epoch: 44 done with learning rate 6.49E-03, Train loss: 5.31E+06, Train scatter: [0.4788 0.0854 0.3686 0.561 ]
+L1 regularization loss: 2.89E+00, L2 regularization loss: 6.87E-01
+Test scatter: [0.4766 0.0846 0.369  0.5593], Lowest was [0.459  0.0825 0.331  0.5593]
+Median for last 10 epochs: [0.5535 0.0841 0.369  0.9849], Epochs since improvement 0
+  9%|▉         | 45/500 [50:50<8:15:43, 65.37s/it]  9%|▉         | 46/500 [52:11<8:49:11, 69.94s/it]Epoch: 46 done with learning rate 6.87E-03, Train loss: 4.64E+06, Train scatter: [0.4662 0.0866 0.413  0.6532]
+L1 regularization loss: 2.91E+00, L2 regularization loss: 7.03E-01
+Test scatter: [0.4619 0.0867 0.409  0.6507], Lowest was [0.459  0.0825 0.331  0.5593]
+Median for last 10 epochs: [0.5535 0.0846 0.3909 0.737 ], Epochs since improvement 2
+  9%|▉         | 47/500 [53:05<8:11:12, 65.06s/it] 10%|▉         | 48/500 [54:26<8:48:06, 70.10s/it]Epoch: 48 done with learning rate 7.24E-03, Train loss: 4.01E+06, Train scatter: [0.4521 0.0779 0.3333 0.5157]
+L1 regularization loss: 2.93E+00, L2 regularization loss: 7.21E-01
+Test scatter: [0.4505 0.0767 0.3307 0.5114], Lowest was [0.4505 0.0767 0.3307 0.5114]
+Median for last 10 epochs: [0.4766 0.0846 0.3909 0.6507], Epochs since improvement 0
+ 10%|▉         | 49/500 [55:20<8:10:18, 65.23s/it]Epoch: 50 done with learning rate 7.60E-03, Train loss: 3.65E+06, Train scatter: [0.4607 0.0781 0.3358 0.5903]
+L1 regularization loss: 2.96E+00, L2 regularization loss: 7.48E-01
+Test scatter: [0.4584 0.0772 0.3372 0.5907], Lowest was [0.4505 0.0767 0.3307 0.5114]
+Median for last 10 epochs: [0.4619 0.0846 0.369  0.5907], Epochs since improvement 2
+/home/cj1223/work/GraphMerge/dev/eval_plot.py:26: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  fig, ax =plt.subplots(1,2, figsize=(12,6))
+ 10%|█         | 50/500 [56:48<9:00:43, 72.10s/it] 10%|█         | 51/500 [57:42<8:18:51, 66.66s/it] 10%|█         | 52/500 [59:03<8:48:32, 70.79s/it]Epoch: 52 done with learning rate 7.94E-03, Train loss: 3.40E+06, Train scatter: [0.4066 0.0819 0.3342 0.5119]
+L1 regularization loss: 2.98E+00, L2 regularization loss: 7.65E-01
+Test scatter: [0.4007 0.0816 0.335  0.5077], Lowest was [0.4007 0.0767 0.3307 0.5077]
+Median for last 10 epochs: [0.4584 0.0816 0.3372 0.5593], Epochs since improvement 0
+ 11%|█         | 53/500 [59:57<8:09:18, 65.68s/it] 11%|█         | 54/500 [1:01:17<8:41:38, 70.18s/it]Epoch: 54 done with learning rate 8.26E-03, Train loss: 3.16E+06, Train scatter: [0.4384 0.0715 0.3209 0.4977]
+L1 regularization loss: 3.01E+00, L2 regularization loss: 7.97E-01
+Test scatter: [0.4282 0.0705 0.3216 0.4963], Lowest was [0.4007 0.0705 0.3216 0.4963]
+Median for last 10 epochs: [0.4505 0.0772 0.335  0.5114], Epochs since improvement 0
+ 11%|█         | 55/500 [1:02:11<8:03:57, 65.25s/it] 11%|█         | 56/500 [1:03:33<8:39:40, 70.23s/it]Epoch: 56 done with learning rate 8.56E-03, Train loss: 3.01E+06, Train scatter: [0.4489 0.0726 0.3293 0.4952]
+L1 regularization loss: 3.02E+00, L2 regularization loss: 8.07E-01
+Test scatter: [0.4389 0.0725 0.3304 0.4946], Lowest was [0.4007 0.0705 0.3216 0.4946]
+Median for last 10 epochs: [0.4389 0.0767 0.3307 0.5077], Epochs since improvement 0
+ 11%|█▏        | 57/500 [1:04:27<8:02:22, 65.33s/it] 12%|█▏        | 58/500 [1:05:48<8:35:45, 70.01s/it]Epoch: 58 done with learning rate 8.83E-03, Train loss: 3.98E+06, Train scatter: [0.4153 0.0745 0.333  0.5022]
+L1 regularization loss: 3.05E+00, L2 regularization loss: 8.35E-01
+Test scatter: [0.4047 0.0738 0.3302 0.5016], Lowest was [0.4007 0.0705 0.3216 0.4946]
+Median for last 10 epochs: [0.4282 0.0738 0.3304 0.5016], Epochs since improvement 2
+ 12%|█▏        | 59/500 [1:06:42<7:59:05, 65.18s/it]Epoch: 60 done with learning rate 9.08E-03, Train loss: 3.23E+06, Train scatter: [0.4415 0.072  0.3201 0.4912]
+L1 regularization loss: 3.07E+00, L2 regularization loss: 8.52E-01
+Test scatter: [0.4351 0.0718 0.3217 0.4877], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.4282 0.0725 0.3302 0.4963], Epochs since improvement 0
+/home/cj1223/work/GraphMerge/dev/eval_plot.py:26: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  fig, ax =plt.subplots(1,2, figsize=(12,6))
+ 12%|█▏        | 60/500 [1:08:11<8:50:57, 72.40s/it] 12%|█▏        | 61/500 [1:09:05<8:08:53, 66.82s/it] 12%|█▏        | 62/500 [1:10:26<8:39:42, 71.19s/it]Epoch: 62 done with learning rate 9.31E-03, Train loss: 1.52E+09, Train scatter: [0.9352 0.1728 0.5441 0.9953]
+L1 regularization loss: 9.26E+00, L2 regularization loss: 3.02E+00
+Test scatter: [0.9195 0.169  0.5355 0.9849], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.4351 0.0725 0.3302 0.4963], Epochs since improvement 2
+ 13%|█▎        | 63/500 [1:11:20<8:00:31, 65.98s/it] 13%|█▎        | 64/500 [1:12:41<8:31:49, 70.43s/it]Epoch: 64 done with learning rate 9.50E-03, Train loss: 2.93E+05, Train scatter: [0.9351 0.1728 0.5441 0.9952]
+L1 regularization loss: 9.26E+00, L2 regularization loss: 3.03E+00
+Test scatter: [0.9195 0.169  0.5355 0.9849], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.4389 0.0738 0.3304 0.5016], Epochs since improvement 4
+ 13%|█▎        | 65/500 [1:13:34<7:54:15, 65.42s/it] 13%|█▎        | 66/500 [1:14:56<8:27:42, 70.19s/it]Epoch: 66 done with learning rate 9.66E-03, Train loss: 2.80E+05, Train scatter: [0.9343 0.1732 0.5441 0.9956]
+L1 regularization loss: 9.28E+00, L2 regularization loss: 3.09E+00
+Test scatter: [0.9188 0.1693 0.5355 0.9853], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.9188 0.169  0.5355 0.9849], Epochs since improvement 6
+ 13%|█▎        | 67/500 [1:15:50<7:51:01, 65.27s/it] 14%|█▎        | 68/500 [1:17:11<8:24:21, 70.05s/it]Epoch: 68 done with learning rate 9.80E-03, Train loss: 2.67E+05, Train scatter: [0.934  0.1733 0.5441 0.9956]
+L1 regularization loss: 9.29E+00, L2 regularization loss: 3.15E+00
+Test scatter: [0.9185 0.1694 0.5355 0.9853], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.9188 0.169  0.5355 0.9849], Epochs since improvement 8
+ 14%|█▍        | 69/500 [1:18:04<7:47:52, 65.13s/it]Epoch: 70 done with learning rate 9.90E-03, Train loss: 1.89E+05, Train scatter: [0.9214 0.172  0.5439 0.9977]
+L1 regularization loss: 9.33E+00, L2 regularization loss: 3.36E+00
+Test scatter: [0.9061 0.1682 0.5353 0.9874], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.9188 0.169  0.5355 0.9853], Epochs since improvement 10
+/home/cj1223/work/GraphMerge/dev/eval_plot.py:26: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  fig, ax =plt.subplots(1,2, figsize=(12,6))
+ 14%|█▍        | 70/500 [1:19:34<8:38:42, 72.38s/it] 14%|█▍        | 71/500 [1:20:28<7:57:49, 66.83s/it] 14%|█▍        | 72/500 [1:21:49<8:27:27, 71.14s/it]Epoch: 72 done with learning rate 9.96E-03, Train loss: 1.30E+05, Train scatter: [0.8729 0.1669 0.5432 0.9996]
+L1 regularization loss: 9.36E+00, L2 regularization loss: 3.49E+00
+Test scatter: [0.8586 0.1632 0.5346 0.9892], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.9185 0.169  0.5355 0.9853], Epochs since improvement 12
+ 15%|█▍        | 73/500 [1:22:43<7:49:17, 65.94s/it] 15%|█▍        | 74/500 [1:24:03<8:19:41, 70.38s/it]Epoch: 74 done with learning rate 1.00E-02, Train loss: 4.58E+07, Train scatter: [0.9369 0.2521 0.5327 0.9499]
+L1 regularization loss: 1.14E+01, L2 regularization loss: 4.90E+00
+Test scatter: [0.9212 0.2459 0.5248 0.9406], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.9185 0.1693 0.5353 0.9853], Epochs since improvement 14
+ 15%|█▌        | 75/500 [1:24:57<7:43:25, 65.42s/it] 15%|█▌        | 76/500 [1:26:19<8:16:10, 70.21s/it]Epoch: 76 done with learning rate 1.00E-02, Train loss: 1.76E+07, Train scatter: [0.9367 0.3332 0.4994 0.9449]
+L1 regularization loss: 1.14E+01, L2 regularization loss: 5.00E+00
+Test scatter: [0.9211 0.3247 0.4932 0.9356], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.9185 0.1694 0.5346 0.9853], Epochs since improvement 16
+ 15%|█▌        | 77/500 [1:27:12<7:40:09, 65.27s/it] 16%|█▌        | 78/500 [1:28:34<8:12:42, 70.05s/it]Epoch: 78 done with learning rate 1.00E-02, Train loss: 1.31E+07, Train scatter: [0.937  0.3869 0.497  0.8435]
+L1 regularization loss: 1.14E+01, L2 regularization loss: 5.07E+00
+Test scatter: [0.9214 0.3775 0.4909 0.8372], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.9211 0.2459 0.5248 0.9406], Epochs since improvement 18
+ 16%|█▌        | 79/500 [1:29:27<7:37:12, 65.16s/it]Epoch: 80 done with learning rate 1.00E-02, Train loss: 9.82E+06, Train scatter: [0.9372 0.3734 0.4892 0.803 ]
+L1 regularization loss: 1.15E+01, L2 regularization loss: 5.09E+00
+Test scatter: [0.9215 0.3644 0.4837 0.7972], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.9212 0.3247 0.4932 0.9356], Epochs since improvement 20
+/home/cj1223/work/GraphMerge/dev/eval_plot.py:26: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  fig, ax =plt.subplots(1,2, figsize=(12,6))
+ 16%|█▌        | 80/500 [1:30:56<8:25:08, 72.16s/it] 16%|█▌        | 81/500 [1:31:50<7:46:09, 66.75s/it] 16%|█▌        | 81/500 [1:33:11<8:02:06, 69.04s/it]
+Epoch: 82 done with learning rate 9.99E-03, Train loss: 9.23E+06, Train scatter: [0.937  0.3605 0.4878 0.799 ]
+L1 regularization loss: 1.15E+01, L2 regularization loss: 5.11E+00
+Test scatter: [0.9214 0.3519 0.4824 0.7933], Lowest was [0.4007 0.0705 0.3216 0.4877]
+Median for last 10 epochs: [0.9214 0.3519 0.4909 0.8372], Epochs since improvement 22
+Exited after 82 epochs due to early stopping
+5591.96 seconds spent training, 11.184 seconds per epoch. Processed 6226 trees per second
+/home/cj1223/work/GraphMerge/dev/eval_plot.py:26: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  fig, ax =plt.subplots(1,2, figsize=(12,6))
+[0.9213537  0.35185516 0.48242503 0.79323804]
+{'epoch_exit': 81, 'scatter_m_star': 0.9213537, 'lowest_m_star': 0.40067846, 'last20_m_star': 0.9203036, 'last10_m_star': 0.92136496, 'scatter_v_disk': 0.35185516, 'lowest_v_disk': 0.0705215, 'last20_v_disk': 0.20766687, 'last10_v_disk': 0.35186523, 'scatter_m_cold': 0.48242503, 'lowest_m_cold': 0.3216196, 'last20_m_cold': 0.52971196, 'last10_m_cold': 0.49094337, 'scatter_sfr_100': 0.79323804, 'lowest_sfr_100': 0.48770577, 'last20_sfr_100': 0.96272445, 'last10_sfr_100': 0.83719546}
+Finished 1/1
+Exited training after None epochs
+Experiment 6 done: 6 / 6

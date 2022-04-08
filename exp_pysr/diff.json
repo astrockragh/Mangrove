@@ -1,0 +1,2 @@
+{   "conv_layers": [1,2,3], 
+    "batch_size": [256,512]}

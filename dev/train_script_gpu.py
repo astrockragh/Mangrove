@@ -20,6 +20,51 @@ mus, scales = np.array([-1.1917865,  1.7023178,  -0.14979358, -2.5043619]), np.a
 # t_labels = ['Stellar mass', 'v_disk', 'Cold gas mass', 'SFR average over 100 yr']
 t_labels = np.array(['m_star', 'v_disk', 'm_cold', 'sfr_100'])
 
+t_labels = np.array(['halo_index (long) (0)',
+ 'birthhaloid (long long)(1)',
+ 'roothaloid (long long)(2)',
+ 'redshift(3)',
+ 'sat_type 0= central(4)',
+ 'mhalo total halo mass [1.0E09 Msun](5)',
+ 'm_strip stripped mass [1.0E09 Msun](6)',
+ 'rhalo halo virial radius [Mpc)](7)',
+ 'mstar stellar mass [1.0E09 Msun](8)',
+ 'mbulge stellar mass of bulge [1.0E09 Msun] (9)',
+ ' mstar_merge stars entering via mergers] [1.0E09 Msun](10)',
+ ' v_disk rotation velocity of disk [km/s] (11)',
+ ' sigma_bulge velocity dispersion of bulge [km/s](12)',
+ ' r_disk exponential scale radius of stars+gas disk [kpc] (13)',
+ ' r_bulge 3D effective radius of bulge [kpc](14)',
+ ' mcold cold gas mass in disk [1.0E09 Msun](15)',
+ ' mHI cold gas mass [1.0E09 Msun](16)',
+ ' mH2 cold gas mass [1.0E09 Msun](17)',
+ ' mHII cold gas mass [1.0E09 Msun](18)',
+ ' Metal_star metal mass in stars [Zsun*Msun](19)',
+ ' Metal_cold metal mass in cold gas [Zsun*Msun] (20)',
+ ' sfr instantaneous SFR [Msun/yr](21)',
+ ' sfrave20myr SFR averaged over 20 Myr [Msun/yr](22)',
+ ' sfrave100myr SFR averaged over 100 Myr [Msun/yr](23)',
+ ' sfrave1gyr SFR averaged over 1 Gyr [Msun/yr](24)',
+ ' mass_outflow_rate [Msun/yr](25)',
+ ' metal_outflow_rate [Msun/yr](26)',
+ ' mBH black hole mass [1.0E09 Msun](27)',
+ ' maccdot accretion rate onto BH [Msun/yr](28)',
+ ' maccdot_radio accretion rate in radio mode [Msun/yr](29)',
+ ' tmerge time since last merger [Gyr] (30)',
+ ' tmajmerge time since last major merger [Gyr](31)',
+ ' mu_merge mass ratio of last merger [](32)',
+ ' t_sat time since galaxy became a satellite in this halo [Gyr](33)',
+ ' r_fric distance from halo center [Mpc](34)',
+ ' x_position x coordinate [cMpc](35)',
+ ' y_position y coordinate [cMpc](36)',
+ ' z_position z coordinate [cMpc](37)',
+ ' vx x component of velocity [km/s](38)',
+ ' vy y component of velocity [km/s](39)',
+ ' vz z component of velocity [km/s](40)'])
+
+t_labels = [t.replace(' ','') for t in t_labels]
+t_labels = [t.replace('/','') for t in t_labels]
+t_labels = np.array(t_labels)
 
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -35,7 +80,7 @@ today = today.strftime("%d%m%y")
 
 
 # for final testing
-def load_data(case, targets, del_feats, scale, test=0,split=0.875): ##run_params
+def load_data(case, targets, del_feats, scale, test=0,split=0.875, ): ##data_params
     datat=pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl'), 'rb'))
     a=np.arange(43)
     feats=np.delete(a, del_feats)
@@ -48,12 +93,16 @@ def load_data(case, targets, del_feats, scale, test=0,split=0.875): ##run_params
                 data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=(d.y[targets]-torch.Tensor(mus[targets]))/torch.Tensor(scales[targets])))
     else:
         data=datat
-    testidx = pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/tvt_idx/test_idx.pkl'), 'rb'))
+    if 'rm' in case:
+        print('Zero removals on')
+        testidx = pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/tvt_idx/test_idx_rm.pkl'), 'rb'))
+    else:    
+        testidx = pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/tvt_idx/test_idx.pkl'), 'rb'))
     # trainidx = pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/tvt_idx/train_idx.pkl'), 'rb')) ##I keep this so I can find this file later
-
+    testidx = np.array(testidx)
     test_data=[]
     train_data=[]
-    for i, d in enumerate(data):
+    for i, d in tqdm(enumerate(data)):
         if i in testidx:
             test_data.append(d)
         else:

@@ -2,7 +2,53 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib as mpl
 
-cols_t=np.array(['M_star', 'v_disk', 'm_cold gas', 'sfr_ave100Myr'])
+cols_t=np.array(['M_star', 'v_disk', 'm_cold gas', 'sfr_ave100Myr']) # old columns
+
+cols_t = np.array(['halo_index (long) (0)',
+ 'birthhaloid (long long)(1)',
+ 'roothaloid (long long)(2)',
+ 'redshift(3)',
+ 'sat_type 0= central(4)',
+ 'mhalo total halo mass [1.0E09 Msun](5)',
+ 'm_strip stripped mass [1.0E09 Msun](6)',
+ 'rhalo halo virial radius [Mpc)](7)',
+ 'mstar stellar mass [1.0E09 Msun](8)',
+ 'mbulge stellar mass of bulge [1.0E09 Msun] (9)',
+ ' mstar_merge stars entering via mergers] [1.0E09 Msun](10)',
+ ' v_disk rotation velocity of disk [km/s] (11)',
+ ' sigma_bulge velocity dispersion of bulge [km/s](12)',
+ ' r_disk exponential scale radius of stars+gas disk [kpc] (13)',
+ ' r_bulge 3D effective radius of bulge [kpc](14)',
+ ' mcold cold gas mass in disk [1.0E09 Msun](15)',
+ ' mHI cold gas mass [1.0E09 Msun](16)',
+ ' mH2 cold gas mass [1.0E09 Msun](17)',
+ ' mHII cold gas mass [1.0E09 Msun](18)',
+ ' Metal_star metal mass in stars [Zsun*Msun](19)',
+ ' Metal_cold metal mass in cold gas [Zsun*Msun] (20)',
+ ' sfr instantaneous SFR [Msun/yr](21)',
+ ' sfrave20myr SFR averaged over 20 Myr [Msun/yr](22)',
+ ' sfrave100myr SFR averaged over 100 Myr [Msun/yr](23)',
+ ' sfrave1gyr SFR averaged over 1 Gyr [Msun/yr](24)',
+ ' mass_outflow_rate [Msun/yr](25)',
+ ' metal_outflow_rate [Msun/yr](26)',
+ ' mBH black hole mass [1.0E09 Msun](27)',
+ ' maccdot accretion rate onto BH [Msun/yr](28)',
+ ' maccdot_radio accretion rate in radio mode [Msun/yr](29)',
+ ' tmerge time since last merger [Gyr] (30)',
+ ' tmajmerge time since last major merger [Gyr](31)',
+ ' mu_merge mass ratio of last merger [](32)',
+ ' t_sat time since galaxy became a satellite in this halo [Gyr](33)',
+ ' r_fric distance from halo center [Mpc](34)',
+ ' x_position x coordinate [cMpc](35)',
+ ' y_position y coordinate [cMpc](36)',
+ ' z_position z coordinate [cMpc](37)',
+ ' vx x component of velocity [km/s](38)',
+ ' vy y component of velocity [km/s](39)',
+ ' vz z component of velocity [km/s](40)'])
+
+cols_t = [t.replace(' ','') for t in cols_t]
+cols_t = [t.replace('/','') for t in cols_t]
+cols_t = np.array(cols_t)
 
 def SAM_base(ys, pred, xs, Mh):
     ''' Basic lotting scheme for an unspecified range of targets, xs/Mh keywords aren't used, left for dependency 
