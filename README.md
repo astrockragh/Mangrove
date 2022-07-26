@@ -1,4 +1,4 @@
-# GraphMerge
+# Mangrove!
 Using Dark Matter Merger Trees to infer properties of interest
 
 For people looking to reproduce the results of [our paper](arxivlink), PAPER TITLE, the folders to look are in data and dev. 
