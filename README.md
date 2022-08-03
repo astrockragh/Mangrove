@@ -1,5 +1,12 @@
 # Mangrove!
-Using Dark Matter Merger Trees to infer properties of interest
+
+<img
+  src="Mangrove_logo.png"
+  alt="The logo for our new inference framework, Mangrove"
+  title="The logo for our new inference framework, Mangrove"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+  
+Using Dark Matter Merger Trees to infer galaxy properties works much better than everything else out there!
 
 For people looking to reproduce the results of [our paper](arxivlink), PAPER TITLE, the folders to look are in data and dev. 
 
