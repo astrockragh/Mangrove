@@ -1,0 +1,15 @@
+Complexity|MSE|Equation
+1|1.2617615|-0.78090334
+2|1.0327051|log10_abs(x0)
+3|0.058875915|(x16 - 1.2093123)
+5|0.04389112|(x31 - exp(sqrt_abs(x8)))
+6|0.027881626|((x16 - sqrt_abs(x8)) - 1.0667509)
+7|0.025332864|(x16 - sqrt_abs(exp(pow(x7, 0.2488304))))
+8|0.024774572|((x16 + (sqrt_abs(x7) * -0.42721537)) + -1.1222032)
+9|0.021897836|(x16 - sqrt_abs(sqrt_abs(x7 / x17) + 1.2948282))
+10|0.020998713|(x16 - sqrt_abs(sqrt_abs(x7 / x17) + sqrt_abs(1.2948282)))
+11|0.019037757|(x16 - sqrt_abs(exp(sqrt_abs(sqrt_abs(x7 / (x26 + 0.9445855))))))
+13|0.01862463|(x16 - sqrt_abs(exp(sqrt_abs(sqrt_abs((x7 / (x17 / x5)) / 1.479856)))))
+15|0.018031882|(x16 - sqrt_abs(exp(sqrt_abs(sqrt_abs(x7 / (sqrt_abs(pow(exp(-1.375021), x17)) + x26))))))
+17|0.017428208|(x16 - sqrt_abs(exp(sqrt_abs(sqrt_abs(x7 / ((sqrt_abs(pow(exp(-1.375021), x17)) * 0.85096467) + x26))))))
+19|0.01659453|(x16 - sqrt_abs(exp(sqrt_abs(sqrt_abs(x7 / (exp(sqrt_abs(sqrt_abs(exp(-0.56485116 / x5) / -1.6081886))) * x17))))))

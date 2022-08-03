@@ -1,0 +1,12 @@
+Complexity|MSE|Equation
+1|1.4767752|-0.3766852
+2|0.6443695|log10_abs(x0)
+3|0.40268138|(x16 + -1.0150446)
+5|0.19578293|((x13 - 1.5196797) / 1.5196797)
+6|0.17775676|((x13 - sqrt_abs(1.9512656)) / 1.5196797)
+7|0.09685237|(((x16 * 0.89082223) + -1.2260512) * 0.7793256)
+8|0.0850569|log10_abs((pow(3.2520044, x16) + -0.37706223) * 0.24455266)
+10|0.056203563|log_abs(log10_abs(exp(sqrt_abs(exp(x16 + 1.2012846)) + -0.8371013)))
+18|0.054761767|log_abs(log10_abs(exp(sqrt_abs(exp(x16 + sqrt_abs(sqrt_abs(sqrt_abs(x16 + sqrt_abs(-0.67645025 * x5)))))) + -0.6236453)))
+19|0.051849093|log_abs(log10_abs(exp(sqrt_abs(exp(x16 + sqrt_abs(sqrt_abs(sqrt_abs(x16 + sqrt_abs(sqrt_abs(x16 + 0.6599597))))))) + -0.6236453)))
+20|0.05066247|log_abs(log10_abs(exp(sqrt_abs(exp(x16 + sqrt_abs(sqrt_abs(sqrt_abs((x16 + (log_abs(x1) * x27)) + 0.6599597))))) + -0.6236453)))
