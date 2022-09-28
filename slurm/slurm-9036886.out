@@ -1,0 +1,2127 @@
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Namespace(case='xlarge_wpos_finalonly_raw_all', transform=None, vols='555', cols=None, zcut=None)
+Loading isotree 0_0_0
+isotree 0_0_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/770 [00:00<?, ?it/s]100%|██████████| 770/770 [00:00<00:00, 31805.70it/s]
+  0%|          | 0/770 [00:00<?, ?it/s]100%|██████████| 770/770 [00:00<00:00, 12979.04it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 117.91436171531677 s
+Loading isotree 0_0_1
+isotree 0_0_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1339 [00:00<?, ?it/s] 28%|██▊       | 378/1339 [00:00<00:00, 2034.04it/s] 43%|████▎     | 582/1339 [00:00<00:00, 1086.15it/s]100%|██████████| 1339/1339 [00:00<00:00, 2623.78it/s]
+  0%|          | 0/1339 [00:00<?, ?it/s]100%|██████████| 1339/1339 [00:00<00:00, 38051.50it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 206.10678005218506 s
+Loading isotree 0_0_2
+isotree 0_0_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1478 [00:00<?, ?it/s] 26%|██▌       | 378/1478 [00:00<00:00, 1678.18it/s]100%|██████████| 1478/1478 [00:00<00:00, 5596.99it/s]
+  0%|          | 0/1478 [00:00<?, ?it/s]100%|██████████| 1478/1478 [00:00<00:00, 37591.53it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 287.21290040016174 s
+Loading isotree 0_0_3
+isotree 0_0_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/512 [00:00<?, ?it/s]100%|██████████| 512/512 [00:00<00:00, 26388.02it/s]
+  0%|          | 0/512 [00:00<?, ?it/s]100%|██████████| 512/512 [00:00<00:00, 36665.25it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 69.02198600769043 s
+Loading isotree 0_0_4
+isotree 0_0_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/465 [00:00<?, ?it/s]100%|██████████| 465/465 [00:00<00:00, 26354.32it/s]
+  0%|          | 0/465 [00:00<?, ?it/s]100%|██████████| 465/465 [00:00<00:00, 6410.57it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 67.42514562606812 s
+Loading isotree 0_1_0
+isotree 0_1_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1130 [00:00<?, ?it/s]100%|██████████| 1130/1130 [00:00<00:00, 28470.29it/s]
+  0%|          | 0/1130 [00:00<?, ?it/s]100%|██████████| 1130/1130 [00:00<00:00, 41087.12it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 189.78414630889893 s
+Loading isotree 0_1_1
+isotree 0_1_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1940 [00:00<?, ?it/s] 19%|█▉        | 378/1940 [00:00<00:02, 647.25it/s] 79%|███████▉  | 1531/1940 [00:00<00:00, 2766.69it/s]100%|██████████| 1940/1940 [00:00<00:00, 2759.08it/s]
+  0%|          | 0/1940 [00:00<?, ?it/s]100%|██████████| 1940/1940 [00:00<00:00, 41228.14it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 574.1593165397644 s
+Loading isotree 0_1_2
+isotree 0_1_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/605 [00:00<?, ?it/s]100%|██████████| 605/605 [00:00<00:00, 25848.04it/s]
+  0%|          | 0/605 [00:00<?, ?it/s]100%|██████████| 605/605 [00:00<00:00, 36236.79it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 71.5577449798584 s
+Loading isotree 0_1_3
+isotree 0_1_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/660 [00:00<?, ?it/s]100%|██████████| 660/660 [00:00<00:00, 22799.82it/s]
+  0%|          | 0/660 [00:00<?, ?it/s]100%|██████████| 660/660 [00:00<00:00, 34593.49it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 83.49721646308899 s
+Loading isotree 0_1_4
+isotree 0_1_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1252 [00:00<?, ?it/s] 30%|███       | 378/1252 [00:00<00:00, 975.09it/s] 38%|███▊      | 476/1252 [00:00<00:00, 924.48it/s] 58%|█████▊    | 732/1252 [00:07<00:06, 74.44it/s]  62%|██████▏   | 782/1252 [00:07<00:05, 78.83it/s]100%|██████████| 1252/1252 [00:07<00:00, 167.64it/s]
+  0%|          | 0/1252 [00:00<?, ?it/s]100%|██████████| 1252/1252 [00:00<00:00, 39589.79it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 293.8896083831787 s
+Loading isotree 0_2_0
+isotree 0_2_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1176 [00:00<?, ?it/s] 32%|███▏      | 378/1176 [00:00<00:00, 1591.26it/s] 46%|████▌     | 538/1176 [00:00<00:00, 761.23it/s] 100%|██████████| 1176/1176 [00:00<00:00, 1795.76it/s]
+  0%|          | 0/1176 [00:00<?, ?it/s] 74%|███████▍  | 868/1176 [00:00<00:00, 8678.79it/s]100%|██████████| 1176/1176 [00:00<00:00, 10789.89it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 275.6374864578247 s
+Loading isotree 0_2_1
+isotree 0_2_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1290 [00:00<?, ?it/s]100%|██████████| 1290/1290 [00:00<00:00, 20509.66it/s]
+  0%|          | 0/1290 [00:00<?, ?it/s]100%|██████████| 1290/1290 [00:00<00:00, 41690.96it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 359.46652460098267 s
+Loading isotree 0_2_2
+isotree 0_2_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/808 [00:00<?, ?it/s] 47%|████▋     | 378/808 [00:00<00:00, 2380.59it/s]100%|██████████| 808/808 [00:00<00:00, 4718.57it/s]
+  0%|          | 0/808 [00:00<?, ?it/s]100%|██████████| 808/808 [00:00<00:00, 36318.99it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 200.91194820404053 s
+Loading isotree 0_2_3
+isotree 0_2_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1224 [00:00<?, ?it/s] 31%|███       | 378/1224 [00:00<00:00, 1833.24it/s]100%|██████████| 1224/1224 [00:00<00:00, 4890.94it/s]
+  0%|          | 0/1224 [00:00<?, ?it/s]100%|██████████| 1224/1224 [00:00<00:00, 36378.39it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 336.73305344581604 s
+Loading isotree 0_2_4
+isotree 0_2_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1164 [00:00<?, ?it/s] 32%|███▏      | 378/1164 [00:00<00:00, 1893.84it/s]100%|██████████| 1164/1164 [00:00<00:00, 5246.44it/s]
+  0%|          | 0/1164 [00:00<?, ?it/s]100%|██████████| 1164/1164 [00:00<00:00, 37062.51it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 342.0047097206116 s
+Loading isotree 0_3_0
+isotree 0_3_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/641 [00:00<?, ?it/s]100%|██████████| 641/641 [00:00<00:00, 10270.26it/s]
+  0%|          | 0/641 [00:00<?, ?it/s]100%|██████████| 641/641 [00:00<00:00, 37251.97it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 118.56643867492676 s
+Loading isotree 0_3_1
+isotree 0_3_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/679 [00:00<?, ?it/s]100%|██████████| 679/679 [00:00<00:00, 8271.40it/s]
+  0%|          | 0/679 [00:00<?, ?it/s]100%|██████████| 679/679 [00:00<00:00, 36473.61it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 143.65911197662354 s
+Loading isotree 0_3_2
+isotree 0_3_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1379 [00:00<?, ?it/s] 27%|██▋       | 378/1379 [00:00<00:00, 1842.92it/s]100%|██████████| 1379/1379 [00:00<00:00, 5758.97it/s]
+  0%|          | 0/1379 [00:00<?, ?it/s] 22%|██▏       | 299/1379 [00:00<00:00, 2765.87it/s]100%|██████████| 1379/1379 [00:00<00:00, 10215.61it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 359.8490948677063 s
+Loading isotree 0_3_3
+isotree 0_3_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1543 [00:00<?, ?it/s] 75%|███████▍  | 1151/1543 [00:00<00:00, 11506.58it/s]100%|██████████| 1543/1543 [00:00<00:00, 13741.95it/s]
+  0%|          | 0/1543 [00:00<?, ?it/s]100%|██████████| 1543/1543 [00:00<00:00, 41006.51it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 626.064868927002 s
+Loading isotree 0_3_4
+isotree 0_3_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1574 [00:00<?, ?it/s] 24%|██▍       | 378/1574 [00:00<00:00, 1662.58it/s]100%|██████████| 1574/1574 [00:00<00:00, 5886.96it/s]
+  0%|          | 0/1574 [00:00<?, ?it/s]100%|██████████| 1574/1574 [00:00<00:00, 36846.56it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 478.29993057250977 s
+Loading isotree 0_4_0
+isotree 0_4_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/922 [00:00<?, ?it/s] 41%|████      | 378/922 [00:00<00:00, 3389.41it/s]100%|██████████| 922/922 [00:00<00:00, 7000.31it/s]
+  0%|          | 0/922 [00:00<?, ?it/s]100%|██████████| 922/922 [00:00<00:00, 40007.74it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 177.59715700149536 s
+Loading isotree 0_4_1
+isotree 0_4_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/418 [00:00<?, ?it/s]100%|██████████| 418/418 [00:00<00:00, 30523.15it/s]
+  0%|          | 0/418 [00:00<?, ?it/s]100%|██████████| 418/418 [00:00<00:00, 40324.28it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 72.78053951263428 s
+Loading isotree 0_4_2
+isotree 0_4_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/607 [00:00<?, ?it/s]100%|██████████| 607/607 [00:00<00:00, 30832.63it/s]
+  0%|          | 0/607 [00:00<?, ?it/s]100%|██████████| 607/607 [00:00<00:00, 41179.82it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 91.14299416542053 s
+Loading isotree 0_4_3
+isotree 0_4_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/300 [00:00<?, ?it/s]100%|██████████| 300/300 [00:00<00:00, 31135.03it/s]
+  0%|          | 0/300 [00:00<?, ?it/s]100%|██████████| 300/300 [00:00<00:00, 33663.95it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 57.71337175369263 s
+Loading isotree 0_4_4
+isotree 0_4_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/659 [00:00<?, ?it/s]100%|██████████| 659/659 [00:00<00:00, 6911.50it/s]
+  0%|          | 0/659 [00:00<?, ?it/s] 35%|███▌      | 233/659 [00:00<00:00, 1879.46it/s] 64%|██████▍   | 421/659 [00:00<00:00, 767.75it/s] 100%|██████████| 659/659 [00:00<00:00, 1315.16it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 152.64698576927185 s
+Loading isotree 1_0_0
+isotree 1_0_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1814 [00:00<?, ?it/s]100%|██████████| 1814/1814 [00:00<00:00, 27184.65it/s]
+  0%|          | 0/1814 [00:00<?, ?it/s]100%|██████████| 1814/1814 [00:00<00:00, 40963.66it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 539.4026191234589 s
+Loading isotree 1_0_1
+isotree 1_0_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1104 [00:00<?, ?it/s] 34%|███▍      | 378/1104 [00:00<00:00, 1666.16it/s]100%|██████████| 1104/1104 [00:00<00:00, 4188.53it/s]
+  0%|          | 0/1104 [00:00<?, ?it/s]100%|██████████| 1104/1104 [00:00<00:00, 40408.68it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 263.27258944511414 s
+Loading isotree 1_0_2
+isotree 1_0_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/668 [00:00<?, ?it/s] 57%|█████▋    | 378/668 [00:00<00:00, 2757.97it/s]100%|██████████| 668/668 [00:00<00:00, 4550.19it/s]
+  0%|          | 0/668 [00:00<?, ?it/s]100%|██████████| 668/668 [00:00<00:00, 34689.85it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 100.07308673858643 s
+Loading isotree 1_0_3
+isotree 1_0_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/698 [00:00<?, ?it/s] 54%|█████▍    | 378/698 [00:00<00:00, 2423.59it/s]100%|██████████| 698/698 [00:00<00:00, 4229.03it/s]
+  0%|          | 0/698 [00:00<?, ?it/s]100%|██████████| 698/698 [00:00<00:00, 35013.98it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 115.91845655441284 s
+Loading isotree 1_0_4
+isotree 1_0_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1113 [00:00<?, ?it/s] 34%|███▍      | 378/1113 [00:00<00:00, 1942.09it/s]100%|██████████| 1113/1113 [00:00<00:00, 5127.79it/s]
+  0%|          | 0/1113 [00:00<?, ?it/s]100%|██████████| 1113/1113 [00:00<00:00, 39461.54it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 343.6897699832916 s
+Loading isotree 1_1_0
+isotree 1_1_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/899 [00:00<?, ?it/s] 42%|████▏     | 378/899 [00:00<00:00, 3497.66it/s] 81%|████████  | 728/899 [00:00<00:00, 1327.18it/s]100%|██████████| 899/899 [00:00<00:00, 1795.59it/s]
+  0%|          | 0/899 [00:00<?, ?it/s]100%|██████████| 899/899 [00:00<00:00, 35945.47it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 212.90623879432678 s
+Loading isotree 1_1_1
+isotree 1_1_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1033 [00:00<?, ?it/s] 37%|███▋      | 378/1033 [00:00<00:00, 2622.32it/s]100%|██████████| 1033/1033 [00:00<00:00, 6234.38it/s]
+  0%|          | 0/1033 [00:00<?, ?it/s]100%|██████████| 1033/1033 [00:00<00:00, 35098.07it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 197.22206711769104 s
+Loading isotree 1_1_2
+isotree 1_1_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1287 [00:00<?, ?it/s] 29%|██▉       | 378/1287 [00:00<00:00, 1466.10it/s] 41%|████      | 525/1287 [00:00<00:00, 996.72it/s]  84%|████████▍ | 1082/1287 [00:00<00:00, 1892.45it/s]100%|██████████| 1287/1287 [00:00<00:00, 1968.33it/s]
+  0%|          | 0/1287 [00:00<?, ?it/s]100%|██████████| 1287/1287 [00:00<00:00, 42067.25it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 247.12855529785156 s
+Loading isotree 1_1_3
+isotree 1_1_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1119 [00:00<?, ?it/s]100%|██████████| 1119/1119 [00:00<00:00, 19490.89it/s]
+  0%|          | 0/1119 [00:00<?, ?it/s]100%|██████████| 1119/1119 [00:00<00:00, 41016.77it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 207.11228775978088 s
+Loading isotree 1_1_4
+isotree 1_1_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/554 [00:00<?, ?it/s]100%|██████████| 554/554 [00:00<00:00, 29074.63it/s]
+  0%|          | 0/554 [00:00<?, ?it/s]100%|██████████| 554/554 [00:00<00:00, 40612.50it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 74.86278581619263 s
+Loading isotree 1_2_0
+isotree 1_2_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/664 [00:00<?, ?it/s] 57%|█████▋    | 378/664 [00:00<00:00, 3057.58it/s]100%|██████████| 664/664 [00:00<00:00, 5013.62it/s]
+  0%|          | 0/664 [00:00<?, ?it/s]100%|██████████| 664/664 [00:00<00:00, 41994.90it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 121.03585195541382 s
+Loading isotree 1_2_1
+isotree 1_2_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/509 [00:00<?, ?it/s]100%|██████████| 509/509 [00:00<00:00, 30802.20it/s]
+  0%|          | 0/509 [00:00<?, ?it/s]100%|██████████| 509/509 [00:00<00:00, 41496.28it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 62.144553422927856 s
+Loading isotree 1_2_2
+isotree 1_2_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1819 [00:00<?, ?it/s] 21%|██        | 378/1819 [00:00<00:01, 1001.63it/s] 26%|██▋       | 479/1819 [00:00<00:01, 850.19it/s] 100%|██████████| 1819/1819 [00:00<00:00, 2869.88it/s]
+  0%|          | 0/1819 [00:00<?, ?it/s]100%|██████████| 1819/1819 [00:00<00:00, 37940.80it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 562.465607881546 s
+Loading isotree 1_2_3
+isotree 1_2_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1479 [00:00<?, ?it/s] 26%|██▌       | 378/1479 [00:00<00:00, 1651.41it/s] 37%|███▋      | 544/1479 [00:00<00:01, 926.72it/s] 100%|██████████| 1479/1479 [00:00<00:00, 2580.93it/s]
+  0%|          | 0/1479 [00:00<?, ?it/s]100%|██████████| 1479/1479 [00:00<00:00, 40992.37it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 295.32602763175964 s
+Loading isotree 1_2_4
+isotree 1_2_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/528 [00:00<?, ?it/s]100%|██████████| 528/528 [00:00<00:00, 28052.70it/s]
+  0%|          | 0/528 [00:00<?, ?it/s]100%|██████████| 528/528 [00:00<00:00, 41004.90it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 64.9249198436737 s
+Loading isotree 1_3_0
+isotree 1_3_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/761 [00:00<?, ?it/s] 71%|███████   | 539/761 [00:00<00:00, 5388.73it/s]100%|██████████| 761/761 [00:00<00:00, 7103.56it/s]
+  0%|          | 0/761 [00:00<?, ?it/s]100%|██████████| 761/761 [00:00<00:00, 34821.74it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 97.6929988861084 s
+Loading isotree 1_3_1
+isotree 1_3_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/470 [00:00<?, ?it/s]100%|██████████| 470/470 [00:00<00:00, 27702.68it/s]
+  0%|          | 0/470 [00:00<?, ?it/s]100%|██████████| 470/470 [00:00<00:00, 40601.46it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 65.18151021003723 s
+Loading isotree 1_3_2
+isotree 1_3_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1137 [00:00<?, ?it/s]100%|██████████| 1137/1137 [00:00<00:00, 21600.64it/s]
+  0%|          | 0/1137 [00:00<?, ?it/s]100%|██████████| 1137/1137 [00:00<00:00, 37614.55it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 220.9334111213684 s
+Loading isotree 1_3_3
+isotree 1_3_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1735 [00:00<?, ?it/s] 22%|██▏       | 378/1735 [00:00<00:02, 598.52it/s] 25%|██▌       | 438/1735 [00:00<00:02, 462.57it/s]100%|██████████| 1735/1735 [00:00<00:00, 1802.29it/s]
+  0%|          | 0/1735 [00:00<?, ?it/s]100%|██████████| 1735/1735 [00:00<00:00, 35808.00it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 689.2956256866455 s
+Loading isotree 1_3_4
+isotree 1_3_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1340 [00:00<?, ?it/s] 28%|██▊       | 378/1340 [00:00<00:00, 1923.84it/s]100%|██████████| 1340/1340 [00:00<00:00, 5815.90it/s]
+  0%|          | 0/1340 [00:00<?, ?it/s]100%|██████████| 1340/1340 [00:00<00:00, 37183.05it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 252.28206181526184 s
+Loading isotree 1_4_0
+isotree 1_4_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1129 [00:00<?, ?it/s] 33%|███▎      | 378/1129 [00:00<00:00, 1452.80it/s]100%|██████████| 1129/1129 [00:00<00:00, 3987.17it/s]
+  0%|          | 0/1129 [00:00<?, ?it/s]100%|██████████| 1129/1129 [00:00<00:00, 37233.89it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 255.274982213974 s
+Loading isotree 1_4_1
+isotree 1_4_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/563 [00:00<?, ?it/s] 67%|██████▋   | 378/563 [00:00<00:00, 3724.83it/s]100%|██████████| 563/563 [00:00<00:00, 5245.02it/s]
+  0%|          | 0/563 [00:00<?, ?it/s]100%|██████████| 563/563 [00:00<00:00, 32878.41it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 106.78647780418396 s
+Loading isotree 1_4_2
+isotree 1_4_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/498 [00:00<?, ?it/s]100%|██████████| 498/498 [00:00<00:00, 27530.46it/s]
+  0%|          | 0/498 [00:00<?, ?it/s]100%|██████████| 498/498 [00:00<00:00, 35586.13it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 82.31344485282898 s
+Loading isotree 1_4_3
+isotree 1_4_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/645 [00:00<?, ?it/s]100%|██████████| 645/645 [00:00<00:00, 6933.75it/s]
+  0%|          | 0/645 [00:00<?, ?it/s]100%|██████████| 645/645 [00:00<00:00, 34183.62it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 88.76504325866699 s
+Loading isotree 1_4_4
+isotree 1_4_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1285 [00:00<?, ?it/s] 29%|██▉       | 378/1285 [00:00<00:00, 1791.13it/s] 43%|████▎     | 558/1285 [00:00<00:00, 814.76it/s] 100%|██████████| 1285/1285 [00:00<00:00, 1977.59it/s]
+  0%|          | 0/1285 [00:00<?, ?it/s]100%|██████████| 1285/1285 [00:00<00:00, 41174.35it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 274.02282667160034 s
+Loading isotree 2_0_0
+isotree 2_0_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/460 [00:00<?, ?it/s]100%|██████████| 460/460 [00:00<00:00, 28432.19it/s]
+  0%|          | 0/460 [00:00<?, ?it/s]100%|██████████| 460/460 [00:00<00:00, 36333.47it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 99.55996656417847 s
+Loading isotree 2_0_1
+isotree 2_0_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/296 [00:00<?, ?it/s]100%|██████████| 296/296 [00:00<00:00, 33230.21it/s]
+  0%|          | 0/296 [00:00<?, ?it/s]100%|██████████| 296/296 [00:00<00:00, 34617.28it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 46.412636280059814 s
+Loading isotree 2_0_2
+isotree 2_0_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/802 [00:00<?, ?it/s] 47%|████▋     | 378/802 [00:00<00:00, 2728.10it/s]100%|██████████| 802/802 [00:00<00:00, 5316.25it/s]
+  0%|          | 0/802 [00:00<?, ?it/s]100%|██████████| 802/802 [00:00<00:00, 37501.33it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 196.22283625602722 s
+Loading isotree 2_0_3
+isotree 2_0_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1011 [00:00<?, ?it/s] 37%|███▋      | 378/1011 [00:00<00:00, 2558.54it/s]100%|██████████| 1011/1011 [00:00<00:00, 5950.87it/s]
+  0%|          | 0/1011 [00:00<?, ?it/s]100%|██████████| 1011/1011 [00:00<00:00, 35706.27it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 266.2722804546356 s
+Loading isotree 2_0_4
+isotree 2_0_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1251 [00:00<?, ?it/s] 30%|███       | 378/1251 [00:00<00:00, 1831.86it/s]100%|██████████| 1251/1251 [00:00<00:00, 4658.14it/s]
+  0%|          | 0/1251 [00:00<?, ?it/s] 43%|████▎     | 534/1251 [00:00<00:00, 2544.64it/s]100%|██████████| 1251/1251 [00:00<00:00, 5504.77it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 364.6084702014923 s
+Loading isotree 2_1_0
+isotree 2_1_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/528 [00:00<?, ?it/s]100%|██████████| 528/528 [00:00<00:00, 32629.44it/s]
+  0%|          | 0/528 [00:00<?, ?it/s]100%|██████████| 528/528 [00:00<00:00, 36851.53it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 69.16816973686218 s
+Loading isotree 2_1_1
+isotree 2_1_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/492 [00:00<?, ?it/s]100%|██████████| 492/492 [00:00<00:00, 32504.77it/s]
+  0%|          | 0/492 [00:00<?, ?it/s]100%|██████████| 492/492 [00:00<00:00, 35953.06it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 62.20297122001648 s
+Loading isotree 2_1_2
+isotree 2_1_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/623 [00:00<?, ?it/s]100%|██████████| 623/623 [00:00<00:00, 29267.39it/s]
+  0%|          | 0/623 [00:00<?, ?it/s]100%|██████████| 623/623 [00:00<00:00, 38017.42it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 84.81936502456665 s
+Loading isotree 2_1_3
+isotree 2_1_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/975 [00:00<?, ?it/s] 39%|███▉      | 378/975 [00:00<00:00, 2279.51it/s]100%|██████████| 975/975 [00:00<00:00, 5218.95it/s]
+  0%|          | 0/975 [00:00<?, ?it/s]100%|██████████| 975/975 [00:00<00:00, 36839.54it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 224.6996943950653 s
+Loading isotree 2_1_4
+isotree 2_1_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/723 [00:00<?, ?it/s] 52%|█████▏    | 378/723 [00:00<00:00, 3323.46it/s]100%|██████████| 723/723 [00:00<00:00, 5782.41it/s]
+  0%|          | 0/723 [00:00<?, ?it/s]100%|██████████| 723/723 [00:00<00:00, 41457.93it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 188.31193375587463 s
+Loading isotree 2_2_0
+isotree 2_2_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/681 [00:00<?, ?it/s] 56%|█████▌    | 378/681 [00:00<00:00, 3229.50it/s]100%|██████████| 681/681 [00:00<00:00, 5358.20it/s]
+  0%|          | 0/681 [00:00<?, ?it/s]100%|██████████| 681/681 [00:00<00:00, 35204.11it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 197.85536336898804 s
+Loading isotree 2_2_1
+isotree 2_2_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/517 [00:00<?, ?it/s]100%|██████████| 517/517 [00:00<00:00, 29498.38it/s]
+  0%|          | 0/517 [00:00<?, ?it/s]100%|██████████| 517/517 [00:00<00:00, 39758.26it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 78.04380083084106 s
+Loading isotree 2_2_2
+isotree 2_2_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/917 [00:00<?, ?it/s] 41%|████      | 378/917 [00:00<00:00, 3163.42it/s]100%|██████████| 917/917 [00:00<00:00, 6811.84it/s]
+  0%|          | 0/917 [00:00<?, ?it/s]100%|██████████| 917/917 [00:00<00:00, 36837.95it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 203.29176712036133 s
+Loading isotree 2_2_3
+isotree 2_2_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1104 [00:00<?, ?it/s] 34%|███▍      | 378/1104 [00:00<00:00, 1612.80it/s]100%|██████████| 1104/1104 [00:00<00:00, 4168.65it/s]
+  0%|          | 0/1104 [00:00<?, ?it/s]100%|██████████| 1104/1104 [00:00<00:00, 35160.88it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 205.2015519142151 s
+Loading isotree 2_2_4
+isotree 2_2_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1322 [00:00<?, ?it/s] 29%|██▊       | 378/1322 [00:00<00:00, 1463.75it/s]100%|██████████| 1322/1322 [00:00<00:00, 4144.07it/s]
+  0%|          | 0/1322 [00:00<?, ?it/s]100%|██████████| 1322/1322 [00:00<00:00, 36541.67it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 303.9256479740143 s
+Loading isotree 2_3_0
+isotree 2_3_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/377 [00:00<?, ?it/s]100%|██████████| 377/377 [00:00<00:00, 29556.12it/s]
+  0%|          | 0/377 [00:00<?, ?it/s]100%|██████████| 377/377 [00:00<00:00, 40772.85it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 48.060014724731445 s
+Loading isotree 2_3_1
+isotree 2_3_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/842 [00:00<?, ?it/s] 45%|████▍     | 378/842 [00:00<00:00, 3611.50it/s]100%|██████████| 842/842 [00:00<00:00, 7059.10it/s]
+  0%|          | 0/842 [00:00<?, ?it/s]100%|██████████| 842/842 [00:00<00:00, 36831.66it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 130.30410718917847 s
+Loading isotree 2_3_2
+isotree 2_3_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/845 [00:00<?, ?it/s] 45%|████▍     | 378/845 [00:00<00:00, 2258.29it/s]100%|██████████| 845/845 [00:00<00:00, 4645.76it/s]
+  0%|          | 0/845 [00:00<?, ?it/s]100%|██████████| 845/845 [00:00<00:00, 36491.74it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 123.88321352005005 s
+Loading isotree 2_3_3
+isotree 2_3_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/863 [00:00<?, ?it/s] 44%|████▍     | 378/863 [00:00<00:00, 3298.84it/s]100%|██████████| 863/863 [00:00<00:00, 6617.88it/s]
+  0%|          | 0/863 [00:00<?, ?it/s]100%|██████████| 863/863 [00:00<00:00, 40677.47it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 176.87295866012573 s
+Loading isotree 2_3_4
+isotree 2_3_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/378 [00:00<?, ?it/s]100%|██████████| 378/378 [00:00<00:00, 29036.43it/s]
+  0%|          | 0/378 [00:00<?, ?it/s]100%|██████████| 378/378 [00:00<00:00, 41935.27it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 75.51437950134277 s
+Loading isotree 2_4_0
+isotree 2_4_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/585 [00:00<?, ?it/s]100%|██████████| 585/585 [00:00<00:00, 6967.26it/s]
+  0%|          | 0/585 [00:00<?, ?it/s]100%|██████████| 585/585 [00:00<00:00, 41757.45it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 120.64680099487305 s
+Loading isotree 2_4_1
+isotree 2_4_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/471 [00:00<?, ?it/s]100%|██████████| 471/471 [00:00<00:00, 29695.86it/s]
+  0%|          | 0/471 [00:00<?, ?it/s]100%|██████████| 471/471 [00:00<00:00, 41811.66it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 82.86714124679565 s
+Loading isotree 2_4_2
+isotree 2_4_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1651 [00:00<?, ?it/s] 23%|██▎       | 378/1651 [00:00<00:01, 900.48it/s] 28%|██▊       | 469/1651 [00:00<00:02, 470.48it/s]100%|██████████| 1651/1651 [00:00<00:00, 1706.47it/s]
+  0%|          | 0/1651 [00:00<?, ?it/s] 40%|████      | 664/1651 [00:00<00:00, 2692.83it/s] 57%|█████▋    | 934/1651 [00:00<00:00, 1617.84it/s]100%|██████████| 1651/1651 [00:00<00:00, 3021.88it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 514.0918202400208 s
+Loading isotree 2_4_3
+isotree 2_4_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1215 [00:00<?, ?it/s]100%|██████████| 1215/1215 [00:00<00:00, 19956.76it/s]
+  0%|          | 0/1215 [00:00<?, ?it/s]100%|██████████| 1215/1215 [00:00<00:00, 41275.50it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 209.43154335021973 s
+Loading isotree 2_4_4
+isotree 2_4_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/841 [00:00<?, ?it/s] 45%|████▍     | 378/841 [00:00<00:00, 3773.27it/s]100%|██████████| 841/841 [00:00<00:00, 7411.91it/s]
+  0%|          | 0/841 [00:00<?, ?it/s]100%|██████████| 841/841 [00:00<00:00, 36531.89it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 124.07621550559998 s
+Loading isotree 3_0_0
+isotree 3_0_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/904 [00:00<?, ?it/s] 42%|████▏     | 378/904 [00:00<00:00, 2825.29it/s]100%|██████████| 904/904 [00:00<00:00, 6050.56it/s]
+  0%|          | 0/904 [00:00<?, ?it/s]100%|██████████| 904/904 [00:00<00:00, 37310.22it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 155.84983801841736 s
+Loading isotree 3_0_1
+isotree 3_0_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/656 [00:00<?, ?it/s]100%|██████████| 656/656 [00:00<00:00, 30950.09it/s]
+  0%|          | 0/656 [00:00<?, ?it/s]100%|██████████| 656/656 [00:00<00:00, 37322.15it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 90.14934277534485 s
+Loading isotree 3_0_2
+isotree 3_0_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1531 [00:00<?, ?it/s] 25%|██▍       | 378/1531 [00:00<00:01, 1102.46it/s]100%|██████████| 1531/1531 [00:00<00:00, 3569.82it/s]
+  0%|          | 0/1531 [00:00<?, ?it/s]100%|██████████| 1531/1531 [00:00<00:00, 41943.31it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 430.4556381702423 s
+Loading isotree 3_0_3
+isotree 3_0_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/996 [00:00<?, ?it/s] 38%|███▊      | 378/996 [00:00<00:00, 2488.97it/s] 63%|██████▎   | 627/996 [00:00<00:00, 922.46it/s] 100%|██████████| 996/996 [00:00<00:00, 1625.56it/s]
+  0%|          | 0/996 [00:00<?, ?it/s]100%|██████████| 996/996 [00:00<00:00, 37438.74it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 154.9962785243988 s
+Loading isotree 3_0_4
+isotree 3_0_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/603 [00:00<?, ?it/s]100%|██████████| 603/603 [00:00<00:00, 29339.30it/s]
+  0%|          | 0/603 [00:00<?, ?it/s]100%|██████████| 603/603 [00:00<00:00, 35874.69it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 89.1279604434967 s
+Loading isotree 3_1_0
+isotree 3_1_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1086 [00:00<?, ?it/s] 35%|███▍      | 378/1086 [00:00<00:00, 2132.57it/s]100%|██████████| 1086/1086 [00:00<00:00, 5230.40it/s]
+  0%|          | 0/1086 [00:00<?, ?it/s]100%|██████████| 1086/1086 [00:00<00:00, 41309.33it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 214.21529531478882 s
+Loading isotree 3_1_1
+isotree 3_1_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/658 [00:00<?, ?it/s] 57%|█████▋    | 378/658 [00:00<00:00, 3270.82it/s]100%|██████████| 658/658 [00:00<00:00, 5286.83it/s]
+  0%|          | 0/658 [00:00<?, ?it/s]100%|██████████| 658/658 [00:00<00:00, 35361.41it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 107.81720447540283 s
+Loading isotree 3_1_2
+isotree 3_1_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/879 [00:00<?, ?it/s] 43%|████▎     | 378/879 [00:00<00:00, 3416.03it/s]100%|██████████| 879/879 [00:00<00:00, 6978.18it/s]
+  0%|          | 0/879 [00:00<?, ?it/s]100%|██████████| 879/879 [00:00<00:00, 36393.36it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 221.49128913879395 s
+Loading isotree 3_1_3
+isotree 3_1_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/447 [00:00<?, ?it/s]100%|██████████| 447/447 [00:00<00:00, 28112.13it/s]
+  0%|          | 0/447 [00:00<?, ?it/s]100%|██████████| 447/447 [00:00<00:00, 39653.43it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 92.82522344589233 s
+Loading isotree 3_1_4
+isotree 3_1_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/387 [00:00<?, ?it/s]100%|██████████| 387/387 [00:00<00:00, 29928.38it/s]
+  0%|          | 0/387 [00:00<?, ?it/s]100%|██████████| 387/387 [00:00<00:00, 34275.00it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 74.54814577102661 s
+Loading isotree 3_2_0
+isotree 3_2_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/551 [00:00<?, ?it/s]100%|██████████| 551/551 [00:00<00:00, 28927.68it/s]
+  0%|          | 0/551 [00:00<?, ?it/s]100%|██████████| 551/551 [00:00<00:00, 37723.61it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 122.66969990730286 s
+Loading isotree 3_2_1
+isotree 3_2_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1146 [00:00<?, ?it/s] 33%|███▎      | 378/1146 [00:00<00:00, 2130.98it/s]100%|██████████| 1146/1146 [00:00<00:00, 5720.16it/s]
+  0%|          | 0/1146 [00:00<?, ?it/s]100%|██████████| 1146/1146 [00:00<00:00, 36492.42it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 273.8384292125702 s
+Loading isotree 3_2_2
+isotree 3_2_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/397 [00:00<?, ?it/s]100%|██████████| 397/397 [00:00<00:00, 30220.30it/s]
+  0%|          | 0/397 [00:00<?, ?it/s]100%|██████████| 397/397 [00:00<00:00, 39860.65it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 49.11435151100159 s
+Loading isotree 3_2_3
+isotree 3_2_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/504 [00:00<?, ?it/s]100%|██████████| 504/504 [00:00<00:00, 6958.93it/s]
+  0%|          | 0/504 [00:00<?, ?it/s]100%|██████████| 504/504 [00:00<00:00, 40452.56it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 74.81709861755371 s
+Loading isotree 3_2_4
+isotree 3_2_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1041 [00:00<?, ?it/s] 36%|███▋      | 378/1041 [00:00<00:00, 2229.74it/s]100%|██████████| 1041/1041 [00:00<00:00, 5259.53it/s]
+  0%|          | 0/1041 [00:00<?, ?it/s]100%|██████████| 1041/1041 [00:00<00:00, 41604.53it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 200.86960101127625 s
+Loading isotree 3_3_0
+isotree 3_3_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/457 [00:00<?, ?it/s]100%|██████████| 457/457 [00:00<00:00, 27909.91it/s]
+  0%|          | 0/457 [00:00<?, ?it/s]100%|██████████| 457/457 [00:00<00:00, 36042.21it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 68.30629777908325 s
+Loading isotree 3_3_1
+isotree 3_3_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/970 [00:00<?, ?it/s] 39%|███▉      | 378/970 [00:00<00:00, 2836.87it/s]100%|██████████| 970/970 [00:00<00:00, 6288.68it/s]
+  0%|          | 0/970 [00:00<?, ?it/s]100%|██████████| 970/970 [00:00<00:00, 37630.30it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 207.3851957321167 s
+Loading isotree 3_3_2
+isotree 3_3_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/578 [00:00<?, ?it/s] 65%|██████▌   | 378/578 [00:00<00:00, 1286.09it/s]100%|██████████| 578/578 [00:00<00:00, 1924.39it/s]
+  0%|          | 0/578 [00:00<?, ?it/s]100%|██████████| 578/578 [00:00<00:00, 41512.83it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 93.27309346199036 s
+Loading isotree 3_3_3
+isotree 3_3_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/578 [00:00<?, ?it/s]100%|██████████| 578/578 [00:00<00:00, 31278.56it/s]
+  0%|          | 0/578 [00:00<?, ?it/s]100%|██████████| 578/578 [00:00<00:00, 39718.01it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 123.52548336982727 s
+Loading isotree 3_3_4
+isotree 3_3_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/323 [00:00<?, ?it/s]100%|██████████| 323/323 [00:00<00:00, 30987.20it/s]
+  0%|          | 0/323 [00:00<?, ?it/s]100%|██████████| 323/323 [00:00<00:00, 40684.71it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 65.09839296340942 s
+Loading isotree 3_4_0
+isotree 3_4_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/596 [00:00<?, ?it/s]100%|██████████| 596/596 [00:00<00:00, 6213.09it/s]
+  0%|          | 0/596 [00:00<?, ?it/s]100%|██████████| 596/596 [00:00<00:00, 41630.81it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 132.81101155281067 s
+Loading isotree 3_4_1
+isotree 3_4_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1192 [00:00<?, ?it/s] 32%|███▏      | 378/1192 [00:00<00:00, 1414.55it/s]100%|██████████| 1192/1192 [00:00<00:00, 4076.06it/s]
+  0%|          | 0/1192 [00:00<?, ?it/s]100%|██████████| 1192/1192 [00:00<00:00, 38093.14it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 326.2942831516266 s
+Loading isotree 3_4_2
+isotree 3_4_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1216 [00:00<?, ?it/s] 31%|███       | 378/1216 [00:00<00:00, 1588.13it/s] 44%|████▍     | 537/1216 [00:00<00:00, 757.33it/s] 100%|██████████| 1216/1216 [00:00<00:00, 1840.53it/s]
+  0%|          | 0/1216 [00:00<?, ?it/s]100%|██████████| 1216/1216 [00:00<00:00, 40461.66it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 267.129207611084 s
+Loading isotree 3_4_3
+isotree 3_4_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/841 [00:00<?, ?it/s] 45%|████▍     | 378/841 [00:00<00:00, 3686.04it/s]100%|██████████| 841/841 [00:00<00:00, 6873.55it/s]
+  0%|          | 0/841 [00:00<?, ?it/s]100%|██████████| 841/841 [00:00<00:00, 40282.87it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 119.499196767807 s
+Loading isotree 3_4_4
+isotree 3_4_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/574 [00:00<?, ?it/s]100%|██████████| 574/574 [00:00<00:00, 29934.73it/s]
+  0%|          | 0/574 [00:00<?, ?it/s]100%|██████████| 574/574 [00:00<00:00, 42091.17it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 74.22806119918823 s
+Loading isotree 4_0_0
+isotree 4_0_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/490 [00:00<?, ?it/s]100%|██████████| 490/490 [00:00<00:00, 29433.29it/s]
+  0%|          | 0/490 [00:00<?, ?it/s]100%|██████████| 490/490 [00:00<00:00, 40567.87it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 71.65217900276184 s
+Loading isotree 4_0_1
+isotree 4_0_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/443 [00:00<?, ?it/s]100%|██████████| 443/443 [00:00<00:00, 5305.76it/s]
+  0%|          | 0/443 [00:00<?, ?it/s]100%|██████████| 443/443 [00:00<00:00, 39499.93it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 71.798184633255 s
+Loading isotree 4_0_2
+isotree 4_0_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1731 [00:00<?, ?it/s] 22%|██▏       | 378/1731 [00:00<00:00, 1546.45it/s] 31%|███       | 533/1731 [00:00<00:01, 807.73it/s] 100%|██████████| 1731/1731 [00:00<00:00, 2646.90it/s]
+  0%|          | 0/1731 [00:00<?, ?it/s]100%|██████████| 1731/1731 [00:00<00:00, 41746.49it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 434.0883684158325 s
+Loading isotree 4_0_3
+isotree 4_0_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/689 [00:00<?, ?it/s] 94%|█████████▍| 646/689 [00:00<00:00, 6459.30it/s]100%|██████████| 689/689 [00:00<00:00, 6770.79it/s]
+  0%|          | 0/689 [00:00<?, ?it/s]100%|██████████| 689/689 [00:00<00:00, 35861.21it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 98.78717041015625 s
+Loading isotree 4_0_4
+isotree 4_0_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/379 [00:00<?, ?it/s]100%|██████████| 379/379 [00:00<00:00, 29534.61it/s]
+  0%|          | 0/379 [00:00<?, ?it/s]100%|██████████| 379/379 [00:00<00:00, 34978.68it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 49.02673816680908 s
+Loading isotree 4_1_0
+isotree 4_1_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/979 [00:00<?, ?it/s] 39%|███▊      | 378/979 [00:00<00:00, 2487.84it/s]100%|██████████| 979/979 [00:00<00:00, 5693.65it/s]
+  0%|          | 0/979 [00:00<?, ?it/s]100%|██████████| 979/979 [00:00<00:00, 36563.14it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 180.27857542037964 s
+Loading isotree 4_1_1
+isotree 4_1_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/2041 [00:00<?, ?it/s] 19%|█▊        | 378/2041 [00:00<00:02, 640.43it/s]100%|██████████| 2041/2041 [00:00<00:00, 3067.81it/s]
+  0%|          | 0/2041 [00:00<?, ?it/s]100%|██████████| 2041/2041 [00:00<00:00, 38450.47it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 619.818806886673 s
+Loading isotree 4_1_2
+isotree 4_1_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/531 [00:00<?, ?it/s]100%|██████████| 531/531 [00:00<00:00, 27725.33it/s]
+  0%|          | 0/531 [00:00<?, ?it/s]100%|██████████| 531/531 [00:00<00:00, 41373.47it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 66.99008011817932 s
+Loading isotree 4_1_3
+isotree 4_1_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/599 [00:00<?, ?it/s] 63%|██████▎   | 378/599 [00:00<00:00, 3696.46it/s]100%|██████████| 599/599 [00:00<00:00, 1144.06it/s]
+  0%|          | 0/599 [00:00<?, ?it/s]100%|██████████| 599/599 [00:00<00:00, 41120.63it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 79.77303338050842 s
+Loading isotree 4_1_4
+isotree 4_1_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/708 [00:00<?, ?it/s] 53%|█████▎    | 378/708 [00:00<00:00, 3463.49it/s]100%|██████████| 708/708 [00:00<00:00, 5859.02it/s]
+  0%|          | 0/708 [00:00<?, ?it/s]100%|██████████| 708/708 [00:00<00:00, 36393.09it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 109.02074384689331 s
+Loading isotree 4_2_0
+isotree 4_2_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1154 [00:00<?, ?it/s] 33%|███▎      | 378/1154 [00:00<00:00, 2464.23it/s] 54%|█████▍    | 625/1154 [00:00<00:00, 896.46it/s] 100%|██████████| 1154/1154 [00:00<00:00, 1824.64it/s]
+  0%|          | 0/1154 [00:00<?, ?it/s]100%|██████████| 1154/1154 [00:00<00:00, 37343.11it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 203.8576319217682 s
+Loading isotree 4_2_1
+isotree 4_2_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/637 [00:00<?, ?it/s]100%|██████████| 637/637 [00:00<00:00, 30657.87it/s]
+  0%|          | 0/637 [00:00<?, ?it/s]100%|██████████| 637/637 [00:00<00:00, 38244.66it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 81.08704829216003 s
+Loading isotree 4_2_2
+isotree 4_2_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/366 [00:00<?, ?it/s]100%|██████████| 366/366 [00:00<00:00, 32856.37it/s]
+  0%|          | 0/366 [00:00<?, ?it/s]100%|██████████| 366/366 [00:00<00:00, 35653.92it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 51.013943672180176 s
+Loading isotree 4_2_3
+isotree 4_2_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/354 [00:00<?, ?it/s]100%|██████████| 354/354 [00:00<00:00, 34135.31it/s]
+  0%|          | 0/354 [00:00<?, ?it/s]100%|██████████| 354/354 [00:00<00:00, 31254.65it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 46.19654989242554 s
+Loading isotree 4_2_4
+isotree 4_2_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/711 [00:00<?, ?it/s] 87%|████████▋ | 622/711 [00:00<00:00, 6219.12it/s]100%|██████████| 711/711 [00:00<00:00, 6849.90it/s]
+  0%|          | 0/711 [00:00<?, ?it/s]100%|██████████| 711/711 [00:00<00:00, 36150.78it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 121.21596264839172 s
+Loading isotree 4_3_0
+isotree 4_3_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/632 [00:00<?, ?it/s]100%|██████████| 632/632 [00:00<00:00, 29730.49it/s]
+  0%|          | 0/632 [00:00<?, ?it/s]100%|██████████| 632/632 [00:00<00:00, 34985.75it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 88.8588855266571 s
+Loading isotree 4_3_1
+isotree 4_3_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1016 [00:00<?, ?it/s] 37%|███▋      | 378/1016 [00:00<00:00, 2557.63it/s] 62%|██████▏   | 634/1016 [00:00<00:00, 904.60it/s] 100%|██████████| 1016/1016 [00:00<00:00, 1608.60it/s]
+  0%|          | 0/1016 [00:00<?, ?it/s]100%|██████████| 1016/1016 [00:00<00:00, 35314.89it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 198.6001217365265 s
+Loading isotree 4_3_2
+isotree 4_3_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/806 [00:00<?, ?it/s] 47%|████▋     | 378/806 [00:00<00:00, 2646.81it/s] 80%|███████▉  | 643/806 [00:00<00:00, 915.82it/s] 100%|██████████| 806/806 [00:00<00:00, 1264.16it/s]
+  0%|          | 0/806 [00:00<?, ?it/s] 51%|█████     | 413/806 [00:00<00:00, 1140.78it/s] 66%|██████▌   | 528/806 [00:00<00:00, 744.45it/s] 100%|██████████| 806/806 [00:00<00:00, 1223.54it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 236.13084197044373 s
+Loading isotree 4_3_3
+isotree 4_3_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1607 [00:00<?, ?it/s] 85%|████████▍ | 1362/1607 [00:00<00:00, 13615.79it/s]100%|██████████| 1607/1607 [00:00<00:00, 13613.39it/s]
+  0%|          | 0/1607 [00:00<?, ?it/s]100%|██████████| 1607/1607 [00:00<00:00, 38747.29it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 577.2627048492432 s
+Loading isotree 4_3_4
+isotree 4_3_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/482 [00:00<?, ?it/s]100%|██████████| 482/482 [00:00<00:00, 29589.66it/s]
+  0%|          | 0/482 [00:00<?, ?it/s]100%|██████████| 482/482 [00:00<00:00, 35713.86it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 71.57155728340149 s
+Loading isotree 4_4_0
+isotree 4_4_0 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/679 [00:00<?, ?it/s] 56%|█████▌    | 381/679 [00:00<00:00, 3809.48it/s]100%|██████████| 679/679 [00:00<00:00, 6227.53it/s]
+  0%|          | 0/679 [00:00<?, ?it/s]100%|██████████| 679/679 [00:00<00:00, 36575.73it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 82.54018378257751 s
+Loading isotree 4_4_1
+isotree 4_4_1 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/687 [00:00<?, ?it/s] 55%|█████▌    | 378/687 [00:00<00:00, 3638.83it/s]100%|██████████| 687/687 [00:00<00:00, 6063.80it/s]
+  0%|          | 0/687 [00:00<?, ?it/s]100%|██████████| 687/687 [00:00<00:00, 35481.92it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 98.39176845550537 s
+Loading isotree 4_4_2
+isotree 4_4_2 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1116 [00:00<?, ?it/s] 34%|███▍      | 378/1116 [00:00<00:00, 1568.84it/s]100%|██████████| 1116/1116 [00:00<00:00, 4073.84it/s]
+  0%|          | 0/1116 [00:00<?, ?it/s]100%|██████████| 1116/1116 [00:00<00:00, 41424.12it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 199.93339705467224 s
+Loading isotree 4_4_3
+isotree 4_4_3 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/1358 [00:00<?, ?it/s] 28%|██▊       | 378/1358 [00:00<00:00, 1761.88it/s] 41%|████      | 555/1358 [00:00<00:00, 1004.02it/s]100%|██████████| 1358/1358 [00:00<00:00, 2472.52it/s]
+  0%|          | 0/1358 [00:00<?, ?it/s]100%|██████████| 1358/1358 [00:00<00:00, 37264.90it/s]
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:54: DtypeWarning: Columns (0,1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24) have mixed types. Specify dtype option on import or set low_memory=False.
+  pd1=pd.read_table(raw_path+f'isotree_{i}_{j}_{k}.dat', skiprows=0, delimiter='\s+', usecols=load_cols)
+/home/cj1223/work/GraphMerge/slurm/../data/data_z_final_only.py:102: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  zhalos['desc_id(3)'][zhalos['#scale(0)']==acut_true]=-1
+Done with subvolume. 
+ Time elapsed 797.617520570755 s
+Loading isotree 4_4_4
+isotree 4_4_4 loaded, restructuring
+Splitting to tree and scaling
+Split done
+Loading targets
+Making merger tree
+  0%|          | 0/465 [00:00<?, ?it/s]100%|██████████| 465/465 [00:00<00:00, 28293.02it/s]
+  0%|          | 0/465 [00:00<?, ?it/s]100%|██████████| 465/465 [00:00<00:00, 35898.90it/s]
+Done with subvolume. 
+ Time elapsed 65.51111602783203 s
+Saving dataset

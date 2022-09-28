@@ -1,0 +1,6 @@
+Loaded data
+Traceback (most recent call last):
+  File "/home/cj1223/work/GraphMerge/pysr_final/slurm/../final_only_pysr.py", line 63, in <module>
+    idx = np.random.choice(np.arange(len(xs))[~massMask],N - np.sum(massMask),replace=False, p = P[~massMask])
+  File "mtrand.pyx", line 939, in numpy.random.mtrand.RandomState.choice
+ValueError: probabilities do not sum to 1

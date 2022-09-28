@@ -1,0 +1,16 @@
+Complexity|MSE|Equation
+1|0.6398508|-1.0053507
+3|0.036271807|(x16 + -1.1674709)
+5|0.034196917|((x16 * 0.9447057) - 1.158481)
+7|0.026039524|(x31 - pow(x18 + 1.752454, 0.30346927))
+8|0.025942251|(x31 - pow(exp(x18 + 1.2363182), 0.12082131))
+9|0.022501618|(x31 - pow(-0.4601874 * pow(x14, x18), -0.21344437))
+10|0.02074874|(x31 - pow((x18 + sqrt_abs(x14)) + 1.0658841, 0.3020542))
+11|0.020054966|(x31 - pow(sqrt_abs(x28) + (x18 + sqrt_abs(x14)), 0.31203178))
+12|0.017706947|(x31 - pow(sqrt_abs(x28) + (x18 + sqrt_abs(sqrt_abs(x14))), 0.31203178))
+13|0.016619842|(x31 - sqrt_abs(sqrt_abs((sqrt_abs(x1) + (sqrt_abs(x28) + x18)) * 1.3106415)))
+14|0.015399879|(x31 - sqrt_abs(sqrt_abs((x18 + sqrt_abs(x32)) + sqrt_abs(x28 / sqrt_abs(x3)))))
+15|0.014383988|(x31 - sqrt_abs(sqrt_abs((x18 + sqrt_abs((x1 / x25) + x4)) + sqrt_abs(x28))))
+16|0.013091808|(x31 - sqrt_abs(sqrt_abs((x18 + sqrt_abs(x32)) + sqrt_abs((x28 / sqrt_abs(x3)) - x18))))
+18|0.0123993615|(x31 - sqrt_abs(sqrt_abs((x18 + sqrt_abs(x1 + x32)) + sqrt_abs((x28 / sqrt_abs(x3)) - x18))))
+22|0.011372396|(x31 - sqrt_abs(sqrt_abs((x18 + sqrt_abs(x1 + x32)) + sqrt_abs(((x28 / (sqrt_abs(x3) / 1.4245852)) - x18) / 1.894073))))

@@ -1,0 +1,54 @@
+{
+    "experiment": "GraphMerge",
+    "group":  "final_Z", 
+    "move":false,
+    "model":  "Sage",
+    "log": true,
+
+    "run_params":{
+    "n_epochs":    4000,
+    "n_trials": 1,
+    "batch_size": 256,
+    "val_epoch":   2,
+    "early_stopping": false,
+    "patience": 100,
+    "l1_lambda":0,
+    "l2_lambda":0,
+    "loss_func": "GaussNd",
+    "metrics": "test_multi_varrho",
+    "performance_plot": "multi_base",
+    "save":true,
+    "seed":true,
+    "num_workers": 4
+}, 
+"learn_params":{
+    "learning_rate":   1e-2,
+    "schedule":   "onecycle",
+    "g_up":1,
+    "g_down":0.95,
+    "warmup":4,
+    "period":5, 
+    "eta_min":1e-5
+},
+
+    "hyper_params": {
+        "hidden_channels":   128,  
+        "conv_layers":   5,
+        "conv_activation": "relu",
+        "decode_activation": "leakyrelu",
+        "decode_layers":   3,
+        "layernorm":      true,
+        "agg": "sum",
+        "variance":     true,
+        "rho":        0
+    },
+
+   "data_params":{ 
+    "case": "vlarge_all_allt_z0.0_quantile_raw_rm",
+    "targets": [8,15,20,21,23,27],
+    "del_feats": [],
+    "split": 0.8,
+    "test": 1,
+    "scale": 0
+}
+}

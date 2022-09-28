@@ -1,0 +1,18 @@
+Complexity|MSE|Equation
+1|0.31572756|-3.800674
+3|0.27567354|(x4 + -3.7818522)
+4|0.19057015|(log10_abs(x6) - 5.575972)
+5|0.040370163|(pow(-1.4017328, x14) + -4.8652124)
+8|0.03786626|((x31 / exp(pow(0.7566095, x16))) + -3.8860867)
+10|0.03679404|(((x31 / exp(pow(-0.6467253, x16))) * 0.8641742) + -3.9135368)
+12|0.03645345|(log10_abs(sqrt_abs(pow(log_abs(pow(-468.06973, x16) - x6), x12))) - 3.8663044)
+14|0.03622883|(log10_abs(sqrt_abs(pow(log_abs((pow(-483.6646, x16) * x12) - x6), x12))) - 3.8657548)
+16|0.0362129|(log10_abs(sqrt_abs(pow(log_abs((pow(-468.06973, x16) * x14) - (x6 - x15)), x12))) - 3.8657548)
+17|0.036181863|(log10_abs(sqrt_abs(pow(log_abs(pow(x6 / log10_abs(x16 - 0.76981807), x16) - x6), x12))) - 3.8647006)
+18|0.03581735|((x31 / exp(pow(-0.73953474, x16) / pow((x16 + -0.27316576) - (3.6418676 / x32), -0.13835014))) + -3.9118001)
+19|0.035737816|(log10_abs(sqrt_abs(pow(log_abs(pow(x6 / log10_abs(sqrt_abs(exp(-0.290122)) - x15), x16) + x6), x12))) - 3.8657548)
+20|0.035719145|(log10_abs(sqrt_abs(pow(log_abs(pow(x6 / log10_abs(sqrt_abs(sqrt_abs(log10_abs(-0.290122))) - x15), x16) + x6), x12))) - 3.8657548)
+21|0.03567989|(log10_abs(sqrt_abs(pow(log_abs(pow(x6 / log10_abs(pow(sqrt_abs(sqrt_abs(x4)), x32) - x16), x16) + x6), x12))) - 3.8657548)
+23|0.03567112|(log10_abs(sqrt_abs(pow(log_abs(pow(x6 / log10_abs(pow(sqrt_abs(sqrt_abs(x4)), x32) - x16), x16) + (x6 - 0.7592083)), x12))) - 3.8657548)
+24|0.035669923|(log10_abs(sqrt_abs(pow(log_abs(pow(x6 / log10_abs(pow(sqrt_abs(sqrt_abs(x4)), x32) - x16), x16) + (x6 - sqrt_abs(x15))), x12))) - 3.8657548)
+25|0.03516726|((log_abs((-0.08395463 / pow(0.8835691, x12)) / pow(-0.7442991, x31)) - sqrt_abs(pow(sqrt_abs(exp((0.89607584 / pow(0.7914276, x14)) - x16)), x4))) / 0.88361144)
