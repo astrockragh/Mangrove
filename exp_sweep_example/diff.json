@@ -1,2 +1,13 @@
-{   "targets": [ [0,1], [0,2], [0,3], [1,2], [1,3], [2,3]], 
-    "batch_size": [256,256]}
+{   "l1_lambda": [0,1e-4, 1e-3],
+    "l2_lambda": [0,1e-4, 1e-3],
+    "learning_rate": [1e-4,3e-4,1e-3, 3e-3,1e-2,3e-2,1e-1],
+    "early_stopping": true,
+    "batch_size": [128,256,512],
+    "hidden_channels":   [64,128,256],  
+    "conv_layers":   [2,3,5,7],
+    "conv_activation": ["relu", "leakyrelu"],
+    "decode_activation": ["relu", "leakyrelu"],
+    "decode_layers":   [1,2,3],
+    "layernorm/batchnorm":      [1,0],
+    "agg": ["max", "sum"]
+}
