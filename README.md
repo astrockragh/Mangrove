@@ -6,9 +6,9 @@
   title="The logo for our new inference framework, Mangrove"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
   
-Short story: Using Dark Matter Merger Trees to infer galaxy properties works much better than everything else out there! Check out
+Short story: Using Dark Matter Merger Trees to infer galaxy properties works much better than everything else out there! Check out our Google Colab Tutorial on how to use the model at https://colab.research.google.com/drive/1XhZyH71svBaPXqIovAzgFf_ByabJKJyv#scrollTo=9otRiww8rbOf
 
-For people looking to reproduce the results of [our paper](https://arxiv.org/abs/2210.13473), 𝙼𝚊𝚗𝚐𝚛𝚘𝚟𝚎: Learning Galaxy Properties from Merger Trees, the folders to look are in data and dev. 
+For people looking to reproduce the results of our paper (https://arxiv.org/abs/2210.13473), 𝙼𝚊𝚗𝚐𝚛𝚘𝚟𝚎: Learning Galaxy Properties from Merger Trees, the folders to look are in data and dev. 
 
 You can preprocess the merger tree with data_z.py (or data_SAM.py if you want fewer nodes), although you'll have to fit a transformer independently, since I found that to be the best. You can find a procedure for doing so in the subfolder transform, but if you're going for speed and already know what subset of features you're interested in, I suggest you fit the transformer in a different way. Ours is fit for each column which isn't fast.
 
