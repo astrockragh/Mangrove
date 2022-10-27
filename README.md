@@ -6,7 +6,7 @@
   title="The logo for our new inference framework, Mangrove"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
   
-Short story: Using Dark Matter Merger Trees to infer galaxy properties works much better than everything else out there! Check out our Google Colab Tutorial on how to use the model at https://colab.research.google.com/drive/1XhZyH71svBaPXqIovAzgFf_ByabJKJyv#scrollTo=9otRiww8rbOf
+Short story: Using Dark Matter Merger Trees to infer galaxy properties works much better than everything else out there! Check out our Google Colab Tutorial on how to use the model at https://colab.research.google.com/drive/1XhZyH71svBaPXqIovAzgFf_ByabJKJyv
 
 For people looking to reproduce the results of our paper (https://arxiv.org/abs/2210.13473), 𝙼𝚊𝚗𝚐𝚛𝚘𝚟𝚎: Learning Galaxy Properties from Merger Trees, the folders to look are in data and dev. 
 
