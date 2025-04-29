@@ -9,7 +9,7 @@ import os.path as osp
 import matplotlib.pyplot as plt
 import torch_geometric as tg
 from torch_geometric.loader import DataLoader
-from torch_geometric.data import Data
+from torch_geometric.data import Data, HeteroData
 from importlib import __import__
 import random
 import string
@@ -17,54 +17,33 @@ from tqdm import tqdm
 
 mus, scales = np.array([-1.1917865,  1.7023178,  -0.14979358, -2.5043619]), np.array([0.9338901, 0.17233825, 0.5423821, 0.9948792])
 
-# t_labels = ['Stellar mass', 'v_disk', 'Cold gas mass', 'SFR average over 100 yr']
-t_labels = np.array(['m_star', 'v_disk', 'm_cold', 'sfr_100'])
-
-t_labels = np.array(['halo_index (long) (0)',
- 'birthhaloid (long long)(1)',
- 'roothaloid (long long)(2)',
- 'redshift(3)',
- 'sat_type 0= central(4)',
- 'mhalo total halo mass [1.0E09 Msun](5)',
- 'm_strip stripped mass [1.0E09 Msun](6)',
- 'rhalo halo virial radius [Mpc)](7)',
- 'mstar stellar mass [1.0E09 Msun](8)',
- 'mbulge stellar mass of bulge [1.0E09 Msun] (9)',
- ' mstar_merge stars entering via mergers] [1.0E09 Msun](10)',
- ' v_disk rotation velocity of disk [km/s] (11)',
- ' sigma_bulge velocity dispersion of bulge [km/s](12)',
- ' r_disk exponential scale radius of stars+gas disk [kpc] (13)',
- ' r_bulge 3D effective radius of bulge [kpc](14)',
- ' mcold cold gas mass in disk [1.0E09 Msun](15)',
- ' mHI cold gas mass [1.0E09 Msun](16)',
- ' mH2 cold gas mass [1.0E09 Msun](17)',
- ' mHII cold gas mass [1.0E09 Msun](18)',
- ' Metal_star metal mass in stars [Zsun*Msun](19)',
- ' Metal_cold metal mass in cold gas [Zsun*Msun] (20)',
- ' sfr instantaneous SFR [Msun/yr](21)',
- ' sfrave20myr SFR averaged over 20 Myr [Msun/yr](22)',
- ' sfrave100myr SFR averaged over 100 Myr [Msun/yr](23)',
- ' sfrave1gyr SFR averaged over 1 Gyr [Msun/yr](24)',
- ' mass_outflow_rate [Msun/yr](25)',
- ' metal_outflow_rate [Msun/yr](26)',
- ' mBH black hole mass [1.0E09 Msun](27)',
- ' maccdot accretion rate onto BH [Msun/yr](28)',
- ' maccdot_radio accretion rate in radio mode [Msun/yr](29)',
- ' tmerge time since last merger [Gyr] (30)',
- ' tmajmerge time since last major merger [Gyr](31)',
- ' mu_merge mass ratio of last merger [](32)',
- ' t_sat time since galaxy became a satellite in this halo [Gyr](33)',
- ' r_fric distance from halo center [Mpc](34)',
- ' x_position x coordinate [cMpc](35)',
- ' y_position y coordinate [cMpc](36)',
- ' z_position z coordinate [cMpc](37)',
- ' vx x component of velocity [km/s](38)',
- ' vy y component of velocity [km/s](39)',
- ' vz z component of velocity [km/s](40)'])
+t_labels = np.array(['# 8 mstar stellar mass [1.0E09 Msun]',
+ '# 9 mbulge stellar mass of bulge [1.0E09 Msun] ',
+ '# 10 mstar_merge stars entering via mergers] [1.0E09 Msun]',
+ '# 11 v_disk rotation velocity of disk [km/s] ',
+ '# 12 sigma_bulge velocity dispersion of bulge [km/s]',
+ '# 13 r_disk exponential scale radius of stars+gas disk [kpc] ',
+ '# 14 r_bulge 3D effective radius of bulge [kpc]',
+ '# 15 mcold cold gas mass in disk [1.0E09 Msun]',
+ '# 16 mHI cold gas mass [1.0E09 Msun]',
+ '# 17 mH2 cold gas mass [1.0E09 Msun]',
+ '# 18 mHII cold gas mass [1.0E09 Msun]',
+ '# 19 Metal_star metal mass in stars [Zsun*Msun]',
+ '# 20 Metal_cold metal mass in cold gas [Zsun*Msun] ',
+ '# 21 sfr instantaneous SFR [Msun/yr]',
+ '# 22 sfrave20myr SFR averaged over 20 Myr [Msun/yr]',
+ '# 23 sfrave100myr SFR averaged over 100 Myr [Msun/yr]',
+ '# 24 sfrave1gyr SFR averaged over 1 Gyr [Msun/yr]',
+ '# 25 mass_outflow_rate [Msun/yr]' '# 26 metal_outflow_rate [Msun/yr]',
+ '# 27 mBH black hole mass [1.0E09 Msun]',
+ '# 30 tmerge time since last merger [Gyr] ',
+ '# 31 tmajmerge time since last major merger [Gyr]',
+ '# 32 mu_merge mass ratio of last merger []'])
 
 t_labels = [t.replace(' ','') for t in t_labels]
 t_labels = [t.replace('/','') for t in t_labels]
 t_labels = np.array(t_labels)
+# print(t_labels)
 
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -78,27 +57,50 @@ today = date.today()
 
 today = today.strftime("%d%m%y")
 
-
 # for final testing
-def load_data(case, targets, del_feats, scale, test=0,split=0.875, ): ##data_params
-    datat=pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/{case}/data.pkl'), 'rb'))
-    a=np.arange(43)
-    feats=np.delete(a, del_feats)
+gas_sfr_idx = [7,8,9,10,12,13,14,15,16] #targets that have something to do with gas or SFR
+def load_data(case, targets, del_feats, scale = 0, test=0, split=0.875, maxtreesize = 400,): ##data_params
+    datat = pickle.load(open(osp.expanduser(f'~/../../../tigress/cj1223/EnvMerge/{case}/trees/data.pkl'), 'rb'))
+    a = np.arange(len(datat[0].x[0]))
+    feats = np.delete(a, del_feats)
     if case!="vlarge_all_smass":
         data=[]
-        for d in datat:
-            if not scale:
-                data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=d.y[targets]))
-            else:
-                data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=(d.y[targets]-torch.Tensor(mus[targets]))/torch.Tensor(scales[targets])))
+        count = 0
+        for d in datat[:2000]:
+            if len(d.x)<maxtreesize:
+                # try:
+                    x2 =  d.x2[:, feats]
+                    edge_index2 =  d.edge_index2
+                    temp_weight = torch.ones_like(d.y, dtype = torch.long)
+                    ## de-weight only the m_cold/SFR targets
+                    temp_weight[gas_sfr_idx] = d.weight.repeat(len(gas_sfr_idx))
+
+                    if not scale:
+                        d0 = HeteroData()
+                        d0['A'].x = d.x[:, feats]
+                        d0['A'].edge_index = d.edge_index
+                        d0['B'].x = x2
+                        d0['B'].edge_index = edge_index2
+                        d0['y'] = d.y[targets]
+                        d0['weight'] = temp_weight[targets]
+                            
+                        data.append(d0)
+                        # data.append(Data(x1 = d.x[:, feats], edge_index1 = d.edge_index, x2 = x2, edge_index2 = edge_index2, y=d.y[targets]))
+                    else:
+                        data.append(Data(x = d.x[:, feats], edge_index = d.edge_index, x2 = x2, edge_index2 = edge_index2, y=(d.y[targets]-torch.Tensor(mus[targets]))/torch.Tensor(scales[targets])))
+                # except:
+                #     count+=1
+                #     if not scale:
+                #         data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=d.y[targets]))
+                #     else:
+                #         data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=(d.y[targets]-torch.Tensor(mus[targets]))/torch.Tensor(scales[targets])))
     else:
-        data=datat
-    if 'rm' in case:
-        print('Zero removals on')
-        testidx = pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/tvt_idx/test_idx_rm.pkl'), 'rb'))
-    else:    
-        testidx = pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/tvt_idx/test_idx.pkl'), 'rb'))
+        data = datat
+    print(count)
     # trainidx = pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/tvt_idx/train_idx.pkl'), 'rb')) ##I keep this so I can find this file later
+    print(f'{len(data)} merger tree dataset')
+    print(data[0])
+    testidx = np.arange(int(len(data)//10))
     testidx = np.array(testidx)
     test_data=[]
     train_data=[]
@@ -111,51 +113,80 @@ def load_data(case, targets, del_feats, scale, test=0,split=0.875, ): ##data_par
         return train_data, test_data #train and val merged, test
     else:
         return train_data[:int(len(train_data)*(split))], train_data[int(len(train_data)*(split)):] #train, val, 70%/10% of total
+    
 def make_id(length=6):
     # choose from all lowercase letters
     letters = string.ascii_lowercase
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
 
-### test function
 def test(loader, model, targs, l_func, scale):
-    '''returns targets and predictions, and some test metrics
-    This function here isn't pretty, xs shouldn't be used, they take up too much memory'''
-    ys, pred,xs, Mh=[],[],[], []
+    '''Returns targets, predictions, and test metrics using binary weight masking.
+    Also returns the weights used (1s and 0s).'''
+
     model.eval()
-    n_targ=len(targs)
-    outs = []
-    ys = []
-    vars= []
-    rhos = []
+    n_targ = len(targs)
+
+    ys, pred, Mh = [], [], []
+    vars, rhos = [], []
+    weights = []
+
     if scale:
-        sca=torch.cuda.FloatTensor(scales[targs])
-        ms=torch.cuda.FloatTensor(mus[targs])
-    with torch.no_grad(): ##this solves it!!!
-        for data in loader: 
-            rho = torch.IntTensor(0)
-            var = torch.IntTensor(0)
+        sca = torch.cuda.FloatTensor(scales[targs])
+        ms = torch.cuda.FloatTensor(mus[targs])
+
+    with torch.no_grad():
+        for data in loader:
+            # Default placeholder values
+            rho = torch.tensor(0)
+            var = torch.tensor(0)
+
+            # Get model outputs
             if l_func in ["L1", "L2", "SmoothL1"]: 
-                out = model(data)  
-            if l_func in ["Gauss1d", "Gauss2d", "GaussNd"]:
-                out, var = model(data)  
-            if l_func in ["Gauss2d_corr", "Gauss4d_corr"]:
-                out, var, rho = model(data) 
-            if scale:
-                ys.append(data.y.view(-1,n_targ)*sca+ms)
-                pred.append(out*sca+ms)
+                out = model(data)
+            elif l_func in ["Gauss1d", "Gauss2d", "GaussNd"]:
+                out, var = model(data)
+            elif l_func in ["Gauss2d_corr", "Gauss4d_corr"]:
+                out, var, rho = model(data)
             else:
-                ys.append(data.y.view(-1,n_targ))
-                pred.append(out)
-            vars.append(var)
-            rhos.append(rho)
+                raise ValueError(f"Unknown loss function: {l_func}")
+
+            # Reshape and apply mask
+            y_flat = data.y.view(-1, n_targ)
+            out_flat = out.view(-1, n_targ)
+            mask = data.weight.view(-1, n_targ).bool()
+
+            y_masked = y_flat[mask]
+            out_masked = out_flat[mask]
+
+            if scale:
+                ys.append(y_masked * sca + ms)
+                pred.append(out_masked * sca + ms)
+            else:
+                ys.append(y_masked)
+                pred.append(out_masked)
+
+            if isinstance(var, torch.Tensor) and var.numel() > 1:
+                vars.append(var[mask])
+            else:
+                vars.append(torch.zeros_like(y_masked))
+
+            if isinstance(rho, torch.Tensor) and rho.numel() > 1:
+                rhos.append(rho[mask])
+            else:
+                rhos.append(torch.zeros_like(y_masked))
+
+            weights.append(data.weight[mask])
 
     ys = torch.vstack(ys)
     pred = torch.vstack(pred)
     vars = torch.vstack(vars)
     rhos = torch.vstack(rhos)
-    xn=[] ## keep for downstream dependency
-    return ys.cpu().numpy(), pred.cpu().numpy(), xn, Mh, vars, rhos
+    weights = torch.cat(weights)
+    xn = []  # for downstream compatibility
+
+    return ys.cpu().numpy(), pred.cpu().numpy(), xn, Mh, vars, rhos, weights.cpu().numpy()
+
 
 # train loop
 def train_model(construct_dict):
@@ -207,17 +238,17 @@ def train_model(construct_dict):
         n_targ=len(train_data[0].y)
     except:
         n_targ=1
-    n_feat=len(train_data[0].x[0])
-
-    test_loader=DataLoader(test_data, batch_size=batch_size, shuffle=0, num_workers=num_workers)    ##never shuffle test
+    n_feat=len(train_data[0]['A'].x[0])
+    
+    test_loader=DataLoader(test_data, batch_size=batch_size, shuffle=0, num_workers=num_workers, follow_batch = ['x1', 'x2'])    ##never shuffle test
     construct_dict['hyper_params']['in_channels']=n_feat
     construct_dict['hyper_params']['out_channels']=n_targ
 
     ### learning related stuff, all get_xxx functions are defined further down ###
     lr_scheduler          = get_lr_schedule(construct_dict) 
     loss_func            = get_loss_func(construct_dict['run_params']['loss_func'])
-    l1_lambda=run_params['l1_lambda']
-    l2_lambda=run_params['l2_lambda']
+    l1_lambda = run_params['l1_lambda']
+    l2_lambda = run_params['l2_lambda']
 
 
     metric            = get_metrics(construct_dict['run_params']['metrics'])
@@ -245,56 +276,80 @@ def train_model(construct_dict):
                 os.makedirs(model_path)
                 print('Made folder for saving model')
 
-        train_loader=DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=num_workers) #shuffle training
-
+        train_loader=DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=num_workers, follow_batch = ['x1', 'x2']) #shuffle training
+        # print(next(train_loader))
         optimizer = torch.optim.Adam(model.parameters(), lr=lr)
         scheduler=lr_scheduler(optimizer, **learn_params, total_steps=n_epochs*len(train_loader))
 
         _, _, test_loader = accelerator.prepare(model, optimizer, test_loader)
         model, optimizer, train_loader = accelerator.prepare(model, optimizer, train_loader)
-        # Initialize our train function
+        
         def train(epoch, schedule):
             model.train()
-            return_loss=0
-            er_loss = torch.cuda.FloatTensor([0])
-            si_loss = torch.cuda.FloatTensor([0])
-            rh_loss = torch.cuda.FloatTensor([0])
-            for data in train_loader: 
-                if run_params["loss_func"] in ["L1", "L2", "SmoothL1"]: 
-                    out = model(data)  
-                    loss = loss_func(out, data.y.view(-1,n_targ))
-                    
-                if run_params["loss_func"] in ["Gauss1d", "Gauss2d", "GaussNd"]:
-                    out, var = model(data)  
-                    loss, err_loss, sig_loss = loss_func(out, data.y.view(-1,n_targ), var)
-                    er_loss+=err_loss
-                    si_loss+=sig_loss
+            device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+            return_loss = torch.tensor(0.0, device=device)
 
-                if run_params["loss_func"] in ["Gauss2d_corr"]:
-                    out, var, rho = model(data)  
-                    loss, err_loss, sig_loss, rho_loss = loss_func(out, data.y.view(-1,n_targ), var, rho)
-                    er_loss+=err_loss
-                    si_loss+=sig_loss
-                    rh_loss+=rho_loss
+            er_loss = torch.zeros(1, device=device)
+            si_loss = torch.zeros(1, device=device)
+            rh_loss = torch.zeros(1, device=device)
 
-                if run_params["loss_func"] in ["Gauss4d_corr"]:
-                    out, var, rho = model(data)  
-                    loss, err_loss, sig_loss = loss_func(out, data.y.view(-1,n_targ), var, rho)
-                    er_loss+=err_loss
-                    si_loss+=sig_loss
+            for data in train_loader:
+                y = data.y.view(-1, n_targ)
+                mask = data.weight.view(-1, n_targ).bool()
 
+                # Apply mask
+                y_masked = y[mask]
+
+                if run_params["loss_func"] in ["L1", "L2", "SmoothL1"]:
+                    out = model(data)
+                    out_masked = out.view(-1, n_targ)[mask]
+                    loss = loss_func(out_masked, y_masked)
+
+                elif run_params["loss_func"] in ["Gauss1d", "Gauss2d", "GaussNd"]:
+                    out, var = model(data)
+                    out_masked = out.view(-1, n_targ)[mask]
+                    var_masked = var[mask]
+                    loss, err_loss, sig_loss = loss_func(out_masked, y_masked, var_masked)
+                    er_loss += err_loss
+                    si_loss += sig_loss
+
+                elif run_params["loss_func"] == "Gauss2d_corr":
+                    out, var, rho = model(data)
+                    out_masked = out.view(-1, n_targ)[mask]
+                    var_masked = var[mask]
+                    rho_masked = rho[mask]
+                    loss, err_loss, sig_loss, rho_loss = loss_func(out_masked, y_masked, var_masked, rho_masked)
+                    er_loss += err_loss
+                    si_loss += sig_loss
+                    rh_loss += rho_loss
+
+                elif run_params["loss_func"] == "Gauss4d_corr":
+                    out, var, rho = model(data)
+                    out_masked = out.view(-1, n_targ)[mask]
+                    var_masked = var[mask]
+                    rho_masked = rho[mask]
+                    loss, err_loss, sig_loss = loss_func(out_masked, y_masked, var_masked, rho_masked)
+                    er_loss += err_loss
+                    si_loss += sig_loss
+
+                else:
+                    raise ValueError(f"Unknown loss function: {run_params['loss_func']}")
+
+                # Regularization
                 l1_norm = sum(p.abs().sum() for p in model.parameters())
                 l2_norm = sum(p.pow(2.0).sum() for p in model.parameters())
                 loss = loss + l1_lambda * l1_norm + l2_lambda * l2_norm
-                return_loss+=loss
+
+                return_loss += loss.item()
                 accelerator.backward(loss)
-                optimizer.step() 
+                optimizer.step()
                 optimizer.zero_grad()
-                if schedule=="onecycle":
+
+                if schedule == "onecycle":
                     scheduler.step(epoch)
-            # if epoch==0:              #Doesn't work right now but could be fun to add back in
-            #     writer.add_graph(model,[data]) 
+
             return return_loss, er_loss, si_loss, rh_loss, l1_lambda * l1_norm, l2_lambda * l2_norm
+
 
         tr_acc, te_acc=[],[]
         early_stop=0
@@ -356,7 +411,7 @@ def train_model(construct_dict):
                             writer.add_scalar(f'best_scatter_{labels[i]}', lowest_metric[i], global_step=epoch+1)
 
                 
-                if run_params["loss_func"] in ["Gauss1d", "Gauss2d", "Gauss2d_corr", "Gauss4d_corr", "Gauss_Nd"]:
+                if run_params["loss_func"] in ["Gauss1d", "Gauss2d", "Gauss2d_corr", "Gauss4d_corr", "GaussNd"]:
                     print(f'Epoch: {int(epoch+1)} done with learning rate {lr0:.2E}, Train loss: {trainloss.cpu().detach().numpy():.2E}, [Err/Sig/Rho]: {err_loss.cpu().detach().numpy()[0]:.2E}, {sig_loss.cpu().detach().numpy()[0]:.2E}, {rho_loss.cpu().detach().numpy()[0]:.2E}')
                     print(f'L1 regularization loss: {l1_loss.cpu().detach().numpy():.2E}, L2 regularization loss: {l2_loss.cpu().detach().numpy():.2E}')
                     print(f'Train scatter: {np.round(train_metric,4)}')
@@ -369,12 +424,12 @@ def train_model(construct_dict):
                 if (epoch+1)%(int(val_epoch*5))==0 and log:
                     if n_targ==1:
     
-                        ys, pred, xs, Mh, vars, rhos = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
+                        ys, pred, xs, Mh, vars, rhos, weights = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
                         fig=performance_plot(ys,pred, xs, Mh, data_params["targets"])
                         writer.add_figure(tag=run_name_n, figure=fig, global_step=epoch+1)
                     else:
                         labels = t_labels[data_params["targets"]]
-                        ys, pred, xs, Mh, vars, rhos = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
+                        ys, pred, xs, Mh, vars, rhos, weights = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
                         figs = performance_plot(ys,pred, xs, Mh, data_params["targets"])
                         for fig, label in zip(figs, labels):
                             writer.add_figure(tag=f'{run_name_n}_{label}', figure=fig, global_step=epoch+1)
@@ -401,7 +456,7 @@ def train_model(construct_dict):
             pr_epoch=n_epochs
         print(f"{spent:.2f} seconds spent training, {spent/n_epochs:.3f} seconds per epoch. Processed {len(train_loader.dataset)*pr_epoch/spent:.0f} trees per second")
         
-        ys, pred, xs, Mh, vars, rhos = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
+        ys, pred, xs, Mh, vars, rhos, weights = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
         if save:
             if n_targ==1:
                 label = t_labels[data_params["targets"]]
@@ -410,7 +465,7 @@ def train_model(construct_dict):
                     fig.savefig(f'{log_dir}/performance_ne{n_epochs}_{label}.png')
             else:
                 labels = t_labels[data_params["targets"]]
-                ys, pred, xs, Mh, vars, rhos = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
+                ys, pred, xs, Mh, vars, rhos, weights = test(test_loader, model, data_params["targets"], run_params['loss_func'], data_params["scale"])
                 figs = performance_plot(ys,pred, xs, Mh, data_params["targets"])
                 for fig, label in zip(figs, labels):
                     fig.savefig(f'{log_dir}/performance_ne{n_epochs}_{label}.png')
@@ -518,3 +573,93 @@ def get_lr_schedule(construct_dict):
     schedule_class = getattr(lr_module, schedule)
 
     return schedule_class
+
+### old test function
+def old_test(loader, model, targs, l_func, scale):
+    '''returns targets and predictions, and some test metrics
+    This function here isn't pretty, xs shouldn't be used, they take up too much memory'''
+    ys, pred,xs, Mh=[],[],[], []
+    model.eval()
+    n_targ=len(targs)
+    outs = []
+    ys = []
+    vars= []
+    rhos = []
+    if scale:
+        sca=torch.cuda.FloatTensor(scales[targs])
+        ms=torch.cuda.FloatTensor(mus[targs])
+    with torch.no_grad(): ##this solves it!!!
+        for data in loader: 
+            rho = torch.IntTensor(0)
+            var = torch.IntTensor(0)
+            if l_func in ["L1", "L2", "SmoothL1"]: 
+                out = model(data)  
+            if l_func in ["Gauss1d", "Gauss2d", "GaussNd"]:
+                out, var = model(data)  
+            if l_func in ["Gauss2d_corr", "Gauss4d_corr"]:
+                out, var, rho = model(data) 
+            if scale:
+                ys.append(data.y.view(-1,n_targ)*sca+ms)
+                pred.append(out*sca+ms)
+            else:
+                ys.append(data.y.view(-1,n_targ))
+                pred.append(out)
+            vars.append(var)
+            rhos.append(rho)
+
+    ys = torch.vstack(ys)
+    pred = torch.vstack(pred)
+    vars = torch.vstack(vars)
+    rhos = torch.vstack(rhos)
+    xn=[] ## keep for downstream dependency
+    return ys.cpu().numpy(), pred.cpu().numpy(), xn, Mh, vars, rhos
+
+ # Initialize our old train function
+def old_train(epoch, schedule):
+    model.train()
+    return_loss=0
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if device == 'cuda':
+        er_loss = torch.cuda.FloatTensor([0])
+        si_loss = torch.cuda.FloatTensor([0])
+        rh_loss = torch.cuda.FloatTensor([0])
+    else:
+        er_loss = torch.FloatTensor([0])
+        si_loss = torch.FloatTensor([0])
+        rh_loss = torch.FloatTensor([0])
+    for data in train_loader: 
+        if run_params["loss_func"] in ["L1", "L2", "SmoothL1"]: 
+            out = model(data)  
+            loss = loss_func(out, data.y.view(-1,n_targ))
+            
+        if run_params["loss_func"] in ["Gauss1d", "Gauss2d", "GaussNd"]:
+            out, var = model(data)  
+            loss, err_loss, sig_loss = loss_func(out, data.y.view(-1,n_targ), var)
+            er_loss+=err_loss
+            si_loss+=sig_loss
+
+        if run_params["loss_func"] in ["Gauss2d_corr"]:
+            out, var, rho = model(data)  
+            loss, err_loss, sig_loss, rho_loss = loss_func(out, data.y.view(-1,n_targ), var, rho)
+            er_loss+=err_loss
+            si_loss+=sig_loss
+            rh_loss+=rho_loss
+
+        if run_params["loss_func"] in ["Gauss4d_corr"]:
+            out, var, rho = model(data)  
+            loss, err_loss, sig_loss = loss_func(out, data.y.view(-1,n_targ), var, rho)
+            er_loss+=err_loss
+            si_loss+=sig_loss
+
+        l1_norm = sum(p.abs().sum() for p in model.parameters())
+        l2_norm = sum(p.pow(2.0).sum() for p in model.parameters())
+        loss = loss + l1_lambda * l1_norm + l2_lambda * l2_norm
+        return_loss+=loss
+        accelerator.backward(loss)
+        optimizer.step() 
+        optimizer.zero_grad()
+        if schedule=="onecycle":
+            scheduler.step(epoch)
+    # if epoch==0:              #Doesn't work right now but could be fun to add back in
+    #     writer.add_graph(model,[data]) 
+    return return_loss, er_loss, si_loss, rh_loss, l1_lambda * l1_norm, l2_lambda * l2_norm

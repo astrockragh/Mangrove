@@ -1,0 +1,55 @@
+{
+    "experiment": "GraphMerge",
+    "group":  "final_Gauss4d", 
+    "move": false,
+    "model":  "SageShortLong",
+    "log": true,
+
+    "run_params":{
+    "n_epochs":    100,
+    "n_trials": 1,
+    "batch_size": 128,
+    "val_epoch":   2,
+    "early_stopping": true,
+    "patience": 50,
+    "l1_lambda":0,
+    "l2_lambda":0,
+    "loss_func": "GaussNd",
+    "metrics": "test_multi_varrho",
+    "performance_plot": "multi_base",
+    "save":true,
+    "seed":false,
+    "num_workers": 1
+}, 
+
+"learn_params":{
+    "learning_rate":   1e-2,
+    "schedule":"onecycle",
+    "g_up":1,
+    "g_down":0.95,
+    "warmup":4,
+    "period":5, 
+    "eta_min":1e-5
+},
+
+    "hyper_params": {
+        "hidden_channels":   64,  
+        "conv_layers":   4,
+        "conv_activation": "relu",
+        "decode_activation": "leakyrelu",
+        "decode_layers":   2,
+        "layernorm":      true,
+        "agg": "sum",
+        "variance":     true,
+        "rho":        0
+    },
+
+   "data_params":{ 
+    "case": "tree_short_full_z0.0quantile",
+    "targets": [0, 7],
+    "del_feats": [],
+    "split": 0.9,
+    "scale": 0,
+    "test":0
+}
+}

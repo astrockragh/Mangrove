@@ -16,7 +16,7 @@ parser.add_argument("-gpu", "--gpu", type=str, required=False)
 
 ## slurm  ------------------------------------------------------------------
 
-os.chdir(osp.expanduser("~/work/GraphMerge"))
+os.chdir(osp.expanduser("~/KITP/Mangrove"))
 
 args = parser.parse_args()
 
