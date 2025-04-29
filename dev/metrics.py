@@ -81,3 +81,46 @@ def test_multi_varrho(loader, model, targs, l_func, scale):
     vars = vstack(vars)
     rhos = vstack(rhos)
     return std(outss - yss, axis=0).cpu().detach().numpy(), yss.cpu().detach().numpy(), outss.cpu().detach().numpy(), vars, rhos
+
+
+def test_multi_varrho_weights(loader, model, targs, l_func, scale): 
+    '''This one is the most updated'''
+    model.eval()
+    n_targ=len(targs)
+    outs = []
+    ys = []
+    vars = []
+    rhos = []
+    weights = []
+    if scale:
+        sca=FloatTensor(scales[targs])
+        ms=FloatTensor(mus[targs])
+    with no_grad(): 
+        for data in loader: 
+            rho = IntTensor(0)
+            var = IntTensor(0)
+            if l_func in ["L1", "L2", "SmoothL1"]: 
+                out = model(data)  
+            if l_func in ["Gauss1d", "Gauss2d", "GaussNd"]:
+                out, var = model(data)  
+            if l_func in ["Gauss2d_corr", "Gauss4d_corr"]:
+                out, var, rho = model(data) 
+            if scale:
+                ys.append(data.y.view(-1,n_targ)*sca+ms)
+                outs.append(out*sca+ms)
+            else:
+                ys.append(data.y.view(-1,n_targ))
+                outs.append(out)
+            vars.append(var)
+            rhos.append(rho)
+            weights.append(data.weight.view(-1,n_targ))
+
+    outss=vstack(outs)
+    yss=vstack(ys)
+    vars = vstack(vars)
+    rhos = vstack(rhos)
+    weights = vstack(weights)
+    
+    stds = [std(y[w.bool()]-o[w.bool()]).cpu().detach().numpy() for y, o, w in zip(yss.T, outss.T, weights.T) ]
+    # sqrt( sum( weights*(outss - yss)**2, axis=0)/sum(weights, axis = 0) ).cpu().detach().numpy()
+    return stds, yss.cpu().detach().numpy(), outss.cpu().detach().numpy(), vars, rhos

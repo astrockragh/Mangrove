@@ -66,15 +66,19 @@ def load_data(case, targets, del_feats, scale = 0, test=0, split=0.875, maxtrees
     if case!="vlarge_all_smass":
         data=[]
         count = 0
-        for d in datat[:2000]:
+        ys = []
+        weights = []
+        for d in datat[:10000]:
             if len(d.x)<maxtreesize:
                 # try:
                     x2 =  d.x2[:, feats]
                     edge_index2 =  d.edge_index2
                     temp_weight = torch.ones_like(d.y, dtype = torch.long)
                     ## de-weight only the m_cold/SFR targets
-                    temp_weight[gas_sfr_idx] = d.weight.repeat(len(gas_sfr_idx))
-
+                    if np.any(np.isclose(d.y[targets], -10, atol = 1)):
+                        temp_weight[gas_sfr_idx] = torch.tensor(0, dtype = torch.long).repeat(len(gas_sfr_idx))
+                    # weights.append(d.weight)
+                    
                     if not scale:
                         d0 = HeteroData()
                         d0['A'].x = d.x[:, feats]
@@ -85,6 +89,8 @@ def load_data(case, targets, del_feats, scale = 0, test=0, split=0.875, maxtrees
                         d0['weight'] = temp_weight[targets]
                             
                         data.append(d0)
+                        ys.append( d.y[targets] )
+                        weights.append( d0.weight )
                         # data.append(Data(x1 = d.x[:, feats], edge_index1 = d.edge_index, x2 = x2, edge_index2 = edge_index2, y=d.y[targets]))
                     else:
                         data.append(Data(x = d.x[:, feats], edge_index = d.edge_index, x2 = x2, edge_index2 = edge_index2, y=(d.y[targets]-torch.Tensor(mus[targets]))/torch.Tensor(scales[targets])))
@@ -96,6 +102,13 @@ def load_data(case, targets, del_feats, scale = 0, test=0, split=0.875, maxtrees
                 #         data.append(Data(x=d.x[:, feats], edge_index=d.edge_index, edge_attr=d.edge_attr, y=(d.y[targets]-torch.Tensor(mus[targets]))/torch.Tensor(scales[targets])))
     else:
         data = datat
+
+    print(np.max(np.vstack(ys), axis = 0))
+    print(np.min(np.vstack(ys), axis = 0))
+
+    print(np.max(np.vstack(weights), axis = 0))
+    print(np.min(np.vstack(weights), axis = 0))
+
     print(count)
     # trainidx = pickle.load(open(osp.expanduser(f'~/../../scratch/gpfs/cj1223/GraphStorage/tvt_idx/train_idx.pkl'), 'rb')) ##I keep this so I can find this file later
     print(f'{len(data)} merger tree dataset')
@@ -156,8 +169,8 @@ def test(loader, model, targs, l_func, scale):
             out_flat = out.view(-1, n_targ)
             mask = data.weight.view(-1, n_targ).bool()
 
-            y_masked = y_flat[mask]
-            out_masked = out_flat[mask]
+            y_masked = y_flat
+            out_masked = out_flat
 
             if scale:
                 ys.append(y_masked * sca + ms)
@@ -167,16 +180,16 @@ def test(loader, model, targs, l_func, scale):
                 pred.append(out_masked)
 
             if isinstance(var, torch.Tensor) and var.numel() > 1:
-                vars.append(var[mask])
+                vars.append(var)
             else:
                 vars.append(torch.zeros_like(y_masked))
 
             if isinstance(rho, torch.Tensor) and rho.numel() > 1:
-                rhos.append(rho[mask])
+                rhos.append(rho)
             else:
                 rhos.append(torch.zeros_like(y_masked))
 
-            weights.append(data.weight[mask])
+            weights.append(data.weight.view(-1, n_targ))
 
     ys = torch.vstack(ys)
     pred = torch.vstack(pred)
@@ -363,9 +376,13 @@ def train_model(construct_dict):
                 scheduler.step(epoch)
 
             if (epoch+1)%val_epoch==0:
-                if run_params['metrics']!='test_multi_varrho':
+                
+                if run_params['metrics']!='test_multi_varrho' and run_params['metrics']!='test_multi_varrho_weights':
                     train_metric, _, _ = metric(train_loader, model, data_params['targets'], run_params['loss_func'], data_params['scale'])
                     test_metric, ys, pred = metric(test_loader, model, data_params['targets'], run_params['loss_func'], data_params['scale'])
+                # elif run_params['metrics']!='test_multi_varrho_weights':
+                #     train_metric, _, _, _, _ = metric(train_loader, model, data_params['targets'], run_params['loss_func'], data_params['scale'])
+                #     test_metric, ys, pred, vars, rhos = metric(test_loader, model, data_params['targets'], run_params['loss_func'], data_params['scale'])
                 else:
                     train_metric, _, _, _, _ = metric(train_loader, model, data_params['targets'], run_params['loss_func'], data_params['scale'])
                     test_metric, ys, pred, vars, rhos = metric(test_loader, model, data_params['targets'], run_params['loss_func'], data_params['scale'])

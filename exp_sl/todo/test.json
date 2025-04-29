@@ -15,7 +15,7 @@
     "l1_lambda":0,
     "l2_lambda":0,
     "loss_func": "GaussNd",
-    "metrics": "test_multi_varrho",
+    "metrics": "test_multi_varrho_weights",
     "performance_plot": "multi_base",
     "save":true,
     "seed":false,
