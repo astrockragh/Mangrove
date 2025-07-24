@@ -34,7 +34,8 @@ t_labels = np.array(['# 8 mstar stellar mass [1.0E09 Msun]',
  '# 22 sfrave20myr SFR averaged over 20 Myr [Msun/yr]',
  '# 23 sfrave100myr SFR averaged over 100 Myr [Msun/yr]',
  '# 24 sfrave1gyr SFR averaged over 1 Gyr [Msun/yr]',
- '# 25 mass_outflow_rate [Msun/yr]' '# 26 metal_outflow_rate [Msun/yr]',
+ '# 25 mass_outflow_rate [Msun/yr]',
+ '# 26 metal_outflow_rate [Msun/yr]',
  '# 27 mBH black hole mass [1.0E09 Msun]',
  '# 30 tmerge time since last merger [Gyr] ',
  '# 31 tmajmerge time since last major merger [Gyr]',
@@ -59,7 +60,7 @@ today = today.strftime("%d%m%y")
 
 # for final testing
 gas_sfr_idx = [7,8,9,10,12,13,14,15,16] #targets that have something to do with gas or SFR
-def load_data(case, targets, del_feats, scale = 0, test=0, split=0.875, maxtreesize = 400,): ##data_params
+def load_data(case, targets, del_feats, scale = 0, test=0, split=0.875, maxtreesize = 1000,): ##data_params
     datat = pickle.load(open(osp.expanduser(f'~/../../../tigress/cj1223/EnvMerge/{case}/trees/data.pkl'), 'rb'))
     a = np.arange(len(datat[0].x[0]))
     feats = np.delete(a, del_feats)
@@ -68,14 +69,14 @@ def load_data(case, targets, del_feats, scale = 0, test=0, split=0.875, maxtrees
         count = 0
         ys = []
         weights = []
-        for d in datat[:10000]:
+        for d in datat:
             if len(d.x)<maxtreesize:
                 # try:
                     x2 =  d.x2[:, feats]
                     edge_index2 =  d.edge_index2
                     temp_weight = torch.ones_like(d.y, dtype = torch.long)
                     ## de-weight only the m_cold/SFR targets
-                    if np.any(np.isclose(d.y[targets], -10, atol = 1)):
+                    if np.any(np.isclose(d.y[targets], -10, atol = 0.1)):
                         temp_weight[gas_sfr_idx] = torch.tensor(0, dtype = torch.long).repeat(len(gas_sfr_idx))
                     # weights.append(d.weight)
                     
@@ -392,10 +393,10 @@ def train_model(construct_dict):
                     low_pred = pred
                     k+=1
                 if np.any(test_metric<lowest_metric):
-                    mask=test_metric<lowest_metric
-                    index=np.arange(n_targ)[mask]
-                    lowest_metric[mask]=test_metric[mask]
-                    # lowest_metric=test_metric
+                    
+                    mask = test_metric<lowest_metric
+                    index = np.arange(n_targ)[mask]
+                    lowest_metric = np.where(test_metric<lowest_metric, test_metric, lowest_metric)
 
                     low_ys[:,index]=ys[:,index]
                     low_pred[:,index]=pred[:,index]
